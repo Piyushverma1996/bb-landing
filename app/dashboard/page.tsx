@@ -241,6 +241,7 @@ export default function Dashboard() {
           </div>
           <div className="flex gap-2">
             <button onClick={fetchStats} disabled={loading} className="rounded-xl bg-white/70 border border-[#2E8B83]/20 px-3 py-2 text-[10px] font-semibold text-[#1A5A54]">{loading ? "…" : "↻"}</button>
+            <a href="/invoice" className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#2E8B83,#C9A55C)" }}>🧾 Invoicing</a>
             <button onClick={async () => { await fetch("/api/cron/weekly-report", { method: "POST" }); setReportSent(true); }} className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#E89B8B,#C9A55C)" }}>{reportSent ? "✓ Sent" : "📱 Report"}</button>
           </div>
         </div>

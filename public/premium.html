@@ -23,6 +23,23 @@
   <meta property="og:url" content="https://blushesnbrushes.com" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
+  <link rel="canonical" href="https://blushesnbrushes.com/" />
+
+  <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your GA4 Measurement ID to activate -->
+  <script>
+    (function () {
+      var GA4_ID = "G-XXXXXXXXXX";
+      if (!GA4_ID || GA4_ID.indexOf("XXXX") !== -1) return; // inert until a real ID is set
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA4_ID;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag("js", new Date());
+      gtag("config", GA4_ID);
+    })();
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -91,6 +108,7 @@
         <a href="#services" class="nav-link">Services</a>
         <a href="#portfolio" class="nav-link">Portfolio</a>
         <a href="#about" class="nav-link">The Artist</a>
+        <a href="/blog" class="nav-link">Journal</a>
         <a href="#book" class="rounded-full bg-teal px-6 py-3 tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-gold hover:text-ink">Book</a>
       </div>
       <!-- Mobile CTA -->
@@ -334,6 +352,7 @@
       <p class="text-sm font-light uppercase tracking-luxe text-teal">Blushes &amp; Brushes</p>
       <div class="flex flex-wrap items-center justify-center gap-6 text-[11px] font-medium uppercase tracking-[0.2em] text-teal md:gap-8">
         <a href="/book" class="nav-link">Prices &amp; Booking</a>
+        <a href="/blog" class="nav-link">Journal</a>
         <a href="/courses" class="nav-link">Academy</a>
         <a href="https://instagram.com/makeovers_by_urvashitrehan_" class="nav-link">Makeovers</a>
         <a href="https://instagram.com/blushesandbrushes2022" class="nav-link">Salon</a>
@@ -354,17 +373,18 @@
 
     /* ---------- 1. LENIS — buttery smooth scroll ---------- */
     const lenis = new Lenis({
-      duration: 1.25,
+      duration: 1.1,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo-out
       smoothWheel: true,
+      syncTouch: true, // smoother on trackpads / touch without hijacking native touch scroll
     });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
 
     /* ---------- 2. GSAP + ScrollTrigger wiring ---------- */
     gsap.registerPlugin(ScrollTrigger);
     // Keep ScrollTrigger in sync with Lenis' virtual scroll
     lenis.on("scroll", ScrollTrigger.update);
+    // Drive Lenis from a SINGLE source — the GSAP ticker. (Previously also had a
+    // manual requestAnimationFrame loop, which double-stepped Lenis and caused the stutter.)
     gsap.ticker.add((time) => lenis.raf(time * 1000));
     gsap.ticker.lagSmoothing(0);
 
