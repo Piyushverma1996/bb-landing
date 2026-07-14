@@ -34,6 +34,15 @@ interface Invoice {
 }
 
 const inr = (n: number) => `₹${(Number(n) || 0).toLocaleString("en-IN")}`;
+const grp = (v: number | "") => (v === "" ? "" : Number(v).toLocaleString("en-IN"));
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+// "2026-07-14" → "14-Jul-2026". HTML date inputs always hold ISO regardless of how the OS displays them.
+const fmtDate = (s: string) => {
+  if (!s) return "—";
+  const [y, m, d] = s.split("-");
+  if (!y || !m || !d) return s;
+  return `${d}-${MONTHS[Number(m) - 1]}-${y}`;
+};
 
 const STATUS_STYLE: Record<Status, string> = {
   Pending: "bg-[#F3CDD3]/60 text-[#B05A68] border-[#E09BA6]/50",
@@ -223,10 +232,10 @@ export default function InvoiceTool() {
 
             <div className="grid grid-cols-2 gap-3">
               <Field label="Total Amount (₹)">
-                <input type="number" min={0} value={total} onChange={e => setTotal(e.target.value === "" ? "" : Number(e.target.value))} placeholder="0" className="bb-input" />
+                <input inputMode="numeric" value={grp(total)} onChange={e => { const n = e.target.value.replace(/[^\d]/g, ""); setTotal(n === "" ? "" : Number(n)); }} placeholder="0" className="bb-input" />
               </Field>
               <Field label="Advance Paid (₹)">
-                <input type="number" min={0} value={advance} onChange={e => setAdvance(e.target.value === "" ? "" : Number(e.target.value))} placeholder="0" className="bb-input" />
+                <input inputMode="numeric" value={grp(advance)} onChange={e => { const n = e.target.value.replace(/[^\d]/g, ""); setAdvance(n === "" ? "" : Number(n)); }} placeholder="0" className="bb-input" />
               </Field>
             </div>
 
@@ -261,7 +270,7 @@ export default function InvoiceTool() {
               <div className="shrink-0 text-right">
                 <p className="text-[9px] uppercase tracking-widest text-white/70">Invoice</p>
                 <p className="text-lg font-bold text-white">{previewId}</p>
-                <p className="mt-1 text-[9px] text-white/75">{invoiceDate || "—"}</p>
+                <p className="mt-1 text-[9px] text-white/75">{fmtDate(invoiceDate)}</p>
               </div>
             </div>
 
@@ -274,8 +283,8 @@ export default function InvoiceTool() {
                   <p style={{ color: BRAND.tealDeep + "aa" }}>{whatsapp ? `+91 ${whatsapp}` : "—"}</p>
                 </div>
                 <div className="text-right">
-                  <p style={{ color: BRAND.tealDeep + "aa" }}><span className="font-semibold" style={{ color: BRAND.teal }}>Invoice Date:</span> {invoiceDate || "—"}</p>
-                  {eventDate && <p style={{ color: BRAND.tealDeep + "aa" }}><span className="font-semibold" style={{ color: BRAND.teal }}>Event Date:</span> {eventDate}</p>}
+                  <p style={{ color: BRAND.tealDeep + "aa" }}><span className="font-semibold" style={{ color: BRAND.teal }}>Invoice Date:</span> {fmtDate(invoiceDate)}</p>
+                  {eventDate && <p style={{ color: BRAND.tealDeep + "aa" }}><span className="font-semibold" style={{ color: BRAND.teal }}>Event Date:</span> {fmtDate(eventDate)}</p>}
                 </div>
               </div>
 
