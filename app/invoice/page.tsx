@@ -146,6 +146,15 @@ export default function InvoiceTool() {
     setInvoiceDate(new Date().toISOString().slice(0, 10));
   }
 
+  // Set a relevant filename for the "Save as PDF" dialog (browsers default to document.title).
+  function downloadPDF() {
+    const prev = document.title;
+    const safeName = (customerName || "Invoice").trim().replace(/[^\w]+/g, "_").replace(/^_+|_+$/g, "") || "Invoice";
+    document.title = `Blushes&Brushes_${safeName}_${previewId}`;
+    window.print();
+    window.setTimeout(() => { document.title = prev; }, 500);
+  }
+
   /* ── Gate ── */
   if (!auth) {
     return (
@@ -163,15 +172,26 @@ export default function InvoiceTool() {
 
   /* ── Tool ── */
   return (
-    <div className="min-h-screen font-sans" style={{ background: "linear-gradient(160deg,#FBEFE7 0%,#F5E8DF 25%,#E8F0EB 55%,#F0E5F0 80%,#FBEFE7 100%)" }}>
+    <div className="bb-root min-h-screen font-sans" style={{ background: "linear-gradient(160deg,#FBEFE7 0%,#F5E8DF 25%,#E8F0EB 55%,#F0E5F0 80%,#FBEFE7 100%)" }}>
       {/* print styles — only #bb-invoice-print survives on paper */}
       <style>{`
         @media print {
+          @page { size: A4; margin: 14mm; }
+          /* collapse all page height so no blank 2nd page is produced */
+          html, body { height: auto !important; min-height: 0 !important; margin: 0 !important; padding: 0 !important; background: #fff !important; }
+          .bb-root { min-height: 0 !important; height: auto !important; background: #fff !important; padding: 0 !important; }
+          .no-print { display: none !important; }
+          /* show only the invoice, print its brand colours faithfully */
           body * { visibility: hidden !important; }
           #bb-invoice-print, #bb-invoice-print * { visibility: visible !important; }
-          #bb-invoice-print { position: absolute !important; left: 0; top: 0; width: 100%; box-shadow: none !important; border: none !important; }
-          .no-print { display: none !important; }
-          @page { size: A4; margin: 14mm; }
+          #bb-invoice-print {
+            position: absolute !important; left: 0; top: 0; width: 100%;
+            box-shadow: none !important; border: none !important;
+            -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important;
+          }
+          /* letterhead: black text on white (backgrounds don't print reliably) */
+          #bb-invoice-print .bb-letterhead { background: #fff !important; border-bottom: 2px solid ${BRAND.gold} !important; }
+          #bb-invoice-print .bb-letterhead, #bb-invoice-print .bb-letterhead * { color: #000 !important; }
         }
       `}</style>
 
@@ -248,7 +268,7 @@ export default function InvoiceTool() {
               <button onClick={saveInvoice} disabled={saving} className="flex-1 rounded-xl py-3 text-sm font-bold text-white disabled:opacity-50" style={{ background: `linear-gradient(135deg,${BRAND.teal},${BRAND.gold})` }}>
                 {saving ? "Saving…" : "💾 Save to Ledger"}
               </button>
-              <button onClick={() => window.print()} className="rounded-xl border px-4 py-3 text-sm font-bold" style={{ borderColor: BRAND.gold, color: BRAND.goldDeep, background: "#fff" }}>⬇ PDF</button>
+              <button onClick={downloadPDF} className="rounded-xl border px-4 py-3 text-sm font-bold" style={{ borderColor: BRAND.gold, color: BRAND.goldDeep, background: "#fff" }}>⬇ PDF</button>
               <button onClick={resetForm} className="rounded-xl border px-4 py-3 text-sm font-semibold" style={{ borderColor: BRAND.teal + "33", color: BRAND.tealDeep, background: "#fff" }}>Clear</button>
             </div>
           </div>
@@ -256,7 +276,7 @@ export default function InvoiceTool() {
           {/* ── RIGHT: Live print-ready invoice ── */}
           <div id="bb-invoice-print" className="overflow-hidden rounded-3xl bg-white shadow-lg" style={{ border: `1px solid ${BRAND.teal}22` }}>
             {/* Letterhead — business identity: logo · name · address · contact */}
-            <div className="flex items-start gap-4 px-8 py-6" style={{ background: `linear-gradient(120deg,${BRAND.tealDeep},${BRAND.teal} 60%,${BRAND.gold})` }}>
+            <div className="bb-letterhead flex items-start gap-4 px-8 py-6" style={{ background: `linear-gradient(120deg,${BRAND.tealDeep},${BRAND.teal} 60%,${BRAND.gold})` }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/logo.jpeg" alt="Blushes & Brushes" className="h-16 w-16 shrink-0 rounded-full border-2 border-white/70 object-cover" />
               <div className="flex-1">
