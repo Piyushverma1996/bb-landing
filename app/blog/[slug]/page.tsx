@@ -67,7 +67,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     image: `https://blushesnbrushes.com${post.cover}`,
     datePublished: post.date,
     dateModified: post.updated ?? post.date,
-    author: { "@type": "Person", name: "Urvashi Trehan" },
+    author: { "@type": "Person", name: "Urvashi Trehan", jobTitle: "Makeup Artist", worksFor: { "@type": "BeautySalon", name: "Blushes & Brushes" } },
     publisher: {
       "@type": "Organization",
       name: "Blushes & Brushes",
@@ -76,9 +76,23 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     mainEntityOfPage: `https://blushesnbrushes.com/blog/${post.slug}`,
   };
 
+  // FAQPage schema — consumed by Google rich results AND AI assistants (ChatGPT/Gemini/Claude web search)
+  const faqLd = post.faq?.length
+    ? {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: post.faq.map((f) => ({
+          "@type": "Question",
+          name: f.q,
+          acceptedAnswer: { "@type": "Answer", text: f.a },
+        })),
+      }
+    : null;
+
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
 
       <Link href="/blog" className="text-[12px] font-semibold text-[#C9A55C]">← Journal</Link>
 
@@ -99,6 +113,23 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       <article className="mt-6">
         <Blocks body={post.body} />
       </article>
+
+      {/* FAQ — visible Q&A mirrors the FAQPage schema (direct-answer format AI assistants cite) */}
+      {post.faq && post.faq.length > 0 && (
+        <section className="mt-10">
+          <h2 className="text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Frequently asked questions</h2>
+          <div className="mt-4 space-y-3">
+            {post.faq.map((f, i) => (
+              <details key={i} className="group rounded-2xl border border-[#C9A55C]/25 bg-white/80 p-4">
+                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#1A5A54]">
+                  {f.q}
+                </summary>
+                <p className="mt-2 text-[13px] leading-relaxed text-[#1A5A54]/80">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <div className="mt-10 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
