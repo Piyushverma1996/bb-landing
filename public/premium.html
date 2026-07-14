@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--
+  BLUSHES & BRUSHES — Ultra-Premium Homepage
+  ------------------------------------------------------------------
+  Stack: HTML + Tailwind (Play CDN) + GSAP/ScrollTrigger + Lenis
+  Palette (UI): Cream #FBF4EA · Deep Teal #1A5A54 · Gold #C9A55C
+  Type: Playfair Display (headers) · Montserrat (body)
+  Notes: Fully modular — each <section> is self-contained and can be
+         lifted into a React/Next component or a headless CMS block.
+         Pastels are intentionally EXCLUDED from the UI architecture.
+  ------------------------------------------------------------------
+-->
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blushes &amp; Brushes — Bridal Couture Makeup, Nail Artistry &amp; Beauty | New Delhi</title>
+  <meta name="description" content="Ultra-premium bridal and occasion makeup, nail artistry and beauty by Urvashi Trehan. Studio in Ramesh Nagar, New Delhi — travels across Delhi NCR." />
+  <!-- Open Graph / share preview -->
+  <meta property="og:title" content="Blushes &amp; Brushes — The art of looking unforgettable" />
+  <meta property="og:description" content="Bridal couture makeup, nail artistry & beauty by Urvashi Trehan. Ramesh Nagar, New Delhi — travels across Delhi NCR." />
+  <meta property="og:image" content="https://blushesnbrushes.com/images/bridal-hero.jpg" />
+  <meta property="og:url" content="https://blushesnbrushes.com" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) + brand config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:  "#FCFBF7",
+            "cream-deep": "#F5EFE3",
+            teal:   "#1A5A54",
+            "teal-soft": "#2E7D6E",
+            gold:   "#C9A55C",
+            "gold-deep": "#B8893B",
+            ink:    "#20302C",
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', "serif"],
+            sans:  ["Montserrat", "sans-serif"],
+          },
+          letterSpacing: { luxe: "0.28em" },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body { background: #FCFBF7; }
+    body { font-family: "Montserrat", sans-serif; color: #1A5A54; -webkit-font-smoothing: antialiased; }
+    h1,h2,h3 { font-family: "Playfair Display", serif; }
+    /* Word-reveal primitive: mask overflow, slide inner up */
+    .line-mask { overflow: hidden; display: block; }
+    .line-mask > span { display: inline-block; will-change: transform; }
+    /* Parallax image wrapper */
+    .parallax-wrap { overflow: hidden; }
+    .parallax-wrap img { will-change: transform; transform: scale(1.18); }
+    /* Fine gold rule */
+    .rule-gold { height: 1px; background: linear-gradient(90deg, transparent, #C9A55C, transparent); }
+    /* Link underline sweep */
+    .nav-link { position: relative; }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-4px; width:100%; height:1px; background:#C9A55C; transform:scaleX(0); transform-origin:right; transition:transform .5s cubic-bezier(.19,1,.22,1); }
+    .nav-link:hover::after { transform:scaleX(1); transform-origin:left; }
+    /* Hide until GSAP reveals (prevents flash) */
+    .pre { opacity: 0; }
+    ::selection { background:#C9A55C; color:#FBF4EA; }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ========================= NAVIGATION ========================= -->
+  <header id="nav" class="fixed inset-x-0 top-0 z-50 transition-all duration-700">
+    <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
+      <!-- Logo — given deliberate clear space -->
+      <a href="#top" class="flex items-center gap-3">
+        <img src="/images/logo.jpeg" alt="Blushes &amp; Brushes" class="h-12 w-12 rounded-full object-cover md:h-14 md:w-14" />
+        <span class="hidden text-sm font-light uppercase tracking-luxe text-teal sm:block">Blushes&nbsp;&amp;&nbsp;Brushes</span>
+      </a>
+      <!-- Desktop links -->
+      <div class="hidden items-center gap-10 text-[11px] font-medium uppercase tracking-[0.2em] text-teal md:flex">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#portfolio" class="nav-link">Portfolio</a>
+        <a href="#about" class="nav-link">The Artist</a>
+        <a href="#book" class="rounded-full bg-teal px-6 py-3 tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-gold hover:text-ink">Book</a>
+      </div>
+      <!-- Mobile CTA -->
+      <a href="#book" class="rounded-full bg-teal px-5 py-2.5 text-[10px] font-medium uppercase tracking-[0.2em] text-cream md:hidden">Book</a>
+    </nav>
+  </header>
+
+  <!-- ============================ HERO ============================ -->
+  <section id="top" class="relative flex min-h-screen items-center overflow-hidden px-6 pt-28 pb-16 md:px-10">
+    <div class="mx-auto grid w-full max-w-7xl items-center gap-14 lg:grid-cols-12">
+
+      <!-- Left: editorial copy -->
+      <div class="lg:col-span-6">
+        <p class="pre mb-8 text-[11px] font-medium uppercase tracking-luxe text-gold-deep" data-reveal="fade">Ramesh Nagar · New Delhi · By Appointment</p>
+
+        <h1 class="text-5xl font-light leading-[1.05] text-teal md:text-6xl xl:text-7xl">
+          <span class="line-mask"><span data-reveal="line">The art of</span></span>
+          <span class="line-mask"><span data-reveal="line" class="italic text-gold-deep">looking</span></span>
+          <span class="line-mask"><span data-reveal="line">unforgettable.</span></span>
+        </h1>
+
+        <p class="pre mt-8 max-w-md text-[15px] font-light leading-relaxed text-teal/70" data-reveal="fade">
+          Bridal couture makeup, nail artistry and beauty by Urvashi Trehan. Every brushstroke, a story — crafted personally, for your most beautiful day.
+        </p>
+
+        <div class="pre mt-10 flex flex-wrap items-center gap-5" data-reveal="fade">
+          <a href="#book" class="group inline-flex items-center gap-3 rounded-full bg-gold px-8 py-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-all duration-500 hover:bg-teal hover:text-cream">
+            Reserve your date
+            <span class="transition-transform duration-500 group-hover:translate-x-1">→</span>
+          </a>
+          <a href="#portfolio" class="text-[11px] font-medium uppercase tracking-[0.2em] text-teal nav-link">View portfolio</a>
+        </div>
+
+        <!-- Understated proof, no badges -->
+        <div class="pre mt-14 flex items-center gap-8 text-teal/70" data-reveal="fade">
+          <div><span class="block font-serif text-2xl text-teal">4.8</span><span class="text-[10px] uppercase tracking-[0.2em]">Google Rating</span></div>
+          <div class="h-8 w-px bg-teal/15"></div>
+          <div><span class="block font-serif text-2xl text-teal">200+</span><span class="text-[10px] uppercase tracking-[0.2em]">Brides Adorned</span></div>
+          <div class="h-8 w-px bg-teal/15"></div>
+          <div><span class="block font-serif text-2xl text-teal">NCR</span><span class="text-[10px] uppercase tracking-[0.2em]">Travels For Bridal</span></div>
+        </div>
+      </div>
+
+      <!-- Right: single hero image, framed with an offset gold rule -->
+      <div class="relative lg:col-span-6">
+        <div class="pre relative mx-auto max-w-md" data-reveal="image">
+          <div class="parallax-wrap aspect-[4/5] w-full overflow-hidden rounded-[2px]">
+            <img src="/images/bridal-hero.jpg" alt="Bridal makeup by Urvashi Trehan" class="h-full w-full object-cover object-top" />
+          </div>
+          <!-- offset gold frame -->
+          <div class="pointer-events-none absolute -bottom-4 -right-4 -z-10 h-full w-full border border-gold/60 rounded-[2px]"></div>
+          <p class="mt-5 text-center font-serif text-sm italic text-teal/60">&ldquo;Red isn&rsquo;t just a colour — it&rsquo;s a bride&rsquo;s power.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- scroll hint -->
+    <div class="pointer-events-none absolute bottom-8 left-1/2 -translate-x-1/2 text-[10px] uppercase tracking-luxe text-teal/40">Scroll</div>
+  </section>
+
+  <!-- ========================== SERVICES ========================== -->
+  <!-- Parallax cards: image scales/shifts inside a fixed frame on scroll -->
+  <section id="services" class="px-6 py-28 md:px-10 md:py-40">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-20 text-center">
+        <p class="pre mb-5 text-[11px] font-medium uppercase tracking-luxe text-gold-deep" data-reveal="fade">The Atelier</p>
+        <h2 class="text-4xl font-light text-teal md:text-5xl">
+          <span class="line-mask"><span data-reveal="line">Four crafts. One standard.</span></span>
+        </h2>
+        <div class="rule-gold mx-auto mt-8 w-24"></div>
+      </div>
+
+      <div class="grid gap-8 md:grid-cols-2 lg:gap-10">
+        <!-- Service card template -->
+        <!-- BRIDAL -->
+        <article class="pre group" data-reveal="card">
+          <div class="parallax-wrap relative aspect-[3/4] w-full md:aspect-[16/12]">
+            <img src="/images/new-bridal-red.jpg" data-speed="parallax" alt="Bridal couture makeup" class="h-full w-full object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 flex items-end justify-between p-7">
+              <div>
+                <h3 class="font-serif text-2xl text-cream md:text-3xl">Bridal Couture</h3>
+                <p class="mt-1 text-[11px] uppercase tracking-[0.2em] text-cream/70">HD &amp; Airbrush · from ₹18,000</p>
+              </div>
+              <a href="#book" class="rounded-full border border-cream/50 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-cream hover:text-ink">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- PARTY -->
+        <article class="pre group md:mt-16" data-reveal="card">
+          <div class="parallax-wrap relative aspect-[3/4] w-full md:aspect-[16/12]">
+            <img src="/images/new-occasion-green.jpg" data-speed="parallax" alt="Party and occasion makeup" class="h-full w-full object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 flex items-end justify-between p-7">
+              <div>
+                <h3 class="font-serif text-2xl text-cream md:text-3xl">Occasion &amp; Roka</h3>
+                <p class="mt-1 text-[11px] uppercase tracking-[0.2em] text-cream/70">Engagement · Reception · from ₹10,000</p>
+              </div>
+              <a href="#book" class="rounded-full border border-cream/50 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-cream hover:text-ink">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- NAILS -->
+        <article class="pre group" data-reveal="card">
+          <div class="parallax-wrap relative aspect-[3/4] w-full md:aspect-[16/12]">
+            <img src="/images/nails-1.jpg" data-speed="parallax" alt="Nail artistry and extensions" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 flex items-end justify-between p-7">
+              <div>
+                <h3 class="font-serif text-2xl text-cream md:text-3xl">Nail Artistry</h3>
+                <p class="mt-1 text-[11px] uppercase tracking-[0.2em] text-cream/70">Extensions · Chrome · Art · from ₹1,500</p>
+              </div>
+              <a href="#book" class="rounded-full border border-cream/50 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-cream hover:text-ink">Enquire</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- BEAUTY -->
+        <article class="pre group md:mt-16" data-reveal="card">
+          <div class="parallax-wrap relative aspect-[3/4] w-full md:aspect-[16/12]">
+            <img src="/images/new-beauty-glam.jpg" data-speed="parallax" alt="Beauty and skin studio" class="h-full w-full object-cover object-top" />
+            <div class="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"></div>
+            <div class="absolute inset-x-0 bottom-0 flex items-end justify-between p-7">
+              <div>
+                <h3 class="font-serif text-2xl text-cream md:text-3xl">Beauty &amp; Skin</h3>
+                <p class="mt-1 text-[11px] uppercase tracking-[0.2em] text-cream/70">Keratin · Hair Spa · Facials</p>
+              </div>
+              <a href="#book" class="rounded-full border border-cream/50 px-5 py-2 text-[10px] uppercase tracking-[0.2em] text-cream transition-colors duration-500 hover:bg-cream hover:text-ink">Enquire</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== THE ARTIST (quiet break) ===================== -->
+  <section id="about" class="px-6 py-28 md:px-10 md:py-40">
+    <div class="mx-auto max-w-3xl text-center">
+      <p class="pre mb-6 text-[11px] font-medium uppercase tracking-luxe text-gold-deep" data-reveal="fade">The Artist</p>
+      <h2 class="text-3xl font-light leading-snug text-teal md:text-[2.6rem]">
+        <span class="line-mask"><span data-reveal="line">&ldquo;I don&rsquo;t do makeup.</span></span>
+        <span class="line-mask"><span data-reveal="line" class="italic text-gold-deep">I make women feel like themselves —</span></span>
+        <span class="line-mask"><span data-reveal="line">only more.&rdquo;</span></span>
+      </h2>
+      <p class="pre mt-10 text-sm font-light leading-relaxed text-teal/70" data-reveal="fade">
+        Urvashi Trehan began doing makeup for friends at home. Today, Blushes &amp; Brushes is a Ramesh Nagar studio trusted by 200+ brides — and an artist who still treats every face as the only one that matters.
+      </p>
+      <div class="rule-gold mx-auto mt-12 w-24"></div>
+    </div>
+  </section>
+
+  <!-- ========================== PORTFOLIO ========================== -->
+  <section id="portfolio" class="px-6 pb-28 md:px-10 md:pb-40">
+    <div class="mx-auto max-w-7xl">
+      <div class="mb-16 flex items-end justify-between">
+        <div>
+          <p class="pre mb-4 text-[11px] font-medium uppercase tracking-luxe text-gold-deep" data-reveal="fade">Real Brides · Real Glow</p>
+          <h2 class="text-4xl font-light text-teal md:text-5xl"><span class="line-mask"><span data-reveal="line">The Gallery</span></span></h2>
+        </div>
+        <p class="pre hidden max-w-xs text-right text-xs font-light text-teal/60 md:block" data-reveal="fade">Every face, a real client. No filters, no stock — only Urvashi&rsquo;s work.</p>
+      </div>
+
+      <!-- Editorial masonry -->
+      <div class="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden" data-reveal="card">
+          <img src="/images/bridal-2.jpg" alt="Royal bridal look" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">A royal bride isn&rsquo;t subtle — she&rsquo;s unforgettable.</figcaption>
+        </figure>
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden md:mt-10" data-reveal="card">
+          <img src="/images/nails-2.jpg" alt="Luxe nail artistry" class="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">Detail is the difference.</figcaption>
+        </figure>
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden" data-reveal="card">
+          <img src="/images/bridal-1.jpg" alt="Signature bridal glam" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">Glowing in signature bridal glam.</figcaption>
+        </figure>
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden md:-mt-6" data-reveal="card">
+          <img src="/images/new-bridal-purple.jpg" alt="South Indian bridal makeup" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">Timeless temple-jewellery grace.</figcaption>
+        </figure>
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden" data-reveal="card">
+          <img src="/images/new-natural.jpg" alt="Natural soft glam" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">Soft, natural, effortlessly you.</figcaption>
+        </figure>
+        <figure class="pre parallax-wrap group relative aspect-[3/4] overflow-hidden md:mt-10" data-reveal="card">
+          <img src="/images/new-bridal-peach.jpg" alt="Ceremony bridal glow" class="h-full w-full object-cover object-top transition-transform duration-[1.2s] group-hover:scale-105" />
+          <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/70 to-transparent p-4 text-[11px] font-light text-cream opacity-0 transition-opacity duration-500 group-hover:opacity-100">Every ceremony, picture-perfect.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================== BOOKING CTA ========================== -->
+  <section id="book" class="relative overflow-hidden bg-teal px-6 py-28 md:px-10 md:py-40">
+    <!-- faint gold texture -->
+    <div class="pointer-events-none absolute -right-20 -top-20 h-96 w-96 rounded-full bg-gold/10 blur-3xl"></div>
+    <div class="pointer-events-none absolute -bottom-24 -left-24 h-96 w-96 rounded-full bg-gold/10 blur-3xl"></div>
+
+    <div class="relative mx-auto max-w-3xl text-center">
+      <p class="pre mb-6 text-[11px] font-medium uppercase tracking-luxe text-gold" data-reveal="fade">By Appointment</p>
+      <h2 class="text-4xl font-light leading-tight text-cream md:text-6xl">
+        <span class="line-mask"><span data-reveal="line">Let&rsquo;s create your</span></span>
+        <span class="line-mask"><span data-reveal="line" class="italic text-gold">most beautiful day.</span></span>
+      </h2>
+      <p class="pre mx-auto mt-8 max-w-md text-sm font-light leading-relaxed text-cream/70" data-reveal="fade">
+        Share your date and we&rsquo;ll personally WhatsApp you to confirm availability, discuss your look, and reserve your slot.
+      </p>
+
+      <!-- Minimal booking form — wired to the live lead pipe (/api/lead) -->
+      <form id="bookForm" class="pre mx-auto mt-12 flex max-w-2xl flex-col gap-4" data-reveal="fade">
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <input id="bfName" type="text" placeholder="Your name" class="w-full border-b border-cream/25 bg-transparent px-1 py-3 text-sm text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none" />
+          <input id="bfPhone" type="tel" placeholder="WhatsApp number" class="w-full border-b border-cream/25 bg-transparent px-1 py-3 text-sm text-cream placeholder:text-cream/40 focus:border-gold focus:outline-none" />
+        </div>
+        <div class="flex flex-col gap-4 sm:flex-row sm:items-end">
+          <select id="bfService" class="w-full border-b border-cream/25 bg-transparent px-1 py-3 text-sm text-cream/80 focus:border-gold focus:outline-none [&>option]:text-ink">
+            <option value="">What are you looking for?</option>
+            <option value="Bridal Makeup">Bridal Makeup</option>
+            <option value="Party / Engagement / Roka Makeup">Party / Engagement / Roka</option>
+            <option value="Nail Art &amp; Extensions">Nail Artistry</option>
+            <option value="Beauty (Keratin / Hair Spa / Facial)">Beauty &amp; Skin</option>
+          </select>
+          <button type="submit" class="shrink-0 rounded-full bg-gold px-10 py-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink transition-colors duration-500 hover:bg-cream">Reserve</button>
+        </div>
+        <p id="bfMsg" class="text-center text-[12px] font-light text-gold"></p>
+      </form>
+
+      <div class="pre mt-14 flex flex-col items-center gap-2 text-cream/60" data-reveal="fade">
+        <a href="tel:7678446364" class="font-serif text-2xl text-cream transition-colors hover:text-gold">76784 46364</a>
+        <p class="text-[11px] uppercase tracking-[0.2em]">B1/1 Double Storey · Opp. Subway · Ramesh Nagar · New Delhi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ FOOTER ============================ -->
+  <footer class="bg-cream px-6 py-16 md:px-10">
+    <div class="mx-auto flex max-w-7xl flex-col items-center gap-6 text-center">
+      <img src="/images/logo.jpeg" alt="Blushes &amp; Brushes" class="h-16 w-16 rounded-full object-cover" />
+      <p class="text-sm font-light uppercase tracking-luxe text-teal">Blushes &amp; Brushes</p>
+      <div class="flex flex-wrap items-center justify-center gap-6 text-[11px] font-medium uppercase tracking-[0.2em] text-teal md:gap-8">
+        <a href="/book" class="nav-link">Prices &amp; Booking</a>
+        <a href="/courses" class="nav-link">Academy</a>
+        <a href="https://instagram.com/makeovers_by_urvashitrehan_" class="nav-link">Makeovers</a>
+        <a href="https://instagram.com/blushesandbrushes2022" class="nav-link">Salon</a>
+        <a href="tel:7678446364" class="nav-link">Call</a>
+      </div>
+      <div class="rule-gold w-40"></div>
+      <p class="text-[10px] font-light tracking-[0.15em] text-teal/40">© <span id="yr"></span> Blushes &amp; Brushes · by Urvashi Trehan · New Delhi</p>
+    </div>
+  </footer>
+
+  <!-- ====================== MOTION LIBRARIES ====================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+  <script>
+    document.getElementById("yr").textContent = new Date().getFullYear();
+
+    /* ---------- 1. LENIS — buttery smooth scroll ---------- */
+    const lenis = new Lenis({
+      duration: 1.25,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // expo-out
+      smoothWheel: true,
+    });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    /* ---------- 2. GSAP + ScrollTrigger wiring ---------- */
+    gsap.registerPlugin(ScrollTrigger);
+    // Keep ScrollTrigger in sync with Lenis' virtual scroll
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+
+    const EASE = "power3.out";
+
+    /* ---------- 3. HERO — slow staggered word/line reveal ---------- */
+    // Lines (masked slide-up)
+    gsap.set("[data-reveal='line']", { yPercent: 115 });
+    gsap.set(".pre", { opacity: 1 }); // reveal container; children animate
+    const heroLines = document.querySelectorAll("#top [data-reveal='line']");
+    gsap.to(heroLines, { yPercent: 0, duration: 1.3, ease: EASE, stagger: 0.12, delay: 0.15 });
+    // Fades (kicker, paragraph, CTAs, proof)
+    gsap.from("#top [data-reveal='fade']", { opacity: 0, y: 24, duration: 1.1, ease: EASE, stagger: 0.12, delay: 0.55 });
+    // Hero image — reveal + gentle scale settle
+    gsap.from("#top [data-reveal='image']", { opacity: 0, y: 40, duration: 1.4, ease: EASE, delay: 0.4 });
+    gsap.fromTo("#top .parallax-wrap img", { scale: 1.35 }, { scale: 1.18, duration: 1.8, ease: EASE, delay: 0.4 });
+
+    /* ---------- 4. SECTION reveals on scroll ---------- */
+    // Masked lines in every section below the hero
+    document.querySelectorAll("section:not(#top)").forEach((sec) => {
+      const lines = sec.querySelectorAll("[data-reveal='line']");
+      if (lines.length) {
+        gsap.to(lines, {
+          yPercent: 0, duration: 1.2, ease: EASE, stagger: 0.1,
+          scrollTrigger: { trigger: sec, start: "top 78%" },
+        });
+      }
+      const fades = sec.querySelectorAll("[data-reveal='fade']");
+      if (fades.length) {
+        gsap.from(fades, {
+          opacity: 0, y: 24, duration: 1.1, ease: EASE, stagger: 0.1,
+          scrollTrigger: { trigger: sec, start: "top 75%" },
+        });
+      }
+      const cards = sec.querySelectorAll("[data-reveal='card']");
+      if (cards.length) {
+        gsap.from(cards, {
+          opacity: 0, y: 60, duration: 1.2, ease: EASE, stagger: 0.14,
+          scrollTrigger: { trigger: sec, start: "top 70%" },
+        });
+      }
+    });
+
+    /* ---------- 5. PARALLAX — service + gallery imagery ---------- */
+    // Images tagged data-speed="parallax" (and gallery figures) drift within their frame
+    gsap.utils.toArray(".parallax-wrap img").forEach((img) => {
+      gsap.fromTo(
+        img,
+        { yPercent: -8 },
+        {
+          yPercent: 8,
+          ease: "none",
+          scrollTrigger: {
+            trigger: img.closest(".parallax-wrap"),
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    });
+
+    /* ---------- 6. NAV — cream veil appears after hero ---------- */
+    ScrollTrigger.create({
+      start: "top -80",
+      onUpdate: (self) => {
+        const nav = document.getElementById("nav");
+        if (self.progress > 0 || window.scrollY > 80) {
+          nav.classList.add("bg-cream/85", "backdrop-blur-md", "shadow-[0_1px_0_rgba(201,165,92,0.25)]");
+        } else {
+          nav.classList.remove("bg-cream/85", "backdrop-blur-md", "shadow-[0_1px_0_rgba(201,165,92,0.25)]");
+        }
+      },
+    });
+
+    /* ---------- 7. BOOKING FORM → live lead pipe (/api/lead) ---------- */
+    const bf = document.getElementById("bookForm");
+    bf?.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("bfName").value.trim();
+      const phone = document.getElementById("bfPhone").value.replace(/\D/g, "").slice(0, 10);
+      const service = document.getElementById("bfService").value || "Bridal Makeup";
+      const msg = document.getElementById("bfMsg");
+      if (!name) { msg.textContent = "Please enter your name."; return; }
+      if (!/^\d{10}$/.test(phone)) { msg.textContent = "Enter a valid 10-digit WhatsApp number."; return; }
+      msg.textContent = "Sending…";
+      try {
+        const r = await fetch("/api/lead", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, phone, course: service, source: "premium-home" }),
+        });
+        const d = await r.json();
+        if (d.ok) {
+          bf.innerHTML = '<p class="w-full text-center font-serif text-xl italic text-gold">Thank you, ' + name + '. We&rsquo;ll WhatsApp you shortly to confirm.</p>';
+        } else { msg.textContent = d.error || "Something went wrong. Please try again."; }
+      } catch { msg.textContent = "Network error. Please try again."; }
+    });
+
+    /* ---------- 8. Respect reduced-motion ---------- */
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      lenis.destroy();
+      gsap.set("[data-reveal], .pre", { clearProps: "all", opacity: 1, yPercent: 0, y: 0 });
+    }
+  </script>
+</body>
+</html>

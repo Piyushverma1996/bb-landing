@@ -1,0 +1,95 @@
+{
+  "name": "BB Lead Capture — Webhook → Sheets → WhatsApp",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {
+          "parameters": { "hook": { "label": "BB Landing Page Webhook" } }
+        },
+        "parameters": [
+          { "name": "hook",       "type": "hook:gateway-webhook", "label": "Webhook", "required": true },
+          { "name": "maxResults", "type": "number",               "label": "Maximum number of results" }
+        ]
+      }
+    },
+    {
+      "id": 2,
+      "module": "google-sheets:addRow",
+      "version": 2,
+      "parameters": { "__IMTCONN__": null },
+      "mapper": {
+        "spreadsheetId":  "PASTE_YOUR_GOOGLE_SHEET_ID_HERE",
+        "sheetId":        "BB Leads",
+        "includesHeaders": true,
+        "values": {
+          "Timestamp": "{{1.timestamp}}",
+          "Name":      "{{1.name}}",
+          "Phone":     "{{1.phone}}",
+          "Course":    "{{1.course}}",
+          "Source":    "{{1.source}}",
+          "Status":    "New",
+          "Notes":     ""
+        }
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "restore": {
+          "parameters": { "__IMTCONN__": { "label": "My Google Sheets connection" } },
+          "mapper": {
+            "spreadsheetId": { "label": "BB Leads (paste Sheet ID above)" },
+            "sheetId":       { "label": "BB Leads" },
+            "mode":          "choose"
+          }
+        },
+        "parameters": [
+          { "name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true }
+        ]
+      }
+    },
+    {
+      "id": 3,
+      "module": "gmail:sendAnEmail",
+      "version": 1,
+      "parameters": { "__IMTCONN__": null },
+      "mapper": {
+        "to":      "URVASHIS_EMAIL_HERE",
+        "subject": "🔔 New Lead — {{1.name}} ({{1.course}})",
+        "html":    "<h2 style='color:#1E4A3A'>New Lead — Blushes &amp; Brushes</h2><table style='font-family:Arial;font-size:14px;border-collapse:collapse'><tr><td style='padding:8px;font-weight:bold;color:#1E4A3A'>Name</td><td style='padding:8px'>{{1.name}}</td></tr><tr style='background:#F5EDD8'><td style='padding:8px;font-weight:bold;color:#1E4A3A'>Phone</td><td style='padding:8px'><a href='https://wa.me/91{{1.phone}}'>{{1.phone}}</a></td></tr><tr><td style='padding:8px;font-weight:bold;color:#1E4A3A'>Course</td><td style='padding:8px'>{{1.course}}</td></tr><tr style='background:#F5EDD8'><td style='padding:8px;font-weight:bold;color:#1E4A3A'>Time</td><td style='padding:8px'>{{1.timestamp}}</td></tr></table><br><a href='https://wa.me/91{{1.phone}}' style='background:#1E4A3A;color:#C9A066;padding:12px 24px;text-decoration:none;border-radius:8px;font-weight:bold'>👉 WhatsApp This Lead Now</a>"
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "restore": {
+          "parameters": { "__IMTCONN__": { "label": "My Gmail connection" } }
+        },
+        "parameters": [
+          { "name": "__IMTCONN__", "type": "account:google", "label": "Connection", "required": true }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": { "orphans": [] }
+  }
+}
