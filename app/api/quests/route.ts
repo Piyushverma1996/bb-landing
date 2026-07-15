@@ -45,11 +45,14 @@ const QUESTS: Quest[] = [
   { id: "u1-2", track: "urvashi", phase: 1, title: "Shoot your first 3 clips (1 nail + 2 makeup)", desc: "Close-ups, good light, vertical. Send on WhatsApp.", who: "urvashi", points: 150, category: "content", est: "15 min" },
   { id: "u1-3", track: "urvashi", phase: 1, title: "Activate WhatsApp lead alerts (CallMeBot)", desc: "Send one message — get pinged for every new lead", who: "urvashi", points: 50, category: "setup", est: "3 min" },
   { id: "u1-4", track: "urvashi", phase: 1, title: "Approve your first auto-made Reel", desc: "Piyush sends it, you thumbs-up or ask for changes", who: "urvashi", points: 100, category: "content", est: "5 min" },
-  { id: "u1-5", track: "urvashi", phase: 1, title: "Ask 5 happy clients for a Google review", desc: "Show the QR code after their appointment", who: "urvashi", points: 150, category: "reputation", est: "ongoing" },
+  { id: "u1-5", track: "urvashi", phase: 1, title: "Get 5 Google reviews using the QR card", desc: "Show the QR after every appointment — review drafts are ready to share", who: "urvashi", points: 150, category: "reputation", est: "ongoing" },
+  { id: "u1-6", track: "urvashi", phase: 1, title: "Get 5 WRITTEN Justdial reviews (top priority)", desc: "Text reviews, not just stars — this buries the one negative review Google shows", who: "urvashi", points: 200, category: "reputation", est: "1 week" },
+  { id: "u1-7", track: "urvashi", phase: 1, title: "Reply to the negative Justdial review", desc: "Calm, professional reply from the business account — Piyush has a draft", who: "urvashi", points: 100, category: "reputation", est: "5 min" },
   // Phase 2 — Content Queen
   { id: "u2-1", track: "urvashi", phase: 2, title: "Shoot a full bridal look start-to-finish", desc: "Goes on @makeovers as a premium reel + ad", who: "urvashi", points: 200, category: "content", est: "during work" },
   { id: "u2-2", track: "urvashi", phase: 2, title: "Post 4 reels in one week", desc: "Captions auto-written — just post", who: "urvashi", points: 150, category: "content", est: "20 min total" },
-  { id: "u2-3", track: "urvashi", phase: 2, title: "Hit 10 Google reviews total", desc: "Momentum builds ranking", who: "urvashi", points: 150, category: "reputation", est: "ongoing" },
+  { id: "u2-3", track: "urvashi", phase: 2, title: "Hit 10 Google + 10 written Justdial reviews", desc: "Consistent ratings across platforms is what AI assistants & Google trust", who: "urvashi", points: 150, category: "reputation", est: "ongoing" },
+  { id: "u2-6", track: "urvashi", phase: 2, title: "Get 5 magicpin reviews + send 3 real client quotes", desc: "WhatsApp screenshots work — they go on the website as testimonials", who: "urvashi", points: 100, category: "reputation", est: "1 week" },
   { id: "u2-4", track: "urvashi", phase: 2, title: "Record one nail-art process video", desc: "Satisfying close-ups perform best on @blushes", who: "urvashi", points: 100, category: "content", est: "10 min" },
   { id: "u2-5", track: "urvashi", phase: 2, title: "Reply to every DM within a day for a week", desc: "Fast replies = more bookings", who: "urvashi", points: 100, category: "growth", est: "5 min/day" },
   // Phase 3 — Lead Magnet
