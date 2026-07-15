@@ -52,7 +52,13 @@ function Bar({ label, value, max, color, pct }: { label: string; value: number; 
   );
 }
 
-type Tab = "overview" | "quests" | "studio" | "ads" | "reputation" | "leads";
+type Tab = "overview" | "quests" | "studio" | "ads" | "reputation" | "reviews" | "leads";
+
+interface RvPersonDay { person: string; total: number; google: number; justdial: number; magicpin: number; withPhoto: number; payoutDue: number }
+interface RvToday { date: string; total: number; byPerson: RvPersonDay[]; totalPayoutDue: number }
+interface RvBoardRow { person: string; count: number; withPhoto: number }
+interface RvRow { id: string; date: string; timestamp: string; person: string; platform: string; photo: boolean; clientName?: string; note?: string }
+interface RvData { rows: RvRow[]; today: RvToday; leaderboard: RvBoardRow[]; streakDays: number }
 
 interface Quest { id: string; track: string; phase: number; title: string; desc: string; who: string; points: number; category: string; est: string }
 interface Phase { track: string; phase: number; name: string; theme: string; reward: string; rewardEmoji: string; unlockAt: number }
@@ -219,6 +225,7 @@ export default function Dashboard() {
     { id: "studio", label: "Video Studio" },
     { id: "ads", label: "Ads Manager" },
     { id: "reputation", label: "Reputation" },
+    { id: "reviews", label: "⭐ Reviews" },
     { id: "leads", label: "Leads" },
   ];
 
@@ -449,6 +456,9 @@ export default function Dashboard() {
           </div>
         )}
 
+        {/* ── REVIEWS TAB ── */}
+        {tab === "reviews" && <ReviewsPanel />}
+
         {/* ── VIDEO STUDIO TAB ── */}
         {tab === "studio" && (
           <div className="space-y-4">
@@ -673,6 +683,147 @@ export default function Dashboard() {
         )}
 
         <p className="mt-6 text-center text-[9px] text-[#1E4A3A]/30">BB Command Center · {new Date().getFullYear()}</p>
+      </div>
+    </div>
+  );
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ⭐ REVIEWS PANEL — gamified daily tracker with staff payout
+   Staff (Kukkie/Asha) earn ₹50 for the 3rd review of the day with a photo.
+═══════════════════════════════════════════════════════════════════ */
+function ReviewsPanel() {
+  const [data, setData] = useState<RvData | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [person, setPerson] = useState<string>("Urvashi");
+  const [platform, setPlatform] = useState<string>("Google");
+  const [photo, setPhoto] = useState(false);
+  const [clientName, setClientName] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [toast, setToast] = useState("");
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    try {
+      const r = await fetch("/api/reviews", { cache: "no-store" });
+      if (r.ok) setData(await r.json());
+    } catch { /* ignore */ }
+    setLoading(false);
+  }, []);
+  useEffect(() => { load(); }, [load]);
+
+  function flash(m: string) { setToast(m); setTimeout(() => setToast(""), 2200); }
+
+  async function log() {
+    setSaving(true);
+    try {
+      const r = await fetch("/api/reviews", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ person, platform, photo, clientName }),
+      });
+      const d = await r.json();
+      if (r.ok) { flash(`✓ ${person}'s ${platform} review logged`); setClientName(""); setPhoto(false); await load(); }
+      else flash(`⚠ ${d.error || "Save failed"}`);
+    } catch { flash("⚠ Network error"); }
+    setSaving(false);
+  }
+
+  const today = data?.today;
+  const totalToday = today?.total ?? 0;
+  const goal = 6; // 2 per person per day is a fair, hittable stretch
+  const pct = Math.min(100, Math.round((totalToday / goal) * 100));
+
+  return (
+    <div className="space-y-4">
+      {toast && (
+        <div className="fixed inset-x-0 top-6 z-50 flex justify-center px-4">
+          <div className="rounded-full px-5 py-2.5 text-[11px] font-bold text-white shadow-2xl" style={{ background: "linear-gradient(135deg,#2E8B83,#C9A55C)" }}>{toast}</div>
+        </div>
+      )}
+
+      {/* Today progress ring + numbers */}
+      <div className="overflow-hidden rounded-3xl p-5 text-white shadow-sm" style={{ background: "linear-gradient(135deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-[9px] font-bold uppercase tracking-widest text-white/80">Today · {today?.date ?? "…"}</p>
+            <p className="mt-1 text-4xl font-extrabold">{totalToday}<span className="ml-1 text-[13px] font-semibold text-white/70">/ {goal} goal</span></p>
+            <p className="mt-1 text-[11px] text-white/85">🔥 Streak: <b>{data?.streakDays ?? 0} day{data?.streakDays === 1 ? "" : "s"}</b> · Payout due today: <b>₹{today?.totalPayoutDue ?? 0}</b></p>
+          </div>
+          <button onClick={load} disabled={loading} className="rounded-xl bg-white/20 px-3 py-2 text-[11px] font-bold backdrop-blur">{loading ? "…" : "↻"}</button>
+        </div>
+        {/* progress bar */}
+        <div className="mt-4 h-2 overflow-hidden rounded-full bg-white/25">
+          <div className="h-full rounded-full bg-white transition-all duration-500" style={{ width: `${pct}%` }} />
+        </div>
+      </div>
+
+      {/* Per-person day breakdown */}
+      <div className="grid grid-cols-3 gap-3">
+        {(today?.byPerson ?? []).map((p) => {
+          const isU = p.person === "Urvashi";
+          return (
+            <div key={p.person} className="rounded-2xl bg-white p-3 shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="text-[11px] font-bold text-[#1A5A54]">{p.person} {isU ? "🌸" : ""}</p>
+                <p className="text-lg font-extrabold text-[#B8893B]">{p.total}</p>
+              </div>
+              <div className="mt-1 flex gap-1.5 text-[9px]">
+                <span className="rounded-full bg-[#CFE9DF] px-1.5 py-0.5 text-[#22685c]">G {p.google}</span>
+                <span className="rounded-full bg-[#F7D6C6] px-1.5 py-0.5 text-[#9c5a41]">J {p.justdial}</span>
+                <span className="rounded-full bg-[#DFD5EE] px-1.5 py-0.5 text-[#5d4e80]">M {p.magicpin}</span>
+              </div>
+              <p className="mt-1.5 text-[9px] text-[#1A5A54]/60">📸 {p.withPhoto} with photo</p>
+              {!isU && p.payoutDue > 0 && (
+                <p className="mt-1 rounded-full bg-[#FEF9E7] px-2 py-0.5 text-center text-[9px] font-bold text-[#B8893B]">💰 ₹{p.payoutDue} owed</p>
+              )}
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Log a review — the fast-entry form */}
+      <div className="rounded-3xl bg-white p-5 shadow-sm">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Log a review</p>
+        <div className="grid grid-cols-3 gap-2">
+          {["Urvashi","Kukkie","Asha"].map(p => (
+            <button key={p} onClick={()=>setPerson(p)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${person===p?"text-white shadow":"bg-[#F5EDD8] text-[#1A5A54]"}`} style={person===p?{background:"linear-gradient(135deg,#2E8B83,#C9A55C)"}:undefined}>{p}</button>
+          ))}
+        </div>
+        <div className="mt-2 grid grid-cols-3 gap-2">
+          {["Google","Justdial","magicpin"].map(pl => (
+            <button key={pl} onClick={()=>setPlatform(pl)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${platform===pl?"text-white shadow":"bg-[#F5EDD8] text-[#1A5A54]"}`} style={platform===pl?{background:"linear-gradient(135deg,#1A5A54,#2E8B83)"}:undefined}>{pl}</button>
+          ))}
+        </div>
+        <div className="mt-3 flex items-center gap-2">
+          <input value={clientName} onChange={e=>setClientName(e.target.value)} placeholder="Client name (verification)" className="flex-1 rounded-xl border border-[#2E8B83]/30 bg-[#FBF4EA] px-3 py-2 text-[13px] text-[#1A5A54] outline-none" />
+          <label className={`flex cursor-pointer items-center gap-1.5 rounded-xl border px-3 py-2 text-[11px] font-bold ${photo?"border-transparent bg-[#CFE9DF] text-[#22685c]":"border-[#2E8B83]/25 text-[#1A5A54]/70"}`}>
+            <input type="checkbox" className="hidden" checked={photo} onChange={e=>setPhoto(e.target.checked)} />
+            📸 {photo?"With photo":"No photo"}
+          </label>
+        </div>
+        <button onClick={log} disabled={saving} className="mt-3 w-full rounded-xl py-3 text-[12px] font-bold text-white disabled:opacity-50" style={{background:"linear-gradient(135deg,#2E8B83,#C9A55C)"}}>{saving?"Saving…":"⭐ Log review"}</button>
+        <p className="mt-2 text-center text-[9px] text-[#1A5A54]/50">Staff earn ₹50 from the 3rd review of the day <b>with a photo</b> · verified against client name</p>
+      </div>
+
+      {/* Last-40 activity */}
+      <div className="rounded-3xl bg-white p-5 shadow-sm">
+        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Recent activity</p>
+        {!data?.rows.length ? (
+          <p className="py-6 text-center text-[11px] text-[#1A5A54]/50">No reviews logged yet. Log your first above.</p>
+        ) : (
+          <div className="max-h-96 space-y-1.5 overflow-y-auto">
+            {data.rows.map(r => (
+              <div key={r.id} className="flex items-center gap-2 rounded-lg bg-[#FBF4EA] px-3 py-2 text-[11px]">
+                <span className="w-14 shrink-0 text-[9px] text-[#1A5A54]/50">{r.date.slice(5)}</span>
+                <b className="w-16 shrink-0 text-[#1A5A54]">{r.person}</b>
+                <span className="w-16 shrink-0 text-[#B8893B]">{r.platform}</span>
+                {r.photo && <span className="text-[10px]">📸</span>}
+                <span className="flex-1 truncate text-[#1A5A54]/70">{r.clientName || "—"}</span>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

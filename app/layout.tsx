@@ -32,6 +32,18 @@ export const metadata: Metadata = {
     description: "Look flawless on your big day. Book bridal, party, nails & beauty with Urvashi Trehan — Ramesh Nagar, Delhi.",
     images: ["/images/bridal-hero.jpg"],
   },
+  // PWA / iOS "Add to Home Screen" support — makes /dashboard installable as an app icon
+  manifest: "/manifest.webmanifest",
+  themeColor: "#1A5A54",
+  appleWebApp: {
+    capable: true,
+    title: "B&B",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: [{ url: "/icon-192.png", sizes: "192x192" }, { url: "/icon-512.png", sizes: "512x512" }],
+    apple: "/apple-touch-icon.png",
+  },
 };
 
 export default function RootLayout({

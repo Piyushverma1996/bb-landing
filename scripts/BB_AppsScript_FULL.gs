@@ -201,6 +201,11 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
+    // Route 3: Log a review (Google/Justdial/magicpin) → Reviews tab
+    if (d.type === "review") {
+      return bbLogReview(d);
+    }
+
     // Default Route: Standard Lead Intake Funnel
     const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(BB_SHEET);
     const row = bbFirstEmptyRow(sheet);
@@ -220,6 +225,9 @@ function doPost(e) {
 
 function doGet(e) {
   const ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  // Custom Action: Pull reviews for the frontend tracker
+  if (e.parameter.action === "getReviews") return bbListReviews();
 
   // Custom Action: Pull Invoice Tracks for the frontend table view
   if (e.parameter.action === "getInvoices") {
@@ -344,4 +352,112 @@ function bbClassify(s){
   if(/nail|extension|gel|manicure|pedicure/.test(s)) return ["Nail Art","nails"];
   if(/keratin|spa|laser|facial|hydra|cleanup|bleach|wax|thread|head wash|smoothen|botox|skin|body|beauty/.test(s)) return ["Beauty","beauty"];
   return ["Beauty","other"];
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   § REVIEWS — daily review tracker for staff payout gamification
+   Sheet: "Reviews" · Row 3+ · Columns:
+   A #(auto) B Timestamp C Date(YYYY-MM-DD) D Person E Platform F Photo G Client H Note
+   Run setupReviewsSheet() once, then re-deploy the web app (same /exec).
+═══════════════════════════════════════════════════════════════════ */
+const REV_SHEET = "Reviews";
+const REV_FIRST_ROW = 3;
+const REV_NCOL = 8;
+
+function revSheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(REV_SHEET); }
+function revFirstEmptyRow_(sheet){
+  const n = sheet.getMaxRows() - REV_FIRST_ROW + 1;
+  const col = sheet.getRange(REV_FIRST_ROW, 2, n, 1).getValues();
+  for (let i = 0; i < col.length; i++) if (!col[i][0]) return REV_FIRST_ROW + i;
+  return sheet.getMaxRows() + 1;
+}
+
+function bbLogReview(d){
+  const sheet = revSheet_();
+  if (!sheet) return jsonOut_({ok:false, error:"Run setupReviewsSheet() first"});
+  const row = revFirstEmptyRow_(sheet);
+  sheet.getRange(row, 2, 1, REV_NCOL - 1).setValues([[
+    d.timestamp || new Date().toISOString(),
+    d.date || (new Date().toISOString().slice(0,10)),
+    d.person || "",
+    d.platform || "",
+    d.photo === true ? "TRUE" : "FALSE",
+    d.clientName || "",
+    d.note || ""
+  ]]);
+  return jsonOut_({ok:true});
+}
+
+function bbListReviews(){
+  const sheet = revSheet_();
+  if (!sheet) return jsonOut_({rows:[]});
+  const last = sheet.getLastRow();
+  if (last < REV_FIRST_ROW) return jsonOut_({rows:[]});
+  const vals = sheet.getRange(REV_FIRST_ROW, 1, last - REV_FIRST_ROW + 1, REV_NCOL).getValues();
+  const out = [];
+  vals.forEach(function(r){
+    if (!r[1]) return; // no timestamp = empty
+    out.push({
+      id: "rv-" + r[0],
+      timestamp: r[1],
+      date: String(r[2] || "").slice(0,10),
+      person: r[3] || "",
+      platform: r[4] || "",
+      photo: r[5] === true || String(r[5]).toUpperCase() === "TRUE",
+      clientName: r[6] || "",
+      note: r[7] || ""
+    });
+  });
+  return jsonOut_({rows: out});
+}
+
+function setupReviewsSheet(){
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(REV_SHEET);
+  if (!sheet) sheet = ss.insertSheet(REV_SHEET);
+  sheet.activate();
+
+  const TEAL="#1A5A54", GOLD="#C9A55C", CREAM="#FBF4EA", WHITE="#FFFFFF";
+  const headers = ["#","Timestamp","Date","Person","Platform","Photo","Client Name","Note"];
+  const widths  = [50,160,90,90,90,60,150,220];
+  const ROWS = 500;
+
+  sheet.setConditionalFormatRules([]);
+  sheet.getBandings().forEach(function(b){ b.remove(); });
+  sheet.getRange(1, 1, sheet.getMaxRows(), REV_NCOL).breakApart();
+  sheet.clearContents(); sheet.clearFormats();
+  sheet.getRange(3, 1, ROWS, REV_NCOL).clearDataValidations();
+
+  sheet.setRowHeight(1, 40);
+  sheet.getRange(1, 1, 1, REV_NCOL).merge();
+  sheet.getRange(1, 1).setValue("  BLUSHES & BRUSHES — DAILY REVIEWS LEDGER")
+    .setBackground(TEAL).setFontColor(GOLD).setFontFamily("Arial").setFontSize(13).setFontWeight("bold")
+    .setHorizontalAlignment("left").setVerticalAlignment("middle");
+
+  sheet.setRowHeight(2, 30);
+  sheet.getRange(2, 1, 1, REV_NCOL).setValues([headers])
+    .setBackground("#2E8B83").setFontColor(WHITE).setFontFamily("Arial").setFontSize(10).setFontWeight("bold")
+    .setHorizontalAlignment("center").setVerticalAlignment("middle");
+  widths.forEach(function(w, i){ sheet.setColumnWidth(i + 1, w); });
+
+  // Auto-number (A)
+  const f = [];
+  for (let r = 3; r <= ROWS + 2; r++) f.push(['=IF(B' + r + '<>"",ROW()-2,"")']);
+  sheet.getRange(3, 1, ROWS, 1).setFormulas(f).setHorizontalAlignment("center");
+
+  const data = sheet.getRange(3, 1, ROWS, REV_NCOL);
+  data.setFontFamily("Arial").setFontSize(10).setVerticalAlignment("middle");
+  const band = data.applyRowBanding();
+  band.setHeaderRowColor(null).setFirstRowColor(WHITE).setSecondRowColor(CREAM);
+
+  // Validations
+  const persons = SpreadsheetApp.newDataValidation().requireValueInList(["Urvashi","Kukkie","Asha"], true).setAllowInvalid(false).build();
+  sheet.getRange(3, 4, ROWS, 1).setDataValidation(persons).setHorizontalAlignment("center");
+  const plats = SpreadsheetApp.newDataValidation().requireValueInList(["Google","Justdial","magicpin"], true).setAllowInvalid(false).build();
+  sheet.getRange(3, 5, ROWS, 1).setDataValidation(plats).setHorizontalAlignment("center");
+  const bools = SpreadsheetApp.newDataValidation().requireValueInList(["TRUE","FALSE"], true).setAllowInvalid(false).build();
+  sheet.getRange(3, 6, ROWS, 1).setDataValidation(bools).setHorizontalAlignment("center");
+
+  sheet.setFrozenRows(2);
+  SpreadsheetApp.getUi().alert("✅ Reviews ledger is ready!");
 }
