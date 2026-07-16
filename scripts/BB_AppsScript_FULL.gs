@@ -14,9 +14,11 @@
 const BB_SHEET = "BB Leads";
 const BB_INVOICE_SHEET = "BB Invoices";
 const BB_REVIEW_SHEET = "BB Reviews";
+const BB_QUEST_SHEET = "BB Quest State";
 const BB_FIRST_ROW = 3;
 const INV_FIRST_ROW = 3;
 const REV_FIRST_ROW = 3;
+const Q_FIRST_ROW = 2;
 
 /* ==========================================
    1. SETUP FUNCTIONS (RUN ONCE)
@@ -209,9 +211,10 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // Route 3: Log a review (Google/Justdial only) → BB Reviews tab
-    if (d.type === "review") {
-      return bbLogReview(d);
+    // Route 4: Persist a quest toggle so both Piyush + Urvashi see the same ticks
+    if (d.type === "quest") {
+      const res = bbQuestToggle(String(d.id||""), d.done === true);
+      return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
     // Default Route: Standard Lead Intake Funnel
@@ -236,6 +239,18 @@ function doGet(e) {
 
   // Custom Action: Pull reviews for the frontend tracker
   if (e.parameter.action === "getReviews") return bbListReviews();
+
+  // Quest state — shared completions across Piyush + Urvashi logins
+  if (e.parameter.action === "getQuestState") {
+    const sheet = ss.getSheetByName(BB_QUEST_SHEET);
+    if (!sheet) return ContentService.createTextOutput(JSON.stringify({completed:[]})).setMimeType(ContentService.MimeType.JSON);
+    const last = sheet.getLastRow();
+    if (last < Q_FIRST_ROW) return ContentService.createTextOutput(JSON.stringify({completed:[]})).setMimeType(ContentService.MimeType.JSON);
+    const vals = sheet.getRange(Q_FIRST_ROW, 1, last - Q_FIRST_ROW + 1, 2).getValues();
+    const done = [];
+    vals.forEach(r => { if (r[0] && (r[1] === true || String(r[1]).toLowerCase()==="true" || String(r[1]).toLowerCase()==="yes")) done.push(String(r[0])); });
+    return ContentService.createTextOutput(JSON.stringify({completed:done})).setMimeType(ContentService.MimeType.JSON);
+  }
 
   // Custom Action: return review rows for the dashboard tracker
   if (e.parameter.action === "getReviews") {
@@ -488,4 +503,39 @@ function setupReviewsSheet(){
 
   sheet.setFrozenRows(2);
   SpreadsheetApp.getUi().alert("✅ Reviews ledger is ready!");
+}
+
+/* ══════ QUEST STATE — cross-device sync ══════ */
+function bbQuestToggle(id, done){
+  if (!id) return {ok:false, error:"id required"};
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(BB_QUEST_SHEET);
+  if (!sheet) return {ok:false, error:"Run setupQuestStateSheet() once"};
+  const last = Math.max(sheet.getLastRow(), Q_FIRST_ROW - 1);
+  const n = Math.max(0, last - Q_FIRST_ROW + 1);
+  if (n > 0){
+    const ids = sheet.getRange(Q_FIRST_ROW, 1, n, 1).getValues();
+    for (let i = 0; i < ids.length; i++){
+      if (String(ids[i][0]) === id){
+        sheet.getRange(Q_FIRST_ROW + i, 2, 1, 2).setValues([[done, new Date().toISOString()]]);
+        return {ok:true, id:id, done:done};
+      }
+    }
+  }
+  const row = last + 1;
+  sheet.getRange(row, 1, 1, 3).setValues([[id, done, new Date().toISOString()]]);
+  return {ok:true, id:id, done:done};
+}
+
+function setupQuestStateSheet(){
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  let sheet = ss.getSheetByName(BB_QUEST_SHEET);
+  if (!sheet) sheet = ss.insertSheet(BB_QUEST_SHEET);
+  sheet.activate();
+  sheet.clearContents(); sheet.clearFormats();
+  sheet.getRange(1, 1, 1, 3).setValues([["Quest ID","Done","Updated"]])
+    .setBackground("#1A5A54").setFontColor("#C9A55C").setFontWeight("bold").setFontSize(11);
+  sheet.setColumnWidth(1, 120); sheet.setColumnWidth(2, 90); sheet.setColumnWidth(3, 220);
+  sheet.setFrozenRows(1);
+  SpreadsheetApp.getUi().alert("✅ BB Quest State ready! Now re-deploy the web app.");
 }

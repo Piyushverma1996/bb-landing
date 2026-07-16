@@ -68,6 +68,7 @@ interface Reputation { score: number; grade: string; google: { rating: number; t
 
 export default function Dashboard() {
   const [auth, setAuth] = useState(false);
+  const [role, setRole] = useState<"owner" | "kukkie">("owner");
   const [pw, setPw] = useState("");
   const [tab, setTab] = useState<Tab>("overview");
   const [stats, setStats] = useState<Stats>(PLACEHOLDER);
@@ -104,6 +105,22 @@ export default function Dashboard() {
   const [rep, setRep] = useState<Reputation | null>(null);
 
   const DASH_PW = process.env.NEXT_PUBLIC_DASH_PW ?? "bb2026";
+  const KUKKIE_PW = process.env.NEXT_PUBLIC_KUKKIE_PW ?? "kukkie2026";
+
+  // 7-day auto-login on this device (session survives refresh).
+  // Stored role means Kukkie stays gated to Reviews only, forever, on her phone.
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("bb_auth");
+      if (!raw) return;
+      const { until, role: savedRole } = JSON.parse(raw);
+      if (typeof until === "number" && until > Date.now()) {
+        setAuth(true);
+        setRole(savedRole === "kukkie" ? "kukkie" : "owner");
+        if (savedRole === "kukkie") setTab("reviews");
+      }
+    } catch { /* ignore */ }
+  }, []);
 
   const loadQuests = useCallback(async () => {
     let serverDone: Record<string, boolean> = {};
@@ -124,12 +141,19 @@ export default function Dashboard() {
 
   function toggleQuest(q: Quest) {
     setDone(prev => {
-      const next = { ...prev, [q.id]: !prev[q.id] };
+      const nowDone = !prev[q.id];
+      const next = { ...prev, [q.id]: nowDone };
       localStorage.setItem("bb_quests", JSON.stringify(next));
-      if (!prev[q.id]) {
+      if (nowDone) {
         setCelebrate(`+${q.points} ✨`);
         setTimeout(() => setCelebrate(""), 1800);
       }
+      // Fire-and-forget server sync so the OTHER logged-in device sees the change.
+      fetch("/api/quests", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: q.id, done: nowDone }),
+      }).catch(() => { /* offline: localStorage still has it */ });
       return next;
     });
   }
@@ -151,8 +175,19 @@ export default function Dashboard() {
   }, []);
 
   function login() {
-    if (pw === DASH_PW) { setAuth(true); fetchStats(); fetchCampaigns(); loadQuests(); loadReputation(); }
-    else alert("Wrong password");
+    let r: "owner" | "kukkie" | null = null;
+    if (pw === DASH_PW) r = "owner";
+    else if (pw === KUKKIE_PW) r = "kukkie";
+    if (!r) { alert("Wrong password"); return; }
+    setAuth(true); setRole(r);
+    // Session: 7 days on this device
+    try { localStorage.setItem("bb_auth", JSON.stringify({ role: r, until: Date.now() + 7 * 86400000 })); } catch { /* ignore */ }
+    if (r === "kukkie") { setTab("reviews"); return; } // staff sees only Reviews
+    fetchStats(); fetchCampaigns(); loadQuests(); loadReputation();
+  }
+  function logout() {
+    try { localStorage.removeItem("bb_auth"); } catch { /* ignore */ }
+    setAuth(false); setPw(""); setRole("owner"); setTab("overview");
   }
 
   useEffect(() => {
@@ -220,7 +255,7 @@ export default function Dashboard() {
     );
   }
 
-  const TABS: { id: Tab; label: string }[] = [
+  const ALL_TABS: { id: Tab; label: string }[] = [
     { id: "overview", label: "Overview" },
     { id: "quests", label: "🏆 Quests" },
     { id: "reviews", label: "⭐ Reviews" },
@@ -229,6 +264,7 @@ export default function Dashboard() {
     { id: "reputation", label: "Reputation" },
     { id: "leads", label: "Leads" },
   ];
+  const TABS = role === "kukkie" ? ALL_TABS.filter(t => t.id === "reviews") : ALL_TABS;
 
   // Quest computed values (filtered by selected person)
   const trackQuests = quests.filter(q => q.track === questTrack);
@@ -244,13 +280,18 @@ export default function Dashboard() {
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-[#1A5A54]">B&amp;B Command Center <span className="text-[#C9A55C]">✦</span></h1>
-            <p className="text-[10px] text-[#1A5A54]/55">{lastUpdated ? `Updated ${lastUpdated}` : "Loading…"}</p>
+            <h1 className="text-xl font-bold text-[#1A5A54]">{role === "kukkie" ? "Reviews — Hi Kukkie 💫" : "B&B Command Center"} <span className="text-[#C9A55C]">✦</span></h1>
+            <p className="text-[10px] text-[#1A5A54]/55">{role === "kukkie" ? "Send drafts, log reviews, earn ₹50/review" : (lastUpdated ? `Updated ${lastUpdated}` : "Loading…")}</p>
           </div>
           <div className="flex gap-2">
-            <button onClick={fetchStats} disabled={loading} className="rounded-xl bg-white/70 border border-[#2E8B83]/20 px-3 py-2 text-[10px] font-semibold text-[#1A5A54]">{loading ? "…" : "↻"}</button>
-            <a href="/invoice" className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#2E8B83,#C9A55C)" }}>🧾 Invoicing</a>
-            <button onClick={async () => { await fetch("/api/cron/weekly-report", { method: "POST" }); setReportSent(true); }} className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#E89B8B,#C9A55C)" }}>{reportSent ? "✓ Sent" : "📱 Report"}</button>
+            {role === "owner" && (
+              <>
+                <button onClick={fetchStats} disabled={loading} className="rounded-xl bg-white/70 border border-[#2E8B83]/20 px-3 py-2 text-[10px] font-semibold text-[#1A5A54]">{loading ? "…" : "↻"}</button>
+                <a href="/invoice" className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#2E8B83,#C9A55C)" }}>🧾 Invoicing</a>
+                <button onClick={async () => { await fetch("/api/cron/weekly-report", { method: "POST" }); setReportSent(true); }} className="rounded-xl px-3 py-2 text-[10px] font-bold text-white" style={{ background: "linear-gradient(135deg,#E89B8B,#C9A55C)" }}>{reportSent ? "✓ Sent" : "📱 Report"}</button>
+              </>
+            )}
+            <button onClick={logout} className="rounded-xl bg-white/70 border border-[#2E8B83]/20 px-3 py-2 text-[10px] font-semibold text-[#1A5A54]/70">Sign out</button>
           </div>
         </div>
 

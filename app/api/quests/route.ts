@@ -95,13 +95,45 @@ const QUESTS: Quest[] = [
   { id: "p4-5", track: "piyush", phase: 4, title: "Run 3 BB ad creatives at once", desc: "Find the winner, kill the rest", who: "piyush", points: 150, category: "ads", est: "ongoing" },
 ];
 
-// Server-logged completions (updated by Piyush/Claude as work ships).
-// The dashboard marks these done by default; users can still toggle their own.
-const COMPLETED: string[] = [
+// Baseline server completions (things shipped in code already).
+// The live "extra completed" state is stored in the Apps Script "BB Quest State"
+// tab so BOTH Piyush and Urvashi see the same ticks across devices.
+const BASELINE_COMPLETED: string[] = [
   "p1-1", // Google Apps Script webhook deployed
   "p1-2", // Dashboard + site live on Vercel
+  "p1-3", // Meta token + IG IDs wired (env vars set)
+  "p4-4", // Weekly reporting automated (cron route exists)
 ];
 
+const READ_URL = process.env.GSHEET_API_URL ?? process.env.WEBHOOK_URL ?? "";
+const WRITE_URL = process.env.WEBHOOK_URL ?? "";
+
+async function fetchServerCompletions(): Promise<string[]> {
+  if (!READ_URL || READ_URL.includes("your-webhook-url")) return [];
+  try {
+    const res = await fetch(`${READ_URL}?action=getQuestState`, { cache: "no-store" });
+    if (!res.ok) return [];
+    const d = await res.json();
+    return Array.isArray(d.completed) ? d.completed as string[] : [];
+  } catch { return []; }
+}
+
 export async function GET() {
-  return NextResponse.json({ phases: PHASES, quests: QUESTS, completed: COMPLETED });
+  const remote = await fetchServerCompletions();
+  const completed = Array.from(new Set([...BASELINE_COMPLETED, ...remote]));
+  return NextResponse.json({ phases: PHASES, quests: QUESTS, completed });
+}
+
+// POST { type: "quest", id, done } — persists a toggle so it's shared across all logins
+export async function POST(req: Request) {
+  let body: Record<string, unknown>;
+  try { body = await req.json(); } catch { return NextResponse.json({ error: "bad json" }, { status: 400 }); }
+  const id = String(body.id ?? "").trim();
+  const done = body.done === true;
+  if (!id) return NextResponse.json({ error: "id required" }, { status: 422 });
+  if (!WRITE_URL || WRITE_URL.includes("your-webhook-url")) return NextResponse.json({ ok: true, offline: true });
+  try {
+    await fetch(WRITE_URL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ type: "quest", id, done }) });
+    return NextResponse.json({ ok: true });
+  } catch { return NextResponse.json({ ok: false, error: "sync failed" }, { status: 502 }); }
 }

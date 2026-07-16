@@ -89,10 +89,29 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       }
     : null;
 
+  // BreadcrumbList schema — helps Google show the crumb trail in results
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://blushesnbrushes.com/" },
+      { "@type": "ListItem", position: 2, name: "Journal", item: "https://blushesnbrushes.com/blog" },
+      { "@type": "ListItem", position: 3, name: post.title, item: `https://blushesnbrushes.com/blog/${post.slug}` },
+    ],
+  };
+
+  // Related posts — same category first, then most recent overall (exclude current)
+  const others = POSTS.filter((p) => p.slug !== post.slug);
+  const related = [
+    ...others.filter((p) => p.category === post.category),
+    ...others.filter((p) => p.category !== post.category),
+  ].slice(0, 3);
+
   return (
     <main className="mx-auto max-w-2xl px-5 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       {faqLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
 
       <Link href="/blog" className="text-[12px] font-semibold text-[#C9A55C]">← Journal</Link>
 
@@ -137,6 +156,25 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
         <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Bridal &amp; party makeup, nail art and beauty by Urvashi Trehan — 4.8★, 200+ happy brides across Delhi NCR.</p>
         <Link href="/book" className="mt-4 inline-block rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Book on WhatsApp →</Link>
       </div>
+
+      {/* Related — internal linking helps SEO ranking + keeps readers on the site */}
+      {related.length > 0 && (
+        <section className="mt-10">
+          <h2 className="mb-4 text-[16px] font-bold uppercase tracking-widest text-[#C9A55C]">Keep reading</h2>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {related.map((r) => (
+              <Link key={r.slug} href={`/blog/${r.slug}`} className="group overflow-hidden rounded-2xl border border-[#C9A55C]/25 bg-white/70 transition-shadow hover:shadow-md">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={r.cover} alt={r.title} className="h-32 w-full object-cover" />
+                <div className="p-3">
+                  <p className="text-[9px] font-semibold uppercase tracking-widest text-[#B8893B]">{r.category}</p>
+                  <p className="mt-1 text-[13px] font-bold leading-snug text-[#1A5A54] group-hover:underline" style={{ fontFamily: "var(--font-playfair), serif" }}>{r.title}</p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </main>
   );
 }
