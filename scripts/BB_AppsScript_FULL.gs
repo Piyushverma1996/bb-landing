@@ -404,10 +404,10 @@ function bbClassify(s){
    Run setupReviewsSheet() once, then re-deploy the web app (same /exec).
 ═══════════════════════════════════════════════════════════════════ */
 // (REV_FIRST_ROW is declared at the top of the file — reusing that here)
-const REV_SHEET_LEGACY_LEGACY = BB_REVIEW_SHEET; // kept for readability of the block below
+// REV_FIRST_ROW is declared at the top of the file — reused here
 const REV_NCOL = 8;
 
-function revSheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(REV_SHEET_LEGACY); }
+function revSheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(BB_REVIEW_SHEET); }
 function revFirstEmptyRow_(sheet){
   const n = sheet.getMaxRows() - REV_FIRST_ROW + 1;
   const col = sheet.getRange(REV_FIRST_ROW, 2, n, 1).getValues();
@@ -456,8 +456,8 @@ function bbListReviews(){
 
 function setupReviewsSheet(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName(REV_SHEET_LEGACY);
-  if (!sheet) sheet = ss.insertSheet(REV_SHEET_LEGACY);
+  let sheet = ss.getSheetByName(BB_REVIEW_SHEET);
+  if (!sheet) sheet = ss.insertSheet(BB_REVIEW_SHEET);
   sheet.activate();
 
   const TEAL="#1A5A54", GOLD="#C9A55C", CREAM="#FBF4EA", WHITE="#FFFFFF";
