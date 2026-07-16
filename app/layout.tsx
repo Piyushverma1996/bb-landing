@@ -9,8 +9,25 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+export const viewport = {
+  themeColor: "#1A5A54",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://blushesnbrushes.com"),
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "B&B Command",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: [
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/icon-180.png", sizes: "180x180", type: "image/png" }],
+  },
   title: "Bridal & Party Makeup, Nail Art & Beauty | Blushes & Brushes by Urvashi Trehan – Ramesh Nagar, Delhi",
   description:
     "Look flawless on your big day. Bridal & party makeup, nail art and beauty by Urvashi Trehan. HD & airbrush bridal, travels across Delhi NCR. Studio in Ramesh Nagar. Book on WhatsApp — 4.8★, 200+ happy brides.",
@@ -31,18 +48,6 @@ export const metadata: Metadata = {
     title: "Bridal & Party Makeup, Nail Art & Beauty | Blushes & Brushes",
     description: "Look flawless on your big day. Book bridal, party, nails & beauty with Urvashi Trehan — Ramesh Nagar, Delhi.",
     images: ["/images/bridal-hero.jpg"],
-  },
-  // PWA / iOS "Add to Home Screen" support — makes /dashboard installable as an app icon
-  manifest: "/manifest.webmanifest",
-  themeColor: "#1A5A54",
-  appleWebApp: {
-    capable: true,
-    title: "B&B",
-    statusBarStyle: "default",
-  },
-  icons: {
-    icon: [{ url: "/icon-192.png", sizes: "192x192" }, { url: "/icon-512.png", sizes: "512x512" }],
-    apple: "/apple-touch-icon.png",
   },
 };
 

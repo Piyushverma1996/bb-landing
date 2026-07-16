@@ -58,7 +58,8 @@ interface RvPersonDay { person: string; total: number; google: number; justdial:
 interface RvToday { date: string; total: number; byPerson: RvPersonDay[]; totalPayoutDue: number }
 interface RvBoardRow { person: string; count: number; withPhoto: number }
 interface RvRow { id: string; date: string; timestamp: string; person: string; platform: string; photo: boolean; clientName?: string; note?: string }
-interface RvData { rows: RvRow[]; today: RvToday; leaderboard: RvBoardRow[]; streakDays: number }
+interface RvDraft { id: string; platform: "Google" | "Justdial"; tag: string; text: string; hindi?: boolean }
+interface RvData { rows: RvRow[]; today: RvToday; leaderboard: RvBoardRow[]; streakDays: number; drafts?: RvDraft[] }
 
 interface Quest { id: string; track: string; phase: number; title: string; desc: string; who: string; points: number; category: string; est: string }
 interface Phase { track: string; phase: number; name: string; theme: string; reward: string; rewardEmoji: string; unlockAt: number }
@@ -806,6 +807,9 @@ function ReviewsPanel() {
         <p className="mt-2 text-center text-[9px] text-[#1A5A54]/50">Staff earn ₹50 from the 3rd review of the day <b>with a photo</b> · verified against client name</p>
       </div>
 
+      {/* Draft bank — tap to copy, checkbox to mark used */}
+      <DraftBank drafts={data?.drafts ?? []} />
+
       {/* Last-40 activity */}
       <div className="rounded-3xl bg-white p-5 shadow-sm">
         <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Recent activity</p>
@@ -825,6 +829,68 @@ function ReviewsPanel() {
           </div>
         )}
       </div>
+    </div>
+  );
+}
+
+
+/* Draft bank — the review copy library, with used-state persisted in localStorage */
+function DraftBank({ drafts }: { drafts: RvDraft[] }) {
+  const [used, setUsed] = useState<Record<string, boolean>>({});
+  const [tab, setTabD] = useState<"Google" | "Justdial">("Google");
+  const [copied, setCopied] = useState("");
+
+  useEffect(() => {
+    try { setUsed(JSON.parse(localStorage.getItem("bb_reviews_used") ?? "{}")); } catch { /* ignore */ }
+  }, []);
+
+  function toggle(id: string) {
+    setUsed(prev => {
+      const next = { ...prev, [id]: !prev[id] };
+      localStorage.setItem("bb_reviews_used", JSON.stringify(next));
+      return next;
+    });
+  }
+  async function copy(text: string, id: string) {
+    try { await navigator.clipboard.writeText(text); setCopied(id); setTimeout(() => setCopied(""), 1400); } catch { /* ignore */ }
+  }
+
+  const list = drafts.filter(d => d.platform === tab);
+  const usedCount = list.filter(d => used[d.id]).length;
+
+  return (
+    <div className="rounded-3xl bg-white p-5 shadow-sm">
+      <div className="mb-3 flex items-center justify-between">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Draft bank · copy to send</p>
+        <p className="text-[10px] font-semibold text-[#B8893B]">{usedCount} / {list.length} used</p>
+      </div>
+      <div className="mb-3 grid grid-cols-2 gap-2">
+        {(["Google","Justdial"] as const).map(t => (
+          <button key={t} onClick={() => setTabD(t)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${tab === t ? "text-white shadow" : "bg-[#F5EDD8] text-[#1A5A54]"}`} style={tab === t ? { background: "linear-gradient(135deg,#2E8B83,#C9A55C)" } : undefined}>{t} ({drafts.filter(d=>d.platform===t).length})</button>
+        ))}
+      </div>
+      <div className="max-h-[520px] space-y-2 overflow-y-auto pr-1">
+        {list.map(d => {
+          const isUsed = !!used[d.id];
+          return (
+            <div key={d.id} className={`rounded-2xl border p-3 transition-all ${isUsed ? "border-[#7BB5A8]/40 bg-[#CFE9DF]/25" : "border-[#C9A55C]/25 bg-[#FBF4EA]/50"}`}>
+              <div className="mb-1.5 flex items-center gap-2">
+                <label className="flex cursor-pointer items-center gap-1.5">
+                  <input type="checkbox" checked={isUsed} onChange={() => toggle(d.id)} className="h-4 w-4 accent-[#2E8B83]" />
+                  <b className="text-[10px] font-bold text-[#1A5A54]">{d.id}</b>
+                </label>
+                <span className="rounded-full bg-white px-2 py-0.5 text-[9px] font-semibold text-[#1A5A54]/70">{d.tag}</span>
+                {d.hindi && <span className="rounded-full bg-[#F7D6C6] px-2 py-0.5 text-[9px] font-semibold text-[#9c5a41]">Hinglish</span>}
+                <button onClick={() => copy(d.text, d.id)} className="ml-auto rounded-lg bg-[#1A5A54] px-2.5 py-1 text-[10px] font-bold text-white">
+                  {copied === d.id ? "✓ Copied" : "📋 Copy"}
+                </button>
+              </div>
+              <p className={`text-[11px] leading-relaxed ${isUsed ? "text-[#1A5A54]/50 line-through" : "text-[#1A5A54]/85"}`}>{d.text}</p>
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-3 text-center text-[9px] text-[#1A5A54]/45">Client edits it in their own words before posting · one draft per client · never from staff/family accounts</p>
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appendFileSync, mkdirSync } from "fs";
 import { join } from "path";
+import { DRAFTS } from "./drafts";
 
 // Daily reviews tracker — logs each written review with who got it (Urvashi/Kukkie/Asha),
 // which platform (Google/Justdial/magicpin), and whether it had a photo (Google only).
@@ -36,7 +37,7 @@ const STAFF = new Set<string>(["Kukkie", "Asha"]);
 // GET /api/reviews → today's + all-time summary
 export async function GET() {
   if (!READ_URL || READ_URL.includes("your-webhook-url")) {
-    return NextResponse.json({ rows: [], today: emptyDay(), leaderboard: emptyBoard(), streakDays: 0 });
+    return NextResponse.json({ rows: [], today: emptyDay(), leaderboard: emptyBoard(), streakDays: 0, drafts: DRAFTS });
   }
   try {
     const res = await fetch(`${READ_URL}?action=getReviews`, { cache: "no-store" });
@@ -94,10 +95,11 @@ export async function GET() {
       today: { date: today, total: dayRows.length, byPerson: today_summary, totalPayoutDue: today_summary.reduce((s, x) => s + x.payoutDue, 0) },
       leaderboard,
       streakDays: streak,
+      drafts: DRAFTS,
     });
   } catch (err) {
     console.error("Reviews GET failed:", err);
-    return NextResponse.json({ rows: [], today: emptyDay(), leaderboard: emptyBoard(), streakDays: 0 });
+    return NextResponse.json({ rows: [], today: emptyDay(), leaderboard: emptyBoard(), streakDays: 0, drafts: DRAFTS });
   }
 }
 

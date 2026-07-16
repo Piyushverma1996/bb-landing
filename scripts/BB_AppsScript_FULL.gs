@@ -13,8 +13,10 @@
 
 const BB_SHEET = "BB Leads";
 const BB_INVOICE_SHEET = "BB Invoices";
+const BB_REVIEW_SHEET = "BB Reviews";
 const BB_FIRST_ROW = 3;
 const INV_FIRST_ROW = 3;
+const REV_FIRST_ROW = 3;
 
 /* ==========================================
    1. SETUP FUNCTIONS (RUN ONCE)
@@ -201,6 +203,12 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
+    // Route 3: Log a review (from /api/reviews)
+    if (d.type === "review") {
+      const res = bbLogReview(d);
+      return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
+    }
+
     // Route 3: Log a review (Google/Justdial/magicpin) → Reviews tab
     if (d.type === "review") {
       return bbLogReview(d);
@@ -228,6 +236,26 @@ function doGet(e) {
 
   // Custom Action: Pull reviews for the frontend tracker
   if (e.parameter.action === "getReviews") return bbListReviews();
+
+  // Custom Action: return review rows for the dashboard tracker
+  if (e.parameter.action === "getReviews") {
+    const sheet = ss.getSheetByName(BB_REVIEW_SHEET);
+    if (!sheet) return ContentService.createTextOutput(JSON.stringify({rows:[]})).setMimeType(ContentService.MimeType.JSON);
+    const last = sheet.getLastRow();
+    if (last < REV_FIRST_ROW) return ContentService.createTextOutput(JSON.stringify({rows:[]})).setMimeType(ContentService.MimeType.JSON);
+    const vals = sheet.getRange(REV_FIRST_ROW, 1, last - REV_FIRST_ROW + 1, 8).getValues();
+    const rows = [];
+    vals.forEach(r => {
+      if (!r[0]) return;
+      rows.push({
+        id: String(r[0]), timestamp: r[1], date: String(r[2]),
+        person: r[3], platform: r[4],
+        photo: (r[5] === true || String(r[5]).toLowerCase() === "yes" || String(r[5]).toLowerCase() === "true"),
+        clientName: r[6] || "", note: r[7] || ""
+      });
+    });
+    return ContentService.createTextOutput(JSON.stringify({rows})).setMimeType(ContentService.MimeType.JSON);
+  }
 
   // Custom Action: Pull Invoice Tracks for the frontend table view
   if (e.parameter.action === "getInvoices") {
