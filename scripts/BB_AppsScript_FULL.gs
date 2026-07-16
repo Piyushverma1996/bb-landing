@@ -415,6 +415,8 @@ function revFirstEmptyRow_(sheet){
   return sheet.getMaxRows() + 1;
 }
 
+function jsonOut_(o){ return ContentService.createTextOutput(JSON.stringify(o)).setMimeType(ContentService.MimeType.JSON); }
+
 function bbLogReview(d){
   const sheet = revSheet_();
   if (!sheet) return jsonOut_({ok:false, error:"Run setupReviewsSheet() first"});
