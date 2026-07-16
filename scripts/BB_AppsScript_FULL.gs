@@ -209,7 +209,7 @@ function doPost(e) {
       return ContentService.createTextOutput(JSON.stringify(res)).setMimeType(ContentService.MimeType.JSON);
     }
 
-    // Route 3: Log a review (Google/Justdial/magicpin) → Reviews tab
+    // Route 3: Log a review (Google/Justdial only) → BB Reviews tab
     if (d.type === "review") {
       return bbLogReview(d);
     }
@@ -481,7 +481,7 @@ function setupReviewsSheet(){
   // Validations
   const persons = SpreadsheetApp.newDataValidation().requireValueInList(["Urvashi","Kukkie","Asha"], true).setAllowInvalid(false).build();
   sheet.getRange(3, 4, ROWS, 1).setDataValidation(persons).setHorizontalAlignment("center");
-  const plats = SpreadsheetApp.newDataValidation().requireValueInList(["Google","Justdial","magicpin"], true).setAllowInvalid(false).build();
+  const plats = SpreadsheetApp.newDataValidation().requireValueInList(["Google","Justdial"], true).setAllowInvalid(false).build();
   sheet.getRange(3, 5, ROWS, 1).setDataValidation(plats).setHorizontalAlignment("center");
   const bools = SpreadsheetApp.newDataValidation().requireValueInList(["TRUE","FALSE"], true).setAllowInvalid(false).build();
   sheet.getRange(3, 6, ROWS, 1).setDataValidation(bools).setHorizontalAlignment("center");

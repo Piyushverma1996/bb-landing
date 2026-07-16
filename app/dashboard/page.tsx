@@ -54,11 +54,11 @@ function Bar({ label, value, max, color, pct }: { label: string; value: number; 
 
 type Tab = "overview" | "quests" | "studio" | "ads" | "reputation" | "reviews" | "leads";
 
-interface RvPersonDay { person: string; total: number; google: number; justdial: number; magicpin: number; withPhoto: number; payoutDue: number }
+interface RvPersonDay { person: string; total: number; google: number; justdial: number; withPhoto: number; payoutDue: number }
 interface RvToday { date: string; total: number; byPerson: RvPersonDay[]; totalPayoutDue: number }
 interface RvBoardRow { person: string; count: number; withPhoto: number }
 interface RvRow { id: string; date: string; timestamp: string; person: string; platform: string; photo: boolean; clientName?: string; note?: string }
-interface RvDraft { id: string; platform: "Google" | "Justdial"; tag: string; text: string; hindi?: boolean }
+interface RvDraft { id: string; platform: "Google" | "Justdial"; owner: "Urvashi" | "Kukkie" | "Asha"; tag: string; text: string; hindi?: boolean }
 interface RvData { rows: RvRow[]; today: RvToday; leaderboard: RvBoardRow[]; streakDays: number; drafts?: RvDraft[] }
 
 interface Quest { id: string; track: string; phase: number; title: string; desc: string; who: string; points: number; category: string; est: string }
@@ -223,10 +223,10 @@ export default function Dashboard() {
   const TABS: { id: Tab; label: string }[] = [
     { id: "overview", label: "Overview" },
     { id: "quests", label: "🏆 Quests" },
+    { id: "reviews", label: "⭐ Reviews" },
     { id: "studio", label: "Video Studio" },
     { id: "ads", label: "Ads Manager" },
     { id: "reputation", label: "Reputation" },
-    { id: "reviews", label: "⭐ Reviews" },
     { id: "leads", label: "Leads" },
   ];
 
@@ -759,56 +759,55 @@ function ReviewsPanel() {
         </div>
       </div>
 
-      {/* Per-person day breakdown */}
-      <div className="grid grid-cols-3 gap-3">
+      {/* Per-person day breakdown — 3 clear numbers only, no magicpin */}
+      <div className="grid grid-cols-3 gap-2">
         {(today?.byPerson ?? []).map((p) => {
           const isU = p.person === "Urvashi";
           return (
-            <div key={p.person} className="rounded-2xl bg-white p-3 shadow-sm">
-              <div className="flex items-center justify-between">
-                <p className="text-[11px] font-bold text-[#1A5A54]">{p.person} {isU ? "🌸" : ""}</p>
-                <p className="text-lg font-extrabold text-[#B8893B]">{p.total}</p>
-              </div>
-              <div className="mt-1 flex gap-1.5 text-[9px]">
+            <div key={p.person} className="rounded-2xl bg-white p-3 shadow-sm text-center">
+              <p className="text-[12px] font-bold text-[#1A5A54]">{p.person}{isU?" 🌸":""}</p>
+              <p className="mt-1 text-3xl font-extrabold text-[#2E8B83]">{p.total}</p>
+              <p className="text-[9px] text-[#1A5A54]/55">reviews today</p>
+              <div className="mt-2 flex justify-center gap-1 text-[9px]">
                 <span className="rounded-full bg-[#CFE9DF] px-1.5 py-0.5 text-[#22685c]">G {p.google}</span>
                 <span className="rounded-full bg-[#F7D6C6] px-1.5 py-0.5 text-[#9c5a41]">J {p.justdial}</span>
-                <span className="rounded-full bg-[#DFD5EE] px-1.5 py-0.5 text-[#5d4e80]">M {p.magicpin}</span>
+                <span className="rounded-full bg-[#F0DDB4] px-1.5 py-0.5 text-[#B8893B]">📸 {p.withPhoto}</span>
               </div>
-              <p className="mt-1.5 text-[9px] text-[#1A5A54]/60">📸 {p.withPhoto} with photo</p>
               {!isU && p.payoutDue > 0 && (
-                <p className="mt-1 rounded-full bg-[#FEF9E7] px-2 py-0.5 text-center text-[9px] font-bold text-[#B8893B]">💰 ₹{p.payoutDue} owed</p>
+                <p className="mt-1.5 rounded-full bg-[#F0DDB4] px-2 py-0.5 text-[10px] font-bold text-[#B8893B]">💰 ₹{p.payoutDue} earned</p>
               )}
             </div>
           );
         })}
       </div>
 
-      {/* Log a review — the fast-entry form */}
-      <div className="rounded-3xl bg-white p-5 shadow-sm">
-        <p className="mb-3 text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Log a review</p>
+      {/* STEP 1: Send a draft — the primary flow */}
+      <DraftBank drafts={data?.drafts ?? []} />
+
+      {/* STEP 2: After client posts, log it here (magicpin removed) */}
+      <div className="rounded-3xl bg-white p-4 shadow-sm">
+        <p className="mb-1 text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Step 2 · Log after the client posts</p>
+        <p className="mb-3 text-[10.5px] text-[#1A5A54]/60">Client name is used to verify the review before staff payout.</p>
         <div className="grid grid-cols-3 gap-2">
-          {["Urvashi","Kukkie","Asha"].map(p => (
+          {(["Urvashi","Kukkie","Asha"] as const).map(p => (
             <button key={p} onClick={()=>setPerson(p)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${person===p?"text-white shadow":"bg-[#F5EDD8] text-[#1A5A54]"}`} style={person===p?{background:"linear-gradient(135deg,#2E8B83,#C9A55C)"}:undefined}>{p}</button>
           ))}
         </div>
-        <div className="mt-2 grid grid-cols-3 gap-2">
-          {["Google","Justdial","magicpin"].map(pl => (
+        <div className="mt-2 grid grid-cols-2 gap-2">
+          {(["Google","Justdial"] as const).map(pl => (
             <button key={pl} onClick={()=>setPlatform(pl)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${platform===pl?"text-white shadow":"bg-[#F5EDD8] text-[#1A5A54]"}`} style={platform===pl?{background:"linear-gradient(135deg,#1A5A54,#2E8B83)"}:undefined}>{pl}</button>
           ))}
         </div>
         <div className="mt-3 flex items-center gap-2">
-          <input value={clientName} onChange={e=>setClientName(e.target.value)} placeholder="Client name (verification)" className="flex-1 rounded-xl border border-[#2E8B83]/30 bg-[#FBF4EA] px-3 py-2 text-[13px] text-[#1A5A54] outline-none" />
+          <input value={clientName} onChange={e=>setClientName(e.target.value)} placeholder="Client name" className="flex-1 rounded-xl border border-[#2E8B83]/30 bg-[#FBF4EA] px-3 py-2 text-[13px] text-[#1A5A54] outline-none" />
           <label className={`flex cursor-pointer items-center gap-1.5 rounded-xl border px-3 py-2 text-[11px] font-bold ${photo?"border-transparent bg-[#CFE9DF] text-[#22685c]":"border-[#2E8B83]/25 text-[#1A5A54]/70"}`}>
             <input type="checkbox" className="hidden" checked={photo} onChange={e=>setPhoto(e.target.checked)} />
-            📸 {photo?"With photo":"No photo"}
+            📸 {photo?"Photo":"No photo"}
           </label>
         </div>
-        <button onClick={log} disabled={saving} className="mt-3 w-full rounded-xl py-3 text-[12px] font-bold text-white disabled:opacity-50" style={{background:"linear-gradient(135deg,#2E8B83,#C9A55C)"}}>{saving?"Saving…":"⭐ Log review"}</button>
-        <p className="mt-2 text-center text-[9px] text-[#1A5A54]/50">Staff earn ₹50 from the 3rd review of the day <b>with a photo</b> · verified against client name</p>
+        <button onClick={log} disabled={saving} className="mt-3 w-full rounded-xl py-3 text-[12px] font-bold text-white disabled:opacity-50" style={{background:"linear-gradient(135deg,#2E8B83,#C9A55C)"}}>{saving?"Saving…":"✓ Log this review"}</button>
+        <p className="mt-2 text-center text-[9.5px] text-[#1A5A54]/50">Staff earn ₹50 from the <b>3rd review of the day with a photo</b></p>
       </div>
-
-      {/* Draft bank — tap to copy, checkbox to mark used */}
-      <DraftBank drafts={data?.drafts ?? []} />
 
       {/* Last-40 activity */}
       <div className="rounded-3xl bg-white p-5 shadow-sm">
@@ -834,10 +833,11 @@ function ReviewsPanel() {
 }
 
 
-/* Draft bank — the review copy library, with used-state persisted in localStorage */
+/* Draft bank — filter by WHO served the client, then by platform. Tap copy. Tick when sent. */
 function DraftBank({ drafts }: { drafts: RvDraft[] }) {
   const [used, setUsed] = useState<Record<string, boolean>>({});
-  const [tab, setTabD] = useState<"Google" | "Justdial">("Google");
+  const [owner, setOwner] = useState<"Urvashi" | "Kukkie" | "Asha">("Urvashi");
+  const [plat, setPlat] = useState<"Google" | "Justdial">("Google");
   const [copied, setCopied] = useState("");
 
   useEffect(() => {
@@ -855,42 +855,64 @@ function DraftBank({ drafts }: { drafts: RvDraft[] }) {
     try { await navigator.clipboard.writeText(text); setCopied(id); setTimeout(() => setCopied(""), 1400); } catch { /* ignore */ }
   }
 
-  const list = drafts.filter(d => d.platform === tab);
+  const forOwner = drafts.filter(d => d.owner === owner);
+  const list = forOwner.filter(d => d.platform === plat);
   const usedCount = list.filter(d => used[d.id]).length;
 
+  const ownerStyle = (o: string) => owner === o
+    ? { background: "linear-gradient(135deg,#2E8B83,#C9A55C)", color: "#fff" }
+    : { background: "#F5EDD8", color: "#1A5A54" };
+
   return (
-    <div className="rounded-3xl bg-white p-5 shadow-sm">
-      <div className="mb-3 flex items-center justify-between">
-        <p className="text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Draft bank · copy to send</p>
+    <div className="rounded-3xl bg-white p-4 shadow-sm">
+      <div className="mb-1 flex items-baseline justify-between">
+        <p className="text-[10px] font-bold uppercase tracking-widest text-[#1A5A54]/60">Step 1 · Send a draft</p>
         <p className="text-[10px] font-semibold text-[#B8893B]">{usedCount} / {list.length} used</p>
       </div>
-      <div className="mb-3 grid grid-cols-2 gap-2">
-        {(["Google","Justdial"] as const).map(t => (
-          <button key={t} onClick={() => setTabD(t)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${tab === t ? "text-white shadow" : "bg-[#F5EDD8] text-[#1A5A54]"}`} style={tab === t ? { background: "linear-gradient(135deg,#2E8B83,#C9A55C)" } : undefined}>{t} ({drafts.filter(d=>d.platform===t).length})</button>
+      <p className="mb-3 text-[10.5px] text-[#1A5A54]/60">Pick who served the client, then a matched draft. Tap Copy → paste in WhatsApp.</p>
+
+      {/* Who served the client */}
+      <div className="mb-2 grid grid-cols-3 gap-2">
+        {(["Urvashi","Kukkie","Asha"] as const).map(o => (
+          <button key={o} onClick={()=>setOwner(o)} className="rounded-xl py-2 text-[11px] font-bold transition-all shadow-sm" style={ownerStyle(o)}>
+            {o}{o==="Urvashi"?" 🌸":""}<span className="ml-1 opacity-70 font-normal">({drafts.filter(d=>d.owner===o).length})</span>
+          </button>
         ))}
       </div>
-      <div className="max-h-[520px] space-y-2 overflow-y-auto pr-1">
+
+      {/* Platform */}
+      <div className="mb-3 grid grid-cols-2 gap-2">
+        {(["Google","Justdial"] as const).map(p => (
+          <button key={p} onClick={()=>setPlat(p)} className={`rounded-xl py-2 text-[11px] font-bold transition-all ${plat===p?"text-white shadow":"bg-[#F5EDD8] text-[#1A5A54]"}`} style={plat===p?{background:"linear-gradient(135deg,#1A5A54,#2E8B83)"}:undefined}>
+            {p} <span className="opacity-70 font-normal">({forOwner.filter(d=>d.platform===p).length})</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Drafts list */}
+      <div className="max-h-[460px] space-y-2 overflow-y-auto pr-1">
+        {list.length === 0 && <p className="py-6 text-center text-[11px] text-[#1A5A54]/50">No drafts left for this combo. Try another platform or use a Urvashi draft.</p>}
         {list.map(d => {
           const isUsed = !!used[d.id];
           return (
             <div key={d.id} className={`rounded-2xl border p-3 transition-all ${isUsed ? "border-[#7BB5A8]/40 bg-[#CFE9DF]/25" : "border-[#C9A55C]/25 bg-[#FBF4EA]/50"}`}>
-              <div className="mb-1.5 flex items-center gap-2">
+              <div className="mb-1.5 flex flex-wrap items-center gap-2">
                 <label className="flex cursor-pointer items-center gap-1.5">
-                  <input type="checkbox" checked={isUsed} onChange={() => toggle(d.id)} className="h-4 w-4 accent-[#2E8B83]" />
+                  <input type="checkbox" checked={isUsed} onChange={()=>toggle(d.id)} className="h-4 w-4 accent-[#2E8B83]" />
                   <b className="text-[10px] font-bold text-[#1A5A54]">{d.id}</b>
                 </label>
                 <span className="rounded-full bg-white px-2 py-0.5 text-[9px] font-semibold text-[#1A5A54]/70">{d.tag}</span>
                 {d.hindi && <span className="rounded-full bg-[#F7D6C6] px-2 py-0.5 text-[9px] font-semibold text-[#9c5a41]">Hinglish</span>}
-                <button onClick={() => copy(d.text, d.id)} className="ml-auto rounded-lg bg-[#1A5A54] px-2.5 py-1 text-[10px] font-bold text-white">
-                  {copied === d.id ? "✓ Copied" : "📋 Copy"}
+                <button onClick={()=>copy(d.text,d.id)} className="ml-auto rounded-lg bg-[#1A5A54] px-3 py-1 text-[10px] font-bold text-white">
+                  {copied===d.id?"✓ Copied":"📋 Copy"}
                 </button>
               </div>
-              <p className={`text-[11px] leading-relaxed ${isUsed ? "text-[#1A5A54]/50 line-through" : "text-[#1A5A54]/85"}`}>{d.text}</p>
+              <p className={`text-[11.5px] leading-relaxed ${isUsed?"text-[#1A5A54]/45 line-through":"text-[#1A5A54]/90"}`}>{d.text}</p>
             </div>
           );
         })}
       </div>
-      <p className="mt-3 text-center text-[9px] text-[#1A5A54]/45">Client edits it in their own words before posting · one draft per client · never from staff/family accounts</p>
+      <p className="mt-3 text-center text-[9.5px] text-[#1A5A54]/50">Ask client to edit before posting · one draft per client · never from staff/family accounts</p>
     </div>
   );
 }

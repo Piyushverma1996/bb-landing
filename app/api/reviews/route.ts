@@ -30,7 +30,7 @@ interface ReviewRow {
 }
 
 const PEOPLE = ["Urvashi", "Kukkie", "Asha"] as const;
-const PLATFORMS = ["Google", "Justdial", "magicpin"] as const;
+const PLATFORMS = ["Google", "Justdial"] as const;
 const PAYOUT = 50;
 const STAFF = new Set<string>(["Kukkie", "Asha"]);
 
@@ -67,7 +67,6 @@ export async function GET() {
         total: mine.length,
         google: mine.filter((r) => r.platform === "Google").length,
         justdial: mine.filter((r) => r.platform === "Justdial").length,
-        magicpin: mine.filter((r) => r.platform === "magicpin").length,
         withPhoto,
         payoutDue: payoutQualifiedCount * PAYOUT,
       };
@@ -150,7 +149,7 @@ function emptyDay() {
   return {
     date: todayISO(),
     total: 0,
-    byPerson: PEOPLE.map((p) => ({ person: p, total: 0, google: 0, justdial: 0, magicpin: 0, withPhoto: 0, payoutDue: 0 })),
+    byPerson: PEOPLE.map((p) => ({ person: p, total: 0, google: 0, justdial: 0, withPhoto: 0, payoutDue: 0 })),
     totalPayoutDue: 0,
   };
 }
