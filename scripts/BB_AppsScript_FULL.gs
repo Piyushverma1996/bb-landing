@@ -403,11 +403,11 @@ function bbClassify(s){
    A #(auto) B Timestamp C Date(YYYY-MM-DD) D Person E Platform F Photo G Client H Note
    Run setupReviewsSheet() once, then re-deploy the web app (same /exec).
 ═══════════════════════════════════════════════════════════════════ */
-const REV_SHEET = "Reviews";
-const REV_FIRST_ROW = 3;
+// (REV_FIRST_ROW is declared at the top of the file — reusing that here)
+const REV_SHEET_LEGACY_LEGACY = BB_REVIEW_SHEET; // kept for readability of the block below
 const REV_NCOL = 8;
 
-function revSheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(REV_SHEET); }
+function revSheet_(){ return SpreadsheetApp.getActiveSpreadsheet().getSheetByName(REV_SHEET_LEGACY); }
 function revFirstEmptyRow_(sheet){
   const n = sheet.getMaxRows() - REV_FIRST_ROW + 1;
   const col = sheet.getRange(REV_FIRST_ROW, 2, n, 1).getValues();
@@ -456,8 +456,8 @@ function bbListReviews(){
 
 function setupReviewsSheet(){
   const ss = SpreadsheetApp.getActiveSpreadsheet();
-  let sheet = ss.getSheetByName(REV_SHEET);
-  if (!sheet) sheet = ss.insertSheet(REV_SHEET);
+  let sheet = ss.getSheetByName(REV_SHEET_LEGACY);
+  if (!sheet) sheet = ss.insertSheet(REV_SHEET_LEGACY);
   sheet.activate();
 
   const TEAL="#1A5A54", GOLD="#C9A55C", CREAM="#FBF4EA", WHITE="#FFFFFF";
