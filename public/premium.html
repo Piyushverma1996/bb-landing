@@ -22,6 +22,9 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="canonical" href="https://blushesnbrushes.com/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" href="/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icon-180.png" />
 
   <!-- Google Analytics 4 -->
   <script>
@@ -98,6 +101,12 @@
     .links a { position: relative; padding-bottom: 3px; }
     .links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .45s cubic-bezier(.19,1,.22,1); }
     .links a:hover::after { transform: scaleX(1); transform-origin: left; }
+    /* Mobile nav ribbon — horizontally-scrollable link strip under the brand row */
+    .mnav { display: flex; gap: 20px; align-items: center; overflow-x: auto; padding: 8px 22px 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; background: rgba(251,244,234,.9); backdrop-filter: blur(8px); border-top: 1px solid rgba(201,165,92,.18); }
+    .mnav::-webkit-scrollbar { display: none; }
+    .mnav a { flex: 0 0 auto; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+    .mnav a.mbook { color: var(--gold-deep); font-weight: 700; }
+    @media (min-width: 860px) { .mnav { display: none; } }
     .btn { display: inline-block; border-radius: 999px; padding: 12px 26px; font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; transition: all .35s; }
     .btn-teal { background: var(--ink); color: var(--cream); }
     .btn-teal:hover { background: var(--gold); color: #2b2118; }
@@ -144,10 +153,16 @@
     .svc-grid { display: grid; gap: 22px; }
     @media (min-width: 860px) { .svc-grid { grid-template-columns: repeat(3, 1fr); } }
     .svc { border-radius: 24px; overflow: hidden; background: #fff; box-shadow: 0 16px 40px -22px rgba(26,90,84,.35); border: 1px solid rgba(201,165,92,.18); display: flex; flex-direction: column; }
-    .svc figure { position: relative; height: 240px; overflow: hidden; }
-    .svc figure img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.19,1,.22,1); }
+    .svc figure { position: relative; height: 260px; overflow: hidden; }
+    .svc figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform .8s cubic-bezier(.19,1,.22,1); }
     .svc:hover figure img { transform: scale(1.06); }
-    .svc .tag { position: absolute; left: 14px; top: 14px; border-radius: 999px; padding: 6px 14px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+    /* Carousel — crossfade between 2-3 images per card */
+    .carousel img { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease, transform .8s cubic-bezier(.19,1,.22,1); }
+    .carousel img.active { opacity: 1; }
+    .cdots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+    .cdots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 1px 3px rgba(0,0,0,.3); cursor: pointer; transition: all .3s; }
+    .cdots button.on { background: #fff; width: 20px; border-radius: 4px; }
+    .svc .tag { position: absolute; left: 14px; top: 14px; z-index: 3; border-radius: 999px; padding: 6px 14px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
     .svc-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
     .svc h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; }
     .svc ul { list-style: none; margin: 14px 0 18px; flex: 1; }
@@ -211,6 +226,9 @@
     form#bookForm button { grid-column: 1 / -1; border: 0; cursor: pointer; }
     #bfMsg { grid-column: 1 / -1; font-size: 12px; color: #b04a3f; min-height: 16px; }
     .wa-line { margin-top: 16px; font-size: 12.5px; color: rgba(26,90,84,.7); }
+    .free-pill { display: inline-block; background: linear-gradient(120deg, var(--teal), var(--gold)); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 7px 18px; border-radius: 999px; box-shadow: 0 6px 18px -8px rgba(46,139,131,.6); }
+    .trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 16px; font-size: 11px; font-weight: 600; color: var(--teal); }
+    .trust-row span { white-space: nowrap; }
     .wa-line a { color: var(--gold-deep); font-weight: 700; }
 
     /* Footer */
@@ -238,6 +256,14 @@
         <a href="#book" class="btn btn-teal" style="padding:11px 22px;">Book</a>
       </div>
       <a href="#book" class="btn btn-teal links-mobile" style="padding:10px 20px; font-size:10px;">Book</a>
+    </div>
+    <!-- Mobile ribbon (hidden ≥860px) -->
+    <div class="mnav">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">The Artist</a>
+      <a href="/blog">Journal</a>
+      <a href="#book" class="mbook">Book ✦</a>
     </div>
   </nav>
 
@@ -292,7 +318,13 @@
       </div>
       <div class="svc-grid">
         <article class="svc rv">
-          <figure><img src="/images/new-bridal-red.jpg" alt="Bridal makeup" loading="lazy" /><span class="tag" style="background:var(--rose); color:#8f4351;">Most loved</span></figure>
+          <figure class="carousel" data-interval="4200">
+            <img class="active" src="/images/bridal-real-1.jpg" alt="Bridal makeup by Urvashi Trehan" style="object-position:50% 14%" loading="lazy" />
+            <img src="/images/bridal-real-2.jpg" alt="Red lehenga bridal look" style="object-position:50% 10%" loading="lazy" />
+            <img src="/images/new-bridal-red.jpg" alt="HD bridal makeup Delhi" style="object-position:50% 22%" loading="lazy" />
+            <span class="tag" style="background:var(--rose); color:#8f4351;">Most loved</span>
+            <div class="cdots"></div>
+          </figure>
           <div class="svc-body">
             <h3>Bridal &amp; Occasion Makeup</h3>
             <ul>
@@ -305,7 +337,12 @@
           </div>
         </article>
         <article class="svc rv d1">
-          <figure><img src="/images/nails-2.jpg" alt="Nail extensions and nail art" loading="lazy" /><span class="tag" style="background:var(--mint); color:#22685c;">₹499 offer</span></figure>
+          <figure class="carousel" data-interval="4600">
+            <img class="active" src="/images/nails-2.jpg" alt="Nail extensions Ramesh Nagar" style="object-position:50% 50%" loading="lazy" />
+            <img src="/images/nails-1.jpg" alt="Designer nail art Delhi" style="object-position:50% 50%" loading="lazy" />
+            <span class="tag" style="background:var(--mint); color:#22685c;">₹499 offer</span>
+            <div class="cdots"></div>
+          </figure>
           <div class="svc-body">
             <h3>Nail Artistry</h3>
             <ul>
@@ -318,7 +355,13 @@
           </div>
         </article>
         <article class="svc rv d2">
-          <figure><img src="/images/new-beauty-glam.jpg" alt="Beauty and skin rituals" loading="lazy" /><span class="tag" style="background:var(--lav); color:#5d4e80;">Studio rituals</span></figure>
+          <figure class="carousel" data-interval="5000">
+            <img class="active" src="/images/new-beauty-glam.jpg" alt="Beauty and skin rituals" style="object-position:50% 18%" loading="lazy" />
+            <img src="/images/new-natural.jpg" alt="Natural glow facial Delhi" style="object-position:50% 18%" loading="lazy" />
+            <img src="/images/new-occasion-green.jpg" alt="Skin ritual Ramesh Nagar" style="object-position:50% 18%" loading="lazy" />
+            <span class="tag" style="background:var(--lav); color:#5d4e80;">Studio rituals</span>
+            <div class="cdots"></div>
+          </figure>
           <div class="svc-body">
             <h3>Beauty &amp; Skin</h3>
             <ul>
@@ -431,25 +474,30 @@
   <section id="book" class="book">
     <div class="wrap">
       <div class="book-card rv">
-        <p class="kicker">Limited slots each week</p>
-        <h2 style="margin-top:8px;">Book your look</h2>
-        <p>Tell us what you're celebrating — we'll WhatsApp you within the hour with slots &amp; a quote.</p>
+        <span class="free-pill">✦ 100% FREE consultation</span>
+        <h2 style="margin-top:12px;">Get your free beauty consultation</h2>
+        <p>Tell us your date &amp; budget — Urvashi personally messages you back within the hour with honest advice, the right look for your skin, and a clear quote. <b>No pressure, no charge.</b></p>
         <form id="bookForm">
           <input id="bfName" type="text" placeholder="Your name" autocomplete="name" />
           <input id="bfPhone" type="tel" inputmode="numeric" placeholder="WhatsApp number (10 digits)" autocomplete="tel" />
           <select id="bfService" class="full">
-            <option value="">What are we booking?</option>
+            <option value="">What can we help you with?</option>
             <option>Bridal Makeup</option>
             <option>Engagement / Roka / Sagan Makeup</option>
             <option>Party Makeup</option>
             <option>Nail Extensions ₹499 offer</option>
             <option>Nail Art / Designer set</option>
             <option>Beauty — cleanup / facial / pamper</option>
+            <option>Not sure yet — need advice</option>
           </select>
+          <input id="bfDate" class="full" type="text" placeholder="Your event / preferred date (optional)" autocomplete="off" />
           <p id="bfMsg"></p>
-          <button class="btn btn-gold" type="submit" style="padding:15px;">Request my slot →</button>
+          <button class="btn btn-gold" type="submit" style="padding:16px;">Get my free consultation →</button>
         </form>
-        <p class="wa-line">Prefer to talk? WhatsApp us directly — <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20to%20book%20a%20look%21">76784 46364</a></p>
+        <div class="trust-row">
+          <span>💬 Reply within 1 hour</span><span>🔒 Your number stays private</span><span>⭐ 4.8★ · 200+ brides</span>
+        </div>
+        <p class="wa-line">Prefer to talk right now? WhatsApp Urvashi — <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20look%21">76784 46364</a></p>
       </div>
     </div>
   </section>
@@ -502,13 +550,39 @@
       }, 1200);
     } catch (e) { showAll(); }
 
-    /* Booking form → /api/lead */
+    /* Image carousels — crossfade, auto-advance, pause on hover, clickable dots */
+    document.querySelectorAll(".carousel").forEach(function (car) {
+      var imgs = car.querySelectorAll("img");
+      if (imgs.length < 2) return;
+      var dotsWrap = car.querySelector(".cdots");
+      var i = 0, t;
+      imgs.forEach(function (_, idx) {
+        var b = document.createElement("button");
+        b.setAttribute("aria-label", "Show image " + (idx + 1));
+        if (idx === 0) b.className = "on";
+        b.addEventListener("click", function () { go(idx); restart(); });
+        dotsWrap.appendChild(b);
+      });
+      var dots = dotsWrap.querySelectorAll("button");
+      function go(n) {
+        imgs[i].classList.remove("active"); dots[i].classList.remove("on");
+        i = (n + imgs.length) % imgs.length;
+        imgs[i].classList.add("active"); dots[i].classList.add("on");
+      }
+      function restart() { clearInterval(t); t = setInterval(function () { go(i + 1); }, parseInt(car.dataset.interval) || 4500); }
+      restart();
+      car.addEventListener("mouseenter", function () { clearInterval(t); });
+      car.addEventListener("mouseleave", restart);
+    });
+
+    /* Booking form → /api/lead (free consultation) */
     var bf = document.getElementById("bookForm");
     bf.addEventListener("submit", async function (e) {
       e.preventDefault();
       var name = document.getElementById("bfName").value.trim();
       var phone = document.getElementById("bfPhone").value.replace(/\D/g, "").slice(0, 10);
-      var service = document.getElementById("bfService").value || "Bridal Makeup";
+      var service = document.getElementById("bfService").value || "Free consultation";
+      var evdate = document.getElementById("bfDate").value.trim();
       var msg = document.getElementById("bfMsg");
       if (!name) { msg.textContent = "Please enter your name."; return; }
       if (!/^\d{10}$/.test(phone)) { msg.textContent = "Enter a valid 10-digit WhatsApp number."; return; }
@@ -517,12 +591,12 @@
         var r = await fetch("/api/lead", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name: name, phone: phone, course: service, source: "premium-home" }),
+          body: JSON.stringify({ name: name, phone: phone, course: service, notes: evdate ? "Date: " + evdate : "", source: "premium-home-consult" }),
         });
         var d = await r.json();
         if (d.ok) {
-          if (window.gtag) gtag("event", "generate_lead", { service: service, source: "premium-home" });
-          bf.innerHTML = '<p style="grid-column:1/-1; text-align:center; font-family:var(--serif); font-style:italic; font-size:19px; color:var(--gold-deep);">Thank you, ' + name + '. We’ll WhatsApp you shortly to confirm.</p>';
+          if (window.gtag) gtag("event", "generate_lead", { service: service, source: "premium-home-consult" });
+          bf.innerHTML = '<p style="grid-column:1/-1; text-align:center; font-family:var(--serif); font-style:italic; font-size:20px; color:var(--gold-deep);">Thank you, ' + name + ' 💌<br><span style="font-size:14px; font-style:normal; color:rgba(26,90,84,.75);">Urvashi will WhatsApp you within the hour with your free consultation.</span></p>';
         } else { msg.textContent = d.error || "Something went wrong. Please try again."; }
       } catch (err) { msg.textContent = "Network error. Please try again."; }
     });
