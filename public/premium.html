@@ -162,6 +162,11 @@
     .cdots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
     .cdots button { width: 7px; height: 7px; padding: 0; border: 0; border-radius: 50%; background: rgba(255,255,255,.55); box-shadow: 0 1px 3px rgba(0,0,0,.3); cursor: pointer; transition: all .3s; }
     .cdots button.on { background: #fff; width: 20px; border-radius: 4px; }
+    .figlink { position: absolute; inset: 0; z-index: 2; } /* image click → service page; dots (z3) stay clickable */
+    .svc h3 a { color: inherit; text-decoration: none; }
+    .svc h3 a:hover { color: var(--gold-deep); }
+    .svc-more { display: inline-block; margin-top: 4px; font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-deep); }
+    .sec-cta { text-align: center; margin-top: 34px; }
     .svc .tag { position: absolute; left: 14px; top: 14px; z-index: 3; border-radius: 999px; padding: 6px 14px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
     .svc-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
     .svc h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; }
@@ -249,7 +254,7 @@
         <b>Blushes &amp; Brushes</b>
       </a>
       <div class="links">
-        <a href="#services">Services</a>
+        <a href="/services">Services</a>
         <a href="#portfolio">Portfolio</a>
         <a href="#about">The Artist</a>
         <a href="/blog">Journal</a>
@@ -259,7 +264,7 @@
     </div>
     <!-- Mobile ribbon (hidden ≥860px) -->
     <div class="mnav">
-      <a href="#services">Services</a>
+      <a href="/services">Services</a>
       <a href="#portfolio">Portfolio</a>
       <a href="#about">The Artist</a>
       <a href="/blog">Journal</a>
@@ -323,10 +328,11 @@
             <img src="/images/bridal-real-2.jpg" alt="Red lehenga bridal look" style="object-position:50% 10%" loading="lazy" />
             <img src="/images/new-bridal-red.jpg" alt="HD bridal makeup Delhi" style="object-position:50% 22%" loading="lazy" />
             <span class="tag" style="background:var(--rose); color:#8f4351;">Most loved</span>
+            <a class="figlink" href="/services/bridal-makeup" aria-label="Bridal makeup details"></a>
             <div class="cdots"></div>
           </figure>
           <div class="svc-body">
-            <h3>Bridal &amp; Occasion Makeup</h3>
+            <h3><a href="/services/bridal-makeup">Bridal &amp; Occasion Makeup</a></h3>
             <ul>
               <li>HD Bridal <b>₹18–22K</b></li>
               <li>Airbrush Bridal <b>₹25–30K</b></li>
@@ -334,6 +340,7 @@
               <li>Reception <b>₹12–16K</b></li>
             </ul>
             <a class="book-link" href="#book">Book a trial →</a>
+            <a class="svc-more" href="/services/bridal-makeup">View details &amp; pricing →</a>
           </div>
         </article>
         <article class="svc rv d1">
@@ -341,10 +348,11 @@
             <img class="active" src="/images/nails-2.jpg" alt="Nail extensions Ramesh Nagar" style="object-position:50% 50%" loading="lazy" />
             <img src="/images/nails-1.jpg" alt="Designer nail art Delhi" style="object-position:50% 50%" loading="lazy" />
             <span class="tag" style="background:var(--mint); color:#22685c;">₹499 offer</span>
+            <a class="figlink" href="/services/nail-extensions" aria-label="Nail extensions details"></a>
             <div class="cdots"></div>
           </figure>
           <div class="svc-body">
-            <h3>Nail Artistry</h3>
+            <h3><a href="/services/nail-extensions">Nail Artistry</a></h3>
             <ul>
               <li>Extensions + free nail art <b>₹499+</b></li>
               <li>Luxe French <b>₹1,200+</b></li>
@@ -352,6 +360,7 @@
               <li>Gel · Ombré · Chrome <b>Studio</b></li>
             </ul>
             <a class="book-link" href="#book">Claim the offer →</a>
+            <a class="svc-more" href="/services/nail-extensions">View details &amp; pricing →</a>
           </div>
         </article>
         <article class="svc rv d2">
@@ -360,10 +369,11 @@
             <img src="/images/new-natural.jpg" alt="Natural glow facial Delhi" style="object-position:50% 18%" loading="lazy" />
             <img src="/images/new-occasion-green.jpg" alt="Skin ritual Ramesh Nagar" style="object-position:50% 18%" loading="lazy" />
             <span class="tag" style="background:var(--lav); color:#5d4e80;">Studio rituals</span>
+            <a class="figlink" href="/services/beauty-services" aria-label="Beauty services details"></a>
             <div class="cdots"></div>
           </figure>
           <div class="svc-body">
-            <h3>Beauty &amp; Skin</h3>
+            <h3><a href="/services/beauty-services">Beauty &amp; Skin</a></h3>
             <ul>
               <li>Glow Cleanup <b>₹499</b></li>
               <li>De-Tan Ritual <b>₹699</b></li>
@@ -371,8 +381,12 @@
               <li>Full Pamper Day <b>₹1,499</b></li>
             </ul>
             <a class="book-link" href="#book">Reserve a slot →</a>
+            <a class="svc-more" href="/services/beauty-services">View details &amp; pricing →</a>
           </div>
         </article>
+      </div>
+      <div class="sec-cta">
+        <a class="btn btn-line" href="/services">See all services &amp; prices →</a>
       </div>
     </div>
   </section>
