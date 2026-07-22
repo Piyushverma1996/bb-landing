@@ -170,6 +170,24 @@
     .area-chip { display: inline-block; border-radius: 999px; border: 1px solid rgba(46,139,131,.28); background: rgba(255,255,255,.7); padding: 9px 16px; font-size: 12.5px; font-weight: 600; color: var(--ink); transition: all .3s; }
     .area-chip:hover { border-color: var(--gold); color: var(--gold-deep); }
     .area-chip-all { background: var(--ink); color: var(--cream); border-color: transparent; }
+    /* Why-choose grid */
+    .why-grid { display: grid; gap: 16px; margin-top: 8px; }
+    @media (min-width: 760px) { .why-grid { grid-template-columns: repeat(3, 1fr); } }
+    .why-card { background: #fff; border: 1px solid rgba(201,165,92,.2); border-radius: 20px; padding: 22px; box-shadow: 0 12px 30px -20px rgba(26,90,84,.3); }
+    .why-card h3 { font-family: var(--serif); font-size: 18px; font-weight: 600; color: var(--ink); }
+    .why-card p { margin-top: 8px; font-size: 13px; line-height: 1.7; color: rgba(26,90,84,.8); }
+    /* Ratings strip */
+    .ratings { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 22px; }
+    .rating-pill { display: flex; align-items: center; gap: 8px; background: #fff; border: 1px solid rgba(201,165,92,.25); border-radius: 999px; padding: 10px 18px; box-shadow: 0 8px 20px -14px rgba(26,90,84,.3); }
+    .rating-pill b { font-size: 16px; color: var(--gold-deep); } .rating-pill span { font-size: 11px; color: rgba(26,90,84,.65); }
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 8px auto 0; }
+    .faq-item { background: #fff; border: 1px solid rgba(201,165,92,.22); border-radius: 16px; margin-bottom: 10px; overflow: hidden; }
+    .faq-item summary { cursor: pointer; list-style: none; padding: 16px 18px; font-size: 14px; font-weight: 600; color: var(--ink); display: flex; justify-content: space-between; gap: 12px; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "+"; color: var(--gold); font-size: 20px; line-height: 1; }
+    .faq-item[open] summary::after { content: "–"; }
+    .faq-item p { padding: 0 18px 16px; font-size: 13px; line-height: 1.7; color: rgba(26,90,84,.82); }
     .svc .tag { position: absolute; left: 14px; top: 14px; z-index: 3; border-radius: 999px; padding: 6px 14px; font-size: 10px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
     .svc-body { padding: 22px 22px 24px; display: flex; flex-direction: column; flex: 1; }
     .svc h3 { font-family: var(--serif); font-size: 21px; font-weight: 600; }
@@ -521,6 +539,68 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ WHY CHOOSE (depth) ============ -->
+  <section id="why" class="folio" style="padding: 56px 0;">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="kicker">Why West Delhi trusts us</p>
+        <h2>A bridal makeup artist you can actually rely on</h2>
+        <div class="rule"></div>
+        <p>Blushes &amp; Brushes has grown from a Ramesh Nagar home studio in 2019 into one of West Delhi's most-rated names in bridal and party makeup — 200+ brides, a 4.8★ Google rating, and looks built to last a full Delhi wedding day.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card rv"><h3>Skin-first artistry</h3><p>HD and airbrush makeup matched to your undertone in daylight, so your base never greys in photos. We spend as long on skin prep and shade-matching as on the eyes.</p></div>
+        <div class="why-card rv d1"><h3>Lasts the whole day</h3><p>Airbrush bases wear 10–14 hours through Delhi heat, hugs and tears. Every bridal booking includes a touch-up kit and a written arrival time.</p></div>
+        <div class="why-card rv d2"><h3>Premium products only</h3><p>HD Forever 52, NARS and Huda Beauty — sealed, professional-grade product shown to you, never diluted or refilled.</p></div>
+        <div class="why-card rv"><h3>Transparent pricing</h3><p>Hair, lashes, draping and touch-ups are included in every quote. No GST, no surprises on your wedding morning.</p></div>
+        <div class="why-card rv d1"><h3>Travels across NCR</h3><p>Bridal &amp; party makeup comes to your home or venue — Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and all of West Delhi.</p></div>
+        <div class="why-card rv d2"><h3>Trials, not gambles</h3><p>Book a trial at the Ramesh Nagar studio 4–8 weeks before your day and decide with total confidence. Adjusted against your booking.</p></div>
+      </div>
+      <div class="ratings rv">
+        <div class="rating-pill"><b>4.8★</b><span>Google · 200+ brides</span></div>
+        <div class="rating-pill"><b>5.0★</b><span>Justdial · 113 ratings</span></div>
+        <div class="rating-pill"><b>5.0★</b><span>magicpin · 35 ratings</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq" style="padding: 56px 0;">
+    <div class="wrap">
+      <div class="sec-head rv" style="text-align:center; max-width:none; margin-bottom:24px;">
+        <p class="kicker">Good to know</p>
+        <h2>Frequently asked questions</h2>
+        <div class="rule" style="margin-left:auto; margin-right:auto;"></div>
+      </div>
+      <div class="faq-list rv">
+        <details class="faq-item"><summary>How much does bridal makeup cost in West Delhi?</summary><p>HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, and reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit — no hidden charges and no GST.</p></details>
+        <details class="faq-item"><summary>Should I choose HD or airbrush bridal makeup?</summary><p>Airbrush for long summer wedding days and maximum staying power (10–14 hours); HD for a soft, dewy finish or winter weddings. At your trial, Urvashi tests both on your skin in daylight and recommends honestly.</p></details>
+        <details class="faq-item"><summary>Do you travel for the wedding, or is it at the studio?</summary><p>Bridal and party makeup are done on location — Urvashi travels across West Delhi and Delhi NCR to your home or venue. Nail extensions, beauty services and trials happen at the Ramesh Nagar studio.</p></details>
+        <details class="faq-item"><summary>Where is the Blushes &amp; Brushes studio?</summary><p>B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 — a two-minute walk from Ramesh Nagar metro station (Blue Line).</p></details>
+        <details class="faq-item"><summary>How much are nail extensions?</summary><p>Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets (ombré, chrome) from ₹1,500, at the Ramesh Nagar studio.</p></details>
+        <details class="faq-item"><summary>Do you offer a trial before the wedding?</summary><p>Yes — bridal trials are ₹3,000 at the studio and are adjusted against your final booking. We recommend the trial 4–8 weeks before the wedding.</p></details>
+        <details class="faq-item"><summary>How early should I book my date?</summary><p>For Delhi's Nov–Feb peak wedding season, book 3–4 months ahead — dates fill fast. A small refundable advance holds your slot.</p></details>
+        <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below or WhatsApp us on 76784 46364 with your date and function — Urvashi replies personally within the hour, no pressure.</p></details>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"How much does bridal makeup cost in West Delhi?","acceptedAnswer":{"@type":"Answer","text":"HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit — no hidden charges, no GST."}},
+      {"@type":"Question","name":"Should I choose HD or airbrush bridal makeup?","acceptedAnswer":{"@type":"Answer","text":"Airbrush for long summer days and maximum staying power (10–14 hours); HD for a soft dewy finish or winter weddings. At your trial, both are tested on your skin and recommended honestly."}},
+      {"@type":"Question","name":"Do you travel for the wedding, or is it at the studio?","acceptedAnswer":{"@type":"Answer","text":"Bridal and party makeup are done on location across West Delhi and Delhi NCR. Nail extensions, beauty and trials happen at the Ramesh Nagar studio."}},
+      {"@type":"Question","name":"Where is the Blushes & Brushes studio?","acceptedAnswer":{"@type":"Answer","text":"B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 — two minutes from Ramesh Nagar metro station."}},
+      {"@type":"Question","name":"How much are nail extensions?","acceptedAnswer":{"@type":"Answer","text":"Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets from ₹1,500."}},
+      {"@type":"Question","name":"Do you offer a trial before the wedding?","acceptedAnswer":{"@type":"Answer","text":"Yes — bridal trials are ₹3,000 at the studio, adjusted against your booking, recommended 4–8 weeks before the wedding."}},
+      {"@type":"Question","name":"How early should I book my date?","acceptedAnswer":{"@type":"Answer","text":"For Delhi's November–February peak season, book 3–4 months ahead. A small refundable advance holds your date."}},
+      {"@type":"Question","name":"How do I book or get a quote?","acceptedAnswer":{"@type":"Answer","text":"Use the free consultation form or WhatsApp 76784 46364 with your date and function — Urvashi replies within the hour."}}
+    ]
+  }
+  </script>
 
   <!-- ============ BOOKING ============ -->
   <section id="book" class="book">
