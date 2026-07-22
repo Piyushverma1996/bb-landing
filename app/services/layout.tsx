@@ -1,5 +1,6 @@
 import { Playfair_Display, Montserrat } from "next/font/google";
 import Link from "next/link";
+import FloatingConsult from "../components/FloatingConsult";
 
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
@@ -26,8 +27,9 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
       </header>
 
       {children}
+      <FloatingConsult />
 
-      <footer className="mt-16 border-t border-[#C9A55C]/20 py-8 text-center text-[11px] text-[#1A5A54]/60">
+      <footer className="mt-16 border-t border-[#C9A55C]/20 py-8 pb-24 text-center text-[11px] text-[#1A5A54]/60">
         <p className="mb-1" style={{ fontFamily: "var(--font-playfair), serif", fontSize: "15px", color: "#2E8B83" }}>Blushes &amp; Brushes</p>
         <p>B 1/1 Double Storey, Ramesh Nagar, Opp. Subway, New Delhi 110015 · WhatsApp 76784 46364</p>
         <p className="mt-2 flex flex-wrap justify-center gap-3">

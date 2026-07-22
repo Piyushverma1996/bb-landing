@@ -101,6 +101,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <div className="mt-6">
         {s.intro.map((p, i) => <p key={i} className="my-3 text-[14.5px] leading-[1.75] text-[#1A5A54]/90">{p}</p>)}
+        {/* Soft inline nudge — guides without hard-selling */}
+        <div className="my-5 flex flex-wrap items-center gap-3 rounded-2xl border border-[#C9A55C]/30 bg-[#CFE9DF]/25 px-4 py-3">
+          <span className="text-[13px] text-[#1A5A54]/85">Not sure where to start? Urvashi will advise you personally — free, no pressure.</span>
+          <a href="/#book" className="ml-auto whitespace-nowrap rounded-full px-4 py-2 text-[12px] font-bold text-white" style={{ background: "linear-gradient(120deg,#2E8B83,#C9A55C)" }}>Get free advice →</a>
+        </div>
         <Blocks body={s.sections} />
       </div>
 

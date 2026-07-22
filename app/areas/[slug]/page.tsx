@@ -81,6 +81,12 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
       <p className="mt-6 text-[14.5px] leading-[1.75] text-[#1A5A54]/90">{a.localIntro}</p>
 
+      {/* Soft inline nudge */}
+      <div className="my-5 flex flex-wrap items-center gap-3 rounded-2xl border border-[#C9A55C]/30 bg-[#CFE9DF]/25 px-4 py-3">
+        <span className="text-[13px] text-[#1A5A54]/85">Booking for a date in {a.area}? Check availability &amp; get a free quote.</span>
+        <a href="/#book" className="ml-auto whitespace-nowrap rounded-full px-4 py-2 text-[12px] font-bold text-white" style={{ background: "linear-gradient(120deg,#2E8B83,#C9A55C)" }}>Free consultation →</a>
+      </div>
+
       <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Makeup &amp; beauty services in {a.area}</h2>
       <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">Urvashi Trehan offers the full Blushes &amp; Brushes menu to {a.area} clients — bridal and occasion makeup travels to your venue, while nails and beauty are done at the Ramesh Nagar studio:</p>
       <div className="mt-4 grid gap-2.5 sm:grid-cols-2">

@@ -183,11 +183,12 @@
     .folio { background: var(--cream-2); }
     .folio-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
     @media (min-width: 760px) { .folio-grid { grid-template-columns: repeat(4, 1fr); gap: 14px; } }
-    .folio-grid figure { position: relative; border-radius: 16px; overflow: hidden; aspect-ratio: 3/4; }
-    .folio-grid figure.wide { grid-column: span 2; aspect-ratio: auto; }
-    .folio-grid img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s cubic-bezier(.19,1,.22,1); }
-    .folio-grid figure:hover img { transform: scale(1.05); }
-    .folio-grid figcaption { position: absolute; inset: auto 0 0 0; padding: 26px 14px 12px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: linear-gradient(transparent, rgba(18,41,31,.72)); }
+    .folio-grid figure, .folio-grid .folio-item { position: relative; display: block; border-radius: 16px; overflow: hidden; aspect-ratio: 3/4; }
+    .folio-grid img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; transition: transform .8s cubic-bezier(.19,1,.22,1); }
+    .folio-grid .folio-item:hover img { transform: scale(1.05); }
+    .folio-grid figcaption, .folio-grid .folio-cap { position: absolute; inset: auto 0 0 0; padding: 26px 14px 12px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #fff; background: linear-gradient(transparent, rgba(18,41,31,.72)); }
+    .folio-grid .folio-cap .view { color: var(--gold); opacity: 0; transition: opacity .35s; }
+    .folio-grid .folio-item:hover .view { opacity: 1; }
     .ig-cta { margin-top: 26px; text-align: center; font-size: 12.5px; color: rgba(26,90,84,.7); }
     .ig-cta a { color: var(--gold-deep); font-weight: 600; }
 
@@ -258,8 +259,8 @@
       </a>
       <div class="links">
         <a href="/services">Services</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#about">The Artist</a>
+        <a href="/gallery">Portfolio</a>
+        <a href="/areas">Areas</a>
         <a href="/blog">Journal</a>
         <a href="#book" class="btn btn-teal" style="padding:11px 22px;">Book</a>
       </div>
@@ -268,8 +269,8 @@
     <!-- Mobile ribbon (hidden ≥860px) -->
     <div class="mnav">
       <a href="/services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#about">The Artist</a>
+      <a href="/gallery">Portfolio</a>
+      <a href="/areas">Areas</a>
       <a href="/blog">Journal</a>
       <a href="#book" class="mbook">Book ✦</a>
     </div>
@@ -404,14 +405,17 @@
         <p>Every look below is Urvashi's own work — no stock, no filters. Shot in the studio and at weddings across Delhi NCR.</p>
       </div>
       <div class="folio-grid">
-        <figure class="rv"><img src="/images/bridal-1.jpg" alt="HD bridal look" loading="lazy" /><figcaption>HD Bridal</figcaption></figure>
-        <figure class="rv d1"><img src="/images/new-bridal-peach.jpg" alt="Peach bridal glam" loading="lazy" /><figcaption>Peach Glam</figcaption></figure>
-        <figure class="rv d2"><img src="/images/party-glam.jpg" alt="Party glam makeup" loading="lazy" /><figcaption>Party Glam</figcaption></figure>
-        <figure class="rv d3"><img src="/images/nails-1.jpg" alt="Designer nail set" loading="lazy" /><figcaption>Designer Nails</figcaption></figure>
-        <figure class="rv"><img src="/images/new-bridal-purple.jpg" alt="Purple reception look" loading="lazy" /><figcaption>Reception</figcaption></figure>
-        <figure class="rv d1"><img src="/images/new-natural.jpg" alt="Natural dewy makeup" loading="lazy" /><figcaption>Soft &amp; Dewy</figcaption></figure>
-        <figure class="rv d2"><img src="/images/new-occasion-green.jpg" alt="Occasion look" loading="lazy" /><figcaption>Occasion</figcaption></figure>
-        <figure class="rv d3"><img src="/images/party-1.jpg" alt="Cocktail evening look" loading="lazy" /><figcaption>Cocktail</figcaption></figure>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-red-01.jpeg" alt="HD bridal makeup Ramesh Nagar" loading="lazy" /><span class="folio-cap">HD Bridal <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-peach-01.jpeg" alt="Peach bridal glam Delhi" loading="lazy" /><span class="folio-cap">Peach Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-party-makeup-gold-01.jpeg" alt="Party glam makeup West Delhi" loading="lazy" /><span class="folio-cap">Party Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-nail-art-stiletto-chrome-01.jpeg" alt="Designer nail art Ramesh Nagar" loading="lazy" /><span class="folio-cap">Designer Nails <span class="view">· View →</span></span></a>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-purple-01.jpeg" alt="Reception bridal look Delhi" loading="lazy" /><span class="folio-cap">Reception <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-engagement-makeup-01.jpeg" alt="Engagement makeup West Delhi" loading="lazy" /><span class="folio-cap">Engagement <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-nail-art-french-red-01.jpeg" alt="French nail art Delhi" loading="lazy" /><span class="folio-cap">Nail Art <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-cream-01.jpeg" alt="Cream bridal makeup Delhi NCR" loading="lazy" /><span class="folio-cap">Bridal <span class="view">· View →</span></span></a>
+      </div>
+      <div class="sec-cta rv" style="margin-top:26px;">
+        <a class="btn btn-gold" href="/gallery">View full portfolio →</a>
       </div>
       <p class="ig-cta rv">More every week on Instagram — <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">@makeovers_by_urvashitrehan_</a> (makeup) · <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener">@blushesandbrushes2022</a> (nails &amp; beauty)</p>
     </div>
@@ -420,7 +424,7 @@
   <!-- ============ ABOUT ============ -->
   <section id="about">
     <div class="wrap about-grid">
-      <div class="about-media rv"><img src="/images/bridal-2.jpg" alt="Urvashi Trehan at work" loading="lazy" /></div>
+      <div class="about-media rv"><img src="/images/urvashi-artist.jpg" onerror="this.onerror=null;this.src='/images/bridal-2.jpg'" alt="Urvashi Trehan — makeup artist, Blushes & Brushes Ramesh Nagar" loading="lazy" /></div>
       <div class="about">
         <p class="kicker rv">The artist</p>
         <h2 class="serif rv d1" style="font-weight:500; font-size:clamp(28px,3.6vw,40px); margin-top:8px;">Urvashi Trehan</h2>
