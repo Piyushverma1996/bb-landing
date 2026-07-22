@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { POSTS } from "./blog/posts";
 import { SERVICES } from "./services/serviceData";
 import { AREAS } from "./areas/areaData";
+import { GUIDES } from "./(guides)/guidesData";
 
 const BASE = "https://blushesnbrushes.com";
 
@@ -24,11 +25,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.75,
   }));
+  const guideRoutes: MetadataRoute.Sitemap = GUIDES.map((g) => ({
+    url: `${BASE}/${g.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.85,
+  }));
   const postRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
     lastModified: new Date(p.updated ?? p.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
-  return [...staticRoutes, ...serviceRoutes, ...areaRoutes, ...postRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...areaRoutes, ...guideRoutes, ...postRoutes];
 }
