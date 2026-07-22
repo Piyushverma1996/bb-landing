@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { POSTS } from "./blog/posts";
 import { SERVICES } from "./services/serviceData";
+import { AREAS } from "./areas/areaData";
 
 const BASE = "https://blushesnbrushes.com";
 
@@ -8,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: `${BASE}/`, changeFrequency: "monthly", priority: 1 },
     { url: `${BASE}/services`, changeFrequency: "monthly", priority: 0.95 },
+    { url: `${BASE}/areas`, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/book`, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE}/courses`, changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/blog`, changeFrequency: "weekly", priority: 0.8 },
@@ -17,11 +19,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.9,
   }));
+  const areaRoutes: MetadataRoute.Sitemap = AREAS.map((a) => ({
+    url: `${BASE}/areas/${a.slug}`,
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
   const postRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
     lastModified: new Date(p.updated ?? p.date),
     changeFrequency: "monthly",
     priority: 0.7,
   }));
-  return [...staticRoutes, ...serviceRoutes, ...postRoutes];
+  return [...staticRoutes, ...serviceRoutes, ...areaRoutes, ...postRoutes];
 }
