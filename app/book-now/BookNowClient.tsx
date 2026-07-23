@@ -29,7 +29,7 @@ export default function BookNowClient() {
   }, []);
 
   function waLink() {
-    let m = "Hi Urvashi! 💄 I'd like a free consultation";
+    let m = "Hi Urvashi!\nI'd like a free consultation";
     if (service) m += ` for ${service}`;
     if (name) m += `. My name is ${name}`;
     if (date) m += ` and my date is ${date}`;

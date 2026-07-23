@@ -52,14 +52,41 @@
   {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
-    "name": "Blushes & Brushes",
+    "@id": "https://blushesnbrushes.com/#business",
+    "name": "Blushes & Brushes by Urvashi Trehan",
+    "alternateName": "Blushes and Brushes",
+    "description": "Premium bridal & party makeup, nail extensions and beauty studio in Ramesh Nagar, West Delhi. HD & airbrush bridal makeup by Urvashi Trehan; travels across Delhi NCR.",
     "image": "https://blushesnbrushes.com/images/bridal-hero.jpg",
+    "logo": "https://blushesnbrushes.com/images/logo.jpeg",
     "url": "https://blushesnbrushes.com",
     "telephone": "+917678446364",
     "priceRange": "₹₹",
-    "address": { "@type": "PostalAddress", "streetAddress": "B 1/1 Double Storey, Ramesh Nagar, Opp. Subway", "addressLocality": "New Delhi", "postalCode": "110015", "addressCountry": "IN" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200" },
-    "founder": { "@type": "Person", "name": "Urvashi Trehan" }
+    "currenciesAccepted": "INR",
+    "paymentAccepted": "Cash, UPI, Bank transfer",
+    "openingHours": "Mo-Sa 10:30-20:00",
+    "address": { "@type": "PostalAddress", "streetAddress": "B 1/1 Double Storey, Ramesh Nagar, Opp. Subway", "addressLocality": "New Delhi", "addressRegion": "Delhi", "postalCode": "110015", "addressCountry": "IN" },
+    "geo": { "@type": "GeoCoordinates", "latitude": 28.6517, "longitude": 77.1297 },
+    "areaServed": ["Ramesh Nagar","Rajouri Garden","Tilak Nagar","Janakpuri","Subhash Nagar","Kirti Nagar","Moti Nagar","Punjabi Bagh","Paschim Vihar","Hari Nagar","Uttam Nagar","Vikaspuri","Naraina","Patel Nagar","Karol Bagh","Dwarka","West Delhi","Delhi NCR"],
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200", "bestRating": "5" },
+    "founder": { "@type": "Person", "name": "Urvashi Trehan", "jobTitle": "Makeup Artist" },
+    "knowsAbout": ["Bridal Makeup","HD Makeup","Airbrush Makeup","Party Makeup","Nail Extensions","Nail Art","Facials","Hairstyling"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Services",
+      "itemListElement": [
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"HD Bridal Makeup"},"priceCurrency":"INR","price":"18000"},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Airbrush Bridal Makeup"},"priceCurrency":"INR","price":"25000"},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Party Makeup"},"priceCurrency":"INR","price":"2500"},
+        {"@type":"Offer","itemOffered":{"@type":"Service","name":"Gel Nail Extensions"},"priceCurrency":"INR","price":"499"}
+      ]
+    },
+    "sameAs": [
+      "https://www.instagram.com/makeovers_by_urvashitrehan_",
+      "https://www.instagram.com/blushesandbrushes2022",
+      "https://maps.google.com/?cid=2332371947944609004",
+      "https://www.justdial.com/Delhi/Blushes-Brushes-Opposite-Subway-Ramesh-Nagar/011PXX11-XX11-221126120209-G2C5_BZDET",
+      "https://github.com/Piyushverma1996/bb-landing"
+    ]
   }
   </script>
 
@@ -589,6 +616,7 @@
         <details class="faq-item"><summary>How early should I book my date?</summary><p>For Delhi's Nov–Feb peak wedding season, book 3–4 months ahead — dates fill fast. A small refundable advance holds your slot.</p></details>
         <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below or WhatsApp us on 76784 46364 with your date and function — Urvashi replies personally within the hour, no pressure.</p></details>
       </div>
+      <p style="text-align:center; margin-top:18px; font-size:12.5px;"><a href="/faq" style="color:var(--gold-deep); font-weight:600;">See all FAQs →</a></p>
     </div>
   </section>
   <script type="application/ld+json">
@@ -683,7 +711,7 @@
       var name = (document.getElementById("bfName").value || "").trim();
       var service = document.getElementById("bfService").value || "";
       var date = (document.getElementById("bfDate").value || "").trim();
-      var msg = "Hi Urvashi! 💄 I'd like a free consultation";
+      var msg = "Hi Urvashi!\nI'd like a free consultation";
       if (service) msg += " for " + service;
       if (name) msg += ". My name is " + name;
       if (date) msg += " and my date is " + date;
