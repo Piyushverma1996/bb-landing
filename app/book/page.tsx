@@ -9,9 +9,9 @@ const BRIDAL = [
 ];
 
 const NAILS = [
-  { title: "Nail Art & Designer Sets", price: "from ₹1,500", note: "Chrome, ombré, French, custom art", img: "/images/nails-1.jpg" },
-  { title: "Luxe French & Embellished", price: "from ₹1,200", note: "Pearls, gold detailing, glass finish", img: "/images/nails-2.jpg" },
-  { title: "Nail Extensions", price: "₹499 onwards", note: "Includes complimentary nail art", img: "/images/nails-1.jpg" },
+  { title: "Nail Art & Designer Sets", price: "from ₹1,500", note: "Chrome, ombré, French, custom art", img: "/images/nails-1.webp" },
+  { title: "Luxe French & Embellished", price: "from ₹1,200", note: "Pearls, gold detailing, glass finish", img: "/images/nails-2.webp" },
+  { title: "Nail Extensions", price: "₹499 onwards", note: "Includes complimentary nail art", img: "/images/nails-1.webp" },
 ];
 
 const BEAUTY = [
@@ -50,7 +50,7 @@ export default function Home() {
       <header className="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-sm shadow-sm">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
-            <Image src="/images/logo.jpeg" alt="Blushes and Brushes logo" width={52} height={52} className="rounded-full object-cover" priority />
+            <Image src="/images/logo.webp" alt="Blushes and Brushes logo" width={52} height={52} className="rounded-full object-cover" priority />
             <div>
               <p className="text-xs font-bold uppercase tracking-widest text-brand-teal">Blushes &amp; Brushes</p>
               <p className="text-[10px] text-brand-teal/60">by Urvashi Trehan</p>
@@ -81,7 +81,7 @@ export default function Home() {
             </p>
 
             <div className="relative h-72 w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-gold/20">
-              <Image src="/images/bridal-hero.jpg" alt="Real bride — bridal makeup by Urvashi Trehan" fill className="object-cover object-top" sizes="(max-width:1024px) 100vw, 45vw" priority />
+              <Image src="/images/bridal-hero.webp" alt="Real bride — bridal makeup by Urvashi Trehan" fill className="object-cover object-top" sizes="(max-width:1024px) 100vw, 45vw" priority />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-3">
                 <p className="text-xs font-semibold text-white">&ldquo;Red isn&rsquo;t just a colour — it&rsquo;s a bride&rsquo;s power.&rdquo;</p>
                 <p className="text-[10px] text-white/70">Real bride · makeup by Urvashi</p>
@@ -124,10 +124,10 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {[
-            { src: "/images/bridal-1.jpg", cap: "Glowing in signature bridal glam ✨" },
-            { src: "/images/bridal-2.jpg", cap: "A royal bride isn’t subtle — she’s unforgettable 👑" },
-            { src: "/images/party-glam.jpg", cap: "Soft glam, flawless skin, picture-perfect finish" },
-            { src: "/images/new-bridal-peach.jpg", cap: "Every ceremony, picture-perfect" },
+            { src: "/images/bridal-1.webp", cap: "Glowing in signature bridal glam ✨" },
+            { src: "/images/bridal-2.webp", cap: "A royal bride isn’t subtle — she’s unforgettable 👑" },
+            { src: "/images/party-glam.webp", cap: "Soft glam, flawless skin, picture-perfect finish" },
+            { src: "/images/new-bridal-peach.webp", cap: "Every ceremony, picture-perfect" },
           ].map((g) => (
             <figure key={g.src} className="group relative aspect-[3/4] overflow-hidden rounded-2xl shadow-md ring-1 ring-brand-cream-dark">
               <Image src={g.src} alt={g.cap} fill className="object-cover object-top transition-transform duration-500 group-hover:scale-105" sizes="(max-width:768px) 50vw, 25vw" />
@@ -263,7 +263,7 @@ export default function Home() {
       <footer className="bg-brand-dark py-8 text-center">
         <div className="mx-auto max-w-5xl px-4">
           <div className="flex flex-col items-center gap-2">
-            <Image src="/images/logo.jpeg" alt="Blushes and Brushes" width={44} height={44} className="rounded-full opacity-80" />
+            <Image src="/images/logo.webp" alt="Blushes and Brushes" width={44} height={44} className="rounded-full opacity-80" />
             <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">Blushes &amp; Brushes</p>
             <p className="text-[11px] text-white/40">by Urvashi Trehan</p>
             <p className="mt-2 text-[11px] text-white/40">B 1/1 Double Storey, Ramesh Nagar, Opp. Subway, New Delhi – 110015</p>

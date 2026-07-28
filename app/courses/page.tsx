@@ -3,21 +3,21 @@ import LeadForm from "../components/LeadForm";
 
 const COURSES = [
   {
-    src: "/images/makeup-course.png",
+    src: "/images/makeup-course.webp",
     alt: "Professional Makeup Course – Bridal, Fashion & HD Makeup",
     title: "Makeup Course",
     tagline: "Bridal · Fashion · HD Makeup",
     fee: "₹20,000",
   },
   {
-    src: "/images/nails-course.png",
+    src: "/images/nails-course.webp",
     alt: "Nail Extensions & Nail Art Course – Beginner to Advanced",
     title: "Nail Extensions & Art",
     tagline: "Beginner to Advanced",
     fee: "₹20,000",
   },
   {
-    src: "/images/beauty-course.png",
+    src: "/images/beauty-course.webp",
     alt: "Beauty Master Course – Professional Salon Training Program",
     title: "Beauty Master Course",
     tagline: "Professional Salon Training",
@@ -66,7 +66,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
           <div className="flex items-center gap-3">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo.webp"
               alt="Blushes and Brushes logo"
               width={52}
               height={52}
@@ -281,7 +281,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4">
           <div className="flex flex-col items-center gap-2">
             <Image
-              src="/images/logo.jpeg"
+              src="/images/logo.webp"
               alt="Blushes and Brushes"
               width={44}
               height={44}

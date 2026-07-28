@@ -34,8 +34,8 @@ export const SERVICES: Service[] = [
     description:
       "Bridal makeup by Urvashi Trehan in Ramesh Nagar, West Delhi — HD from ₹18K, airbrush from ₹25K. Trials available, travels across Delhi NCR. 4.8★, 200+ brides.",
     keywords: ["bridal makeup ramesh nagar", "bridal makeup west delhi", "bridal makeup artist delhi", "hd bridal makeup", "airbrush bridal makeup delhi", "wedding makeup ramesh nagar"],
-    cover: "/images/bridal-real-1.jpg",
-    gallery: ["/images/bridal-real-1.jpg", "/images/bridal-real-2.jpg", "/images/new-bridal-red.jpg", "/images/new-bridal-purple.jpg"],
+    cover: "/images/bridal-real-1.webp",
+    gallery: ["/images/bridal-real-1.webp", "/images/bridal-real-2.webp", "/images/new-bridal-red.webp", "/images/new-bridal-purple.webp"],
     intro: [
       "Your wedding day is the most photographed day of your life — and your makeup has to hold from the morning pheras to the last dance of the reception. Blushes & Brushes, run by makeup artist Urvashi Trehan from her Ramesh Nagar studio in West Delhi, has done exactly that for 200+ brides across Delhi NCR, with a 4.8★ Google rating.",
       "We offer both HD and airbrush bridal makeup, matched to your skin, your function and Delhi's weather — with trials so you decide with total confidence before the day.",
@@ -88,8 +88,8 @@ export const SERVICES: Service[] = [
     description:
       "Party, sangeet & cocktail makeup in Ramesh Nagar, West Delhi from ₹2,500. Signature, HD Forever 52 & celebrity (NARS, Huda) tiers. Lashes & hair included.",
     keywords: ["party makeup west delhi", "party makeup ramesh nagar", "sangeet makeup delhi", "cocktail makeup artist", "hd party makeup delhi"],
-    cover: "/images/party-glam.jpg",
-    gallery: ["/images/party-glam.jpg", "/images/party-1.jpg", "/images/new-occasion-green.jpg"],
+    cover: "/images/party-glam.webp",
+    gallery: ["/images/party-glam.webp", "/images/party-1.webp", "/images/new-occasion-green.webp"],
     intro: [
       "Whether it's a sangeet, cocktail night, engagement guest look or a family function, party makeup should look flawless in every photo and survive hours of dancing. Blushes & Brushes in Ramesh Nagar, West Delhi offers three clear party makeup tiers so you choose exactly the finish — and budget — you want.",
       "Every party look includes hairstyling, draping and individual lashes, with premium products matched to your skin tone and outfit.",
@@ -135,8 +135,8 @@ export const SERVICES: Service[] = [
     description:
       "Gel nail extensions from ₹499 with free nail art in Ramesh Nagar, West Delhi. French, ombré, chrome & designer sets. Hygienic tools, careful application.",
     keywords: ["nail extensions ramesh nagar", "nail art west delhi", "gel nails delhi", "nail salon ramesh nagar", "nail extensions ₹499 delhi"],
-    cover: "/images/nails-1.jpg",
-    gallery: ["/images/nails-1.jpg", "/images/nails-2.jpg"],
+    cover: "/images/nails-1.webp",
+    gallery: ["/images/nails-1.webp", "/images/nails-2.webp"],
     intro: [
       "Blushes & Brushes in Ramesh Nagar is West Delhi's go-to studio for gel nail extensions and custom nail art — currently from ₹499 with complimentary nail art. Clean tools, gentle cuticle work and careful application mean beautiful nails without damage to your natural nail underneath.",
       "From everyday French to statement chrome and designer sets for weddings, we build a shape and style that fits your lifestyle.",
@@ -181,8 +181,8 @@ export const SERVICES: Service[] = [
     description:
       "Facials, glow cleanups, de-tan & full-pamper beauty rituals in Ramesh Nagar, West Delhi from ₹499. Hygienic studio, premium products, honest advice.",
     keywords: ["facial ramesh nagar", "beauty parlour ramesh nagar", "cleanup west delhi", "de-tan facial delhi", "pre-bridal skin delhi"],
-    cover: "/images/new-beauty-glam.jpg",
-    gallery: ["/images/new-beauty-glam.jpg", "/images/new-natural.jpg"],
+    cover: "/images/new-beauty-glam.webp",
+    gallery: ["/images/new-beauty-glam.webp", "/images/new-natural.webp"],
     intro: [
       "Blushes & Brushes in Ramesh Nagar offers skin and beauty rituals that leave you genuinely glowing — from a quick glow cleanup to a full pamper day. Every service uses premium products in a spotless studio, with honest advice about what your skin actually needs (and what it doesn't).",
       "Whether it's monthly self-care or pre-wedding skin prep, we keep it simple, effective and affordable.",

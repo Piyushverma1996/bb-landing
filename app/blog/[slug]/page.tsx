@@ -71,7 +71,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     publisher: {
       "@type": "Organization",
       name: "Blushes & Brushes",
-      logo: { "@type": "ImageObject", url: "https://blushesnbrushes.com/images/logo.jpeg" },
+      logo: { "@type": "ImageObject", url: "https://blushesnbrushes.com/images/logo.webp" },
     },
     mainEntityOfPage: `https://blushesnbrushes.com/blog/${post.slug}`,
   };

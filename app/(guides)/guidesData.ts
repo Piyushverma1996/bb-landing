@@ -30,7 +30,7 @@ export const GUIDES: Guide[] = [
     description:
       "How to choose the best bridal makeup artist in Delhi — HD vs airbrush, real prices, red flags, and questions to ask. Plus a top-rated West Delhi pick: Blushes & Brushes.",
     keywords: ["best bridal makeup artist in delhi", "top bridal makeup artist delhi", "bridal makeup artist near me delhi", "best hd makeup artist delhi", "airbrush bridal makeup delhi"],
-    cover: "/images/gallery/bb-bridal-makeup-red-01.jpeg",
+    cover: "/images/gallery/bb-bridal-makeup-red-01.webp",
     intro: [
       "Searching for the best bridal makeup artist in Delhi is overwhelming — hundreds of pages, wildly different prices, and everyone claims to be the best. This is an honest guide from a working artist's perspective: what actually separates a great bridal MUA from an average one, what you should pay in 2026, and how to shortlist with confidence.",
       "We'll also be upfront: Blushes & Brushes is one such studio (based in West Delhi), and we'll show you exactly why — but the criteria below apply whoever you choose.",
@@ -77,7 +77,7 @@ export const GUIDES: Guide[] = [
     description:
       "Finding the best makeup artist in West Delhi — Ramesh Nagar, Rajouri Garden, Janakpuri, Tilak Nagar & more. Prices, what to check, and a 4.8★ local pick: Blushes & Brushes.",
     keywords: ["best makeup artist in west delhi", "makeup artist west delhi", "makeup artist ramesh nagar", "bridal makeup west delhi", "party makeup west delhi"],
-    cover: "/images/gallery/bb-party-makeup-gold-01.jpeg",
+    cover: "/images/gallery/bb-party-makeup-gold-01.webp",
     intro: [
       "West Delhi — from Ramesh Nagar and Rajouri Garden to Janakpuri, Tilak Nagar and Punjabi Bagh — has no shortage of makeup artists. But 'nearby' and 'right for your face on a big day' are different questions. Here's a local's guide to choosing well, plus honest pricing.",
       "Blushes & Brushes is a West Delhi studio (Ramesh Nagar) and features below — but the checklist applies to any artist you consider.",
@@ -118,7 +118,7 @@ export const GUIDES: Guide[] = [
     description:
       "How to choose the best nail salon in West Delhi — hygiene, gel vs acrylic, prices — plus a top pick in Ramesh Nagar: gel extensions from ₹499 with free nail art at Blushes & Brushes.",
     keywords: ["best nail salon in west delhi", "nail salon ramesh nagar", "nail extensions west delhi", "nail art delhi", "gel nails ramesh nagar"],
-    cover: "/images/gallery/bb-nail-art-stiletto-chrome-01.jpeg",
+    cover: "/images/gallery/bb-nail-art-stiletto-chrome-01.webp",
     intro: [
       "A great nail salon isn't just about pretty designs — it's about hygiene, careful application, and nails that last without damaging your own. Here's how to choose the best nail salon in West Delhi, and what a fair price looks like in 2026.",
       "Blushes & Brushes in Ramesh Nagar is one option (currently ₹499 for gel extensions with free nail art) — the hygiene checklist below applies wherever you go.",
@@ -158,7 +158,7 @@ export const GUIDES: Guide[] = [
     description:
       "Searching 'makeup artist near me' in Delhi? How to find a trusted local artist for bridal, party or nails — what to check, prices, and a 4.8★ West Delhi option that travels to you.",
     keywords: ["makeup artist near me", "makeup artist near me delhi", "bridal makeup near me", "party makeup artist near me delhi", "makeup artist ramesh nagar"],
-    cover: "/images/gallery/bb-bridal-makeup-purple-01.jpeg",
+    cover: "/images/gallery/bb-bridal-makeup-purple-01.webp",
     intro: [
       "When you search 'makeup artist near me' in Delhi, you want three things fast: someone close, someone trusted, and someone who fits your budget. Here's how to sort the good from the average, and how a good artist can come to you anyway.",
       "Blushes & Brushes is based in Ramesh Nagar, West Delhi, and travels across NCR — so 'near me' can mean your home, wherever that is in the west of the city.",

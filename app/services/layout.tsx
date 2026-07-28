@@ -15,7 +15,7 @@ export default function ServicesLayout({ children }: { children: React.ReactNode
         <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
           <Link href="/" className="flex items-center gap-2.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.jpeg" alt="Blushes & Brushes" className="h-9 w-9 rounded-full object-cover" />
+            <img src="/images/logo.webp" alt="Blushes & Brushes" className="h-9 w-9 rounded-full object-cover" />
             <span className="text-[15px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Blushes &amp; Brushes</span>
           </Link>
           <nav className="flex items-center gap-3.5 text-[11.5px] font-semibold sm:gap-4">

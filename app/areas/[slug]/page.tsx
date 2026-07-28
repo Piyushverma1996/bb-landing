@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description,
     keywords: [`makeup artist ${a.area.toLowerCase()}`, `bridal makeup ${a.area.toLowerCase()}`, `party makeup ${a.area.toLowerCase()}`, `beauty parlour ${a.area.toLowerCase()}`, "makeup artist west delhi"].join(", "),
     alternates: { canonical: url },
-    openGraph: { title, description, url, type: "website", images: [{ url: "/images/bridal-real-1.jpg" }], siteName: "Blushes & Brushes by Urvashi Trehan" },
+    openGraph: { title, description, url, type: "website", images: [{ url: "/images/bridal-real-1.webp" }], siteName: "Blushes & Brushes by Urvashi Trehan" },
   };
 }
 
@@ -41,7 +41,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
     "@context": "https://schema.org",
     "@type": "BeautySalon",
     name: `Blushes & Brushes — Makeup Artist serving ${a.area}`,
-    image: "https://blushesnbrushes.com/images/bridal-real-1.jpg",
+    image: "https://blushesnbrushes.com/images/bridal-real-1.webp",
     url,
     telephone: "+917678446364",
     priceRange: "₹₹",
@@ -76,7 +76,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
       <div className="mt-5 overflow-hidden rounded-3xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/bridal-real-1.jpg" alt={`Bridal makeup artist in ${a.area}`} className="w-full object-cover" style={{ maxHeight: 380, objectPosition: "50% 14%" }} />
+        <img src="/images/bridal-real-1.webp" alt={`Bridal makeup artist in ${a.area}`} className="w-full object-cover" style={{ maxHeight: 380, objectPosition: "50% 14%" }} />
       </div>
 
       <p className="mt-6 text-[14.5px] leading-[1.75] text-[#1A5A54]/90">{a.localIntro}</p>

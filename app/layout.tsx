@@ -39,7 +39,7 @@ export const metadata: Metadata = {
       "Bridal & party makeup, nail art & beauty. HD & airbrush bridal, travels across Delhi NCR. 4.8★, 200+ happy brides. Book your look on WhatsApp.",
     url: "https://blushesnbrushes.com",
     siteName: "Blushes & Brushes by Urvashi Trehan",
-    images: [{ url: "/images/bridal-hero.jpg", width: 712, height: 892, alt: "Bridal makeup by Urvashi Trehan" }],
+    images: [{ url: "/images/bridal-hero.webp", width: 712, height: 892, alt: "Bridal makeup by Urvashi Trehan" }],
     locale: "en_IN",
     type: "website",
   },
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Bridal & Party Makeup, Nail Art & Beauty | Blushes & Brushes",
     description: "Look flawless on your big day. Book bridal, party, nails & beauty with Urvashi Trehan — Ramesh Nagar, Delhi.",
-    images: ["/images/bridal-hero.jpg"],
+    images: ["/images/bridal-hero.webp"],
   },
 };
 

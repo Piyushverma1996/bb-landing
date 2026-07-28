@@ -278,7 +278,7 @@ export default function InvoiceTool() {
             {/* Letterhead — business identity: logo · name · address · contact */}
             <div className="bb-letterhead flex items-start gap-4 px-8 py-6" style={{ background: `linear-gradient(120deg,${BRAND.tealDeep},${BRAND.teal} 60%,${BRAND.gold})` }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo.jpeg" alt="Blushes & Brushes" className="h-16 w-16 shrink-0 rounded-full border-2 border-white/70 object-cover" />
+              <img src="/images/logo.webp" alt="Blushes & Brushes" className="h-16 w-16 shrink-0 rounded-full border-2 border-white/70 object-cover" />
               <div className="flex-1">
                 <h2 className="text-2xl font-bold leading-tight text-white" style={{ fontFamily: "'Playfair Display', Georgia, serif" }}>Blushes &amp; Brushes</h2>
                 <p className="text-[10px] font-semibold tracking-widest text-white/85">BRIDAL MAKEUP · NAIL ART · BEAUTY STUDIO</p>

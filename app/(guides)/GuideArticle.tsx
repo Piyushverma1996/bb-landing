@@ -43,7 +43,7 @@ export default function GuideArticle({ slug }: { slug: string }) {
     "@context": "https://schema.org", "@type": "Article", headline: g.h1, description: g.description,
     image: `https://blushesnbrushes.com${g.cover}`, datePublished: "2026-07-16", dateModified: "2026-07-23",
     author: { "@type": "Person", name: "Urvashi Trehan", jobTitle: "Makeup Artist", worksFor: { "@type": "BeautySalon", name: "Blushes & Brushes" } },
-    publisher: { "@type": "Organization", name: "Blushes & Brushes", logo: { "@type": "ImageObject", url: "https://blushesnbrushes.com/images/logo.jpeg" } },
+    publisher: { "@type": "Organization", name: "Blushes & Brushes", logo: { "@type": "ImageObject", url: "https://blushesnbrushes.com/images/logo.webp" } },
     mainEntityOfPage: url,
   };
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: g.faq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };

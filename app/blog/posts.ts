@@ -32,7 +32,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-08",
     readMins: 6,
-    cover: "/images/bridal-hero.jpg",
+    cover: "/images/bridal-hero.webp",
     keywords: ["bridal makeup delhi", "hd vs airbrush makeup", "airbrush bridal makeup", "wedding makeup west delhi"],
     body: [
       { p: "Every bride who books a trial asks the same first question: HD or airbrush? Both give a flawless finish in photos — the real difference shows up eight hours later, on a Delhi wedding day that runs from a morning Sagan to a midnight reception. Here is the honest, artist's-eye comparison." },
@@ -61,7 +61,7 @@ export const POSTS: Post[] = [
     category: "Nails",
     date: "2026-07-11",
     readMins: 5,
-    cover: "/images/nails-1.jpg",
+    cover: "/images/nails-1.webp",
     keywords: ["nail extensions", "how long do nail extensions last", "gel nail aftercare", "nail extensions west delhi", "nail art ramesh nagar"],
     body: [
       { p: "You've just left the studio with a fresh set of extensions and one question in mind: how long will these actually last? The short answer is three to four weeks before a refill — but how well they wear depends almost entirely on aftercare. Here's how to get the full life out of your set." },
@@ -98,7 +98,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-15",
     readMins: 7,
-    cover: "/images/new-bridal-red.jpg",
+    cover: "/images/new-bridal-red.webp",
     keywords: ["bridal makeup cost delhi", "bridal makeup price delhi 2026", "makeup artist charges delhi", "airbrush makeup price", "engagement makeup cost delhi"],
     body: [
       { p: "Bridal makeup quotes in Delhi run anywhere from ₹8,000 to ₹1,00,000+, and most brides have no idea why. As a working artist, here is the transparent breakdown — what different price bands actually buy you, and the questions that protect you from overpaying (or worse, underpaying and regretting it)." },
@@ -140,7 +140,7 @@ export const POSTS: Post[] = [
     category: "Local Guide",
     date: "2026-07-15",
     readMins: 5,
-    cover: "/images/new-bridal-peach.jpg",
+    cover: "/images/new-bridal-peach.webp",
     keywords: ["makeup artist ramesh nagar", "best makeup artist west delhi", "salon ramesh nagar", "bridal makeup rajouri garden", "nail salon tilak nagar"],
     body: [
       { p: "West Delhi has no shortage of salons — Ramesh Nagar, Rajouri Garden, Tilak Nagar and Subhash Nagar alone have dozens. But 'nearby' and 'right for your face on a big day' are different questions. Here's the checklist locals actually use." },
@@ -179,7 +179,7 @@ export const POSTS: Post[] = [
     category: "Occasion",
     date: "2026-07-15",
     readMins: 6,
-    cover: "/images/new-occasion-green.jpg",
+    cover: "/images/new-occasion-green.webp",
     keywords: ["engagement makeup delhi", "roka makeup look", "sagan makeup", "pre wedding function makeup", "cocktail makeup delhi"],
     body: [
       { p: "The biggest pre-wedding makeup mistake? Wearing the same intensity to every function. Your Roka photos sit next to your wedding album forever — each event deserves its own look, and its own (sensible) budget. Here's the function-by-function guide we give our own clients." },
@@ -212,7 +212,7 @@ export const POSTS: Post[] = [
     category: "Tips",
     date: "2026-07-15",
     readMins: 5,
-    cover: "/images/new-natural.jpg",
+    cover: "/images/new-natural.webp",
     keywords: ["monsoon wedding makeup", "humidity proof makeup delhi", "long lasting makeup tips", "waterproof bridal makeup", "summer wedding makeup india"],
     body: [
       { p: "July to September weddings in Delhi are beautiful — and 85% humidity is merciless on makeup. After seven years of monsoon brides, these are the nine techniques that actually work (and the two myths that don't)." },
@@ -245,7 +245,7 @@ export const POSTS: Post[] = [
     category: "Occasion",
     date: "2026-07-15",
     readMins: 5,
-    cover: "/images/party-glam.jpg",
+    cover: "/images/party-glam.webp",
     keywords: ["party makeup price delhi", "party makeup west delhi", "party makeup cost ramesh nagar", "makeup artist rates delhi", "sangeet makeup price"],
     body: [
       { p: "Party makeup quotes in West Delhi swing from ₹1,500 at a neighbourhood parlour to ₹8,000+ with an established artist — and the difference isn't always obvious until the photos come back. Here's the honest breakdown of what each band buys, from someone who quotes these prices daily." },
@@ -280,7 +280,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-15",
     readMins: 6,
-    cover: "/images/bridal-2.jpg",
+    cover: "/images/bridal-2.webp",
     keywords: ["bridal makeup trial", "makeup trial checklist", "bridal trial what to expect", "questions to ask makeup artist", "bridal makeup trial delhi"],
     body: [
       { p: "Most brides treat the trial as a preview of their look. Treat it as an audition instead — you're testing the artist, the products, and the wear, not just the mirror moment. Here are the 12 checks that tell you everything before you transfer the advance." },
@@ -321,7 +321,7 @@ export const POSTS: Post[] = [
     category: "Nails",
     date: "2026-07-15",
     readMins: 5,
-    cover: "/images/nails-2.jpg",
+    cover: "/images/nails-2.webp",
     keywords: ["gel vs acrylic nails", "gel extensions vs acrylic", "nail extensions type", "gel nails price india", "acrylic nails damage"],
     body: [
       { p: "The first question at every nail consultation: gel or acrylic? Both give you length and a canvas for art — but they differ in feel, wear, removal and how your natural nails survive underneath. Here's the honest comparison we give clients at the studio." },
@@ -363,7 +363,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-15",
     readMins: 6,
-    cover: "/images/new-bridal-purple.jpg",
+    cover: "/images/new-bridal-purple.webp",
     keywords: ["december wedding makeup", "winter bridal makeup delhi", "bridal skin preparation timeline", "wedding makeup booking timeline", "delhi wedding season makeup artist"],
     body: [
       { p: "December is Delhi's biggest wedding month — which means the best artists are booked by September, and winter skin needs a completely different runway than summer. If your wedding is in December, this is your working-backwards timeline, starting 90 days out." },
@@ -407,7 +407,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-16",
     readMins: 6,
-    cover: "/images/new-bridal-red.jpg",
+    cover: "/images/new-bridal-red.webp",
     keywords: ["makeup for indian skin", "foundation shade indian skin", "makeup artist delhi indian skin", "blush shades brown skin", "lip colour indian skin tone"],
     body: [
       { p: "Most bad wedding makeup in India isn't 'too much' — it's the wrong colour. Foundation too fair, blush that reads chalky, lipstick that fights the outfit. After seven years of Delhi brides across every skin tone, here's the shade-matching guide I wish more artists shared." },
@@ -449,7 +449,7 @@ export const POSTS: Post[] = [
     category: "Tips",
     date: "2026-07-16",
     readMins: 5,
-    cover: "/images/nails-2.jpg",
+    cover: "/images/nails-2.webp",
     keywords: ["salon hygiene checklist", "hygienic salon delhi", "clean nail salon ramesh nagar", "salon infection risk", "safe beauty salon delhi"],
     body: [
       { p: "Delhi has thousands of salons and honestly, most look clean. Actual hygiene is a different question — and the difference shows up as infections, nail damage and skin reactions. Here are the 8 things a professional would spot in the first 30 seconds walking in." },
@@ -482,7 +482,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-16",
     readMins: 6,
-    cover: "/images/new-bridal-purple.jpg",
+    cover: "/images/new-bridal-purple.webp",
     keywords: ["wedding day makeup timeline", "bridal morning schedule delhi", "makeup artist arrival time", "how long does bridal makeup take", "wedding morning timeline india"],
     body: [
       { p: "The single biggest wedding-day stressor isn't the makeup — it's the *clock*. Photographer waiting, family standing around, dupatta pinning at the last minute. This is the timeline I share with every bride whose wedding I book, working backwards from her first-look moment." },
@@ -521,7 +521,7 @@ export const POSTS: Post[] = [
     category: "Tips",
     date: "2026-07-23",
     readMins: 6,
-    cover: "/images/new-natural.jpg",
+    cover: "/images/new-natural.webp",
     keywords: ["pre wedding skincare routine", "bridal skincare india", "skin prep before wedding", "glowing skin for wedding delhi", "pre bridal facial routine"],
     body: [
       { p: "Great bridal makeup starts with the skin underneath it — no foundation fixes dehydration, and no highlighter fakes genuine glow. Here's the skincare countdown we walk every bride through, built around what actually shows up on camera, not what's trending." },
@@ -566,7 +566,7 @@ export const POSTS: Post[] = [
     category: "Bridal",
     date: "2026-07-23",
     readMins: 5,
-    cover: "/images/new-bridal-red.jpg",
+    cover: "/images/new-bridal-red.webp",
     keywords: ["bridal makeup lehenga colour", "makeup for red lehenga", "makeup for pastel lehenga", "bridal makeup colour matching", "lehenga makeup guide"],
     body: [
       { p: "One of the most common questions we get at trials: \"my lehenga is [colour] — what makeup goes with it?\" The honest answer is that makeup should complement your outfit's undertone, not literally match its colour. Here's how we approach it by lehenga shade." },
