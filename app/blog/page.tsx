@@ -14,7 +14,7 @@ export default function BlogIndex() {
           Bridal, Nail &amp; Beauty Tips
         </h1>
         <p className="mx-auto mt-3 max-w-xl text-[13px] leading-relaxed text-[#1A5A54]/70">
-          Honest, artist-tested advice on makeup, nails and skin — from Urvashi Trehan&rsquo;s studio in Ramesh Nagar, West Delhi.
+          Honest, artist-tested advice on makeup, nails and skin - from Urvashi Trehan&rsquo;s studio in Ramesh Nagar, West Delhi.
         </p>
       </div>
 

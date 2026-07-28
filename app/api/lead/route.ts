@@ -12,7 +12,7 @@ function saveLocally(payload: Record<string, string>) {
     mkdirSync(dir, { recursive: true });
     const line = JSON.stringify(payload) + "\n";
     appendFileSync(join(dir, "leads.ndjson"), line, "utf8");
-  } catch { /* non-critical — best effort */ }
+  } catch { /* non-critical - best effort */ }
 }
 
 async function notifyUrvashi(payload: Record<string, string>) {
@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
     timestamp: new Date().toISOString(),
   };
 
-  // Always save locally first — zero lead loss even if webhook is unconfigured
+  // Always save locally first - zero lead loss even if webhook is unconfigured
   saveLocally(payload);
 
   // Fire WhatsApp alert to Urvashi immediately (non-blocking)
@@ -75,6 +75,6 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // Always return success to the user — lead is captured locally regardless
+  // Always return success to the user - lead is captured locally regardless
   return NextResponse.json({ ok: true }, { status: 200 });
 }

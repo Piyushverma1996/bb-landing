@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Shotstack API — automated video rendering
+// Shotstack API - automated video rendering
 // Docs: https://shotstack.io/docs/api/
 // Plan: $39/month Indie (1,000 renders). Cost: ~₹0.25 per 15-sec render.
 
@@ -13,8 +13,8 @@ const BB_BRAND = {
   gold: "#C9A066",
   cream: "#F5EDD8",
   dark: "#12291F",
-  font_bold: "Montserrat",      // Free Google Font — bold caps text overlays
-  font_script: "Great Vibes",   // Free Google Font — handwriting accent
+  font_bold: "Montserrat",      // Free Google Font - bold caps text overlays
+  font_script: "Great Vibes",   // Free Google Font - handwriting accent
 };
 
 // Build a Shotstack render payload from script + video clips
@@ -45,10 +45,10 @@ function buildShotstackPayload(opts: {
       volume: 0.6,
     } : undefined,
     tracks: [
-      // Track 0 — text overlays (top layer)
+      // Track 0 - text overlays (top layer)
       {
         clips: [
-          // Hook text — 0 to 4s
+          // Hook text - 0 to 4s
           {
             asset: {
               type: "html",
@@ -68,7 +68,7 @@ function buildShotstackPayload(opts: {
             start: 1.5, length: 2.5, position: "center", offset: { y: 0.12 },
             transition: { in: "fadeIn", out: "fadeOut" },
           }] : []),
-          // Overlay 1 — 5 to 12s
+          // Overlay 1 - 5 to 12s
           {
             asset: {
               type: "html",
@@ -78,7 +78,7 @@ function buildShotstackPayload(opts: {
             start: 5, length: 6, position: "center",
             transition: { in: "slideUp", out: "fadeOut" },
           },
-          // Overlay 2 — 12 to 22s
+          // Overlay 2 - 12 to 22s
           {
             asset: {
               type: "html",
@@ -88,7 +88,7 @@ function buildShotstackPayload(opts: {
             start: 12, length: 9, position: "center",
             transition: { in: "slideUp", out: "fadeOut" },
           },
-          // Overlay 3 — 22 to 32s
+          // Overlay 3 - 22 to 32s
           {
             asset: {
               type: "html",
@@ -98,7 +98,7 @@ function buildShotstackPayload(opts: {
             start: 22, length: 9, position: "center",
             transition: { in: "slideUp", out: "fadeOut" },
           },
-          // End card — 32 to 40s
+          // End card - 32 to 40s
           {
             asset: {
               type: "html",
@@ -113,7 +113,7 @@ function buildShotstackPayload(opts: {
             start: 32, length: 8, position: "center",
             transition: { in: "fadeIn" },
           },
-          // Bottom ticker — full video
+          // Bottom ticker - full video
           {
             asset: {
               type: "html",
@@ -124,14 +124,14 @@ function buildShotstackPayload(opts: {
           },
         ],
       },
-      // Track 1 — end card dark overlay (behind text, over footage)
+      // Track 1 - end card dark overlay (behind text, over footage)
       {
         clips: [{
           asset: { type: "html", html: `<div style="background:${BB_BRAND.dark}CC;width:720px;height:1280px;"></div>`, width: 720, height: 1280 },
           start: 32, length: 8, position: "center",
         }],
       },
-      // Track 2 — footage clips
+      // Track 2 - footage clips
       {
         clips: [
           // Hook dark bg
@@ -167,7 +167,7 @@ export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
 
   if (!SHOTSTACK_KEY) {
-    return NextResponse.json({ error: "Add SHOTSTACK_API_KEY to .env.local. Sign up at shotstack.io — free stage environment available." }, { status: 400 });
+    return NextResponse.json({ error: "Add SHOTSTACK_API_KEY to .env.local. Sign up at shotstack.io - free stage environment available." }, { status: 400 });
   }
 
   const payload = buildShotstackPayload({
@@ -190,7 +190,7 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// GET /api/video/render?id=RENDER_ID — poll render status
+// GET /api/video/render?id=RENDER_ID - poll render status
 export async function GET(req: NextRequest) {
   const id = req.nextUrl.searchParams.get("id");
   if (!id) return NextResponse.json({ error: "id required" }, { status: 400 });

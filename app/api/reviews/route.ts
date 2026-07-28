@@ -3,9 +3,9 @@ import { appendFileSync, mkdirSync } from "fs";
 import { join } from "path";
 import { DRAFTS } from "./drafts";
 
-// Daily reviews tracker — logs each written review with who got it (Urvashi/Kukkie/Asha),
+// Daily reviews tracker - logs each written review with who got it (Urvashi/Kukkie/Asha),
 // which platform (Google/Justdial/magicpin), and whether it had a photo (Google only).
-// Payout rule: staff (Kukkie/Asha) earn ₹50 for the 3rd review of the day WITH a photo — computed here.
+// Payout rule: staff (Kukkie/Asha) earn ₹50 for the 3rd review of the day WITH a photo - computed here.
 // Backend: extends the existing Apps Script → "Reviews" tab. See § REVIEWS in BB_AppsScript_FULL.gs.
 const WRITE_URL = process.env.WEBHOOK_URL ?? "";
 const READ_URL = process.env.GSHEET_API_URL ?? process.env.WEBHOOK_URL ?? "";
@@ -56,7 +56,7 @@ export async function GET() {
     const today = todayISO();
     const dayRows = rows.filter((r) => r.date === today);
 
-    // Per-person day view — payout is on the 3rd+ review of the day WITH photo, and only for staff.
+    // Per-person day view - payout is on the 3rd+ review of the day WITH photo, and only for staff.
     const today_summary = PEOPLE.map((p) => {
       const mine = dayRows.filter((r) => r.person === p);
       const withPhoto = mine.filter((r) => r.photo).length;
@@ -131,7 +131,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("Reviews POST failed:", err);
-    return NextResponse.json({ error: "Sheet write failed — logged locally" }, { status: 502 });
+    return NextResponse.json({ error: "Sheet write failed - logged locally" }, { status: 502 });
   }
 }
 

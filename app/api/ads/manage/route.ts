@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-// Meta Marketing API — campaign creation, ad management, auto-optimization
+// Meta Marketing API - campaign creation, ad management, auto-optimization
 // Docs: https://developers.facebook.com/docs/marketing-apis
 
 const TOKEN       = process.env.META_ACCESS_TOKEN ?? "";
@@ -64,14 +64,14 @@ async function createCampaign(opts: {
   const campaign = await graphPost(`${AD_ACCOUNT}/campaigns`, {
     name: opts.name,
     objective: "LEAD_GENERATION",
-    status: "PAUSED", // Always start paused — Piyush reviews before going live
+    status: "PAUSED", // Always start paused - Piyush reviews before going live
     special_ad_categories: [],
   });
   if (campaign.error) return { error: campaign.error };
 
   // 2. Ad Set
   const adSet = await graphPost(`${AD_ACCOUNT}/adsets`, {
-    name: `${opts.name} — West Delhi Women`,
+    name: `${opts.name} - West Delhi Women`,
     campaign_id: campaign.id,
     billing_event: "IMPRESSIONS",
     optimization_goal: "LEAD_GENERATION",
@@ -150,14 +150,14 @@ async function runOptimization() {
     let reason = "";
 
     if (cpl > 1200 && spend > 500) {
-      // Too expensive — pause
+      // Too expensive - pause
       await graphPost(`${ad.id}`, { status: "PAUSED" });
       action = "paused";
       reason = `CPL ₹${Math.round(cpl)} > ₹1,200 threshold`;
     } else if (cpl < 400 && spend > 300) {
-      // Performing well — note for Piyush to increase budget
+      // Performing well - note for Piyush to increase budget
       action = "scale_recommended";
-      reason = `CPL ₹${Math.round(cpl)} < ₹400 — increase budget 20%`;
+      reason = `CPL ₹${Math.round(cpl)} < ₹400 - increase budget 20%`;
     }
 
     if (action !== "none") results.push({ ad_id: ad.id, action, reason });
@@ -166,10 +166,10 @@ async function runOptimization() {
   return { optimized: results.length, results };
 }
 
-// GET — list active campaigns with performance
+// GET - list active campaigns with performance
 export async function GET() {
   if (!TOKEN || !AD_ACCOUNT) {
-    return NextResponse.json({ error: "Meta not configured — add META_ACCESS_TOKEN and META_AD_ACCOUNT_ID" });
+    return NextResponse.json({ error: "Meta not configured - add META_ACCESS_TOKEN and META_AD_ACCOUNT_ID" });
   }
 
   const [campaigns, insights] = await Promise.all([
@@ -180,7 +180,7 @@ export async function GET() {
   return NextResponse.json({ campaigns: campaigns.data ?? [], insights: insights.data?.[0] ?? {} });
 }
 
-// POST — create campaign OR run optimization
+// POST - create campaign OR run optimization
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}));
   const action = body.action ?? "create";
@@ -197,7 +197,7 @@ export async function POST(req: NextRequest) {
       dailyBudget: body.daily_budget ?? 150,
       videoId: body.video_id,
       imageUrl: body.image_url,
-      headline: body.headline ?? "Blushes & Brushes — Book Now",
+      headline: body.headline ?? "Blushes & Brushes - Book Now",
       body: body.body ?? "Premium nail and makeup services in West Delhi. WhatsApp to book.",
       landingPage: process.env.NEXT_PUBLIC_APP_URL ?? "https://your-app.vercel.app",
     });

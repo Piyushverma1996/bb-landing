@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { AREAS } from "./areaData";
 
 export const metadata: Metadata = {
-  title: "Makeup Artist in West Delhi — Areas We Serve | Blushes & Brushes",
+  title: "Makeup Artist in West Delhi - Areas We Serve | Blushes & Brushes",
   description:
-    "Bridal & party makeup artist serving all of West Delhi — Ramesh Nagar, Rajouri Garden, Tilak Nagar, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka & more. Travels to your venue.",
+    "Bridal & party makeup artist serving all of West Delhi - Ramesh Nagar, Rajouri Garden, Tilak Nagar, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka & more. Travels to your venue.",
   alternates: { canonical: "https://blushesnbrushes.com/areas" },
 };
 
@@ -18,7 +18,7 @@ export default function AreasIndex() {
           Makeup Artist Serving All of West Delhi
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-relaxed text-[#1A5A54]/70">
-          Our studio is in Ramesh Nagar — and Urvashi Trehan travels across West Delhi and up to 15 km around for bridal, engagement and party makeup. Find your area below.
+          Our studio is in Ramesh Nagar - and Urvashi Trehan travels across West Delhi and up to 15 km around for bridal, engagement and party makeup. Find your area below.
         </p>
       </div>
 

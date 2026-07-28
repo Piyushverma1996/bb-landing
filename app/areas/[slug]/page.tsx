@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = getArea(slug);
   if (!a) return { title: "Not found | Blushes & Brushes" };
   const url = `https://blushesnbrushes.com/areas/${a.slug}`;
-  const title = `Best Makeup Artist in ${a.area} — Bridal, Party & Nails | Blushes & Brushes`;
+  const title = `Best Makeup Artist in ${a.area} - Bridal, Party & Nails | Blushes & Brushes`;
   const description = `Bridal, party & engagement makeup in ${a.area}, West Delhi by Urvashi Trehan. HD & airbrush, travels to your venue (${a.distance}). 4.8★, 200+ brides. Free consultation.`;
   return {
     title,
@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 const SHARED_FAQ = [
   { q: "How much does bridal makeup cost?", a: "HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka ₹10,000–15,000, reception ₹12,000–16,000. Every quote includes hair, draping, lashes and a touch-up kit." },
-  { q: "Do you offer a trial before the wedding?", a: "Yes — trials are ₹3,000 at the Ramesh Nagar studio, adjusted against your booking, recommended 4–8 weeks before the wedding." },
+  { q: "Do you offer a trial before the wedding?", a: "Yes - trials are ₹3,000 at the Ramesh Nagar studio, adjusted against your booking, recommended 4–8 weeks before the wedding." },
 ];
 
 export default async function AreaPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -40,7 +40,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
   const bizLd = {
     "@context": "https://schema.org",
     "@type": "BeautySalon",
-    name: `Blushes & Brushes — Makeup Artist serving ${a.area}`,
+    name: `Blushes & Brushes - Makeup Artist serving ${a.area}`,
     image: "https://blushesnbrushes.com/images/bridal-real-1.webp",
     url,
     telephone: "+917678446364",
@@ -70,7 +70,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       </nav>
 
       <h1 className="mt-3 text-[27px] font-bold leading-tight md:text-[34px]" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>
-        {h1} <span className="text-[#C9A55C]">— West Delhi</span>
+        {h1} <span className="text-[#C9A55C]">- West Delhi</span>
       </h1>
       <p className="mt-2 text-[12px] font-semibold text-[#C9A55C]">★ 4.8 Google · 200+ brides · {a.distance}{a.metro ? ` · Metro: ${a.metro}` : ""}</p>
 
@@ -88,7 +88,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       </div>
 
       <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Makeup &amp; beauty services in {a.area}</h2>
-      <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">Urvashi Trehan offers the full Blushes &amp; Brushes menu to {a.area} clients — bridal and occasion makeup travels to your venue, while nails and beauty are done at the Ramesh Nagar studio:</p>
+      <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">Urvashi Trehan offers the full Blushes &amp; Brushes menu to {a.area} clients - bridal and occasion makeup travels to your venue, while nails and beauty are done at the Ramesh Nagar studio:</p>
       <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
         {[
           { t: "Bridal Makeup", d: "HD ₹18–22K · Airbrush ₹25–30K", href: "/services/bridal-makeup" },
@@ -105,7 +105,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
       <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Why {a.area} brides choose Blushes &amp; Brushes</h2>
       <ul className="my-3 space-y-2 pl-1">
-        {["200+ brides served across West Delhi with a 4.8★ Google rating", "HD & airbrush makeup that lasts through long Delhi functions", "Premium products — HD Forever 52, NARS, Huda Beauty", "Transparent pricing with hair, lashes & draping included", `Travels to ${a.area} venues with a written arrival time`].map((li, i) => (
+        {["200+ brides served across West Delhi with a 4.8★ Google rating", "HD & airbrush makeup that lasts through long Delhi functions", "Premium products - HD Forever 52, NARS, Huda Beauty", "Transparent pricing with hair, lashes & draping included", `Travels to ${a.area} venues with a written arrival time`].map((li, i) => (
           <li key={i} className="flex gap-2.5 text-[14px] leading-relaxed text-[#1A5A54]/85"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9A55C]" /><span>{li}</span></li>
         ))}
       </ul>
@@ -113,7 +113,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
       {/* CTA */}
       <div className="mt-8 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
         <p className="text-[17px] font-bold" style={{ fontFamily: "var(--font-playfair), serif" }}>Booking makeup in {a.area}?</p>
-        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Get a free consultation — tell us your date &amp; venue and Urvashi replies within the hour.</p>
+        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Get a free consultation - tell us your date &amp; venue and Urvashi replies within the hour.</p>
         <div className="mt-4 flex flex-wrap justify-center gap-2.5">
           <a href="/#book" className="rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Free consultation →</a>
           <a href={`https://wa.me/917678446364?text=${encodeURIComponent(`Hi Urvashi, I'm in ${a.area} and would like a free consultation`)}`} className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">WhatsApp us</a>
@@ -122,7 +122,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
       {/* FAQ */}
       <section className="mt-10">
-        <h2 className="text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>{a.area} — frequently asked</h2>
+        <h2 className="text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>{a.area} - frequently asked</h2>
         <div className="mt-4 space-y-3">
           {faqs.map((f, i) => (
             <details key={i} className="group rounded-2xl border border-[#C9A55C]/25 bg-white/80 p-4">

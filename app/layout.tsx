@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   title: "Bridal & Party Makeup, Nail Art & Beauty | Blushes & Brushes by Urvashi Trehan – Ramesh Nagar, Delhi",
   description:
-    "Look flawless on your big day. Bridal & party makeup, nail art and beauty by Urvashi Trehan. HD & airbrush bridal, travels across Delhi NCR. Studio in Ramesh Nagar. Book on WhatsApp — 4.8★, 200+ happy brides.",
+    "Look flawless on your big day. Bridal & party makeup, nail art and beauty by Urvashi Trehan. HD & airbrush bridal, travels across Delhi NCR. Studio in Ramesh Nagar. Book on WhatsApp - 4.8★, 200+ happy brides.",
   keywords:
     "bridal makeup delhi, party makeup ramesh nagar, nail art delhi, nail extensions, airbrush bridal makeup, engagement roka makeup, keratin hair spa, makeup artist west delhi, Urvashi Trehan, Blushes and Brushes",
   openGraph: {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Bridal & Party Makeup, Nail Art & Beauty | Blushes & Brushes",
-    description: "Look flawless on your big day. Book bridal, party, nails & beauty with Urvashi Trehan — Ramesh Nagar, Delhi.",
+    description: "Look flawless on your big day. Book bridal, party, nails & beauty with Urvashi Trehan - Ramesh Nagar, Delhi.",
     images: ["/images/bridal-hero.webp"],
   },
 };

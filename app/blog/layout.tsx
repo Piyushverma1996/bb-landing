@@ -7,7 +7,7 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Journal — Bridal, Nail & Beauty Tips | Blushes & Brushes",
+  title: "Journal - Bridal, Nail & Beauty Tips | Blushes & Brushes",
   description:
     "Makeup and beauty tips, bridal guides and nail-care advice from Urvashi Trehan of Blushes & Brushes, Ramesh Nagar, Delhi.",
 };

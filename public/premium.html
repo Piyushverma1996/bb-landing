@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!--
-  BLUSHES & BRUSHES — Premium Homepage (v2)
+  BLUSHES & BRUSHES - Premium Homepage (v2)
   ------------------------------------------------------------------
   Stack: Pure HTML + hand-written CSS (no Tailwind CDN, no Lenis/GSAP).
   Native scroll + IntersectionObserver reveals = zero scroll jank.
@@ -13,10 +13,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blushes &amp; Brushes — Bridal Couture Makeup, Nail Artistry &amp; Beauty | New Delhi</title>
-  <meta name="description" content="Ultra-premium bridal and occasion makeup, nail artistry and beauty by Urvashi Trehan. Studio in Ramesh Nagar, New Delhi — travels across Delhi NCR. 4.8★ · 200+ brides." />
-  <meta property="og:title" content="Blushes &amp; Brushes — The art of looking unforgettable" />
-  <meta property="og:description" content="Bridal couture makeup, nail artistry & beauty by Urvashi Trehan. Ramesh Nagar, New Delhi — travels across Delhi NCR." />
+  <title>Blushes &amp; Brushes - Bridal Couture Makeup, Nail Artistry &amp; Beauty | New Delhi</title>
+  <meta name="description" content="Ultra-premium bridal and occasion makeup, nail artistry and beauty by Urvashi Trehan. Studio in Ramesh Nagar, New Delhi - travels across Delhi NCR. 4.8★ · 200+ brides." />
+  <meta property="og:title" content="Blushes &amp; Brushes - The art of looking unforgettable" />
+  <meta property="og:description" content="Bridal couture makeup, nail artistry & beauty by Urvashi Trehan. Ramesh Nagar, New Delhi - travels across Delhi NCR." />
   <meta property="og:image" content="https://blushesnbrushes.com/images/bridal-hero.webp" />
   <meta property="og:url" content="https://blushesnbrushes.com" />
   <meta property="og:type" content="website" />
@@ -68,6 +68,26 @@
     "geo": { "@type": "GeoCoordinates", "latitude": 28.6517, "longitude": 77.1297 },
     "areaServed": ["Ramesh Nagar","Rajouri Garden","Tilak Nagar","Janakpuri","Subhash Nagar","Kirti Nagar","Moti Nagar","Punjabi Bagh","Paschim Vihar","Hari Nagar","Uttam Nagar","Vikaspuri","Naraina","Patel Nagar","Karol Bagh","Dwarka","West Delhi","Delhi NCR"],
     "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "reviewCount": "200", "bestRating": "5" },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Jasvinder Sodhi" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "She made me look absolutely flawless while still keeping my natural features intact. The makeup was beautifully done, enhancing my features still looking natural and elegant. I am so happy with how my makeup turned out on my engagement day, it was perfect!"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Muskan Ansari" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "I have booked Urvashi for my bridal makeup and had done my pre bridal services from Blushes & Brushes. Staff and environment is very friendly and cooperative. I have made my best decision in life to book her for my bridal makeup, she did amazing makeover to myself. Must recommend her to everyone."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Savita Pol" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Amazing services, got my pre bridal done - all services waxing, manicure, pedicure, full body polishing. It was soo relaxing and staff is very polite and kind in nature. I have also booked my bridal makeup with her and that was also very good, all was complimenting my makeup on my big day. Must recommend Urvashi and her team to everyone."
+      }
+    ],
     "founder": { "@type": "Person", "name": "Urvashi Trehan", "jobTitle": "Makeup Artist" },
     "knowsAbout": ["Bridal Makeup","HD Makeup","Airbrush Makeup","Party Makeup","Nail Extensions","Nail Art","Facials","Hairstyling"],
     "hasOfferCatalog": {
@@ -110,7 +130,7 @@
     .kicker { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep); }
     .rule { width: 56px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 14px 0; }
 
-    /* reveals — CSS-only animation, driven by IntersectionObserver toggling .in */
+    /* reveals - CSS-only animation, driven by IntersectionObserver toggling .in */
     .rv { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.19,1,.22,1), transform .9s cubic-bezier(.19,1,.22,1); }
     .rv.in { opacity: 1; transform: none; }
     .rv.d1 { transition-delay: .08s; } .rv.d2 { transition-delay: .16s; } .rv.d3 { transition-delay: .24s; } .rv.d4 { transition-delay: .32s; }
@@ -128,7 +148,7 @@
     .links a { position: relative; padding-bottom: 3px; }
     .links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .45s cubic-bezier(.19,1,.22,1); }
     .links a:hover::after { transform: scaleX(1); transform-origin: left; }
-    /* Mobile nav ribbon — horizontally-scrollable link strip under the brand row */
+    /* Mobile nav ribbon - horizontally-scrollable link strip under the brand row */
     .mnav { display: flex; gap: 20px; align-items: center; overflow-x: auto; padding: 8px 22px 10px; -webkit-overflow-scrolling: touch; scrollbar-width: none; background: rgba(251,244,234,.9); backdrop-filter: blur(8px); border-top: 1px solid rgba(201,165,92,.18); }
     .mnav::-webkit-scrollbar { display: none; }
     .mnav a { flex: 0 0 auto; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
@@ -138,6 +158,23 @@
     .btn-teal { background: var(--ink); color: var(--cream); }
     .btn-teal:hover { background: var(--gold); color: #2b2118; }
     .btn-gold { background: linear-gradient(120deg, var(--teal), var(--gold)); color: #fff; }
+    /* Prominent primary CTA - larger, glowing, gently pulsing so the eye lands on it */
+    .btn-cta {
+      background: linear-gradient(120deg, var(--teal), var(--gold)); color: #fff;
+      font-size: 13px; padding: 18px 40px; letter-spacing: .14em;
+      box-shadow: 0 10px 30px -8px rgba(46,139,131,.65), 0 0 0 0 rgba(201,165,92,.55);
+      animation: ctaPulse 2.8s cubic-bezier(.4,0,.6,1) infinite;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 16px 38px -8px rgba(46,139,131,.75); animation: none; }
+    @keyframes ctaPulse {
+      0%   { box-shadow: 0 10px 30px -8px rgba(46,139,131,.65), 0 0 0 0 rgba(201,165,92,.5); }
+      70%  { box-shadow: 0 10px 30px -8px rgba(46,139,131,.65), 0 0 0 16px rgba(201,165,92,0); }
+      100% { box-shadow: 0 10px 30px -8px rgba(46,139,131,.65), 0 0 0 0 rgba(201,165,92,0); }
+    }
+    @media (prefers-reduced-motion: reduce) { .btn-cta { animation: none; } }
+    /* Nav book button - bigger and gold-gradient so it reads as THE action */
+    .nav-book { background: linear-gradient(120deg, var(--teal), var(--gold)) !important; color: #fff !important; padding: 13px 28px !important; font-size: 11.5px !important; box-shadow: 0 6px 18px -6px rgba(46,139,131,.6); }
+    .nav-book:hover { box-shadow: 0 10px 24px -6px rgba(46,139,131,.8); }
     .btn-line { border: 1px solid rgba(46,139,131,.4); color: var(--ink); }
     .btn-line:hover { border-color: var(--gold); color: var(--gold-deep); }
 
@@ -183,7 +220,7 @@
     .svc figure { position: relative; height: 260px; overflow: hidden; }
     .svc figure img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 20%; transition: transform .8s cubic-bezier(.19,1,.22,1); }
     .svc:hover figure img { transform: scale(1.06); }
-    /* Carousel — crossfade between 2-3 images per card */
+    /* Carousel - crossfade between 2-3 images per card */
     .carousel img { position: absolute; inset: 0; opacity: 0; transition: opacity .9s ease, transform .8s cubic-bezier(.19,1,.22,1); }
     .carousel img.active { opacity: 1; }
     .cdots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
@@ -283,7 +320,7 @@
     .free-pill { display: inline-block; background: linear-gradient(120deg, var(--teal), var(--gold)); color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; padding: 7px 18px; border-radius: 999px; box-shadow: 0 6px 18px -8px rgba(46,139,131,.6); }
     .trust-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 18px; margin-top: 16px; font-size: 11px; font-weight: 600; color: var(--teal); }
     .trust-row span { white-space: nowrap; }
-    /* WhatsApp — floating + form button */
+    /* WhatsApp - floating + form button */
     .wa-float { position: fixed; right: 16px; bottom: 18px; z-index: 60; display: flex; align-items: center; gap: 8px; background: #25D366; color: #fff; border-radius: 999px; padding: 12px 18px; font-size: 13px; font-weight: 700; box-shadow: 0 12px 30px -8px rgba(37,211,102,.55); }
     .wa-float svg { width: 20px; height: 20px; fill: #fff; }
     .wa-btn { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 8px; background: #25D366; color: #fff; border-radius: 14px; padding: 14px; font-size: 13.5px; font-weight: 700; border: 0; cursor: pointer; }
@@ -305,7 +342,7 @@
   <nav id="nav">
     <div class="nav-in">
       <a class="brand" href="/">
-        <img src="/images/logo.webp" alt="Blushes & Brushes logo" />
+        <img src="/images/logo.webp" alt="Blushes & Brushes logo" / width="328" height="328">
         <b>Blushes &amp; Brushes</b>
       </a>
       <div class="links">
@@ -313,9 +350,9 @@
         <a href="/gallery">Portfolio</a>
         <a href="/areas">Areas</a>
         <a href="/blog">Journal</a>
-        <a href="#book" class="btn btn-teal" style="padding:11px 22px;">Book</a>
+        <a href="#book" class="btn btn-teal nav-book">Book Now</a>
       </div>
-      <a href="#book" class="btn btn-teal links-mobile" style="padding:10px 20px; font-size:10px;">Book</a>
+      <a href="#book" class="btn btn-teal nav-book links-mobile" style="padding:11px 20px !important; font-size:10.5px !important;">Book Now</a>
     </div>
     <!-- Mobile ribbon (hidden ≥860px) -->
     <div class="mnav">
@@ -323,7 +360,7 @@
       <a href="/gallery">Portfolio</a>
       <a href="/areas">Areas</a>
       <a href="/blog">Journal</a>
-      <a href="#book" class="mbook">Book ✦</a>
+      <a href="#book" class="mbook">✦ Book Now</a>
     </div>
   </nav>
 
@@ -331,11 +368,11 @@
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <p class="kicker rv">Bridal couture · Nail artistry · Beauty — New Delhi</p>
+        <p class="kicker rv">Bridal couture · Nail artistry · Beauty - New Delhi</p>
         <h1 class="rv d1">The art of looking <em>unforgettable</em></h1>
-        <p class="lead rv d2">HD &amp; airbrush bridal makeup, designer nails and skin rituals by <strong>Urvashi Trehan</strong>. Studio in Ramesh Nagar — and she travels across Delhi NCR for your big day.</p>
+        <p class="lead rv d2">HD &amp; airbrush bridal makeup, designer nails and skin rituals by <strong>Urvashi Trehan</strong>. Studio in Ramesh Nagar - and she travels across Delhi NCR for your big day.</p>
         <div class="hero-ctas rv d3">
-          <a class="btn btn-gold" href="#book">Book your look</a>
+          <a class="btn btn-cta" href="#book">✦ Book Your Free Consultation</a>
           <a class="btn btn-line" href="#portfolio">View portfolio</a>
         </div>
         <div class="stats rv d4">
@@ -347,10 +384,10 @@
       </div>
       <div class="hero-media rv d2">
         <div class="main">
-          <img src="/images/bridal-hero.webp" alt="Bridal makeup by Urvashi Trehan" fetchpriority="high" />
+          <img src="/images/bridal-hero.webp" alt="Bridal makeup by Urvashi Trehan" fetchpriority="high" / width="712" height="936">
           <span class="badge">✦ 200+ brides · 4.8★</span>
         </div>
-        <div class="float"><img src="/images/nails-1.webp" alt="Designer nail art" loading="lazy" /></div>
+        <div class="float"><img src="/images/nails-1.webp" alt="Designer nail art" loading="lazy" / width="736" height="1302"></div>
       </div>
     </div>
   </header>
@@ -379,9 +416,9 @@
       <div class="svc-grid">
         <article class="svc rv">
           <figure class="carousel" data-interval="4200">
-            <img class="active" src="/images/bridal-real-1.webp" alt="Bridal makeup by Urvashi Trehan" style="object-position:50% 14%" loading="lazy" />
-            <img src="/images/bridal-real-2.webp" alt="Red lehenga bridal look" style="object-position:50% 10%" loading="lazy" />
-            <img src="/images/new-bridal-red.webp" alt="HD bridal makeup Delhi" style="object-position:50% 22%" loading="lazy" />
+            <img class="active" src="/images/bridal-real-1.webp" alt="Bridal makeup by Urvashi Trehan" style="object-position:50% 14%" loading="lazy" / width="958" height="1352">
+            <img src="/images/bridal-real-2.webp" alt="Red lehenga bridal look" style="object-position:50% 10%" loading="lazy" / width="720" height="1280">
+            <img src="/images/new-bridal-red.webp" alt="HD bridal makeup Delhi" style="object-position:50% 22%" loading="lazy" / width="516" height="774">
             <span class="tag" style="background:var(--rose); color:#8f4351;">Most loved</span>
             <a class="figlink" href="/services/bridal-makeup" aria-label="Bridal makeup details"></a>
             <div class="cdots"></div>
@@ -400,8 +437,8 @@
         </article>
         <article class="svc rv d1">
           <figure class="carousel" data-interval="4600">
-            <img class="active" src="/images/nails-2.webp" alt="Nail extensions Ramesh Nagar" style="object-position:50% 50%" loading="lazy" />
-            <img src="/images/nails-1.webp" alt="Designer nail art Delhi" style="object-position:50% 50%" loading="lazy" />
+            <img class="active" src="/images/nails-2.webp" alt="Nail extensions Ramesh Nagar" style="object-position:50% 50%" loading="lazy" / width="736" height="1104">
+            <img src="/images/nails-1.webp" alt="Designer nail art Delhi" style="object-position:50% 50%" loading="lazy" / width="736" height="1302">
             <span class="tag" style="background:var(--mint); color:#22685c;">₹499 offer</span>
             <a class="figlink" href="/services/nail-extensions" aria-label="Nail extensions details"></a>
             <div class="cdots"></div>
@@ -420,9 +457,9 @@
         </article>
         <article class="svc rv d2">
           <figure class="carousel" data-interval="5000">
-            <img class="active" src="/images/new-beauty-glam.webp" alt="Beauty and skin rituals" style="object-position:50% 18%" loading="lazy" />
-            <img src="/images/new-natural.webp" alt="Natural glow facial Delhi" style="object-position:50% 18%" loading="lazy" />
-            <img src="/images/new-occasion-green.webp" alt="Skin ritual Ramesh Nagar" style="object-position:50% 18%" loading="lazy" />
+            <img class="active" src="/images/new-beauty-glam.webp" alt="Beauty and skin rituals" style="object-position:50% 18%" loading="lazy" / width="678" height="1400">
+            <img src="/images/new-natural.webp" alt="Natural glow facial Delhi" style="object-position:50% 18%" loading="lazy" / width="932" height="1400">
+            <img src="/images/new-occasion-green.webp" alt="Skin ritual Ramesh Nagar" style="object-position:50% 18%" loading="lazy" / width="853" height="1280">
             <span class="tag" style="background:var(--lav); color:#5d4e80;">Studio rituals</span>
             <a class="figlink" href="/services/beauty-services" aria-label="Beauty services details"></a>
             <div class="cdots"></div>
@@ -441,7 +478,7 @@
         </article>
       </div>
       <div class="sec-cta">
-        <a class="btn btn-line" href="/services">See all services &amp; prices →</a>
+        <a class="btn btn-cta" href="/services">See All Services &amp; Prices →</a>
       </div>
     </div>
   </section>
@@ -453,36 +490,36 @@
         <p class="kicker">Real work · Real clients</p>
         <h2>The portfolio</h2>
         <div class="rule"></div>
-        <p>Every look below is Urvashi's own work — no stock, no filters. Shot in the studio and at weddings across Delhi NCR.</p>
+        <p>Every look below is Urvashi's own work - no stock, no filters. Shot in the studio and at weddings across Delhi NCR.</p>
       </div>
       <div class="folio-grid">
-        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-red-01.webp" alt="HD bridal makeup Ramesh Nagar" loading="lazy" /><span class="folio-cap">HD Bridal <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-peach-01.webp" alt="Peach bridal glam Delhi" loading="lazy" /><span class="folio-cap">Peach Glam <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-party-makeup-gold-01.webp" alt="Party glam makeup West Delhi" loading="lazy" /><span class="folio-cap">Party Glam <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-nail-art-stiletto-chrome-01.webp" alt="Designer nail art Ramesh Nagar" loading="lazy" /><span class="folio-cap">Designer Nails <span class="view">· View →</span></span></a>
-        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-purple-01.webp" alt="Reception bridal look Delhi" loading="lazy" /><span class="folio-cap">Reception <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-engagement-makeup-01.webp" alt="Engagement makeup West Delhi" loading="lazy" /><span class="folio-cap">Engagement <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-nail-art-french-red-01.webp" alt="French nail art Delhi" loading="lazy" /><span class="folio-cap">Nail Art <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-cream-01.webp" alt="Cream bridal makeup Delhi NCR" loading="lazy" /><span class="folio-cap">Bridal <span class="view">· View →</span></span></a>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-red-01.webp" alt="HD bridal makeup Ramesh Nagar" loading="lazy" / width="1400" height="3027"><span class="folio-cap">HD Bridal <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-peach-01.webp" alt="Peach bridal glam Delhi" loading="lazy" / width="708" height="1579"><span class="folio-cap">Peach Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-party-makeup-gold-01.webp" alt="Party glam makeup West Delhi" loading="lazy" / width="801" height="1734"><span class="folio-cap">Party Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-nail-art-stiletto-chrome-01.webp" alt="Designer nail art Ramesh Nagar" loading="lazy" / width="736" height="983"><span class="folio-cap">Designer Nails <span class="view">· View →</span></span></a>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-purple-01.webp" alt="Reception bridal look Delhi" loading="lazy" / width="1179" height="1276"><span class="folio-cap">Reception <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-engagement-makeup-01.webp" alt="Engagement makeup West Delhi" loading="lazy" / width="1400" height="3027"><span class="folio-cap">Engagement <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-nail-art-french-red-01.webp" alt="French nail art Delhi" loading="lazy" / width="1283" height="1372"><span class="folio-cap">Nail Art <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-cream-01.webp" alt="Cream bridal makeup Delhi NCR" loading="lazy" / width="1400" height="1866"><span class="folio-cap">Bridal <span class="view">· View →</span></span></a>
       </div>
       <div class="sec-cta rv" style="margin-top:26px;">
         <a class="btn btn-gold" href="/gallery">View full portfolio →</a>
       </div>
-      <p class="ig-cta rv">More every week on Instagram — <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">@makeovers_by_urvashitrehan_</a> (makeup) · <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener">@blushesandbrushes2022</a> (nails &amp; beauty)</p>
+      <p class="ig-cta rv">More every week on Instagram - <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">@makeovers_by_urvashitrehan_</a> (makeup) · <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener">@blushesandbrushes2022</a> (nails &amp; beauty)</p>
     </div>
   </section>
 
   <!-- ============ ABOUT ============ -->
   <section id="about">
     <div class="wrap about-grid">
-      <div class="about-media rv"><img src="/images/urvashi-artist.webp" onerror="this.onerror=null;this.src='/images/bridal-2.webp'" alt="Urvashi Trehan — makeup artist, Blushes & Brushes Ramesh Nagar" style="object-position:50% 12%" loading="lazy" /></div>
+      <div class="about-media rv"><img src="/images/urvashi-artist.webp" onerror="this.onerror=null;this.src='/images/bridal-2.webp'" alt="Urvashi Trehan - makeup artist, Blushes & Brushes Ramesh Nagar" style="object-position:50% 12%" loading="lazy" / width="601" height="954"></div>
       <div class="about">
         <p class="kicker rv">The artist</p>
         <h2 class="serif rv d1" style="font-weight:500; font-size:clamp(28px,3.6vw,40px); margin-top:8px;">Urvashi Trehan</h2>
         <div class="rule rv d1"></div>
-        <q class="rv d2">Makeup should look like you — on your most radiant day. My job is to make sure it lasts from the first photo to the last dance.</q>
+        <q class="rv d2">Makeup should look like you - on your most radiant day. My job is to make sure it lasts from the first photo to the last dance.</q>
         <p class="rv d3">From a home studio in 2019 to 200+ brides across Delhi NCR, Urvashi built Blushes &amp; Brushes on one promise: couture-level artistry without the couture attitude. Trained in HD and airbrush techniques, obsessive about skin prep, and genuinely excited about every single face she works on.</p>
-        <p class="rv d3">Nails and beauty happen at the Ramesh Nagar studio. For bridal and occasion makeup, she comes to you — anywhere in Delhi NCR.</p>
+        <p class="rv d3">Nails and beauty happen at the Ramesh Nagar studio. For bridal and occasion makeup, she comes to you - anywhere in Delhi NCR.</p>
         <div class="chips rv d4">
           <span class="chip" style="background:var(--mint); color:#22685c;">HD &amp; Airbrush certified</span>
           <span class="chip" style="background:var(--peach); color:#9c5a41;">Travels across NCR</span>
@@ -503,21 +540,22 @@
       </div>
       <div class="tst-grid">
         <div class="tst rv">
-          <div class="starline">★★★★★ <b style="font-size:15px; color:var(--ink);">4.8</b></div>
-          <p>200+ brides and clients rated on Google — West Delhi's consistently top-reviewed independent makeup studio.</p>
-          <b>Google Reviews</b><span>4.8★ · 200+ happy brides</span>
+          <div class="starline">★★★★★</div>
+          <p>"She made me look absolutely flawless while still keeping my natural features intact. The makeup was beautifully done, enhancing my features still looking natural and elegant. I am so happy with how my makeup turned out on my engagement day, it was perfect!"</p>
+          <b>Jasvinder Sodhi</b><span>Engagement makeup · Google review</span>
         </div>
         <div class="tst rv d1">
-          <div class="starline">★★★★★ <b style="font-size:15px; color:var(--ink);">5.0</b></div>
-          <p>"Staff and environment very friendly and cooperative… professionalism of the team, especially under pressure." — review insights across 108 ratings.</p>
-          <b>Justdial</b><span>5.0 · 108 ratings · Ramesh Nagar</span>
+          <div class="starline">★★★★★</div>
+          <p>"I have booked Urvashi for my bridal makeup and had done my pre bridal services from Blushes &amp; Brushes. Staff and environment is very friendly and cooperative. I have made my best decision in life to book her for my bridal makeup, she did amazing makeover to myself. Must recommend her to everyone."</p>
+          <b>Muskan Ansari</b><span>Bridal makeup · Google review</span>
         </div>
         <div class="tst rv d2">
-          <div class="starline">★★★★★ <b style="font-size:15px; color:var(--ink);">5.0</b></div>
-          <p>Rated a perfect five by every reviewer on magicpin — nails, beauty and makeup at the Ramesh Nagar studio.</p>
-          <b>magicpin</b><span>5.0 · 35 ratings</span>
+          <div class="starline">★★★★★</div>
+          <p>"Amazing services, got my pre bridal done - all services waxing, manicure, pedicure, full body polishing. It was soo relaxing and staff is very polite and kind in nature. I have also booked my bridal makeup with her and that was also very good, all was complimenting my makeup on my big day. Must recommend Urvashi and her team to everyone."</p>
+          <b>Savita Pol</b><span>Pre-bridal + bridal · Google review</span>
         </div>
       </div>
+      <p class="ig-cta rv" style="margin-top:22px;">Read all <a href="https://maps.google.com/?cid=2332371947944609004" target="_blank" rel="noopener">200+ reviews on Google</a> · 4.8★</p>
     </div>
   </section>
 
@@ -531,11 +569,11 @@
       </div>
       <div class="jr-grid">
         <a class="jr rv" href="/blog/bridal-makeup-hd-vs-airbrush-delhi">
-          <img src="/images/bridal-hero.webp" alt="HD vs airbrush bridal makeup" loading="lazy" />
+          <img src="/images/bridal-hero.webp" alt="HD vs airbrush bridal makeup" loading="lazy" / width="712" height="936">
           <div><span>Bridal</span><h3>HD vs Airbrush: which lasts longer for a Delhi wedding?</h3></div>
         </a>
         <a class="jr rv d1" href="/blog/how-long-do-nail-extensions-last-aftercare">
-          <img src="/images/nails-1.webp" alt="Nail extension aftercare" loading="lazy" />
+          <img src="/images/nails-1.webp" alt="Nail extension aftercare" loading="lazy" / width="736" height="1302">
           <div><span>Nails</span><h3>How long do nail extensions last? Aftercare that works</h3></div>
         </a>
       </div>
@@ -549,7 +587,7 @@
         <p class="kicker">Across West Delhi</p>
         <h2 style="font-size: clamp(24px,3.2vw,34px);">Areas we serve</h2>
         <div class="rule"></div>
-        <p>Studio in Ramesh Nagar — Urvashi travels up to 15 km for bridal &amp; party makeup.</p>
+        <p>Studio in Ramesh Nagar - Urvashi travels up to 15 km for bridal &amp; party makeup.</p>
       </div>
       <div class="rv" style="display:flex; flex-wrap:wrap; gap:8px;">
         <a class="area-chip" href="/areas/makeup-artist-in-ramesh-nagar">Ramesh Nagar</a>
@@ -580,20 +618,19 @@
         <p class="kicker">Why West Delhi trusts us</p>
         <h2>A bridal makeup artist you can actually rely on</h2>
         <div class="rule"></div>
-        <p>Blushes &amp; Brushes has grown from a Ramesh Nagar home studio in 2019 into one of West Delhi's most-rated names in bridal and party makeup — 200+ brides, a 4.8★ Google rating, and looks built to last a full Delhi wedding day.</p>
+        <p>Blushes &amp; Brushes has grown from a Ramesh Nagar home studio in 2019 into one of West Delhi's most-rated names in bridal and party makeup - 200+ brides, a 4.8★ Google rating, and looks built to last a full Delhi wedding day.</p>
       </div>
       <div class="why-grid">
         <div class="why-card rv"><h3>Skin-first artistry</h3><p>HD and airbrush makeup matched to your undertone in daylight, so your base never greys in photos. We spend as long on skin prep and shade-matching as on the eyes.</p></div>
         <div class="why-card rv d1"><h3>Lasts the whole day</h3><p>Airbrush bases wear 10–14 hours through Delhi heat, hugs and tears. Every bridal booking includes a touch-up kit and a written arrival time.</p></div>
-        <div class="why-card rv d2"><h3>Premium products only</h3><p>HD Forever 52, NARS and Huda Beauty — sealed, professional-grade product shown to you, never diluted or refilled.</p></div>
+        <div class="why-card rv d2"><h3>Premium products only</h3><p>HD Forever 52, NARS and Huda Beauty - sealed, professional-grade product shown to you, never diluted or refilled.</p></div>
         <div class="why-card rv"><h3>Transparent pricing</h3><p>Hair, lashes, draping and touch-ups are included in every quote. No GST, no surprises on your wedding morning.</p></div>
-        <div class="why-card rv d1"><h3>Travels across NCR</h3><p>Bridal &amp; party makeup comes to your home or venue — Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and all of West Delhi.</p></div>
+        <div class="why-card rv d1"><h3>Travels across NCR</h3><p>Bridal &amp; party makeup comes to your home or venue - Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and all of West Delhi.</p></div>
         <div class="why-card rv d2"><h3>Trials, not gambles</h3><p>Book a trial at the Ramesh Nagar studio 4–8 weeks before your day and decide with total confidence. Adjusted against your booking.</p></div>
       </div>
       <div class="ratings rv">
         <div class="rating-pill"><b>4.8★</b><span>Google · 200+ brides</span></div>
         <div class="rating-pill"><b>5.0★</b><span>Justdial · 113 ratings</span></div>
-        <div class="rating-pill"><b>5.0★</b><span>magicpin · 35 ratings</span></div>
         <div class="rating-pill"><b>✦</b><span>Featured in The Beauty Insider magazine</span></div>
       </div>
     </div>
@@ -608,14 +645,14 @@
         <div class="rule" style="margin-left:auto; margin-right:auto;"></div>
       </div>
       <div class="faq-list rv">
-        <details class="faq-item"><summary>How much does bridal makeup cost in West Delhi?</summary><p>HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, and reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit — no hidden charges and no GST.</p></details>
+        <details class="faq-item"><summary>How much does bridal makeup cost in West Delhi?</summary><p>HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, and reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit - no hidden charges and no GST.</p></details>
         <details class="faq-item"><summary>Should I choose HD or airbrush bridal makeup?</summary><p>Airbrush for long summer wedding days and maximum staying power (10–14 hours); HD for a soft, dewy finish or winter weddings. At your trial, Urvashi tests both on your skin in daylight and recommends honestly.</p></details>
-        <details class="faq-item"><summary>Do you travel for the wedding, or is it at the studio?</summary><p>Bridal and party makeup are done on location — Urvashi travels across West Delhi and Delhi NCR to your home or venue. Nail extensions, beauty services and trials happen at the Ramesh Nagar studio.</p></details>
-        <details class="faq-item"><summary>Where is the Blushes &amp; Brushes studio?</summary><p>B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 — a two-minute walk from Ramesh Nagar metro station (Blue Line).</p></details>
+        <details class="faq-item"><summary>Do you travel for the wedding, or is it at the studio?</summary><p>Bridal and party makeup are done on location - Urvashi travels across West Delhi and Delhi NCR to your home or venue. Nail extensions, beauty services and trials happen at the Ramesh Nagar studio.</p></details>
+        <details class="faq-item"><summary>Where is the Blushes &amp; Brushes studio?</summary><p>B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 - a two-minute walk from Ramesh Nagar metro station (Blue Line).</p></details>
         <details class="faq-item"><summary>How much are nail extensions?</summary><p>Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets (ombré, chrome) from ₹1,500, at the Ramesh Nagar studio.</p></details>
-        <details class="faq-item"><summary>Do you offer a trial before the wedding?</summary><p>Yes — bridal trials are ₹3,000 at the studio and are adjusted against your final booking. We recommend the trial 4–8 weeks before the wedding.</p></details>
-        <details class="faq-item"><summary>How early should I book my date?</summary><p>For Delhi's Nov–Feb peak wedding season, book 3–4 months ahead — dates fill fast. A small refundable advance holds your slot.</p></details>
-        <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below or WhatsApp us on 76784 46364 with your date and function — Urvashi replies personally within the hour, no pressure.</p></details>
+        <details class="faq-item"><summary>Do you offer a trial before the wedding?</summary><p>Yes - bridal trials are ₹3,000 at the studio and are adjusted against your final booking. We recommend the trial 4–8 weeks before the wedding.</p></details>
+        <details class="faq-item"><summary>How early should I book my date?</summary><p>For Delhi's Nov–Feb peak wedding season, book 3–4 months ahead - dates fill fast. A small refundable advance holds your slot.</p></details>
+        <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below or WhatsApp us on 76784 46364 with your date and function - Urvashi replies personally within the hour, no pressure.</p></details>
       </div>
       <p style="text-align:center; margin-top:18px; font-size:12.5px;"><a href="/faq" style="color:var(--gold-deep); font-weight:600;">See all FAQs →</a></p>
     </div>
@@ -625,14 +662,14 @@
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {"@type":"Question","name":"How much does bridal makeup cost in West Delhi?","acceptedAnswer":{"@type":"Answer","text":"HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit — no hidden charges, no GST."}},
+      {"@type":"Question","name":"How much does bridal makeup cost in West Delhi?","acceptedAnswer":{"@type":"Answer","text":"HD bridal ₹18,000–22,000, airbrush ₹25,000–30,000, engagement/Roka/Sagan ₹10,000–15,000, reception ₹12,000–16,000. Every quote includes hairstyling, draping, lashes and a touch-up kit - no hidden charges, no GST."}},
       {"@type":"Question","name":"Should I choose HD or airbrush bridal makeup?","acceptedAnswer":{"@type":"Answer","text":"Airbrush for long summer days and maximum staying power (10–14 hours); HD for a soft dewy finish or winter weddings. At your trial, both are tested on your skin and recommended honestly."}},
       {"@type":"Question","name":"Do you travel for the wedding, or is it at the studio?","acceptedAnswer":{"@type":"Answer","text":"Bridal and party makeup are done on location across West Delhi and Delhi NCR. Nail extensions, beauty and trials happen at the Ramesh Nagar studio."}},
-      {"@type":"Question","name":"Where is the Blushes & Brushes studio?","acceptedAnswer":{"@type":"Answer","text":"B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 — two minutes from Ramesh Nagar metro station."}},
+      {"@type":"Question","name":"Where is the Blushes & Brushes studio?","acceptedAnswer":{"@type":"Answer","text":"B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 - two minutes from Ramesh Nagar metro station."}},
       {"@type":"Question","name":"How much are nail extensions?","acceptedAnswer":{"@type":"Answer","text":"Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets from ₹1,500."}},
-      {"@type":"Question","name":"Do you offer a trial before the wedding?","acceptedAnswer":{"@type":"Answer","text":"Yes — bridal trials are ₹3,000 at the studio, adjusted against your booking, recommended 4–8 weeks before the wedding."}},
+      {"@type":"Question","name":"Do you offer a trial before the wedding?","acceptedAnswer":{"@type":"Answer","text":"Yes - bridal trials are ₹3,000 at the studio, adjusted against your booking, recommended 4–8 weeks before the wedding."}},
       {"@type":"Question","name":"How early should I book my date?","acceptedAnswer":{"@type":"Answer","text":"For Delhi's November–February peak season, book 3–4 months ahead. A small refundable advance holds your date."}},
-      {"@type":"Question","name":"How do I book or get a quote?","acceptedAnswer":{"@type":"Answer","text":"Use the free consultation form or WhatsApp 76784 46364 with your date and function — Urvashi replies within the hour."}}
+      {"@type":"Question","name":"How do I book or get a quote?","acceptedAnswer":{"@type":"Answer","text":"Use the free consultation form or WhatsApp 76784 46364 with your date and function - Urvashi replies within the hour."}}
     ]
   }
   </script>
@@ -643,7 +680,7 @@
       <div class="book-card rv">
         <span class="free-pill">✦ 100% FREE consultation</span>
         <h2 style="margin-top:12px;">Get your free beauty consultation</h2>
-        <p>Tell us your date &amp; budget — Urvashi personally messages you back within the hour with honest advice, the right look for your skin, and a clear quote. <b>No pressure, no charge.</b></p>
+        <p>Tell us your date &amp; budget - Urvashi personally messages you back within the hour with honest advice, the right look for your skin, and a clear quote. <b>No pressure, no charge.</b></p>
         <form id="bookForm">
           <input id="bfName" type="text" placeholder="Your name" autocomplete="name" />
           <input id="bfPhone" type="tel" inputmode="numeric" placeholder="WhatsApp number (10 digits)" autocomplete="tel" />
@@ -654,13 +691,13 @@
             <option>Party Makeup</option>
             <option>Nail Extensions ₹499 offer</option>
             <option>Nail Art / Designer set</option>
-            <option>Beauty — cleanup / facial / pamper</option>
-            <option>Not sure yet — need advice</option>
+            <option>Beauty - cleanup / facial / pamper</option>
+            <option>Not sure yet - need advice</option>
           </select>
           <input id="bfDate" class="full" type="text" placeholder="Your event / preferred date (optional)" autocomplete="off" />
           <p id="bfMsg"></p>
-          <button class="btn btn-gold" type="submit" style="padding:16px;">Get my free consultation →</button>
-          <div class="form-or">— or chat instantly —</div>
+          <button class="btn btn-cta" type="submit" style="width:100%; padding:19px;">✦ Get My Free Consultation →</button>
+          <div class="form-or">- or chat instantly -</div>
           <button type="button" id="bfWa" class="wa-btn">
             <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
             Send Urvashi my details on WhatsApp
@@ -669,7 +706,7 @@
         <div class="trust-row">
           <span>💬 Reply within 1 hour</span><span>🔒 Your number stays private</span><span>⭐ 4.8★ · 200+ brides</span>
         </div>
-        <p class="wa-line">Prefer to talk right now? WhatsApp Urvashi — <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20look%21">76784 46364</a></p>
+        <p class="wa-line">Prefer to talk right now? WhatsApp Urvashi - <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20look%21">76784 46364</a></p>
       </div>
     </div>
   </section>
@@ -685,6 +722,7 @@
         <a href="/areas">Areas</a>
         <a href="/blog">Journal</a>
         <a href="/courses">Academy</a>
+        <a href="/about">About</a>
         <a href="/contact">Contact</a>
         <a href="tel:7678446364">Call</a>
       </div>
@@ -722,7 +760,7 @@
       window.open("https://wa.me/917678446364?text=" + encodeURIComponent(msg), "_blank");
     });
 
-    /* Nav veil after scroll — passive listener, no scroll hijack */
+    /* Nav veil after scroll - passive listener, no scroll hijack */
     var nav = document.getElementById("nav");
     addEventListener("scroll", function () {
       nav.classList.toggle("veil", scrollY > 60);
@@ -730,7 +768,7 @@
 
     /* Reveal-on-scroll via IntersectionObserver (native scroll stays untouched).
        Defensive: reveal in-viewport elements immediately, and if the observer
-       hasn't fired within 1.2s (old browser, throttled tab), reveal everything —
+       hasn't fired within 1.2s (old browser, throttled tab), reveal everything -
        content must NEVER stay hidden. */
     var rvEls = [].slice.call(document.querySelectorAll(".rv"));
     function showAll() { rvEls.forEach(function (el) { el.classList.add("in"); }); }
@@ -750,7 +788,7 @@
       }, 1200);
     } catch (e) { showAll(); }
 
-    /* Image carousels — crossfade, auto-advance, pause on hover, clickable dots */
+    /* Image carousels - crossfade, auto-advance, pause on hover, clickable dots */
     document.querySelectorAll(".carousel").forEach(function (car) {
       var imgs = car.querySelectorAll("img");
       if (imgs.length < 2) return;

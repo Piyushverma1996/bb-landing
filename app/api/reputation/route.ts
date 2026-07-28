@@ -68,18 +68,18 @@ function computeScore(google: { rating: number; total: number }, ig: { followers
 export async function GET() {
   const [google, ig] = await Promise.all([fetchGoogleReviews(), fetchIGProfile()]);
 
-  // Platform presence map — what BB needs to dominate locally + build authority
+  // Platform presence map - what BB needs to dominate locally + build authority
   const presence: PlatformPresence[] = [
-    { platform: "Google Business Profile", status: google.total > 50 ? "strong" : "weak", detail: `${google.rating}★ · ${google.total} reviews`, action: google.total < 100 ? "Push to 100+ reviews — ask every happy client" : "Maintain — reply to all reviews within 24h" },
+    { platform: "Google Business Profile", status: google.total > 50 ? "strong" : "weak", detail: `${google.rating}★ · ${google.total} reviews`, action: google.total < 100 ? "Push to 100+ reviews - ask every happy client" : "Maintain - reply to all reviews within 24h" },
     { platform: "Instagram (@blushesandbrushes2022)", status: ig.followers > 1000 ? "strong" : "weak", detail: `${ig.followers} followers · ${ig.posts} posts`, action: "Post 4x/week, run Reels, use local hashtags #rameshnagar #westdelhimakeup" },
     { platform: "Instagram (@makeovers_by_urvashitrehan_)", status: "weak", detail: "Makeup artist profile", action: "Cross-promote with main page, tag location on every bridal post" },
     { platform: "Justdial", status: "strong", detail: "Listed · opp Subway, Ramesh Nagar", action: "Add photos monthly, respond to every enquiry, get JD Verified badge" },
-    { platform: "Sulekha", status: "unknown", detail: "Beauty parlour directory", action: "Claim/create listing — high local intent traffic" },
-    { platform: "UrbanCompany / nearby", status: "missing", detail: "Premium service marketplace", action: "Apply as bridal artist — high-ticket inbound" },
-    { platform: "WeddingWire / WedMeGood", status: "missing", detail: "Bridal portals — high LTV", action: "Create vendor profile — bridal makeup leads worth ₹15-25K each" },
+    { platform: "Sulekha", status: "unknown", detail: "Beauty parlour directory", action: "Claim/create listing - high local intent traffic" },
+    { platform: "UrbanCompany / nearby", status: "missing", detail: "Premium service marketplace", action: "Apply as bridal artist - high-ticket inbound" },
+    { platform: "WeddingWire / WedMeGood", status: "missing", detail: "Bridal portals - high LTV", action: "Create vendor profile - bridal makeup leads worth ₹15-25K each" },
     { platform: "Google Maps photos", status: "weak", detail: "Visual proof for walk-ins", action: "Upload 20+ work photos geotagged to studio" },
-    { platform: "Blogs / editorial", status: "missing", detail: "Authority + backlinks + story", action: "Get featured — see Organic Growth plan" },
-    { platform: "YouTube", status: "missing", detail: "Tutorial SEO — long-tail discovery", action: "Repurpose Reels as Shorts, full tutorials for course funnel" },
+    { platform: "Blogs / editorial", status: "missing", detail: "Authority + backlinks + story", action: "Get featured - see Organic Growth plan" },
+    { platform: "YouTube", status: "missing", detail: "Tutorial SEO - long-tail discovery", action: "Repurpose Reels as Shorts, full tutorials for course funnel" },
   ];
 
   const score = computeScore(google, ig, presence);
@@ -89,7 +89,7 @@ export async function GET() {
     { title: "Reply to every Google review", impact: "high", effort: "low", why: "Signals active business to Google ranking algorithm" },
     { title: "Get 5 new Google reviews", impact: "high", effort: "low", why: "Volume gap vs target (100+). Ask happy clients with a QR code" },
     { title: "Create WedMeGood vendor profile", impact: "high", effort: "medium", why: "Bridal leads worth ₹15-25K each, premium intent" },
-    { title: "Upload 20 geotagged photos to Google Maps", impact: "medium", effort: "low", why: "Walk-in conversion — people judge salons by photos" },
+    { title: "Upload 20 geotagged photos to Google Maps", impact: "medium", effort: "low", why: "Walk-in conversion - people judge salons by photos" },
     { title: "Claim Sulekha + UrbanCompany listings", impact: "medium", effort: "medium", why: "Local high-intent search traffic" },
   ];
 

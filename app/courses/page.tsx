@@ -21,12 +21,12 @@ export const metadata: Metadata = {
 };
 
 const COURSE_FAQ = [
-  { q: "How much do makeup courses cost in West Delhi?", a: "At Blushes & Brushes Academy in Ramesh Nagar, each course — Professional Makeup, Nail Extensions & Art, and Beauty Master — is ₹20,000. That includes hands-on training on live models, professional-grade tools, and direct mentorship from Urvashi Trehan." },
+  { q: "How much do makeup courses cost in West Delhi?", a: "At Blushes & Brushes Academy in Ramesh Nagar, each course - Professional Makeup, Nail Extensions & Art, and Beauty Master - is ₹20,000. That includes hands-on training on live models, professional-grade tools, and direct mentorship from Urvashi Trehan." },
   { q: "How long is the makeup course?", a: "Courses run in focused micro-batches with a maximum of 5 students, so pacing adapts to your progress rather than a fixed classroom schedule. Message us on WhatsApp for the current batch dates and duration." },
   { q: "Do I need prior experience to join?", a: "No. Our Nail Extensions and Beauty Master courses are structured beginner-to-advanced, and the Makeup course starts with fundamentals before moving to bridal and HD techniques." },
-  { q: "Do you offer a trial class?", a: "Yes — you can book a free trial class before enrolling, so you can see the studio, meet Urvashi and experience the teaching style before committing." },
-  { q: "Where is the academy located?", a: "B 1/1 Double Storey, Ramesh Nagar, opposite Subway, New Delhi 110015 — a two-minute walk from Ramesh Nagar metro station on the Blue Line, serving students across West Delhi." },
-  { q: "Will I train on real clients?", a: "Yes. Training happens in an actual working salon on live models with professional tools — not a simulated classroom setup." },
+  { q: "Do you offer a trial class?", a: "Yes - you can book a free trial class before enrolling, so you can see the studio, meet Urvashi and experience the teaching style before committing." },
+  { q: "Where is the academy located?", a: "B 1/1 Double Storey, Ramesh Nagar, opposite Subway, New Delhi 110015 - a two-minute walk from Ramesh Nagar metro station on the Blue Line, serving students across West Delhi." },
+  { q: "Will I train on real clients?", a: "Yes. Training happens in an actual working salon on live models with professional tools - not a simulated classroom setup." },
 ];
 
 const COURSES = [
@@ -57,7 +57,7 @@ const USPS = [
   {
     icon: "💄",
     title: "Real Salon Environment",
-    desc: "Train on live models with professional-grade tools in an actual working salon — not a classroom.",
+    desc: "Train on live models with professional-grade tools in an actual working salon - not a classroom.",
   },
   {
     icon: "👥",
@@ -67,7 +67,7 @@ const USPS = [
   {
     icon: "🏆",
     title: "Direct Mentorship by Founder",
-    desc: "Learn directly from Urvashi Trehan — not a junior instructor. Her expertise, her standards, your growth.",
+    desc: "Learn directly from Urvashi Trehan - not a junior instructor. Her expertise, her standards, your growth.",
   },
 ];
 
@@ -90,7 +90,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@graph": COURSES.map((c) => ({
       "@type": "Course",
-      name: `${c.title} — Blushes & Brushes Academy`,
+      name: `${c.title} - Blushes & Brushes Academy`,
       description: `${c.tagline}. Hands-on professional training in micro-batches of 5, mentored by Urvashi Trehan at the Ramesh Nagar studio, West Delhi.`,
       provider,
       image: `https://blushesnbrushes.com${c.src}`,
@@ -126,7 +126,7 @@ export default function Home() {
       {/* ── Urgency Banner ── */}
       <div className="bg-brand-teal px-4 py-2 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
-          🔥 Next Micro-Batch Starting Soon — Only 2 Seats Left! Book Your Free Trial Today.
+          🔥 Next Micro-Batch Starting Soon - Only 2 Seats Left! Book Your Free Trial Today.
         </p>
       </div>
 
@@ -179,7 +179,7 @@ export default function Home() {
 
             <p className="text-base leading-relaxed text-brand-teal/70">
               Visit Blushes &amp; Brushes, experience our real-salon setup, meet
-              Urvashi Trehan personally, and decide if it&rsquo;s right for you —
+              Urvashi Trehan personally, and decide if it&rsquo;s right for you -
               completely free, zero commitment.
             </p>
 
@@ -345,12 +345,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FAQ (matches FAQPage schema above — AI/GEO citation magnet) ── */}
+      {/* ── FAQ (matches FAQPage schema above - AI/GEO citation magnet) ── */}
       <section className="bg-brand-cream px-4 py-14">
         <div className="mx-auto max-w-3xl">
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">Good to know</p>
           <h2 className="mt-2 text-center text-2xl font-bold text-brand-teal md:text-3xl">
-            Academy — Frequently Asked Questions
+            Academy - Frequently Asked Questions
           </h2>
           <div className="mt-7 space-y-3">
             {COURSE_FAQ.map((f, i) => (

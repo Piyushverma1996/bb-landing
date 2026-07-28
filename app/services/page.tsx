@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { SERVICES } from "./serviceData";
 
 export const metadata: Metadata = {
-  title: "Services — Bridal, Party Makeup, Nails & Beauty in Ramesh Nagar | Blushes & Brushes",
+  title: "Services - Bridal, Party Makeup, Nails & Beauty in Ramesh Nagar | Blushes & Brushes",
   description:
-    "Makeup, nail art and beauty services by Urvashi Trehan in Ramesh Nagar, West Delhi — bridal & party makeup, nail extensions, facials. Prices, details & booking.",
+    "Makeup, nail art and beauty services by Urvashi Trehan in Ramesh Nagar, West Delhi - bridal & party makeup, nail extensions, facials. Prices, details & booking.",
   alternates: { canonical: "https://blushesnbrushes.com/services" },
 };
 
@@ -18,7 +18,7 @@ export default function ServicesIndex() {
           Makeup, Nails &amp; Beauty in Ramesh Nagar, West Delhi
         </h1>
         <p className="mx-auto mt-3 max-w-2xl text-[13px] leading-relaxed text-[#1A5A54]/70">
-          Premium bridal &amp; party makeup, nail extensions and beauty rituals by Urvashi Trehan — at the Ramesh Nagar studio and on location across Delhi NCR. Transparent prices, premium products, 4.8★ from 200+ brides.
+          Premium bridal &amp; party makeup, nail extensions and beauty rituals by Urvashi Trehan - at the Ramesh Nagar studio and on location across Delhi NCR. Transparent prices, premium products, 4.8★ from 200+ brides.
         </p>
       </div>
 
@@ -40,7 +40,7 @@ export default function ServicesIndex() {
 
       <div className="mt-10 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
         <p className="text-[18px] font-bold" style={{ fontFamily: "var(--font-playfair), serif" }}>Not sure what you need?</p>
-        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Get a free consultation — tell us your date &amp; budget and Urvashi will message you honest advice within the hour.</p>
+        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Get a free consultation - tell us your date &amp; budget and Urvashi will message you honest advice within the hour.</p>
         <a href="/#book" className="mt-4 inline-block rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Get my free consultation →</a>
       </div>
     </main>

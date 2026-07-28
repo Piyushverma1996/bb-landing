@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const SERVICES = [
   "Bridal Makeup", "Engagement / Roka / Sagan Makeup", "Party Makeup",
-  "Nail Extensions ₹499 offer", "Nail Art / Designer set", "Beauty — cleanup / facial / pamper", "Not sure yet — need advice",
+  "Nail Extensions ₹499 offer", "Nail Art / Designer set", "Beauty - cleanup / facial / pamper", "Not sure yet - need advice",
 ];
 
 const WA = "917678446364";
@@ -65,7 +65,7 @@ export default function BookNowClient() {
         <img src="/images/logo.webp" alt="Blushes & Brushes" className="mx-auto h-16 w-16 rounded-full border-2 border-[#C9A55C]/50 object-cover" />
         <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A55C]">✦ 100% Free consultation</p>
         <h1 className="mt-1 text-2xl font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Book with Blushes &amp; Brushes</h1>
-        <p className="mt-2 text-[12.5px] text-[#1A5A54]/70">Bridal · Party · Nails · Beauty · Ramesh Nagar &amp; across Delhi NCR. Urvashi replies personally within the hour — no pressure.</p>
+        <p className="mt-2 text-[12.5px] text-[#1A5A54]/70">Bridal · Party · Nails · Beauty · Ramesh Nagar &amp; across Delhi NCR. Urvashi replies personally within the hour - no pressure.</p>
       </div>
 
       {done ? (
@@ -87,7 +87,7 @@ export default function BookNowClient() {
           <button type="submit" disabled={saving} className="w-full rounded-xl py-3.5 text-[14px] font-bold text-white disabled:opacity-50" style={{ background: "linear-gradient(120deg,#2E8B83,#C9A55C)" }}>
             {saving ? "Sending…" : "Get my free consultation →"}
           </button>
-          <div className="text-center text-[10px] uppercase tracking-widest text-[#1A5A54]/45">— or chat instantly —</div>
+          <div className="text-center text-[10px] uppercase tracking-widest text-[#1A5A54]/45">- or chat instantly -</div>
           <a href={waLink()} onClick={() => track("whatsapp_click", { source: src })} className="flex w-full items-center justify-center gap-2 rounded-xl bg-[#25D366] py-3.5 text-[14px] font-bold text-white">
             <svg viewBox="0 0 24 24" className="h-4.5 w-4.5" style={{ width: 18, height: 18, fill: "#fff" }}><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
             Send Urvashi my details on WhatsApp

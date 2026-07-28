@@ -88,7 +88,7 @@ export default function Dashboard() {
 
   // Ads state
   const [campaigns, setCampaigns] = useState<{id:string;name:string;status:string}[]>([]);
-  const [adForm, setAdForm] = useState({ name: "BB Nails — West Delhi", service: "nails", daily_budget: 150, headline: "", body: "" });
+  const [adForm, setAdForm] = useState({ name: "BB Nails - West Delhi", service: "nails", daily_budget: 150, headline: "", body: "" });
   const [adCreating, setAdCreating] = useState(false);
   const [adResult, setAdResult] = useState<Record<string,string> | null>(null);
   const [optimizing, setOptimizing] = useState(false);
@@ -280,7 +280,7 @@ export default function Dashboard() {
         {/* Header */}
         <div className="mb-4 flex items-center justify-between">
           <div>
-            <h1 className="text-xl font-bold text-[#1A5A54]">{role === "kukkie" ? "Reviews — Hi Kukkie 💫" : "B&B Command Center"} <span className="text-[#C9A55C]">✦</span></h1>
+            <h1 className="text-xl font-bold text-[#1A5A54]">{role === "kukkie" ? "Reviews - Hi Kukkie 💫" : "B&B Command Center"} <span className="text-[#C9A55C]">✦</span></h1>
             <p className="text-[10px] text-[#1A5A54]/55">{role === "kukkie" ? "Send drafts, log reviews, earn ₹50/review" : (lastUpdated ? `Updated ${lastUpdated}` : "Loading…")}</p>
           </div>
           <div className="flex gap-2">
@@ -455,7 +455,7 @@ export default function Dashboard() {
                 </div>
 
                 <div className="rounded-2xl bg-white p-5">
-                  <p className="mb-3 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">This week — highest impact actions</p>
+                  <p className="mb-3 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">This week - highest impact actions</p>
                   <div className="space-y-2">
                     {rep.priorityActions.map((a, i) => (
                       <div key={i} className="flex items-start gap-3 rounded-xl bg-[#F5EDD8] p-3">
@@ -505,8 +505,8 @@ export default function Dashboard() {
         {tab === "studio" && (
           <div className="space-y-4">
             <div className="rounded-2xl bg-white p-5">
-              <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Step 1 — Generate video script</p>
-              <p className="text-[10px] text-[#1E4A3A]/50 mb-4">Claude writes the hook, overlays, end card, ad copy and WhatsApp opener — matching The Square Salon style.</p>
+              <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Step 1 - Generate video script</p>
+              <p className="text-[10px] text-[#1E4A3A]/50 mb-4">Claude writes the hook, overlays, end card, ad copy and WhatsApp opener - matching The Square Salon style.</p>
               <div className="flex gap-2 mb-4">
                 {["Bridal Makeup", "Party Makeup", "Nail Extensions", "Nail Art"].map(t => (
                   <button key={t} onClick={() => setScriptType(t)} className={`rounded-lg px-3 py-1.5 text-[10px] font-semibold border transition-all ${scriptType === t ? "bg-[#1E4A3A] text-[#C9A066] border-[#1E4A3A]" : "bg-white text-[#1E4A3A]/60 border-[#1E4A3A]/20"}`}>{t}</button>
@@ -519,7 +519,7 @@ export default function Dashboard() {
                 <div className="mt-4 grid grid-cols-2 gap-3">
                   {[
                     ["Hook text", script.hook_text],
-                    ["Hook accent", script.hook_sub || "—"],
+                    ["Hook accent", script.hook_sub || "-"],
                     ["Overlay 1", script.overlay_1],
                     ["Overlay 2", script.overlay_2],
                     ["Overlay 3", script.overlay_3],
@@ -545,7 +545,7 @@ export default function Dashboard() {
             </div>
 
             <div className="rounded-2xl bg-white p-5">
-              <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Step 2 — Auto-render the video (Shotstack)</p>
+              <p className="mb-1 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Step 2 - Auto-render the video (Shotstack)</p>
               <p className="text-[10px] text-[#1E4A3A]/50 mb-3">Urvashi shares raw clips via WhatsApp → Piyush pastes URLs below → tool renders the finished Reel in ~2 minutes. No CapCut needed.</p>
               <div className="space-y-2 mb-3">
                 {[0, 1, 2].map(i => (
@@ -572,7 +572,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-between mb-3">
                 <div>
                   <p className="text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Weekly Instagram captions</p>
-                  <p className="text-[10px] text-[#1E4A3A]/50 mt-0.5">Mon / Wed / Fri / Sun — ready to copy-paste</p>
+                  <p className="text-[10px] text-[#1E4A3A]/50 mt-0.5">Mon / Wed / Fri / Sun - ready to copy-paste</p>
                 </div>
                 <button onClick={generateCaptions} disabled={genCaps} className="rounded-xl bg-[#1E4A3A]/10 px-4 py-2 text-[10px] font-bold text-[#1E4A3A] disabled:opacity-50">{genCaps ? "Generating…" : "Generate week"}</button>
               </div>
@@ -594,8 +594,8 @@ export default function Dashboard() {
         {tab === "ads" && (
           <div className="space-y-4">
             <div className="grid grid-cols-3 gap-3">
-              <Chip label="Nails CPL" value={stats.ads.cpl_nails ? `₹${stats.ads.cpl_nails}` : "—"} sub="Target: <₹400" />
-              <Chip label="Makeup CPL" value={stats.ads.cpl_makeup ? `₹${stats.ads.cpl_makeup}` : "—"} sub="Target: <₹600" gold />
+              <Chip label="Nails CPL" value={stats.ads.cpl_nails ? `₹${stats.ads.cpl_nails}` : "-"} sub="Target: <₹400" />
+              <Chip label="Makeup CPL" value={stats.ads.cpl_makeup ? `₹${stats.ads.cpl_makeup}` : "-"} sub="Target: <₹600" gold />
               <Chip label="Total Spend" value={`₹${stats.ads.spend}`} sub="This month" />
             </div>
 
@@ -611,7 +611,7 @@ export default function Dashboard() {
                     <option value="nails">Nail Art & Extensions (studio)</option>
                     <option value="bridal">Bridal Makeup (Urvashi travels)</option>
                     <option value="party">Party / Roka / Engagement Makeup</option>
-                    <option value="beauty">Beauty — keratin, hair spa, laser facial</option>
+                    <option value="beauty">Beauty - keratin, hair spa, laser facial</option>
                   </select>
                 </div>
                 <div>
@@ -637,7 +637,7 @@ export default function Dashboard() {
               </div>
               {adResult && (
                 <div className="mt-3 rounded-xl bg-[#F5EDD8] p-3 text-[10px] text-[#1E4A3A]">
-                  {adResult.error ? <span className="text-red-600">{JSON.stringify(adResult.error)}</span> : <span>Campaign created — review in Meta Ads Manager before activating. IDs: {JSON.stringify(adResult)}</span>}
+                  {adResult.error ? <span className="text-red-600">{JSON.stringify(adResult.error)}</span> : <span>Campaign created - review in Meta Ads Manager before activating. IDs: {JSON.stringify(adResult)}</span>}
                 </div>
               )}
               {optResult && (
@@ -692,11 +692,11 @@ export default function Dashboard() {
               <p className="mb-3 text-[9px] font-bold uppercase tracking-widest text-[#1E4A3A]/50">Geo target zones</p>
               <div className="space-y-2">
                 {[
-                  { name: "Ramesh Nagar (studio)", r: "5km", intent: "Nail work — walk-in" },
+                  { name: "Ramesh Nagar (studio)", r: "5km", intent: "Nail work - walk-in" },
                   { name: "Rajouri Garden", r: "3km", intent: "Nails + Party makeup" },
                   { name: "Tilak Nagar", r: "3km", intent: "Nails + Party makeup" },
                   { name: "Subhash Nagar", r: "3km", intent: "Nails + Party makeup" },
-                  { name: "Delhi NCR (bridal)", r: "40km", intent: "Bridal — Urvashi travels" },
+                  { name: "Delhi NCR (bridal)", r: "40km", intent: "Bridal - Urvashi travels" },
                 ].map(({ name, r, intent }) => (
                   <div key={name} className="flex items-center justify-between rounded-xl bg-[#F5EDD8] px-4 py-2.5">
                     <div>
@@ -731,7 +731,7 @@ export default function Dashboard() {
 }
 
 /* ══════════════════════════════════════════════════════════════════
-   ⭐ REVIEWS PANEL — gamified daily tracker with staff payout
+   ⭐ REVIEWS PANEL - gamified daily tracker with staff payout
    Staff (Kukkie/Asha) earn ₹50 for the 3rd review of the day with a photo.
 ═══════════════════════════════════════════════════════════════════ */
 function ReviewsPanel() {
@@ -800,7 +800,7 @@ function ReviewsPanel() {
         </div>
       </div>
 
-      {/* Per-person day breakdown — 3 clear numbers only, no magicpin */}
+      {/* Per-person day breakdown - 3 clear numbers only, no magicpin */}
       <div className="grid grid-cols-3 gap-2">
         {(today?.byPerson ?? []).map((p) => {
           const isU = p.person === "Urvashi";
@@ -822,7 +822,7 @@ function ReviewsPanel() {
         })}
       </div>
 
-      {/* STEP 1: Send a draft — the primary flow */}
+      {/* STEP 1: Send a draft - the primary flow */}
       <DraftBank drafts={data?.drafts ?? []} />
 
       {/* STEP 2: After client posts, log it here (magicpin removed) */}
@@ -863,7 +863,7 @@ function ReviewsPanel() {
                 <b className="w-16 shrink-0 text-[#1A5A54]">{r.person}</b>
                 <span className="w-16 shrink-0 text-[#B8893B]">{r.platform}</span>
                 {r.photo && <span className="text-[10px]">📸</span>}
-                <span className="flex-1 truncate text-[#1A5A54]/70">{r.clientName || "—"}</span>
+                <span className="flex-1 truncate text-[#1A5A54]/70">{r.clientName || "-"}</span>
               </div>
             ))}
           </div>
@@ -874,7 +874,7 @@ function ReviewsPanel() {
 }
 
 
-/* Draft bank — filter by WHO served the client, then by platform. Tap copy. Tick when sent. */
+/* Draft bank - filter by WHO served the client, then by platform. Tap copy. Tick when sent. */
 function DraftBank({ drafts }: { drafts: RvDraft[] }) {
   const [used, setUsed] = useState<Record<string, boolean>>({});
   const [owner, setOwner] = useState<"Urvashi" | "Kukkie" | "Asha">("Urvashi");

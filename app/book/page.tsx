@@ -42,7 +42,7 @@ export default function Home() {
       {/* ── Banner ── */}
       <div className="bg-brand-teal px-4 py-2 text-center">
         <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">
-          🌸 Booking bridal &amp; party dates for the season — limited slots. Reserve yours today.
+          🌸 Booking bridal &amp; party dates for the season - limited slots. Reserve yours today.
         </p>
       </div>
 
@@ -77,13 +77,13 @@ export default function Home() {
 
             <p className="text-base leading-relaxed text-brand-teal/70">
               Bridal &amp; party makeup, nail art, and beauty by <span className="font-semibold text-brand-teal">Urvashi Trehan</span>.
-              From bare canvas to bridal brilliance — every brushstroke, a story. Book your look and we&rsquo;ll WhatsApp you to confirm.
+              From bare canvas to bridal brilliance - every brushstroke, a story. Book your look and we&rsquo;ll WhatsApp you to confirm.
             </p>
 
             <div className="relative h-72 w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-brand-gold/20">
-              <Image src="/images/bridal-hero.webp" alt="Real bride — bridal makeup by Urvashi Trehan" fill className="object-cover object-top" sizes="(max-width:1024px) 100vw, 45vw" priority />
+              <Image src="/images/bridal-hero.webp" alt="Real bride - bridal makeup by Urvashi Trehan" fill className="object-cover object-top" sizes="(max-width:1024px) 100vw, 45vw" priority />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/65 to-transparent p-3">
-                <p className="text-xs font-semibold text-white">&ldquo;Red isn&rsquo;t just a colour — it&rsquo;s a bride&rsquo;s power.&rdquo;</p>
+                <p className="text-xs font-semibold text-white">&ldquo;Red isn&rsquo;t just a colour - it&rsquo;s a bride&rsquo;s power.&rdquo;</p>
                 <p className="text-[10px] text-white/70">Real bride · makeup by Urvashi</p>
               </div>
             </div>
@@ -120,12 +120,12 @@ export default function Home() {
         <div className="mb-6 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-brand-gold">Real Brides · Real Glow</p>
           <h2 className="mt-1 text-3xl font-extrabold text-brand-teal">Looks that turn heads on the big day</h2>
-          <p className="mt-2 text-sm text-brand-teal/60">Every face below is a real Blushes &amp; Brushes client — no filters, no stock photos.</p>
+          <p className="mt-2 text-sm text-brand-teal/60">Every face below is a real Blushes &amp; Brushes client - no filters, no stock photos.</p>
         </div>
         <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
           {[
             { src: "/images/bridal-1.webp", cap: "Glowing in signature bridal glam ✨" },
-            { src: "/images/bridal-2.webp", cap: "A royal bride isn’t subtle — she’s unforgettable 👑" },
+            { src: "/images/bridal-2.webp", cap: "A royal bride isn’t subtle - she’s unforgettable 👑" },
             { src: "/images/party-glam.webp", cap: "Soft glam, flawless skin, picture-perfect finish" },
             { src: "/images/new-bridal-peach.webp", cap: "Every ceremony, picture-perfect" },
           ].map((g) => (
@@ -245,7 +245,7 @@ export default function Home() {
           <div className="flex flex-col gap-4">
             <h2 className="text-3xl font-extrabold text-brand-teal">Ready to book your look?</h2>
             <p className="text-sm leading-relaxed text-brand-teal/70">
-              Tell us what you need — bridal, party, nails, or beauty — and Urvashi&rsquo;s team will WhatsApp you to confirm your date, share options, and lock your slot.
+              Tell us what you need - bridal, party, nails, or beauty - and Urvashi&rsquo;s team will WhatsApp you to confirm your date, share options, and lock your slot.
             </p>
             <ul className="flex flex-col gap-2">
               {["Quick WhatsApp confirmation", "Bridal trials available", "Urvashi travels across Delhi NCR", "4.8★ rated, 200+ happy clients"].map((item) => (

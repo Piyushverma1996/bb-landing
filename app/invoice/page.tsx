@@ -2,7 +2,7 @@
 import { useEffect, useState, useCallback } from "react";
 
 /* ────────────────────────────────────────────────────────────────
-   BLUSHES & BRUSHES — Internal Invoicing & Ledger  (pw-gated, not in nav)
+   BLUSHES & BRUSHES - Internal Invoicing & Ledger  (pw-gated, not in nav)
    Route: /invoice   ·   Password: NEXT_PUBLIC_DASH_PW ("bb2026")
    No GST. Total Due = Total − Advance (live). PDF via @media print.
 ─────────────────────────────────────────────────────────────────── */
@@ -38,7 +38,7 @@ const grp = (v: number | "") => (v === "" ? "" : Number(v).toLocaleString("en-IN
 const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 // "2026-07-14" → "14-Jul-2026". HTML date inputs always hold ISO regardless of how the OS displays them.
 const fmtDate = (s: string) => {
-  if (!s) return "—";
+  if (!s) return "-";
   const [y, m, d] = s.split("-");
   if (!y || !m || !d) return s;
   return `${d}-${MONTHS[Number(m) - 1]}-${y}`;
@@ -124,7 +124,7 @@ export default function InvoiceTool() {
         flash(`⚠ ${d.error || "Save failed"}`);
       }
     } catch {
-      flash("⚠ Network error — record backed up locally");
+      flash("⚠ Network error - record backed up locally");
     }
     setSaving(false);
   }
@@ -137,7 +137,7 @@ export default function InvoiceTool() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ action: "status", id, status }),
       });
-    } catch { flash("⚠ Status sync failed — will retry on reload"); }
+    } catch { flash("⚠ Status sync failed - will retry on reload"); }
   }
 
   function resetForm() {
@@ -162,7 +162,7 @@ export default function InvoiceTool() {
         <div className="w-80 rounded-3xl border border-white bg-white/80 p-8 text-center shadow-xl backdrop-blur">
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full text-3xl" style={{ background: "linear-gradient(135deg,#CFE9DF,#F3CDD3)" }}>🧾</div>
           <h1 className="text-xl font-bold" style={{ color: BRAND.tealDeep }}>B&amp;B Invoicing</h1>
-          <p className="mt-1 text-[10px]" style={{ color: BRAND.tealDeep + "8c" }}>Internal billing &amp; ledger — private</p>
+          <p className="mt-1 text-[10px]" style={{ color: BRAND.tealDeep + "8c" }}>Internal billing &amp; ledger - private</p>
           <input className="mt-6 w-full rounded-xl border px-4 py-3 text-sm outline-none" style={{ borderColor: BRAND.teal + "40", background: BRAND.cream, color: BRAND.tealDeep }} type="password" placeholder="Password" value={pw} onChange={e => setPw(e.target.value)} onKeyDown={e => e.key === "Enter" && login()} />
           <button onClick={login} className="mt-3 w-full rounded-xl py-3 text-sm font-bold text-white" style={{ background: `linear-gradient(135deg,${BRAND.teal},${BRAND.gold})` }}>Enter →</button>
         </div>
@@ -173,7 +173,7 @@ export default function InvoiceTool() {
   /* ── Tool ── */
   return (
     <div className="bb-root min-h-screen font-sans" style={{ background: "linear-gradient(160deg,#FBEFE7 0%,#F5E8DF 25%,#E8F0EB 55%,#F0E5F0 80%,#FBEFE7 100%)" }}>
-      {/* print styles — only #bb-invoice-print survives on paper */}
+      {/* print styles - only #bb-invoice-print survives on paper */}
       <style>{`
         @media print {
           @page { size: A4; margin: 14mm; }
@@ -206,7 +206,7 @@ export default function InvoiceTool() {
         <div className="no-print mb-5 flex items-center justify-between">
           <div>
             <h1 className="text-xl font-bold" style={{ color: BRAND.tealDeep }}>Invoicing &amp; Ledger <span style={{ color: BRAND.gold }}>✦</span></h1>
-            <p className="text-[10px]" style={{ color: BRAND.tealDeep + "8c" }}>Create · download · track client bills — GST-free</p>
+            <p className="text-[10px]" style={{ color: BRAND.tealDeep + "8c" }}>Create · download · track client bills - GST-free</p>
           </div>
           <a href="/dashboard" className="rounded-xl border bg-white/70 px-3 py-2 text-[11px] font-semibold" style={{ borderColor: BRAND.teal + "33", color: BRAND.tealDeep }}>← Dashboard</a>
         </div>
@@ -275,7 +275,7 @@ export default function InvoiceTool() {
 
           {/* ── RIGHT: Live print-ready invoice ── */}
           <div id="bb-invoice-print" className="overflow-hidden rounded-3xl bg-white shadow-lg" style={{ border: `1px solid ${BRAND.teal}22` }}>
-            {/* Letterhead — business identity: logo · name · address · contact */}
+            {/* Letterhead - business identity: logo · name · address · contact */}
             <div className="bb-letterhead flex items-start gap-4 px-8 py-6" style={{ background: `linear-gradient(120deg,${BRAND.tealDeep},${BRAND.teal} 60%,${BRAND.gold})` }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src="/images/logo.webp" alt="Blushes & Brushes" className="h-16 w-16 shrink-0 rounded-full border-2 border-white/70 object-cover" />
@@ -299,8 +299,8 @@ export default function InvoiceTool() {
               <div className="mb-6 flex flex-wrap justify-between gap-4 text-[11px]">
                 <div>
                   <p className="font-bold uppercase tracking-widest" style={{ color: BRAND.teal }}>Billed To</p>
-                  <p className="mt-1 text-base font-bold" style={{ color: BRAND.tealDeep }}>{customerName || "—"}</p>
-                  <p style={{ color: BRAND.tealDeep + "aa" }}>{whatsapp ? `+91 ${whatsapp}` : "—"}</p>
+                  <p className="mt-1 text-base font-bold" style={{ color: BRAND.tealDeep }}>{customerName || "-"}</p>
+                  <p style={{ color: BRAND.tealDeep + "aa" }}>{whatsapp ? `+91 ${whatsapp}` : "-"}</p>
                 </div>
                 <div className="text-right">
                   <p style={{ color: BRAND.tealDeep + "aa" }}><span className="font-semibold" style={{ color: BRAND.teal }}>Invoice Date:</span> {fmtDate(invoiceDate)}</p>
@@ -317,7 +317,7 @@ export default function InvoiceTool() {
                   </tr>
                 </thead>
                 <tbody>
-                  {(services.length ? services : ["—"]).map((s, i) => (
+                  {(services.length ? services : ["-"]).map((s, i) => (
                     <tr key={i} style={{ borderBottom: `1px solid ${BRAND.teal}18` }}>
                       <td className="px-4 py-2.5 font-semibold" style={{ color: BRAND.tealDeep }}>{s}</td>
                       <td className="px-4 py-2.5 text-right" style={{ color: BRAND.tealDeep + "99" }}>Premium service</td>

@@ -6,16 +6,16 @@ import { trackLead } from "./MetaPixel";
 type FormState = "idle" | "loading" | "success" | "error";
 
 const SERVICE_OPTIONS = [
-  { value: "", label: "— What can we do for you? —" },
+  { value: "", label: "- What can we do for you? -" },
   { value: "Bridal Makeup", label: "Bridal Makeup (HD / Airbrush)" },
   { value: "Party / Engagement / Roka Makeup", label: "Party / Engagement / Roka Makeup" },
   { value: "Nail Art & Extensions", label: "Nail Art & Extensions" },
-  { value: "Beauty (Keratin / Hair Spa / Facial)", label: "Beauty — Keratin, Hair Spa, Facial" },
+  { value: "Beauty (Keratin / Hair Spa / Facial)", label: "Beauty - Keratin, Hair Spa, Facial" },
   { value: "Something else", label: "Something else" },
 ];
 
 const COURSE_OPTIONS = [
-  { value: "", label: "— Select a Course —" },
+  { value: "", label: "- Select a Course -" },
   { value: "Makeup Course", label: "Professional Makeup Course" },
   { value: "Nail Extensions Master Course", label: "Nail Extensions & Nail Art Course" },
   { value: "Beauty Master Course", label: "Beauty Master Course" },

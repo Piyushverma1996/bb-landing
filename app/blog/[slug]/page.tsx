@@ -76,7 +76,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     mainEntityOfPage: `https://blushesnbrushes.com/blog/${post.slug}`,
   };
 
-  // FAQPage schema — consumed by Google rich results AND AI assistants (ChatGPT/Gemini/Claude web search)
+  // FAQPage schema - consumed by Google rich results AND AI assistants (ChatGPT/Gemini/Claude web search)
   const faqLd = post.faq?.length
     ? {
         "@context": "https://schema.org",
@@ -89,7 +89,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       }
     : null;
 
-  // BreadcrumbList schema — helps Google show the crumb trail in results
+  // BreadcrumbList schema - helps Google show the crumb trail in results
   const breadcrumbLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -100,7 +100,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
     ],
   };
 
-  // Related posts — same category first, then most recent overall (exclude current)
+  // Related posts - same category first, then most recent overall (exclude current)
   const others = POSTS.filter((p) => p.slug !== post.slug);
   const related = [
     ...others.filter((p) => p.category === post.category),
@@ -133,7 +133,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
         <Blocks body={post.body} />
       </article>
 
-      {/* FAQ — visible Q&A mirrors the FAQPage schema (direct-answer format AI assistants cite) */}
+      {/* FAQ - visible Q&A mirrors the FAQPage schema (direct-answer format AI assistants cite) */}
       {post.faq && post.faq.length > 0 && (
         <section className="mt-10">
           <h2 className="text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Frequently asked questions</h2>
@@ -153,11 +153,11 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
       {/* CTA */}
       <div className="mt-10 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
         <p className="text-[18px] font-bold" style={{ fontFamily: "var(--font-playfair), serif" }}>Ready to book your look?</p>
-        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Bridal &amp; party makeup, nail art and beauty by Urvashi Trehan — 4.8★, 200+ happy brides across Delhi NCR.</p>
+        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">Bridal &amp; party makeup, nail art and beauty by Urvashi Trehan - 4.8★, 200+ happy brides across Delhi NCR.</p>
         <Link href="/book" className="mt-4 inline-block rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Book on WhatsApp →</Link>
       </div>
 
-      {/* Related — internal linking helps SEO ranking + keeps readers on the site */}
+      {/* Related - internal linking helps SEO ranking + keeps readers on the site */}
       {related.length > 0 && (
         <section className="mt-10">
           <h2 className="mb-4 text-[16px] font-bold uppercase tracking-widest text-[#C9A55C]">Keep reading</h2>

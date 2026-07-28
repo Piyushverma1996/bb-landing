@@ -6,7 +6,7 @@ const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY ?? "" });
 const SYSTEM = `You are the creative director for Blushes & Brushes, a premium beauty salon in Ramesh Nagar, West Delhi (opposite Subway, PIN 110015) run by Urvashi Trehan.
 
 Services:
-- Nail extensions, nail art, gel nails (at studio — Ramesh Nagar)
+- Nail extensions, nail art, gel nails (at studio - Ramesh Nagar)
 - Bridal makeup, party makeup (Urvashi travels to client)
 - Beauty courses: Makeup ₹20,000 | Nail Extensions ₹20,000 | Beauty Master ₹20,000
 
@@ -28,7 +28,7 @@ function igHandle(type: string) {
   return "@blushesandbrushes2022"; // nails, beauty, courses, salon
 }
 
-// Video script generator — Square Salon style
+// Video script generator - Square Salon style
 async function generateVideoScript(type: string, look: string) {
   const msg = await client.messages.create({
     model: "claude-haiku-4-5-20251001",
@@ -36,7 +36,7 @@ async function generateVideoScript(type: string, look: string) {
     system: SYSTEM,
     messages: [{
       role: "user",
-      content: `Generate a complete 40-second Instagram Reel / Facebook Ad video script for: ${type} — ${look}.
+      content: `Generate a complete 40-second Instagram Reel / Facebook Ad video script for: ${type} - ${look}.
 This content goes on ${igHandle(type)} (route makeup→@makeovers, nails/beauty→@blushes).
 
 Output EXACTLY this JSON structure:
@@ -77,17 +77,17 @@ async function generateCaption(day: string, focus: string) {
 }
 
 const WEEKLY_POSTS = [
-  { day: "Monday", focus: "Nail art showcase — aspirational close-up, desire-inducing" },
-  { day: "Wednesday", focus: "Makeup transformation — before/after or tutorial-style" },
-  { day: "Friday", focus: "Course or offer with urgency — seats filling, July batch" },
-  { day: "Sunday", focus: "Behind the scenes — Urvashi's story, warm and personal" },
+  { day: "Monday", focus: "Nail art showcase - aspirational close-up, desire-inducing" },
+  { day: "Wednesday", focus: "Makeup transformation - before/after or tutorial-style" },
+  { day: "Friday", focus: "Course or offer with urgency - seats filling, July batch" },
+  { day: "Sunday", focus: "Behind the scenes - Urvashi's story, warm and personal" },
 ];
 
 const VIDEO_TEMPLATES = [
-  { type: "Bridal Makeup", look: "Full bridal look — lehenga, jewellery, traditional" },
-  { type: "Party Makeup", look: "Evening glam — smoky eye, highlighted skin, modern" },
-  { type: "Nail Extensions", look: "Long almond nails with nail art — ombre or chrome" },
-  { type: "Nail Art", look: "Detailed nail art — florals, French tip with design" },
+  { type: "Bridal Makeup", look: "Full bridal look - lehenga, jewellery, traditional" },
+  { type: "Party Makeup", look: "Evening glam - smoky eye, highlighted skin, modern" },
+  { type: "Nail Extensions", look: "Long almond nails with nail art - ombre or chrome" },
+  { type: "Nail Art", look: "Detailed nail art - florals, French tip with design" },
 ];
 
 export async function POST(req: NextRequest) {

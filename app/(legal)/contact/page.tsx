@@ -39,7 +39,7 @@ export default function ContactPage() {
         Contact Blushes &amp; Brushes
       </h1>
       <p className="mt-2 text-[14px] leading-relaxed text-[#1A5A54]/80">
-        Studio in Ramesh Nagar, West Delhi — and we travel across Delhi NCR for bridal &amp; party makeup. The fastest way to reach Urvashi is WhatsApp; she replies personally, usually within the hour.
+        Studio in Ramesh Nagar, West Delhi - and we travel across Delhi NCR for bridal &amp; party makeup. The fastest way to reach Urvashi is WhatsApp; she replies personally, usually within the hour.
       </p>
 
       {/* Primary CTAs */}
@@ -85,7 +85,7 @@ export default function ContactPage() {
       {/* Areas + CTA */}
       <div className="mt-8 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
         <p className="text-[17px] font-bold" style={{ fontFamily: "var(--font-playfair), serif" }}>Not in Ramesh Nagar?</p>
-        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">We travel across West Delhi and Delhi NCR for bridal and party makeup — Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and more.</p>
+        <p className="mx-auto mt-1 max-w-md text-[12px] text-white/90">We travel across West Delhi and Delhi NCR for bridal and party makeup - Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and more.</p>
         <div className="mt-4 flex flex-wrap justify-center gap-2.5">
           <Link href="/areas" className="rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">See all areas →</Link>
           <Link href="/book-now" className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">Free consultation</Link>

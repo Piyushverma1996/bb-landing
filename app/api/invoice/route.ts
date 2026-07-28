@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { appendFileSync, mkdirSync } from "fs";
 import { join } from "path";
 
-// Internal invoicing endpoint — forwards to the SAME Apps Script web app used by leads.
+// Internal invoicing endpoint - forwards to the SAME Apps Script web app used by leads.
 // Contract matches the DEPLOYED script (BB Invoices tab):
 //   create → { action: "createInvoice", ... , totalAmount, advancePaid }  → returns { invoiceId }
 //   status → { action: "updateInvoiceStatus", id, status }
@@ -26,7 +26,7 @@ function backup(kind: string, payload: unknown) {
     const dir = join(process.cwd(), ".lead-backup");
     mkdirSync(dir, { recursive: true });
     appendFileSync(join(dir, "invoices.ndjson"), JSON.stringify({ kind, at: new Date().toISOString(), payload }) + "\n", "utf8");
-  } catch { /* best effort — never block */ }
+  } catch { /* best effort - never block */ }
 }
 
 // GET /api/invoice → list ledger records (maps sheet's `name` → `customerName` for the UI)
@@ -128,6 +128,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, id: d.invoiceId ?? d.id ?? "" });
   } catch (err) {
     console.error("Invoice save failed:", err);
-    return NextResponse.json({ error: "Sheet write failed — record backed up locally" }, { status: 502 });
+    return NextResponse.json({ error: "Sheet write failed - record backed up locally" }, { status: 502 });
   }
 }

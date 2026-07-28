@@ -6,10 +6,10 @@ const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfa
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Book Now — Free Consultation | Blushes & Brushes, Ramesh Nagar",
-  description: "Book bridal, party, nails or beauty with Urvashi Trehan — free consultation, reply within the hour. Ramesh Nagar & across Delhi NCR.",
+  title: "Book Now - Free Consultation | Blushes & Brushes, Ramesh Nagar",
+  description: "Book bridal, party, nails or beauty with Urvashi Trehan - free consultation, reply within the hour. Ramesh Nagar & across Delhi NCR.",
   alternates: { canonical: "https://blushesnbrushes.com/book-now" },
-  robots: { index: false, follow: true }, // conversion page for IG/GBP traffic — keep out of search
+  robots: { index: false, follow: true }, // conversion page for IG/GBP traffic - keep out of search
 };
 
 export default function BookNowPage() {

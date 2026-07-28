@@ -63,7 +63,7 @@ export default function Gallery() {
             <img src={shots[lightbox].src} alt={shots[lightbox].alt} className="mx-auto max-h-[78vh] w-auto rounded-2xl object-contain" />
             <figcaption className="mt-3 flex flex-wrap items-center justify-center gap-3 text-center text-[12px] text-white/70">
               <span>{shots[lightbox].cat} · {lightbox + 1} / {shots.length}</span>
-              <a href="/#book" onClick={(e) => e.stopPropagation()} className="rounded-full px-4 py-1.5 text-[12px] font-bold text-white" style={{ background: "linear-gradient(120deg,#2E8B83,#C9A55C)" }}>Book this look — free consultation →</a>
+              <a href="/#book" onClick={(e) => e.stopPropagation()} className="rounded-full px-4 py-1.5 text-[12px] font-bold text-white" style={{ background: "linear-gradient(120deg,#2E8B83,#C9A55C)" }}>Book this look - free consultation →</a>
             </figcaption>
           </figure>
         </div>

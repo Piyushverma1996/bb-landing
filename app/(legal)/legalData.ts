@@ -1,4 +1,4 @@
-// Trust pages — required by the SEO audit (Prompt 7: Trust & Conversion).
+// Trust pages - required by the SEO audit (Prompt 7: Trust & Conversion).
 // Google's E-E-A-T and most directories/portals expect these to exist.
 
 export interface Section { h: string; p?: string; ul?: string[] }
@@ -50,7 +50,7 @@ export const LEGAL: LegalPage[] = [
     h1: "Terms & Booking Policy",
     description: "Booking, advance payment, rescheduling and cancellation terms for bridal, party, nail and beauty services at Blushes & Brushes, Ramesh Nagar, West Delhi.",
     updated: "28 July 2026",
-    intro: "These terms apply to bookings made with Blushes & Brushes by Urvashi Trehan, whether at our Ramesh Nagar studio or on location across Delhi NCR. We keep them short and fair — if anything is unclear, just ask on WhatsApp before booking.",
+    intro: "These terms apply to bookings made with Blushes & Brushes by Urvashi Trehan, whether at our Ramesh Nagar studio or on location across Delhi NCR. We keep them short and fair - if anything is unclear, just ask on WhatsApp before booking.",
     sections: [
       { h: "Booking & confirmation", ul: [
         "A date is confirmed only once the booking advance is received.",
@@ -62,7 +62,7 @@ export const LEGAL: LegalPage[] = [
         "We accept cash, UPI and bank transfer.",
         "Prices quoted include the services listed in the quote. No GST is charged.",
       ] },
-      { h: "Rescheduling", p: "Date changes are accommodated subject to availability. Please give us as much notice as possible — for bridal bookings, at least 15 days before the event." },
+      { h: "Rescheduling", p: "Date changes are accommodated subject to availability. Please give us as much notice as possible - for bridal bookings, at least 15 days before the event." },
       { h: "Cancellation", p: "Cancellation terms are confirmed in writing with your booking quote. Please discuss the specific terms for your booking with us on WhatsApp before paying the advance." },
       { h: "Travel", ul: [
         "Bridal and party makeup travel across Delhi NCR. Travel is charged at actuals (cab fare) for the venue.",

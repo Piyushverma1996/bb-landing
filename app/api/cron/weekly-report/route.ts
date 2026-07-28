@@ -23,11 +23,11 @@ export async function POST(req: NextRequest) {
   }
 
   const stats = await getStats();
-  const leads = stats?.byWeek ?? "—";
-  const total = stats?.total ?? "—";
-  const revenue = stats?.revenue?.total ? `₹${stats.revenue.total.toLocaleString()}` : "₹—";
-  const booked = stats?.funnel?.booked ?? "—";
-  const served = stats?.funnel?.served ?? "—";
+  const leads = stats?.byWeek ?? "-";
+  const total = stats?.total ?? "-";
+  const revenue = stats?.revenue?.total ? `₹${stats.revenue.total.toLocaleString()}` : "₹-";
+  const booked = stats?.funnel?.booked ?? "-";
+  const served = stats?.funnel?.served ?? "-";
 
   const message = encodeURIComponent(
     `🌸 BB Weekly Report\n` +
@@ -38,11 +38,11 @@ export async function POST(req: NextRequest) {
     `💰 Revenue: ${revenue}\n` +
     `━━━━━━━━━━━━━━\n` +
     `👉 Dashboard: ${process.env.NEXT_PUBLIC_APP_URL ?? "your-app.vercel.app"}/dashboard\n` +
-    `— Auto-report by BB Growth System`
+    `- Auto-report by BB Growth System`
   );
 
   if (!CALLMEBOT_PHONE || !CALLMEBOT_KEY) {
-    return NextResponse.json({ ok: true, message: "Report generated (CallMeBot not configured — add CALLMEBOT_PHONE and CALLMEBOT_KEY to env vars)", stats });
+    return NextResponse.json({ ok: true, message: "Report generated (CallMeBot not configured - add CALLMEBOT_PHONE and CALLMEBOT_KEY to env vars)", stats });
   }
 
   try {
