@@ -1,5 +1,33 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
+
+export const metadata: Metadata = {
+  title: "Makeup & Nail Academy in Ramesh Nagar, West Delhi | Blushes & Brushes Courses",
+  description:
+    "Professional makeup, nail extension & beauty courses in Ramesh Nagar, West Delhi. Micro-batches of 5, trained directly by Urvashi Trehan. ₹20,000 per course. Book a free trial class.",
+  keywords:
+    "makeup course delhi, makeup academy west delhi, nail extension course delhi, beauty course ramesh nagar, makeup classes near me, professional makeup training delhi",
+  alternates: { canonical: "https://blushesnbrushes.com/courses" },
+  openGraph: {
+    title: "Makeup & Nail Academy in West Delhi | Blushes & Brushes",
+    description:
+      "Learn bridal makeup, nail extensions and beauty therapy in micro-batches of 5, mentored by Urvashi Trehan. Ramesh Nagar, West Delhi. Free trial class available.",
+    url: "https://blushesnbrushes.com/courses",
+    type: "website",
+    images: [{ url: "/images/makeup-course.webp" }],
+    siteName: "Blushes & Brushes by Urvashi Trehan",
+  },
+};
+
+const COURSE_FAQ = [
+  { q: "How much do makeup courses cost in West Delhi?", a: "At Blushes & Brushes Academy in Ramesh Nagar, each course — Professional Makeup, Nail Extensions & Art, and Beauty Master — is ₹20,000. That includes hands-on training on live models, professional-grade tools, and direct mentorship from Urvashi Trehan." },
+  { q: "How long is the makeup course?", a: "Courses run in focused micro-batches with a maximum of 5 students, so pacing adapts to your progress rather than a fixed classroom schedule. Message us on WhatsApp for the current batch dates and duration." },
+  { q: "Do I need prior experience to join?", a: "No. Our Nail Extensions and Beauty Master courses are structured beginner-to-advanced, and the Makeup course starts with fundamentals before moving to bridal and HD techniques." },
+  { q: "Do you offer a trial class?", a: "Yes — you can book a free trial class before enrolling, so you can see the studio, meet Urvashi and experience the teaching style before committing." },
+  { q: "Where is the academy located?", a: "B 1/1 Double Storey, Ramesh Nagar, opposite Subway, New Delhi 110015 — a two-minute walk from Ramesh Nagar metro station on the Blue Line, serving students across West Delhi." },
+  { q: "Will I train on real clients?", a: "Yes. Training happens in an actual working salon on live models with professional tools — not a simulated classroom setup." },
+];
 
 const COURSES = [
   {
@@ -51,8 +79,49 @@ const PROOF_POINTS = [
 ];
 
 export default function Home() {
+  const provider = {
+    "@type": "EducationalOrganization",
+    name: "Blushes & Brushes Academy",
+    url: "https://blushesnbrushes.com/courses",
+    address: { "@type": "PostalAddress", streetAddress: "B 1/1 Double Storey, Ramesh Nagar, Opposite Subway", addressLocality: "New Delhi", addressRegion: "Delhi", postalCode: "110015", addressCountry: "IN" },
+    telephone: "+917678446364",
+  };
+  const courseLd = {
+    "@context": "https://schema.org",
+    "@graph": COURSES.map((c) => ({
+      "@type": "Course",
+      name: `${c.title} — Blushes & Brushes Academy`,
+      description: `${c.tagline}. Hands-on professional training in micro-batches of 5, mentored by Urvashi Trehan at the Ramesh Nagar studio, West Delhi.`,
+      provider,
+      image: `https://blushesnbrushes.com${c.src}`,
+      offers: { "@type": "Offer", price: c.fee.replace(/[^\d]/g, ""), priceCurrency: "INR", category: "Professional Training", availability: "https://schema.org/InStock" },
+      hasCourseInstance: {
+        "@type": "CourseInstance",
+        courseMode: "onsite",
+        courseWorkload: "PT40H",
+        location: { "@type": "Place", name: "Blushes & Brushes Studio, Ramesh Nagar", address: provider.address },
+      },
+    })),
+  };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: COURSE_FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
+  const crumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://blushesnbrushes.com/" },
+      { "@type": "ListItem", position: 2, name: "Academy", item: "https://blushesnbrushes.com/courses" },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-brand-cream font-sans">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(courseLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbLd) }} />
 
       {/* ── Urgency Banner ── */}
       <div className="bg-brand-teal px-4 py-2 text-center">
@@ -273,6 +342,30 @@ export default function Home() {
             </ul>
           </div>
           <LeadForm compact variant="course" />
+        </div>
+      </section>
+
+      {/* ── FAQ (matches FAQPage schema above — AI/GEO citation magnet) ── */}
+      <section className="bg-brand-cream px-4 py-14">
+        <div className="mx-auto max-w-3xl">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">Good to know</p>
+          <h2 className="mt-2 text-center text-2xl font-bold text-brand-teal md:text-3xl">
+            Academy — Frequently Asked Questions
+          </h2>
+          <div className="mt-7 space-y-3">
+            {COURSE_FAQ.map((f, i) => (
+              <details key={i} className="rounded-2xl border border-brand-gold/25 bg-white/80 p-4">
+                <summary className="cursor-pointer list-none text-[14px] font-semibold text-brand-teal">{f.q}</summary>
+                <p className="mt-2 text-[13px] leading-relaxed text-brand-teal/80">{f.a}</p>
+              </details>
+            ))}
+          </div>
+          <p className="mt-6 text-center text-[12.5px] text-brand-teal/70">
+            Still have a question?{" "}
+            <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20to%20know%20more%20about%20the%20courses" className="font-semibold text-brand-gold hover:underline">
+              WhatsApp us on 76784 46364
+            </a>
+          </p>
         </div>
       </section>
 
