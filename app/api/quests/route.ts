@@ -48,6 +48,8 @@ const QUESTS: Quest[] = [
   { id: "u1-5", track: "urvashi", phase: 1, title: "Get 5 Google reviews using the QR card", desc: "Show the QR after every appointment — review drafts are ready to share", who: "urvashi", points: 150, category: "reputation", est: "ongoing" },
   { id: "u1-6", track: "urvashi", phase: 1, title: "Get 5 WRITTEN Justdial reviews (top priority)", desc: "Text reviews, not just stars — this buries the one negative review Google shows", who: "urvashi", points: 200, category: "reputation", est: "1 week" },
   { id: "u1-7", track: "urvashi", phase: 1, title: "Reply to the negative Justdial review", desc: "Calm, professional reply from the business account — Piyush has a draft", who: "urvashi", points: 100, category: "reputation", est: "5 min" },
+  { id: "u1-8", track: "urvashi", phase: 1, title: "Upload 15-20 fresh photos to Google Business Profile", desc: "Maps ranking rewards photo volume — competitors have hundreds. Use the renamed Salon/ photos.", who: "urvashi", points: 100, category: "reputation", est: "15 min" },
+  { id: "u1-9", track: "urvashi", phase: 1, title: "Post 1 Google Post this week (offer/photo/update)", desc: "GBP → Add update. Draft ready — copy-paste. Weekly engagement signal none of our competitors are using.", who: "urvashi", points: 100, category: "reputation", est: "5 min" },
   // Phase 2 — Content Queen
   { id: "u2-1", track: "urvashi", phase: 2, title: "Shoot a full bridal look start-to-finish", desc: "Goes on @makeovers as a premium reel + ad", who: "urvashi", points: 200, category: "content", est: "during work" },
   { id: "u2-2", track: "urvashi", phase: 2, title: "Post 4 reels in one week", desc: "Captions auto-written — just post", who: "urvashi", points: 150, category: "content", est: "20 min total" },
@@ -75,6 +77,8 @@ const QUESTS: Quest[] = [
   { id: "p1-3", track: "piyush", phase: 1, title: "Wire Meta token + IG IDs for both pages", desc: "@makeovers (makeup) + @blushes (nails/beauty)", who: "piyush", points: 150, category: "setup", est: "20 min" },
   { id: "p1-4", track: "piyush", phase: 1, title: "Publish all 5 NorthPilot Fiverr gigs", desc: "Copy is 100% done — just press Publish", who: "piyush", points: 250, category: "income", est: "2 hours" },
   { id: "p1-5", track: "piyush", phase: 1, title: "Run BB's first Meta ad (₹150/day nails)", desc: "West Delhi women, lead-gen objective", who: "piyush", points: 150, category: "ads", est: "30 min" },
+  { id: "p1-6", track: "piyush", phase: 1, title: "GBP: confirm category, opening date, on-site attribute", desc: "Add 'Beauty Parlour' secondary category, set 2019 opening date (unlocks years-in-business badge), check On-site services attribute", who: "piyush", points: 100, category: "setup", est: "10 min" },
+  { id: "p1-7", track: "piyush", phase: 1, title: "Seed 3 Q&A on Google Business Profile", desc: "Post + answer as owner — draft ready", who: "piyush", points: 50, category: "reputation", est: "10 min" },
   // Phase 2 — First Rupee
   { id: "p2-1", track: "piyush", phase: 2, title: "Land first Fiverr/Upwork order", desc: "Even an intro-priced one — first review matters most", who: "piyush", points: 300, category: "income", est: "ongoing" },
   { id: "p2-2", track: "piyush", phase: 2, title: "Create Upwork profile (copy is ready)", desc: "Second channel for the same gigs", who: "piyush", points: 100, category: "income", est: "1 hour" },
