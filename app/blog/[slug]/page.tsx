@@ -33,6 +33,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" });
 
+// Body copy supports inline links written as [label](/path). Parsed into real
+// <Link>s rather than injected as HTML, so nothing in posts.ts can emit markup.
+function withLinks(text: string) {
+  const parts = text.split(/(\[[^\]]+\]\(\/[^)]*\))/g);
+  return parts.map((part, i) => {
+    const m = /^\[([^\]]+)\]\((\/[^)]*)\)$/.exec(part);
+    if (!m) return part;
+    return (
+      <Link key={i} href={m[2]} className="font-medium text-[#2E8B83] underline decoration-[#C9A55C]/50 underline-offset-2 hover:decoration-[#C9A55C]">
+        {m[1]}
+      </Link>
+    );
+  });
+}
+
 function Blocks({ body }: { body: Block[] }) {
   return (
     <>
@@ -43,12 +58,12 @@ function Blocks({ body }: { body: Block[] }) {
             {b.ul.map((li, j) => (
               <li key={j} className="flex gap-2.5 text-[14px] leading-relaxed text-[#1A5A54]/85">
                 <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9A55C]" />
-                <span>{li}</span>
+                <span>{withLinks(li)}</span>
               </li>
             ))}
           </ul>
         );
-        return <p key={i} className="my-3 text-[14px] leading-[1.75] text-[#1A5A54]/85">{b.p}</p>;
+        return <p key={i} className="my-3 text-[14px] leading-[1.75] text-[#1A5A54]/85">{withLinks(b.p)}</p>;
       })}
     </>
   );

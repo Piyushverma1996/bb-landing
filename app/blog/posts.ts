@@ -50,7 +50,8 @@ export const POSTS: Post[] = [
       { p: "Oily or combination skin in a humid month tends to love airbrush's matte hold. Dry or mature skin often looks more radiant in HD, which can be layered with hydrating primers and cream products for a natural glow. This is exactly what a trial is for - we test a small area under real light before your day." },
       { h: "So which should you book?" },
       { p: "There is no single winner - there's a right choice for your skin, your weather and your function. As a rule of thumb: airbrush for endurance and a matte-satin look; HD for a soft, dewy, easily-refreshed finish. A skilled artist will often blend both. What never changes is prep: hydrated, well-primed skin outlasts any technique." },
-      { p: "Blushes & Brushes offers both HD and airbrush bridal makeup, travelling across Delhi NCR for weddings, with trials so you decide with confidence." },
+      { p: "Blushes & Brushes offers both HD and airbrush [bridal makeup](/services/bridal-makeup), travelling across Delhi NCR for weddings, with trials so you decide with confidence." },
+      { p: "The studio itself is in Ramesh Nagar. Here is what to expect from a [makeup artist in Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar), including travel time from the colonies nearby." },
     ],
   },
   {
@@ -82,7 +83,8 @@ export const POSTS: Post[] = [
       ] },
       { h: "Signs it's time for a refill" },
       { p: "A visible growth gap at the base, any lifting at the edges, or a nail that snags on fabric are all cues to come in. A timely refill is quicker and cheaper than a full new set - and keeps your natural nails healthy underneath." },
-      { p: "Blushes & Brushes in Ramesh Nagar does gel extensions, French, ombré and chrome nail art - currently from ₹499 with complimentary nail art. Book a slot and we'll help you choose a shape that fits your lifestyle." },
+      { p: "Blushes & Brushes in Ramesh Nagar does gel extensions, French, ombré and chrome [nail art](/services/nail-extensions) - currently from ₹499 with complimentary nail art. Book a slot and we'll help you choose a shape that fits your lifestyle." },
+      { p: "If you are picking a studio, compare your options in our guide to the [best nail salon in West Delhi](/best-nail-salon-in-west-delhi)." },
     ],
     faq: [
       { q: "How long do nail extensions last?", a: "Typically 3–4 weeks before a refill is needed, depending on nail growth and aftercare. With daily cuticle oil and gloves for housework, a well-applied set comfortably reaches the 4-week mark." },
@@ -101,7 +103,7 @@ export const POSTS: Post[] = [
     cover: "/images/new-bridal-red.webp",
     keywords: ["bridal makeup cost delhi", "bridal makeup price delhi 2026", "makeup artist charges delhi", "airbrush makeup price", "engagement makeup cost delhi"],
     body: [
-      { p: "Bridal makeup quotes in Delhi run anywhere from ₹8,000 to ₹1,00,000+, and most brides have no idea why. As a working artist, here is the transparent breakdown - what different price bands actually buy you, and the questions that protect you from overpaying (or worse, underpaying and regretting it)." },
+      { p: "[Bridal makeup](/services/bridal-makeup) quotes in Delhi run anywhere from ₹8,000 to ₹1,00,000+, and most brides have no idea why. As a working artist, here is the transparent breakdown - what different price bands actually buy you, and the questions that protect you from overpaying (or worse, underpaying and regretting it)." },
       { h: "The real price bands in Delhi (2026)" },
       { ul: [
         "₹8,000–15,000 - newer artists or parlour packages. Fine for small functions; check their real-bride photos, not portfolio shoots.",
@@ -125,6 +127,8 @@ export const POSTS: Post[] = [
         "No written confirmation of date, time, and what's included.",
       ] },
       { p: "Blushes & Brushes offers transparent bridal pricing - HD ₹18–22K, airbrush ₹25–30K, engagement ₹10–15K, reception ₹12–16K - with trials available and travel across Delhi NCR. WhatsApp us for a quote for your functions." },
+      { p: "For a wider view, read how to choose the [best bridal makeup artist in Delhi](/best-bridal-makeup-artist-in-delhi)." },
+      { p: "You can see real client work, unfiltered, in the [Blushes & Brushes gallery](/gallery)." },
     ],
     faq: [
       { q: "How much does bridal makeup cost in Delhi in 2026?", a: "Established independent artists charge ₹18,000–30,000 for the wedding-day look (HD ₹18–22K, airbrush ₹25–30K). Engagement/Roka looks run ₹10–15K and reception ₹12–16K. Celebrity studios charge ₹35,000+." },
@@ -143,7 +147,7 @@ export const POSTS: Post[] = [
     cover: "/images/new-bridal-peach.webp",
     keywords: ["makeup artist ramesh nagar", "best makeup artist west delhi", "salon ramesh nagar", "bridal makeup rajouri garden", "nail salon tilak nagar"],
     body: [
-      { p: "West Delhi has no shortage of salons - Ramesh Nagar, Rajouri Garden, Tilak Nagar and Subhash Nagar alone have dozens. But 'nearby' and 'right for your face on a big day' are different questions. Here's the checklist locals actually use." },
+      { p: "West Delhi has no shortage of salons - [Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar), Rajouri Garden, Tilak Nagar and Subhash Nagar alone have dozens. But 'nearby' and 'right for your face on a big day' are different questions. Here's the checklist locals actually use." },
       { h: "Check ratings across platforms, not just one" },
       { p: "A reliable studio holds strong ratings in multiple places, not a single curated profile. For example, Blushes & Brushes in Ramesh Nagar holds a 4.8★ Google rating with 200+ brides served and a 5.0 rating across 108 ratings on Justdial. Consistency across platforms is hard to fake." },
       { h: "The five questions that separate professionals" },
@@ -162,8 +166,9 @@ export const POSTS: Post[] = [
         "Nail extensions: ₹499–1,500 · Designer nail art sets: ₹1,500+",
       ] },
       { h: "Studio vs home service" },
-      { p: "For nails and beauty, visiting the studio gets you better tools and lighting. For bridal makeup, a good artist travels to you - Blushes & Brushes does nails and beauty at the Ramesh Nagar studio (B 1/1 Double Storey, opposite Subway) and travels across Delhi NCR for makeup." },
+      { p: "For nails and beauty, visiting the studio gets you better tools and lighting. For [bridal makeup](/services/bridal-makeup), a good artist travels to you - Blushes & Brushes does nails and beauty at the Ramesh Nagar studio (B 1/1 Double Storey, opposite Subway) and travels across Delhi NCR for makeup." },
       { p: "Shortlisting? Send us a WhatsApp with your function date - if we're not the right fit for your budget, we'll tell you honestly." },
+      { p: "Still comparing artists nearby? Our guide to the [best makeup artist in West Delhi](/best-makeup-artist-in-west-delhi) explains what to look for before you pay a deposit." },
     ],
     faq: [
       { q: "Who is the best makeup artist in Ramesh Nagar, West Delhi?", a: "Blushes & Brushes by Urvashi Trehan (B 1/1 Double Storey, opposite Subway, Ramesh Nagar) is among West Delhi's top-rated studios - 4.8★ on Google with 200+ brides and 5.0 across 108 ratings on Justdial. Always verify current ratings and view recent real-client work before booking." },
@@ -196,7 +201,8 @@ export const POSTS: Post[] = [
         "Multi-function packages typically save 10–15%",
         "Zero day-of-function anxiety about a stranger showing up",
       ] },
-      { p: "Blushes & Brushes styles Roka, Sagan, engagement and cocktail looks across Delhi NCR (₹10–15K band for engagement-tier functions), with multi-function packages available. Send us your function list on WhatsApp for a combined quote." },
+      { p: "Blushes & Brushes styles Roka, Sagan, engagement and [cocktail](/services/party-makeup) looks across Delhi NCR (₹10–15K band for engagement-tier functions), with multi-function packages available. Send us your function list on WhatsApp for a combined quote." },
+      { p: "If you are planning your own wedding, our [bridal makeup packages](/services/bridal-makeup) page sets out what each booking includes, how long it takes and what happens at the trial." },
     ],
     faq: [
       { q: "What is the difference between Roka and engagement makeup?", a: "Roka makeup stays soft and natural (dewy base, minimal eyes) for an intimate daylight event; engagement makeup is a step up in glam - sculpted base, defined eyes, lashes - for a bigger evening function." },
@@ -231,6 +237,8 @@ export const POSTS: Post[] = [
       { h: "The two myths" },
       { p: "Myth one: 'more powder = more staying power.' Over-powdering in humidity creates a paste that slides. Myth two: 'waterproof foundation exists.' What you want is transfer-resistant + a breathable film - that's what airbrush and modern long-wear HD formulas do." },
       { p: "Getting married in Delhi's monsoon or peak summer? Blushes & Brushes specialises in humidity-proof bridal looks - airbrush from ₹25K, HD from ₹18K, trials available so you can test the wear yourself before the day." },
+      { p: "If you are planning your own wedding, our [bridal makeup packages](/services/bridal-makeup) page sets out what each booking includes, how long it takes and what happens at the trial." },
+      { p: "The studio itself is in Ramesh Nagar. Here is what to expect from a [makeup artist in Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar), including travel time from the colonies nearby." },
     ],
     faq: [
       { q: "Which makeup lasts longest in humid weather?", a: "Airbrush makeup - its micro-fine sprayed layer wears 10–14 hours through humidity and heat, with minimal touch-ups. Modern long-wear HD foundations are the next best, at 8–10 hours." },
@@ -248,7 +256,7 @@ export const POSTS: Post[] = [
     cover: "/images/party-glam.webp",
     keywords: ["party makeup price delhi", "party makeup west delhi", "party makeup cost ramesh nagar", "makeup artist rates delhi", "sangeet makeup price"],
     body: [
-      { p: "Party makeup quotes in West Delhi swing from ₹1,500 at a neighbourhood parlour to ₹8,000+ with an established artist - and the difference isn't always obvious until the photos come back. Here's the honest breakdown of what each band buys, from someone who quotes these prices daily." },
+      { p: "[Party makeup](/services/party-makeup) quotes in West Delhi swing from ₹1,500 at a neighbourhood parlour to ₹8,000+ with an established artist - and the difference isn't always obvious until the photos come back. Here's the honest breakdown of what each band buys, from someone who quotes these prices daily." },
       { h: "The three price bands" },
       { ul: [
         "₹1,500–3,000 - parlour chair makeup: shared products, standard look, 30–40 minutes. Fine for a low-key function you won't photograph much.",
@@ -264,7 +272,7 @@ export const POSTS: Post[] = [
       ] },
       { h: "When paying more is actually worth it" },
       { p: "Pay the premium when the event is long (5+ hours), heavily photographed, or in peak Delhi summer - that's when product quality and technique show. For a two-hour family dinner, a mid-band artist does the job beautifully." },
-      { p: "Blushes & Brushes does party and occasion makeup at the Ramesh Nagar studio and on location across West Delhi - transparent pricing, lashes always included. WhatsApp 76784 46364 with your function date for an exact quote." },
+      { p: "Blushes & Brushes does party and occasion makeup at the Ramesh Nagar studio and on location across [West Delhi](/best-makeup-artist-in-west-delhi) - transparent pricing, lashes always included. WhatsApp 76784 46364 with your function date for an exact quote." },
     ],
     faq: [
       { q: "What is the price of party makeup in West Delhi?", a: "₹3,000–8,000 with an independent artist in 2026, depending on seniority and whether airbrush is used. Parlour chair makeup starts around ₹1,500 but uses shared, standard products." },
@@ -305,7 +313,8 @@ export const POSTS: Post[] = [
         "\"What time will you arrive, and how long do you need?\"",
         "\"What does the quote include - lashes, hair, draping, touch-up kit, travel?\"",
       ] },
-      { p: "A trial typically costs ₹2,000–4,000 in Delhi and is usually adjusted against your booking. Blushes & Brushes offers bridal trials at the Ramesh Nagar studio - bring this checklist, we'll pass it happily. WhatsApp 76784 46364 to schedule." },
+      { p: "A trial typically costs ₹2,000–4,000 in Delhi and is usually adjusted against your booking. Blushes & Brushes offers bridal trials at the [Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar) studio - bring this checklist, we'll pass it happily. WhatsApp 76784 46364 to schedule." },
+      { p: "If you are planning your own wedding, our [bridal makeup packages](/services/bridal-makeup) page sets out what each booking includes, how long it takes and what happens at the trial." },
     ],
     faq: [
       { q: "How much does a bridal makeup trial cost in Delhi?", a: "₹2,000–4,000 with most established artists, and it's commonly adjusted against your final booking amount if you go ahead." },
@@ -348,6 +357,8 @@ export const POSTS: Post[] = [
         "Refills: every 2–3 weeks, priced below a fresh set",
       ] },
       { p: "Unsure which suits your nails? Come in for a look at your natural nail condition first - we'll recommend honestly, even if the answer is 'wait two weeks and strengthen your nails'." },
+      { p: "Shapes, sets, refills and pricing are all listed on our [nail extensions](/services/nail-extensions) page." },
+      { p: "If you are picking a studio, compare your options in our guide to the [best nail salon in West Delhi](/best-nail-salon-in-west-delhi)." },
     ],
     faq: [
       { q: "Which is better, gel or acrylic nail extensions?", a: "Gel suits most people: natural feel, no odour, gentler removal, and better wear in humid climates. Acrylic wins for extreme lengths and heavy-use hands. Application quality matters more than the material." },
@@ -392,6 +403,8 @@ export const POSTS: Post[] = [
         "Day-of: moisturise 30 minutes before your artist arrives, then hands off.",
       ] },
       { p: "Marrying in December 2026? Blushes & Brushes' December calendar opens now and fills by early autumn - HD ₹18–22K, airbrush ₹25–30K, trials at the Ramesh Nagar studio, travel across Delhi NCR. WhatsApp 76784 46364 with your dates." },
+      { p: "If you are planning your own wedding, our [bridal makeup packages](/services/bridal-makeup) page sets out what each booking includes, how long it takes and what happens at the trial." },
+      { p: "For a wider view, read how to choose the [best bridal makeup artist in Delhi](/best-bridal-makeup-artist-in-delhi)." },
     ],
     faq: [
       { q: "When should I book my makeup artist for a December wedding in Delhi?", a: "By September - 2–3 months ahead. December is Delhi's peak wedding month and established artists' calendars close early. The trial then happens 4–8 weeks before the date." },
@@ -467,7 +480,8 @@ export const POSTS: Post[] = [
         "Foot baths lined with disposable film for pedicures - not just wiped down.",
       ] },
       { h: "One question that reveals everything" },
-      { p: "\"Can I see your tool sterilisation setup?\" A professional salon happily walks you through it. A hesitant answer tells you what you need to know - and it's fine to leave. Blushes & Brushes in Ramesh Nagar walks every client through our setup on request, no shortcuts." },
+      { p: "\"Can I see your tool sterilisation setup?\" A professional salon happily walks you through it. A hesitant answer tells you what you need to know - and it's fine to leave. Blushes & Brushes in [Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar) walks every client through our setup on request, no shortcuts." },
+      { p: "Facials, waxing and the rest of the salon menu sit under [beauty services](/services/beauty-services)." },
     ],
     faq: [
       { q: "How do I know if a salon is actually hygienic?", a: "Look for tools out of sealed pouches or a UV sterilizer, fresh towels per client, cuticle nippers sterilised between clients, disposable liners on foot baths, and a lidded trash bin. If the salon hesitates to walk you through its sterilisation process, leave." },
@@ -506,6 +520,8 @@ export const POSTS: Post[] = [
         "\"Are you doing anyone else that same morning?\" (You want to be the priority booking.)",
       ] },
       { p: "Blushes & Brushes locks arrival time in writing at booking and travels across Delhi NCR. WhatsApp 76784 46364 with your function timings and we'll send back a shared timeline." },
+      { p: "If you are planning your own wedding, our [bridal makeup packages](/services/bridal-makeup) page sets out what each booking includes, how long it takes and what happens at the trial." },
+      { p: "The studio itself is in Ramesh Nagar. Here is what to expect from a [makeup artist in Ramesh Nagar](/areas/makeup-artist-in-ramesh-nagar), including travel time from the colonies nearby." },
     ],
     faq: [
       { q: "How long does bridal makeup take?", a: "60 minutes for airbrush base, 75–90 minutes for HD, plus 30 minutes for skin prep and 30–45 minutes for hair. Total: 3–4 hours for a solo bride with one artist." },
