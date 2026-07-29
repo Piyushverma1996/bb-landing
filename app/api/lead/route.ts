@@ -23,6 +23,8 @@ const WA_TO = process.env.WHATSAPP_TO ?? ""; // e.g. 917678446364
 const WA_TEMPLATE = process.env.WHATSAPP_TEMPLATE ?? ""; // approved template name
 // Locale must match the template exactly: "English" = en, "English (US)" = en_US.
 const WA_LANG = process.env.WHATSAPP_TEMPLATE_LANG ?? "en";
+// Graph API version. v21.0 is near sunset; override here if Meta moves on.
+const WA_VER = process.env.WHATSAPP_API_VERSION ?? "v25.0";
 
 interface LeadPayload {
   name: string;
@@ -81,7 +83,7 @@ async function sendCallMeBot(phone: string, key: string, text: string) {
 const cleanParam = (s: string) => s.replace(/\s+/g, " ").trim().slice(0, 900) || "-";
 
 async function postCloudApi(body: unknown) {
-  const r = await fetch(`https://graph.facebook.com/v21.0/${WA_PHONE_ID}/messages`, {
+  const r = await fetch(`https://graph.facebook.com/${WA_VER}/${WA_PHONE_ID}/messages`, {
     method: "POST",
     headers: { Authorization: `Bearer ${WA_TOKEN}`, "Content-Type": "application/json" },
     body: JSON.stringify(body),
