@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAccessToken, SCOPES, GOOGLE_SA_CONFIGURED } from "../googleAuth";
+import { getAccessToken, SCOPES, GOOGLE_SA_CONFIGURED, lastAuthError } from "../googleAuth";
 
 // GA4 Data API - traffic summary for the dashboard.
 // Requires: GOOGLE_SA_EMAIL, GOOGLE_SA_PRIVATE_KEY, GA4_PROPERTY_ID
@@ -37,7 +37,7 @@ export async function GET(req: Request) {
   if (!PROPERTY_ID) return NextResponse.json(empty("GA4_PROPERTY_ID not set"));
 
   const token = await getAccessToken(SCOPES.analytics);
-  if (!token) return NextResponse.json(empty("Could not obtain Google access token - check the private key"));
+  if (!token) return NextResponse.json(empty(lastAuthError || "Could not obtain Google access token"));
 
   try {
     const [totals, channels, pages, daily, events] = await Promise.all([

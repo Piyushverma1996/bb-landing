@@ -14,11 +14,32 @@ const b64url = (input: string | Buffer) =>
 
 let cached: { token: string; exp: number } | null = null;
 
+/** Why the last getAccessToken call failed. Diagnostic only - never contains the key. */
+export let lastAuthError = "";
+
+/** Shape check on the PEM so a bad paste gives a precise message, not "invalid grant". */
+function keyShapeProblem(): string {
+  if (!SA_KEY.includes("-----BEGIN PRIVATE KEY-----"))
+    return "GOOGLE_SA_PRIVATE_KEY is missing the -----BEGIN PRIVATE KEY----- header. Copy the whole private_key value from the JSON.";
+  if (!SA_KEY.includes("-----END PRIVATE KEY-----"))
+    return "GOOGLE_SA_PRIVATE_KEY is truncated - the -----END PRIVATE KEY----- footer is missing.";
+  if (SA_KEY.trimStart().startsWith('"') || SA_KEY.trimEnd().endsWith('"'))
+    return "GOOGLE_SA_PRIVATE_KEY still has the surrounding double quotes from the JSON. Remove them.";
+  if (!SA_KEY.includes("\n"))
+    return "GOOGLE_SA_PRIVATE_KEY has no line breaks. Paste the value with its \\n sequences intact, or as real multi-line text.";
+  if (!SA_EMAIL.includes("@") || !SA_EMAIL.endsWith(".iam.gserviceaccount.com"))
+    return "GOOGLE_SA_EMAIL does not look like a service account address (should end in .iam.gserviceaccount.com).";
+  return "";
+}
+
 /** Returns an access token for the given scopes, cached until ~1 min before expiry. */
 export async function getAccessToken(scopes: string[]): Promise<string | null> {
   if (!GOOGLE_SA_CONFIGURED) return null;
   const now = Math.floor(Date.now() / 1000);
   if (cached && cached.exp > now + 60) return cached.token;
+
+  lastAuthError = keyShapeProblem();
+  if (lastAuthError) return null;
 
   const header = b64url(JSON.stringify({ alg: "RS256", typ: "JWT" }));
   const claim = b64url(JSON.stringify({
@@ -35,7 +56,8 @@ export async function getAccessToken(scopes: string[]): Promise<string | null> {
     signer.update(`${header}.${claim}`);
     signature = b64url(signer.sign(SA_KEY));
   } catch (err) {
-    console.error("Service-account key is invalid or malformed:", err);
+    lastAuthError = `Could not sign with the private key (it is malformed): ${err instanceof Error ? err.message : err}`;
+    console.error(lastAuthError);
     return null;
   }
 
@@ -50,14 +72,19 @@ export async function getAccessToken(scopes: string[]): Promise<string | null> {
       signal: AbortSignal.timeout(10000),
     });
     if (!res.ok) {
-      console.error("Google token exchange failed:", res.status, await res.text());
+      // Google's message here is precise and safe to surface (e.g. "Invalid JWT
+      // Signature", "account not found"). It never echoes the key.
+      lastAuthError = `Google rejected the credentials (${res.status}): ${(await res.text()).slice(0, 300)}`;
+      console.error(lastAuthError);
       return null;
     }
     const d = await res.json();
     cached = { token: d.access_token, exp: now + (d.expires_in ?? 3600) };
+    lastAuthError = "";
     return cached.token;
   } catch (err) {
-    console.error("Google token request error:", err);
+    lastAuthError = `Network error reaching Google: ${err instanceof Error ? err.message : err}`;
+    console.error(lastAuthError);
     return null;
   }
 }

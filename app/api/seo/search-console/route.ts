@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getAccessToken, SCOPES, GOOGLE_SA_CONFIGURED } from "../googleAuth";
+import { getAccessToken, SCOPES, GOOGLE_SA_CONFIGURED, lastAuthError } from "../googleAuth";
 
 // Search Console API - performance (impressions/clicks/position/queries) + per-URL index status.
 // Requires: GOOGLE_SA_EMAIL, GOOGLE_SA_PRIVATE_KEY, GSC_SITE_URL
@@ -41,7 +41,7 @@ export async function GET(req: Request) {
   if (!GOOGLE_SA_CONFIGURED) return NextResponse.json(empty("Service account not configured - set GOOGLE_SA_EMAIL and GOOGLE_SA_PRIVATE_KEY"));
 
   const token = await getAccessToken(SCOPES.searchConsole);
-  if (!token) return NextResponse.json(empty("Could not obtain Google access token - check the private key"));
+  if (!token) return NextResponse.json(empty(lastAuthError || "Could not obtain Google access token"));
 
   try {
     const [totals, queries, pages, daily] = await Promise.all([
