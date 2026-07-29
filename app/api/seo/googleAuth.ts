@@ -12,7 +12,9 @@ export const GOOGLE_SA_CONFIGURED = Boolean(SA_EMAIL && SA_KEY);
 const b64url = (input: string | Buffer) =>
   Buffer.from(input).toString("base64").replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 
-let cached: { token: string; exp: number } | null = null;
+// Keyed by scope string. A single shared slot would hand the Analytics-scoped
+// token to a Search Console call and fail with ACCESS_TOKEN_SCOPE_INSUFFICIENT.
+const cache = new Map<string, { token: string; exp: number }>();
 
 /** Why the last getAccessToken call failed. Diagnostic only - never contains the key. */
 export let lastAuthError = "";
@@ -36,7 +38,9 @@ function keyShapeProblem(): string {
 export async function getAccessToken(scopes: string[]): Promise<string | null> {
   if (!GOOGLE_SA_CONFIGURED) return null;
   const now = Math.floor(Date.now() / 1000);
-  if (cached && cached.exp > now + 60) return cached.token;
+  const cacheKey = scopes.join(" ");
+  const hit = cache.get(cacheKey);
+  if (hit && hit.exp > now + 60) return hit.token;
 
   lastAuthError = keyShapeProblem();
   if (lastAuthError) return null;
@@ -79,9 +83,9 @@ export async function getAccessToken(scopes: string[]): Promise<string | null> {
       return null;
     }
     const d = await res.json();
-    cached = { token: d.access_token, exp: now + (d.expires_in ?? 3600) };
+    cache.set(cacheKey, { token: d.access_token, exp: now + (d.expires_in ?? 3600) });
     lastAuthError = "";
-    return cached.token;
+    return d.access_token as string;
   } catch (err) {
     lastAuthError = `Network error reaching Google: ${err instanceof Error ? err.message : err}`;
     console.error(lastAuthError);
