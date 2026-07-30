@@ -10,7 +10,7 @@ const VER = process.env.WHATSAPP_API_VERSION ?? "v25.0";
 export async function GET() {
   if (!TOKEN) return NextResponse.json({ error: "WHATSAPP_TOKEN not set" }, { status: 400 });
   const r = await fetch(
-    `https://graph.facebook.com/${VER}/${WABA}/message_templates?fields=name,language,status,category&limit=50`,
+    `https://graph.facebook.com/${VER}/${WABA}/message_templates?fields=name,language,status,category,components&limit=50`,
     { headers: { Authorization: `Bearer ${TOKEN}` }, signal: AbortSignal.timeout(10000) }
   );
   const text = await r.text();
@@ -18,8 +18,8 @@ export async function GET() {
   const d = JSON.parse(text);
   return NextResponse.json({
     ok: true,
-    templates: (d.data ?? []).map((t: { name: string; language: string; status: string; category: string }) => ({
-      name: t.name, language: t.language, status: t.status, category: t.category,
+    templates: (d.data ?? []).map((t: { name: string; language: string; status: string; category: string; components: unknown }) => ({
+      name: t.name, language: t.language, status: t.status, category: t.category, components: t.components,
     })),
   });
 }
