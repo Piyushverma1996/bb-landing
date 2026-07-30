@@ -21,12 +21,30 @@ const COURSE_OPTIONS = [
   { value: "Beauty Master Course", label: "Beauty Master Course" },
 ];
 
+/** Where the lead came from: page path plus the campaign or referrer that sent them.
+ *  Without this every lead reads "website" and attribution is impossible. */
+function leadSource(): string {
+  if (typeof window === "undefined") return "website";
+  const path = window.location.pathname === "/" ? "home" : window.location.pathname.replace(/^\//, "");
+  const q = new URLSearchParams(window.location.search);
+  const campaign = q.get("utm_source") || q.get("utm_medium") || q.get("ref");
+  if (campaign) return `${path} | ${campaign}`;
+  try {
+    const ref = document.referrer;
+    if (ref && !ref.includes("blushesnbrushes.com")) return `${path} | ${new URL(ref).hostname}`;
+  } catch { /* malformed referrer - fall through */ }
+  return path;
+}
+
 export default function LeadForm({ compact = false, variant = "service" }: { compact?: boolean; variant?: "service" | "course" }) {
   const isCourse = variant === "course";
   const COURSES = isCourse ? COURSE_OPTIONS : SERVICE_OPTIONS;
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [course, setCourse] = useState("");
+  // Optional: event date or anything else. Feeds the "Details" line of the
+  // WhatsApp alert so Urvashi can prioritise by how close the date is.
+  const [notes, setNotes] = useState("");
   const [formState, setFormState] = useState<FormState>("idle");
   const [error, setError] = useState("");
 
@@ -51,7 +69,7 @@ export default function LeadForm({ compact = false, variant = "service" }: { com
       const res = await fetch("/api/lead", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, phone, course }),
+        body: JSON.stringify({ name, phone, course, notes, source: leadSource() }),
       });
       const data = await res.json();
       if (!res.ok) {
@@ -154,6 +172,21 @@ export default function LeadForm({ compact = false, variant = "service" }: { com
             </option>
           ))}
         </select>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label htmlFor="notes" className="text-xs font-semibold uppercase tracking-wide text-brand-teal/70">
+          {isCourse ? "When would you like to start?" : "Event date"}{" "}
+          <span className="font-normal normal-case tracking-normal text-brand-teal/40">(optional)</span>
+        </label>
+        <input
+          id="notes"
+          type="text"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder={isCourse ? "e.g. next month" : "e.g. 20 Nov 2026, or not decided yet"}
+          className="rounded-lg border border-brand-cream-dark bg-brand-cream px-4 py-3 text-sm text-brand-dark placeholder:text-brand-teal/30 focus:border-brand-teal focus:outline-none focus:ring-2 focus:ring-brand-teal/20"
+        />
       </div>
 
       {error && (
