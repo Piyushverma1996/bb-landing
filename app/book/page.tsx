@@ -1,5 +1,19 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import LeadForm from "../components/LeadForm";
+
+export const metadata: Metadata = {
+  title: "Book Bridal, Party & Nail Appointments | Blushes & Brushes, Ramesh Nagar",
+  description:
+    "Book HD or airbrush bridal makeup, party makeup, nail extensions and beauty combos with Urvashi Trehan in Ramesh Nagar, West Delhi. Transparent pricing, no hidden charges.",
+  alternates: { canonical: "https://blushesnbrushes.com/book" },
+  openGraph: {
+    title: "Book Your Appointment | Blushes & Brushes",
+    description: "Bridal, party, nails and beauty services in Ramesh Nagar, West Delhi. See pricing and book on WhatsApp.",
+    url: "https://blushesnbrushes.com/book",
+    siteName: "Blushes & Brushes by Urvashi Trehan",
+  },
+};
 
 const BRIDAL = [
   { title: "HD Bridal Makeup", price: "₹18,000 – 22,000", points: ["Long-lasting waterproof base", "False lashes + premium products", "Customised eye & lip look"] },
