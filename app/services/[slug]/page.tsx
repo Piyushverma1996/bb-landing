@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SERVICES, getService, type Block } from "../serviceData";
+import { beautySalonLd, PHONE, PHONE_DISPLAY } from "../../lib/business";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -56,14 +57,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     description: s.description,
     serviceType: s.nav,
     areaServed: ["Ramesh Nagar", "West Delhi", "Delhi NCR"],
-    provider: {
-      "@type": "BeautySalon",
-      name: "Blushes & Brushes",
-      image: `https://blushesnbrushes.com${s.cover}`,
-      telephone: "+917678446364",
-      address: { "@type": "PostalAddress", streetAddress: "B 1/1 Double Storey, Ramesh Nagar, Opp. Subway", addressLocality: "New Delhi", postalCode: "110015", addressCountry: "IN" },
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "200" },
-    },
+    // Same @id as every other page so Google treats this as one entity rather
+    // than a separate salon per service page.
+    provider: beautySalonLd({ url: "https://blushesnbrushes.com/", image: `https://blushesnbrushes.com${s.cover}` }),
     url,
   };
   const faqLd = {
@@ -141,6 +137,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="mt-4 flex flex-wrap justify-center gap-2.5">
           <a href="/#book" className="rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Free consultation →</a>
           <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation" className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">WhatsApp us</a>
+          {/* Click-to-call for phone visitors; also a local ranking signal. */}
+          <a href={`tel:${PHONE}`} className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">Call {PHONE_DISPLAY}</a>
         </div>
       </div>
 

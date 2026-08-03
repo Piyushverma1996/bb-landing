@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { beautySalonLd } from "../../lib/business";
 
 export const metadata: Metadata = {
   title: "Contact & Studio Location | Blushes & Brushes, Ramesh Nagar West Delhi",
@@ -11,24 +12,8 @@ export const metadata: Metadata = {
 const WA = "https://wa.me/917678446364?text=" + encodeURIComponent("Hi Urvashi!\nI'd like a free consultation. Could you please share the details?");
 
 export default function ContactPage() {
-  const ld = {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    "@id": "https://blushesnbrushes.com/#business",
-    name: "Blushes & Brushes by Urvashi Trehan",
-    url: "https://blushesnbrushes.com/contact",
-    telephone: "+917678446364",
-    email: "bookings@blushesnbrushes.com",
-    image: "https://blushesnbrushes.com/images/bridal-hero.webp",
-    address: { "@type": "PostalAddress", streetAddress: "B 1/1 Double Storey, Ramesh Nagar, Opposite Subway", addressLocality: "New Delhi", addressRegion: "Delhi", postalCode: "110015", addressCountry: "IN" },
-    geo: { "@type": "GeoCoordinates", latitude: 28.6517, longitude: 77.1297 },
-    openingHoursSpecification: [{
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-      opens: "10:30", closes: "20:00",
-    }],
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "200", bestRating: "5" },
-  };
+  // Same entity as every other page: shared node, plus the contact-only email.
+  const ld = { ...beautySalonLd({ url: "https://blushesnbrushes.com/contact", image: "https://blushesnbrushes.com/images/bridal-hero.webp" }), email: "bookings@blushesnbrushes.com" };
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-10">

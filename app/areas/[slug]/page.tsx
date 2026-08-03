@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { AREAS, getArea } from "../areaData";
+import { beautySalonLd, PHONE, PHONE_DISPLAY } from "../../lib/business";
 
 export function generateStaticParams() {
   return AREAS.map((a) => ({ slug: a.slug }));
@@ -37,18 +38,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
   const faqs = [{ q: a.localFaqQ, a: a.localFaqA }, ...SHARED_FAQ];
 
-  const bizLd = {
-    "@context": "https://schema.org",
-    "@type": "BeautySalon",
-    name: `Blushes & Brushes - Makeup Artist serving ${a.area}`,
-    image: "https://blushesnbrushes.com/images/bridal-real-1.webp",
-    url,
-    telephone: "+917678446364",
-    priceRange: "₹₹",
-    address: { "@type": "PostalAddress", streetAddress: "B 1/1 Double Storey, Ramesh Nagar, Opp. Subway", addressLocality: "New Delhi", postalCode: "110015", addressCountry: "IN" },
-    areaServed: { "@type": "Place", name: `${a.area}, West Delhi` },
-    aggregateRating: { "@type": "AggregateRating", ratingValue: "4.8", reviewCount: "200" },
-  };
+  const bizLd = beautySalonLd({ url, area: a.area });
   const faqLd = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })) };
   const crumbLd = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
@@ -117,6 +107,9 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
         <div className="mt-4 flex flex-wrap justify-center gap-2.5">
           <a href="/#book" className="rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">Free consultation →</a>
           <a href={`https://wa.me/917678446364?text=${encodeURIComponent(`Hi Urvashi, I'm in ${a.area} and would like a free consultation`)}`} className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">WhatsApp us</a>
+          {/* Click-to-call: most of this traffic is on a phone, and a tel: link
+              is also a local ranking signal these pages were missing. */}
+          <a href={`tel:${PHONE}`} className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">Call {PHONE_DISPLAY}</a>
         </div>
       </div>
 
