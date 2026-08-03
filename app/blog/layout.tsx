@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: "Journal - Bridal, Nail & Beauty Tips | Blushes & Brushes",
   description:
     "Makeup and beauty tips, bridal guides and nail-care advice from Urvashi Trehan of Blushes & Brushes, Ramesh Nagar, Delhi.",
+  // /blog was the only indexed page on the site with no canonical.
+  alternates: { canonical: "https://blushesnbrushes.com/blog" },
 };
 
 export default function BlogLayout({ children }: { children: React.ReactNode }) {
@@ -23,7 +25,7 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
         <div className="mx-auto flex max-w-4xl items-center justify-between px-5 py-3">
           <Link href="/" className="flex items-center gap-2.5">
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo.webp" alt="Blushes & Brushes" className="h-9 w-9 rounded-full object-cover" />
+            <img src="/images/logo.webp" width={36} height={36} alt="Blushes & Brushes" className="h-9 w-9 rounded-full object-cover" />
             <span className="text-[15px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Blushes &amp; Brushes</span>
           </Link>
           <nav className="flex items-center gap-4 text-[12px] font-semibold">

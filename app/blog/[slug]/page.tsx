@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { POSTS, getPost, type Block } from "../posts";
+import { dims } from "../../lib/imageSizes";
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({ slug: p.slug }));
@@ -141,7 +142,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
 
       <div className="mt-5 overflow-hidden rounded-3xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={post.cover} alt={post.title} className="w-full object-cover" />
+        <img src={post.cover} {...dims(post.cover)} alt={post.title} className="w-full object-cover" />
       </div>
 
       <article className="mt-6">
@@ -155,8 +156,8 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
           <div className="mt-4 space-y-3">
             {post.faq.map((f, i) => (
               <details key={i} className="group rounded-2xl border border-[#C9A55C]/25 bg-white/80 p-4">
-                <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#1A5A54]">
-                  {f.q}
+                <summary className="cursor-pointer list-none">
+                  <h3 className="inline text-[14px] font-semibold text-[#1A5A54]">{f.q}</h3>
                 </summary>
                 <p className="mt-2 text-[13px] leading-relaxed text-[#1A5A54]/80">{f.a}</p>
               </details>
@@ -180,7 +181,7 @@ export default async function Article({ params }: { params: Promise<{ slug: stri
             {related.map((r) => (
               <Link key={r.slug} href={`/blog/${r.slug}`} className="group overflow-hidden rounded-2xl border border-[#C9A55C]/25 bg-white/70 transition-shadow hover:shadow-md">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={r.cover} alt={r.title} className="h-32 w-full object-cover" />
+                <img src={r.cover} {...dims(r.cover)} alt={r.title} className="h-32 w-full object-cover" />
                 <div className="p-3">
                   <p className="text-[9px] font-semibold uppercase tracking-widest text-[#B8893B]">{r.category}</p>
                   <p className="mt-1 text-[13px] font-bold leading-snug text-[#1A5A54] group-hover:underline" style={{ fontFamily: "var(--font-playfair), serif" }}>{r.title}</p>

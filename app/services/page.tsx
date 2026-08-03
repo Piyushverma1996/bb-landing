@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { SERVICES } from "./serviceData";
+import { dims } from "../lib/imageSizes";
 
 export const metadata: Metadata = {
   title: "Services - Bridal, Party Makeup, Nails & Beauty in Ramesh Nagar | Blushes & Brushes",
@@ -27,7 +28,7 @@ export default function ServicesIndex() {
           <Link key={s.slug} href={`/services/${s.slug}`} className="group overflow-hidden rounded-3xl border border-[#C9A55C]/20 bg-white/80 shadow-sm transition-all hover:shadow-lg">
             <div className="aspect-[16/10] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={s.cover} alt={s.h1} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "50% 20%" }} />
+              <img src={s.cover} {...dims(s.cover)} alt={s.h1} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" style={{ objectPosition: "50% 20%" }} />
             </div>
             <div className="p-5">
               <h2 className="text-[19px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>{s.nav}</h2>

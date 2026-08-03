@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { SERVICES, getService, type Block } from "../serviceData";
 import { beautySalonLd, PHONE, PHONE_DISPLAY } from "../../lib/business";
+import { dims } from "../../lib/imageSizes";
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -92,7 +93,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
       <div className="mt-5 overflow-hidden rounded-3xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={s.cover} alt={s.h1} className="w-full object-cover" style={{ maxHeight: 420, objectPosition: "50% 18%" }} />
+        <img src={s.cover} {...dims(s.cover)} alt={s.h1} className="w-full object-cover" style={{ maxHeight: 420, objectPosition: "50% 18%" }} />
       </div>
 
       <div className="mt-6">
@@ -110,7 +111,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {s.gallery.map((g, i) => (
             /* eslint-disable-next-line @next/next/no-img-element */
-            <img key={i} src={g} alt={`${s.nav} ${i + 1}`} className="aspect-[3/4] w-full rounded-2xl object-cover" style={{ objectPosition: "50% 18%" }} loading="lazy" />
+            <img key={i} src={g} {...dims(g)} alt={`${s.nav} ${i + 1}`} className="aspect-[3/4] w-full rounded-2xl object-cover" style={{ objectPosition: "50% 18%" }} loading="lazy" />
           ))}
         </div>
       )}

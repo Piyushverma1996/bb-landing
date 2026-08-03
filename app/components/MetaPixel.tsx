@@ -2,10 +2,16 @@
 
 import Script from "next/script";
 
-// Replace with Urvashi's real Pixel ID from Meta Events Manager
-const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "YOUR_PIXEL_ID";
+// Real Pixel ID comes from NEXT_PUBLIC_META_PIXEL_ID (Meta Events Manager).
+const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
+
+// A Meta Pixel ID is numeric. The env var was set to the literal placeholder
+// "PASTE_PIXEL_ID_HERE", so every page load fired a junk request at Facebook
+// and no conversion was ever recorded. Render nothing unless the ID is real.
+export const PIXEL_CONFIGURED = /^\d{10,20}$/.test(PIXEL_ID);
 
 export default function MetaPixel() {
+  if (!PIXEL_CONFIGURED) return null;
   return (
     <>
       <Script id="meta-pixel" strategy="afterInteractive">

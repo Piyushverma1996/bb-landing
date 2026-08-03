@@ -62,7 +62,7 @@ export default function BookNowClient() {
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-5 py-10">
       <div className="text-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo.webp" alt="Blushes & Brushes" className="mx-auto h-16 w-16 rounded-full border-2 border-[#C9A55C]/50 object-cover" />
+        <img src="/images/logo.webp" width={64} height={64} alt="Blushes & Brushes" className="mx-auto h-16 w-16 rounded-full border-2 border-[#C9A55C]/50 object-cover" />
         <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A55C]">✦ 100% Free consultation</p>
         <h1 className="mt-1 text-2xl font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Book with Blushes &amp; Brushes</h1>
         <p className="mt-2 text-[12.5px] text-[#1A5A54]/70">Bridal · Party · Nails · Beauty · Ramesh Nagar &amp; across Delhi NCR. Urvashi replies personally within the hour - no pressure.</p>

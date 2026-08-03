@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getGuide, GUIDES, type Block } from "./guidesData";
+import { dims } from "../lib/imageSizes";
 
 export function guideMetadata(slug: string): Metadata {
   const g = getGuide(slug);
@@ -63,7 +64,7 @@ export default function GuideArticle({ slug }: { slug: string }) {
 
       <div className="mt-5 overflow-hidden rounded-3xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={g.cover} alt={g.h1} className="w-full object-cover" style={{ maxHeight: 400, objectPosition: "50% 16%" }} />
+        <img src={g.cover} {...dims(g.cover)} alt={g.h1} className="w-full object-cover" style={{ maxHeight: 400, objectPosition: "50% 16%" }} />
       </div>
 
       <div className="mt-6">

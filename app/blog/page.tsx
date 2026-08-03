@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { POSTS } from "./posts";
+import { dims } from "../lib/imageSizes";
 
 const fmt = (iso: string) =>
   new Date(iso).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
@@ -27,7 +28,7 @@ export default function BlogIndex() {
           >
             <div className="aspect-[16/10] overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={p.cover} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+              <img src={p.cover} {...dims(p.cover)} alt={p.title} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="p-5">
               <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-wide">

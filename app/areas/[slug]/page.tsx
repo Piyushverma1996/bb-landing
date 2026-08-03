@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { AREAS, getArea } from "../areaData";
 import { beautySalonLd, PHONE, PHONE_DISPLAY } from "../../lib/business";
+import { dims } from "../../lib/imageSizes";
 
 export function generateStaticParams() {
   return AREAS.map((a) => ({ slug: a.slug }));
@@ -66,7 +67,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
 
       <div className="mt-5 overflow-hidden rounded-3xl">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/bridal-real-1.webp" alt={`Bridal makeup artist in ${a.area}`} className="w-full object-cover" style={{ maxHeight: 380, objectPosition: "50% 14%" }} />
+        <img src="/images/bridal-real-1.webp" {...dims("/images/bridal-real-1.webp")} alt={`Bridal makeup artist in ${a.area}`} className="w-full object-cover" style={{ maxHeight: 380, objectPosition: "50% 14%" }} />
       </div>
 
       <p className="mt-6 text-[14.5px] leading-[1.75] text-[#1A5A54]/90">{a.localIntro}</p>

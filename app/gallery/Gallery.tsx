@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
 import { SHOTS, CATS } from "./galleryData";
+import { dims } from "../lib/imageSizes";
 
 export default function Gallery() {
   const [cat, setCat] = useState<string>("All");
@@ -47,7 +48,7 @@ export default function Gallery() {
         {shots.map((s, i) => (
           <button key={s.src} onClick={() => setLightbox(i)} className="mb-3 block w-full overflow-hidden rounded-2xl" style={{ breakInside: "avoid" }} aria-label={`Open ${s.alt}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={s.src} alt={s.alt} loading="lazy" className="w-full rounded-2xl object-cover transition-transform duration-500 hover:scale-[1.04]" />
+            <img src={s.src} {...dims(s.src)} alt={s.alt} loading="lazy" className="w-full rounded-2xl object-cover transition-transform duration-500 hover:scale-[1.04]" />
           </button>
         ))}
       </div>
