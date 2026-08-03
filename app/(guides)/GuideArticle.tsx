@@ -91,7 +91,9 @@ export default function GuideArticle({ slug }: { slug: string }) {
         <div className="mt-4 space-y-3">
           {g.faq.map((f, i) => (
             <details key={i} className="group rounded-2xl border border-[#C9A55C]/25 bg-white/80 p-4">
-              <summary className="cursor-pointer list-none text-[14px] font-semibold text-[#1A5A54]">{f.q}</summary>
+              <summary className="cursor-pointer list-none">
+                  <h3 className="inline text-[14px] font-semibold text-[#1A5A54]">{f.q}</h3>
+                </summary>
               <p className="mt-2 text-[13px] leading-relaxed text-[#1A5A54]/80">{f.a}</p>
             </details>
           ))}

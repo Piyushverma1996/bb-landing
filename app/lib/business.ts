@@ -15,10 +15,10 @@ export const ADDRESS = {
   addressCountry: "IN",
 } as const;
 
-// TODO: replace with the exact pin coordinates from Google Business Profile.
-// Five decimal places is the recommended precision; these are four, and padding
-// zeros would fake precision we do not have.
-export const GEO = { "@type": "GeoCoordinates", latitude: 28.6517, longitude: 77.1297 } as const;
+// Exact pin from the Google Business Profile listing (CID 2332371947944609004).
+// Taken from the !3d/!4d values in the Maps URL - the @lat,lng in that URL is
+// the map viewport centre, which sits ~250 m away.
+export const GEO = { "@type": "GeoCoordinates", latitude: 28.6516807, longitude: 77.1296873 } as const;
 
 export const OPENING_HOURS = [
   {
