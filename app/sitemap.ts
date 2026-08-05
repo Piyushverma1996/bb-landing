@@ -3,46 +3,41 @@ import { POSTS } from "./blog/posts";
 import { SERVICES } from "./services/serviceData";
 import { AREAS } from "./areas/areaData";
 import { GUIDES } from "./(guides)/guidesData";
+import { lastMod } from "./lib/contentDates";
 
 const BASE = "https://blushesnbrushes.com";
 
+// Google uses <lastmod> for crawl scheduling and ignores <changefreq> and
+// <priority> entirely. This sitemap previously sent only the two ignored
+// signals for every page except blog posts - and blog posts were the only
+// pages getting crawled. Dates come from git history via
+// scripts/gen-content-dates.py, so they stay honest; a lastmod that always
+// says "today" gets discounted as unreliable.
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes: MetadataRoute.Sitemap = [
-    { url: `${BASE}/`, changeFrequency: "monthly", priority: 1 },
-    { url: `${BASE}/services`, changeFrequency: "monthly", priority: 0.95 },
-    { url: `${BASE}/areas`, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/book`, changeFrequency: "monthly", priority: 0.9 },
-    { url: `${BASE}/courses`, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/blog`, changeFrequency: "weekly", priority: 0.8 },
-    { url: `${BASE}/gallery`, changeFrequency: "monthly", priority: 0.85 },
-    { url: `${BASE}/faq`, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${BASE}/contact`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/about`, changeFrequency: "monthly", priority: 0.8 },
-    { url: `${BASE}/privacy-policy`, changeFrequency: "yearly", priority: 0.3 },
-    { url: `${BASE}/terms`, changeFrequency: "yearly", priority: 0.3 },
-  ];
-  const serviceRoutes: MetadataRoute.Sitemap = SERVICES.map((s) => ({
-    url: `${BASE}/services/${s.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.9,
-  }));
-  // Noindexed areas are excluded: listing a page we tell Google not to
-  // index is a contradictory signal.
-  const areaRoutes: MetadataRoute.Sitemap = AREAS.filter((a) => !a.noindex).map((a) => ({
-    url: `${BASE}/areas/${a.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.75,
-  }));
-  const guideRoutes: MetadataRoute.Sitemap = GUIDES.map((g) => ({
-    url: `${BASE}/${g.slug}`,
-    changeFrequency: "monthly",
-    priority: 0.85,
-  }));
+  const entry = (path: string): MetadataRoute.Sitemap[number] => ({
+    url: `${BASE}${path}`,
+    lastModified: lastMod(path),
+  });
+
+  const staticRoutes = [
+    "/", "/services", "/areas", "/book", "/courses", "/blog",
+    "/gallery", "/faq", "/contact", "/about", "/privacy-policy", "/terms",
+  ].map(entry);
+
+  const serviceRoutes = SERVICES.map((s) => entry(`/services/${s.slug}`));
+
+  // Noindexed areas are excluded: listing a page we tell Google not to index
+  // is a contradictory signal.
+  const areaRoutes = AREAS.filter((a) => !a.noindex).map((a) => entry(`/areas/${a.slug}`));
+
+  const guideRoutes = GUIDES.map((g) => entry(`/${g.slug}`));
+
+  // Posts carry an editorial date, which is more meaningful than the commit
+  // that happened to touch the file.
   const postRoutes: MetadataRoute.Sitemap = POSTS.map((p) => ({
     url: `${BASE}/blog/${p.slug}`,
     lastModified: new Date(p.updated ?? p.date),
-    changeFrequency: "monthly",
-    priority: 0.7,
   }));
+
   return [...staticRoutes, ...serviceRoutes, ...areaRoutes, ...guideRoutes, ...postRoutes];
 }
