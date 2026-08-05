@@ -26,7 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly",
     priority: 0.9,
   }));
-  const areaRoutes: MetadataRoute.Sitemap = AREAS.map((a) => ({
+  // Noindexed areas are excluded: listing a page we tell Google not to
+  // index is a contradictory signal.
+  const areaRoutes: MetadataRoute.Sitemap = AREAS.filter((a) => !a.noindex).map((a) => ({
     url: `${BASE}/areas/${a.slug}`,
     changeFrequency: "monthly",
     priority: 0.75,

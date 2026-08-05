@@ -14,13 +14,22 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const a = getArea(slug);
   if (!a) return { title: "Not found | Blushes & Brushes" };
   const url = `https://blushesnbrushes.com/areas/${a.slug}`;
-  const title = `Best Makeup Artist in ${a.area} - Bridal, Party & Nails | Blushes & Brushes`;
-  const description = `Bridal, party & engagement makeup in ${a.area}, West Delhi by Urvashi Trehan. HD & airbrush, travels to your venue (${a.distance}). 4.8★, 200+ brides. Free consultation.`;
+  const title = a.focus === "party"
+    ? `Party & Occasion Makeup in ${a.area} - Blushes & Brushes`
+    : `Best Makeup Artist in ${a.area} - Bridal, Party & Nails | Blushes & Brushes`;
+  // Do not claim bridal experience in areas where the work has been party only.
+  const description = a.focus === "party"
+    ? `Party, engagement and occasion makeup in ${a.area}, West Delhi by Urvashi Trehan. Travels to your venue (${a.distance}). 4.8★, 200+ clients. Free consultation.`
+    : `Bridal, party & engagement makeup in ${a.area}, West Delhi by Urvashi Trehan. HD & airbrush, travels to your venue (${a.distance}). 4.8★, 200+ brides. Free consultation.`;
   return {
     title,
     description,
     keywords: [`makeup artist ${a.area.toLowerCase()}`, `bridal makeup ${a.area.toLowerCase()}`, `party makeup ${a.area.toLowerCase()}`, `beauty parlour ${a.area.toLowerCase()}`, "makeup artist west delhi"].join(", "),
     alternates: { canonical: url },
+    // Areas with no first-hand detail yet stay out of the index. A thin
+    // location page does not merely fail on its own - a cluster of
+    // near-identical ones lowers Google's view of the whole domain.
+    robots: a.noindex ? { index: false, follow: true } : undefined,
     openGraph: { title, description, url, type: "website", images: [{ url: "/images/bridal-real-1.webp" }], siteName: "Blushes & Brushes by Urvashi Trehan" },
   };
 }
@@ -35,7 +44,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
   const a = getArea(slug);
   if (!a) notFound();
   const url = `https://blushesnbrushes.com/areas/${a.slug}`;
-  const h1 = `Best Makeup Artist in ${a.area}`;
+  const h1 = a.focus === "party" ? `Party & Occasion Makeup in ${a.area}` : `Best Makeup Artist in ${a.area}`;
 
   const faqs = [{ q: a.localFaqQ, a: a.localFaqA }, ...SHARED_FAQ];
 
@@ -94,9 +103,53 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
         ))}
       </div>
 
-      <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Why {a.area} brides choose Blushes &amp; Brushes</h2>
+      {/* First-hand detail. This is what stops the page reading as a template
+          with the place name swapped, so it sits high, above the shared blocks. */}
+      {a.experience && (
+        <>
+          <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Our work in {a.area}</h2>
+          <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">{a.experience}</p>
+        </>
+      )}
+
+      {a.venues && a.venues.length > 0 && (
+        <>
+          <h3 className="mt-5 mb-2 text-[16px] font-bold text-[#1A5A54]">Venues we have worked at{a.area === "Ramesh Nagar" ? " nearby" : ` in ${a.area}`}</h3>
+          <ul className="my-3 space-y-2 pl-1">
+            {a.venues.map((v) => (
+              <li key={v.name} className="flex gap-2.5 text-[14px] leading-relaxed text-[#1A5A54]/85">
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9A55C]" />
+                <span><strong className="font-semibold text-[#1A5A54]">{v.name}</strong>{v.note ? ` - ${v.note}` : ""}</span>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
+
+      {a.travelNote && (
+        <>
+          <h3 className="mt-5 mb-2 text-[16px] font-bold text-[#1A5A54]">How long we take to reach {a.area}</h3>
+          <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">{a.travelNote}{a.travelCharge ? " A travel charge applies for this distance, quoted upfront." : ""}</p>
+        </>
+      )}
+
+      {a.accessNote && (
+        <>
+          <h3 className="mt-5 mb-2 text-[16px] font-bold text-[#1A5A54]">What we plan for at {a.area} venues</h3>
+          <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">{a.accessNote}</p>
+        </>
+      )}
+
+      {a.studioNote && (
+        <>
+          <h3 className="mt-5 mb-2 text-[16px] font-bold text-[#1A5A54]">Coming to the studio from {a.area}</h3>
+          <p className="text-[14px] leading-[1.75] text-[#1A5A54]/85">{a.studioNote}</p>
+        </>
+      )}
+
+      <h2 className="mt-8 mb-2 text-[20px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Why {a.area} clients choose Blushes &amp; Brushes</h2>
       <ul className="my-3 space-y-2 pl-1">
-        {["200+ brides served across West Delhi with a 4.8★ Google rating", "HD & airbrush makeup that lasts through long Delhi functions", "Premium products - HD Forever 52, NARS, Huda Beauty", "Transparent pricing with hair, lashes & draping included", `Travels to ${a.area} venues with a written arrival time`].map((li, i) => (
+        {[a.focus === "party" ? "200+ clients served across West Delhi with a 4.8★ Google rating" : "200+ brides served across West Delhi with a 4.8★ Google rating", "HD & airbrush makeup that lasts through long Delhi functions", "Premium products - HD Forever 52, NARS, Huda Beauty", "Transparent pricing with hair, lashes & draping included", `Travels to ${a.area} venues with a written arrival time`].map((li, i) => (
           <li key={i} className="flex gap-2.5 text-[14px] leading-relaxed text-[#1A5A54]/85"><span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#C9A55C]" /><span>{li}</span></li>
         ))}
       </ul>

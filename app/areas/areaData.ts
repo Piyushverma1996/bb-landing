@@ -15,11 +15,40 @@ export interface Area {
   // one area-specific FAQ (plus shared FAQs added in the template)
   localFaqQ: string;
   localFaqA: string;
+
+  // --- Below: first-hand detail from Urvashi (Jul 2026). This is what makes a
+  // page non-duplicable. Pages without it are noindexed rather than published
+  // thin, because near-identical location pages suppress the whole domain.
+  /** Real venues worked, with one practical line each. */
+  venues?: { name: string; note?: string }[];
+  /** Honest travel time, including the bad case. */
+  travelNote?: string;
+  /** Volume of real work done here. */
+  experience?: string;
+  /** Operational knowledge: access, power, lifts, parking, lighting. */
+  accessNote?: string;
+  /** Whether clients from here travel in to the studio for nails/beauty. */
+  studioNote?: string;
+  /** Some areas are party-makeup territory, not bridal. Do not claim otherwise. */
+  focus?: "bridal" | "party";
+  /** Extra charge applies (distance). */
+  travelCharge?: boolean;
+  /** No first-hand experience yet -> keep the page out of the index. */
+  noindex?: boolean;
 }
 
 export const AREAS: Area[] = [
   {
     slug: "makeup-artist-in-ramesh-nagar",
+    experience: "The studio itself - most of the 200+ clients behind our 4.8 Google rating have sat in this chair.",
+    venues: [
+      { name: "The Oliver Space, Mayapuri Industrial Area", note: "A short run from the studio, so we can set up unhurried." },
+      { name: "Flavours from Heavens, Moti Nagar", note: "Straight down Najafgarh Road from us." },
+      { name: "Euphoria, Peeragarhi", note: "There is a mirror, but we still carry our own ring light - the vanity lighting is not reliable enough for a bridal base." },
+    ],
+    accessNote: "Come out of Ramesh Nagar metro at Gate 3. We are in the lane opposite Subway, second shop, ground floor - a photographer's studio on the right and a stationery shop on the left. Park directly in front of the salon.",
+    travelNote: "You are already here. Most Ramesh Nagar clients walk in or reach in under five minutes.",
+    studioNote: "Walk in or message first, both work. Waiting is normal-length, not long, even on a Saturday.",
     area: "Ramesh Nagar",
     distance: "at our Ramesh Nagar studio",
     metro: "Ramesh Nagar (Blue Line)",
@@ -32,6 +61,15 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-rajouri-garden",
+    experience: "Easily 15-20 brides a season - our single busiest area outside Ramesh Nagar itself, for both venue visits and studio makeups.",
+    venues: [
+      { name: "The Maiden Crown", note: "Good natural space in the getting-ready room." },
+      { name: "Surya Grand", note: "A regular for us." },
+      { name: "Smaller boutique banquets in Rajouri", note: "We bring our own professional ring lights - the bridal vanity rooms tend to be dim and warm-lit." },
+    ],
+    travelNote: "A 10-15 minute drive from the studio on a calm wedding morning. On a Saturday evening in peak season, budget 30-40 minutes just to cross the main market traffic.",
+    accessNote: "We travel by cab with heavy vanity cases, hair tools and ring lights, so drop-off access matters here more than anywhere. The main market gridlocks on weekend evenings. We confirm with the bride in advance exactly which gate or service lift the cab should pull up to, so we are not carrying equipment through the market crowd on foot.",
+    studioNote: "A lot of brides finish buying their lehenga and jewellery in the main market and come straight to the studio for a trial the same day, while the look is still fresh in their head.",
     area: "Rajouri Garden",
     distance: "~2 km from our Ramesh Nagar studio",
     metro: "Rajouri Garden (Blue Line)",
@@ -44,6 +82,7 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-tilak-nagar",
+    noindex: true,
     area: "Tilak Nagar",
     distance: "~2 km from our Ramesh Nagar studio",
     metro: "Tilak Nagar (Blue Line)",
@@ -56,6 +95,20 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-janakpuri",
+    focus: "party",
+    travelCharge: true,
+    experience: "Party and occasion makeup rather than bridal - that is honestly where our Janakpuri work sits today.",
+    venues: [
+      { name: "Hyatt Centric Janakpuri", note: "" },
+      { name: "Five Elements by Sandoz", note: "" },
+      { name: "Janakpuri Club", note: "One of the older club venues where power points near the vanity are limited." },
+      { name: "Palazzo Inn", note: "" },
+      { name: "SK Precious Banquet", note: "" },
+      { name: "Venues near Mata Chanan Devi Hospital", note: "" },
+    ],
+    travelNote: "Further out than the rest of West Delhi, so a travel charge applies and the exact timing depends on traffic on the day.",
+    accessNote: "Janakpuri runs from five-star hotels like Hyatt Centric down to local clubs and large residential homes. For residential venues we sort gate entry passes with the family in advance, and we always carry heavy-duty extension cords - several of the older club venues have very few power points near the vanity mirrors.",
+    studioNote: "Janakpuri clients do travel in to the Ramesh Nagar studio for nails and beauty.",
     area: "Janakpuri",
     distance: "~5 km from our Ramesh Nagar studio",
     metro: "Janakpuri West (Blue/Magenta Line)",
@@ -80,6 +133,14 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-kirti-nagar",
+    experience: "2-3 brides so far - less bridal volume than neighbouring Moti Nagar, more commercial territory.",
+    venues: [
+      { name: "Oreanns", note: "" },
+      { name: "Invitation Banquet", note: "" },
+      { name: "Ayraa Banquet", note: "" },
+    ],
+    travelNote: "20-30 minutes, though daytime traffic is heavy with commercial vehicles.",
+    accessNote: "Kirti Nagar is a furniture and commercial hub, and the inner blocks confuse cab drivers. We ask brides to share a live location or an exact Maps pin for venues like Oreanns or Ayraa, so the cab drops us at the door rather than leaving us to carry makeup and hair equipment across busy industrial roads.",
     area: "Kirti Nagar",
     distance: "~3 km from our Ramesh Nagar studio",
     metro: "Kirti Nagar (Blue/Green Line)",
@@ -92,6 +153,15 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-moti-nagar",
+    experience: "8-10 brides, at venues and at the studio.",
+    venues: [
+      { name: "La Stella", note: "" },
+      { name: "Majestic Crown", note: "" },
+      { name: "Zion Banquet", note: "" },
+      { name: "Florence Banquet", note: "" },
+    ],
+    travelNote: "20-30 minutes at most, straight down Najafgarh Road.",
+    studioNote: "Plenty of Moti Nagar regulars come to the studio for nails and beauty rather than booking at home.",
     area: "Moti Nagar",
     distance: "~2 km from our Ramesh Nagar studio",
     metro: "Moti Nagar (Blue Line)",
@@ -104,6 +174,13 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-punjabi-bagh",
+    experience: "6-8 brides, split between venues and the studio. Multi-function bookings are common here.",
+    venues: [
+      { name: "Opulence Banquet", note: "Spacious, well-cooled getting-ready room." },
+      { name: "Symphony Banquet", note: "Another regular for multi-function weddings." },
+    ],
+    travelNote: "15-20 minutes on a wedding morning. We add 20-30 minutes of buffer on evening saayas, when Ring Road near Club Road backs up badly.",
+    accessNote: "Punjabi Bagh has some of the most luxurious banquets and farmhouses in West Delhi. The getting-ready rooms are usually spacious with proper air conditioning, which makes a real difference to how a base sets over a long function.",
     area: "Punjabi Bagh",
     distance: "~4 km from our Ramesh Nagar studio",
     metro: "Punjabi Bagh (Pink Line)",
@@ -128,6 +205,7 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-hari-nagar",
+    noindex: true,
     area: "Hari Nagar",
     distance: "~3 km from our Ramesh Nagar studio",
     metro: "Tilak Nagar / Janakpuri (Blue Line)",
@@ -140,6 +218,7 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-uttam-nagar",
+    noindex: true,
     area: "Uttam Nagar",
     distance: "~8 km from our Ramesh Nagar studio",
     metro: "Uttam Nagar East/West (Blue Line)",
@@ -200,6 +279,7 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-dwarka",
+    noindex: true,
     area: "Dwarka",
     distance: "~12 km from our Ramesh Nagar studio",
     metro: "Dwarka (Blue Line)",
