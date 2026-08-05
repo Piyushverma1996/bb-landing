@@ -121,6 +121,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-subhash-nagar",
+    travelNote: "The closest area to the studio at roughly 1.5 km - about 10 minutes on a wedding morning, and rarely more than 20 even in evening traffic. Close enough that we can return to the studio mid-day if a second look is needed between functions.",
+    accessNote: "Subhash Nagar sits one metro stop from us on the Blue Line, so most bookings here are straightforward: we reach early, set up without rushing, and there is no realistic scenario where traffic threatens the schedule. For flat and DDA-block addresses we confirm the floor and lift situation in advance, since vanity cases and hair tools are heavy to carry up.",
+    studioNote: "Being the nearest catchment, Subhash Nagar clients treat the studio as their local salon - nail refills and beauty appointments here are usually walk-in distance rather than a planned trip.",
     area: "Subhash Nagar",
     distance: "~1.5 km from our Ramesh Nagar studio",
     metro: "Subhash Nagar (Blue Line)",
@@ -193,6 +196,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-paschim-vihar",
+    travelNote: "Roughly 6 km and 20-30 minutes on a wedding morning via Outer Ring Road. Evening saayas in peak season can push it past 40 minutes, so we leave with a buffer rather than cutting it fine.",
+    accessNote: "Paschim Vihar is well supplied with hotels and community centres, and the larger venues here have proper bridal rooms with air conditioning and space to set up. The community-centre venues are more variable - some have very little lighting near the vanity - so we carry ring lights as standard. Parking is generally easier here than in the market-heavy areas closer to the studio.",
+    studioNote: "A comfortable run on the Green Line, and Paschim Vihar brides often come to the studio for the trial even when the wedding-day makeup happens at their venue.",
     area: "Paschim Vihar",
     distance: "~6 km from our Ramesh Nagar studio",
     metro: "Paschim Vihar East/West (Green Line)",
@@ -231,6 +237,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-vikaspuri",
+    travelNote: "Around 6 km, usually 20-30 minutes along Pankha Road. The stretch past Janakpuri District Centre is the slow part, particularly on weekend evenings.",
+    accessNote: "Vikaspuri is largely residential, so most bookings happen at home rather than at a banquet. That changes what matters: we confirm which gate the cab should use, whether there is a lift, and where we can set up with a mirror and a power point. Home bookings are often the most comfortable to work in, provided the room has been cleared before we arrive - it is worth asking the family to do that the night before.",
+    studioNote: "Far enough that most Vikaspuri clients plan a studio visit rather than dropping in, but close enough that trials and nail appointments are a regular trip.",
     area: "Vikaspuri",
     distance: "~6 km from our Ramesh Nagar studio",
     metro: "Nearest: Janakpuri West (Blue/Magenta)",
@@ -243,6 +252,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-naraina",
+    travelNote: "About 4 km via Ring Road, typically 15-25 minutes. Naraina Industrial Area moves freely early in the morning, which suits pre-dawn bridal starts.",
+    accessNote: "Naraina splits between Naraina Vihar homes and the industrial-area banquets. The industrial stretch is easy to reach but poorly signposted after dark, so we ask for a Maps pin rather than an address. Banquet halls converted from industrial plots often have large but sparsely furnished getting-ready rooms - we plan on bringing our own lighting and check the power point situation before the day.",
+    studioNote: "Close enough on the Ring Road that Naraina clients regularly come to the studio rather than booking at home.",
     area: "Naraina",
     distance: "~4 km from our Ramesh Nagar studio",
     metro: "Nearest: Kirti Nagar (Blue/Green)",
@@ -255,6 +267,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-patel-nagar",
+    travelNote: "Around 4 km and 15-25 minutes depending on Pusa Road. The stretch near Patel Nagar metro slows noticeably in the evening rush, so evening functions get an extra buffer.",
+    accessNote: "Patel Nagar mixes older residential blocks with hotels along Pusa Road. For residential bookings we check parking and lift access when confirming, because the inner lanes are narrow and a cab cannot always reach the door. For hotel bookings the getting-ready rooms are usually well equipped, though we still carry ring lights - hotel bathroom lighting is rarely right for a bridal base.",
+    studioNote: "A straight run along the Blue Line, so Patel Nagar clients do come in to the studio for nails, beauty and bridal trials.",
     area: "Patel Nagar",
     distance: "~4 km from our Ramesh Nagar studio",
     metro: "Patel Nagar (Blue Line)",
@@ -267,6 +282,9 @@ export const AREAS: Area[] = [
   },
   {
     slug: "makeup-artist-in-karol-bagh",
+    travelNote: "About 7 km and 25-35 minutes, and the honest answer is that Karol Bagh traffic is the least predictable of any area we serve. Ajmal Khan Road and Bank Street can be at a standstill through the day, not only in the evening, so we build in significantly more buffer here than for West Delhi bookings.",
+    accessNote: "Karol Bagh is one of Delhi's densest shopping districts, which makes drop-off the main planning problem rather than the makeup itself. We agree the exact gate or service entrance in advance, because carrying vanity cases and hair equipment on foot through the market is not realistic. Hotel venues here are well equipped; the older guesthouse and banquet rooms are not, so we plan for our own lighting and extension cords.",
+    studioNote: "Karol Bagh is a major bridal shopping destination, and brides buying lehengas and jewellery here often travel out to the Ramesh Nagar studio for the trial - a straight run on the Blue Line.",
     area: "Karol Bagh",
     distance: "~7 km from our Ramesh Nagar studio",
     metro: "Karol Bagh (Blue Line)",

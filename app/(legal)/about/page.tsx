@@ -4,9 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Urvashi Trehan - Bridal Makeup Artist, Ramesh Nagar West Delhi",
   description:
-    "Meet Urvashi Trehan, founder of Blushes & Brushes in Ramesh Nagar, West Delhi. VLCC-certified, HD & airbrush specialist, 200+ brides, featured in The Beauty Insider magazine.",
+    "Meet Urvashi Trehan, founder of Blushes & Brushes in Ramesh Nagar, West Delhi. VLCC-certified HD & airbrush artist, 200+ brides, 5am starts, destination weddings across Delhi NCR, Uttarakhand and Himachal.",
   keywords:
-    "urvashi trehan makeup artist, about blushes and brushes, bridal makeup artist west delhi, makeup artist ramesh nagar, vlcc certified makeup artist delhi",
+    "urvashi trehan makeup artist, about blushes and brushes, bridal makeup artist west delhi, makeup artist ramesh nagar, vlcc certified makeup artist delhi, destination wedding makeup artist delhi",
   alternates: { canonical: "https://blushesnbrushes.com/about" },
   openGraph: {
     title: "About Urvashi Trehan - Blushes & Brushes, Ramesh Nagar",
@@ -33,6 +33,25 @@ const CREDENTIALS = [
   { icon: "👑", title: "200+ Brides", desc: "Seven years of real wedding-day work across Delhi NCR, holding a 4.8★ Google rating." },
 ];
 
+// Direct-answer FAQs. Every one is a real question brides ask, answered from
+// Urvashi's own operating detail - which is what AI search can actually cite.
+const FAQ = [
+  { q: "How far in advance should I book bridal makeup in Delhi?",
+    a: "Four to five months ahead for a November or December wedding, which are the hardest dates to get. Outside peak season there is more flexibility. Dates sometimes reopen after a cancellation, so it is worth asking even at short notice." },
+  { q: "What is the earliest Urvashi can start on the wedding morning?",
+    a: "The earliest booking done so far started at 5 am, leaving the Ramesh Nagar studio at 4 am. If your muhurat needs you ready before sunrise, mention it at the enquiry stage so the timing can be planned properly." },
+  { q: "Does Blushes & Brushes do destination weddings?",
+    a: "Yes. Beyond Delhi NCR, Urvashi travels to Sonipat and Panipat in Haryana, Nainital and Rishikesh in Uttarakhand, and Shimla, Manali and Kasauli in Himachal Pradesh. A travel charge applies and stay is arranged by the client." },
+  { q: "How many people come for a bridal booking?",
+    a: "Two - Urvashi on makeup and a dedicated hair stylist. There is no rotating team of assistants." },
+  { q: "What does the venue need to provide?",
+    a: "A power point, air conditioning, a chair, a table, a mirror and space to set up a vanity. Where a venue is short on sockets or has dim lighting, we bring our own extension cords and professional ring lights." },
+  { q: "Where is the Blushes & Brushes studio?",
+    a: "B 1/1 Double Storey, opposite Subway, Ramesh Nagar, New Delhi 110015 - ground floor, second shop in the lane, with a photographer's studio on one side and a stationery shop on the other. Come out of Ramesh Nagar metro at Gate 3. Parking is directly in front. Open Monday to Saturday, 10:30 am to 8:00 pm." },
+  { q: "Is Urvashi Trehan a certified makeup artist?",
+    a: "Yes - formally trained and certified at VLCC Institute, working in both HD and airbrush, with 200+ brides across Delhi NCR and a 4.8 star Google rating." },
+];
+
 export default function AboutPage() {
   const personLd = {
     "@context": "https://schema.org",
@@ -43,7 +62,8 @@ export default function AboutPage() {
     image: "https://blushesnbrushes.com/images/urvashi-artist.webp",
     url: "https://blushesnbrushes.com/about",
     telephone: "+917678446364",
-    knowsAbout: ["Bridal Makeup", "HD Makeup", "Airbrush Makeup", "Party Makeup", "Nail Art", "Nail Extensions", "Beauty Therapy", "Makeup Education"],
+    knowsAbout: ["Bridal Makeup", "HD Makeup", "Airbrush Makeup", "Party Makeup", "Nail Art", "Nail Extensions", "Beauty Therapy", "Makeup Education", "Destination Wedding Makeup"],
+    areaServed: ["West Delhi", "Delhi NCR", "Sonipat", "Panipat", "Nainital", "Rishikesh", "Shimla", "Manali", "Kasauli"].map((n) => ({ "@type": "Place", name: n })),
     alumniOf: { "@type": "EducationalOrganization", name: "VLCC Institute" },
     worksFor: {
       "@type": "BeautySalon",
@@ -57,6 +77,11 @@ export default function AboutPage() {
       "https://www.instagram.com/blushesandbrushes2022",
     ],
   };
+  const faqLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+  };
   const crumbLd = {
     "@context": "https://schema.org", "@type": "BreadcrumbList",
     itemListElement: [
@@ -68,6 +93,7 @@ export default function AboutPage() {
   return (
     <main className="mx-auto max-w-3xl px-5 py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(personLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(crumbLd) }} />
 
       <nav className="text-[11px] text-[#1A5A54]/55"><Link href="/" className="hover:text-[#C9A55C]">Home</Link> · <span className="text-[#1A5A54]/80">About</span></nav>
@@ -120,6 +146,30 @@ export default function AboutPage() {
         ))}
       </div>
 
+      <h2 className="mt-10 mb-3 text-[21px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Where Urvashi travels</h2>
+      <p className="text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        Most weddings are across West Delhi and Delhi NCR, and there is no travel charge inside West Delhi. Beyond that, Blushes &amp; Brushes takes destination bookings across North India - <strong className="font-semibold">Sonipat and Panipat</strong> in Haryana, <strong className="font-semibold">Nainital and Rishikesh</strong> in Uttarakhand, and <strong className="font-semibold">Shimla, Manali and Kasauli</strong> in Himachal Pradesh.
+      </p>
+      <p className="mt-3 text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        Destination bookings are quoted with a travel charge and stay arranged by the client. Hill-station weddings need more lead time than Delhi ones, so it is worth asking early rather than late.
+      </p>
+
+      <h2 className="mt-10 mb-3 text-[21px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>What a wedding morning actually looks like</h2>
+      <p className="text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        Two people arrive: Urvashi on makeup and a dedicated hair stylist. No rotating team of assistants, and no handing your face to somebody you have not met.
+      </p>
+      <p className="mt-3 text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        Early starts are normal. <strong className="font-semibold">The earliest slot done so far began at 5 am</strong>, leaving Ramesh Nagar at 4 am to reach Hauz Khas in time. If your muhurat needs you ready before sunrise, say so at the enquiry stage and it can be planned properly.
+      </p>
+      <p className="mt-3 text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        At the venue we need very little, but we do need it: a working power point, air conditioning, a chair, a table, a mirror and room to set up a vanity. Where a venue is short on any of these - older club rooms with few sockets, banquets with dim warm lighting - we carry our own extension cords and professional ring lights rather than compromise the base.
+      </p>
+
+      <h2 className="mt-10 mb-3 text-[21px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>How far ahead to book</h2>
+      <p className="text-[14px] leading-[1.8] text-[#1A5A54]/90">
+        <strong className="font-semibold">November and December are the hardest months to get a date.</strong> For a peak-season wedding, brides book roughly <strong className="font-semibold">four to five months ahead</strong>. Dates do occasionally reopen when a booking cancels, so it is always worth asking even at short notice - but that is luck, not a plan.
+      </p>
+
       <h2 className="mt-10 mb-3 text-[21px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>How we work</h2>
       <ul className="space-y-2">
         {[
@@ -134,6 +184,25 @@ export default function AboutPage() {
           </li>
         ))}
       </ul>
+
+      <blockquote className="mt-10 rounded-3xl border-l-4 border-[#C9A55C] bg-white/70 p-6">
+        <p className="text-[15.5px] italic leading-relaxed" style={{ fontFamily: "var(--font-playfair), serif", color: "#2E8B83" }}>
+          &ldquo;Based right in the heart of West Delhi at Ramesh Nagar, my studio is designed for a stress-free bridal experience. We are on the ground floor, just steps from Metro Gate 3 and the main road. I love that my brides and their families can reach us effortlessly, completely avoiding the usual narrow-lane Delhi traffic on their biggest day.&rdquo;
+        </p>
+        <footer className="mt-3 text-[12px] font-semibold text-[#1A5A54]/70">- Urvashi Trehan</footer>
+      </blockquote>
+
+      <h2 className="mt-10 mb-3 text-[21px] font-bold" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>Frequently asked questions</h2>
+      <div className="space-y-3">
+        {FAQ.map((f, i) => (
+          <details key={i} className="group rounded-2xl border border-[#C9A55C]/25 bg-white/80 p-4">
+            <summary className="cursor-pointer list-none">
+              <h3 className="inline text-[14px] font-semibold text-[#1A5A54]">{f.q}</h3>
+            </summary>
+            <p className="mt-2 text-[13px] leading-relaxed text-[#1A5A54]/80">{f.a}</p>
+          </details>
+        ))}
+      </div>
 
       <div className="mt-10 rounded-3xl p-6 text-center text-white shadow-md" style={{ background: "linear-gradient(120deg,#2E8B83,#5FB3A3 55%,#C9A55C)" }}>
         <p className="text-[17px] font-bold" style={{ fontFamily: "var(--font-playfair), serif" }}>Let&rsquo;s plan your look together</p>
