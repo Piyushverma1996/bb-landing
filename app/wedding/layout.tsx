@@ -20,7 +20,7 @@ export default function WeddingLayout({ children }: { children: React.ReactNode 
     <div
       className={`${playfair.variable} ${montserrat.variable} min-h-screen`}
       style={{
-        background: "linear-gradient(165deg,#FBF4EA 0%,#F7D6C6 22%,#FCFBF7 45%,#DFD5EE 78%,#F3CDD3 100%)",
+        background: "linear-gradient(170deg,#FFF8ED 0%,#FDF0E2 18%,#FFFDF9 42%,#FBF1F3 70%,#F4EFE4 100%)",
         fontFamily: "var(--font-montserrat), sans-serif",
         color: "#1A5A54",
       }}

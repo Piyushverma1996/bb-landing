@@ -41,8 +41,11 @@ export const IMAGE_SIZES: Record<string, [number, number]> = {
   "/images/party-1.webp": [1080, 1920],
   "/images/party-glam.jpg": [712, 936],
   "/images/party-glam.webp": [712, 936],
+  "/images/uru-ke-piya-caricature.png": [1856, 2304],
+  "/images/uru-ke-piya-caricature.webp": [1100, 1366],
   "/images/urvashi-artist.jpg": [601, 954],
   "/images/urvashi-artist.webp": [601, 954],
+  "/images/wedding-drive-qr.png": [742, 742],
 };
 
 /** Spread onto an <img> to give it intrinsic dimensions when known. */
