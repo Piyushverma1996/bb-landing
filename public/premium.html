@@ -993,5 +993,62 @@
       }).catch(function () { /* leave the handle buttons as-is */ });
     })();
   </script>
+  <script>
+    /* Microsoft Clarity - heatmaps, scroll maps, session recordings. Free with
+       no session cap, unlike Hotjar/VWO which bill per session. Set the id
+       below and in NEXT_PUBLIC_CLARITY_ID so both halves of the site report
+       into one project. */
+    (function () {
+      var CLARITY_ID = "REPLACE_CLARITY_ID";
+      if (!/^[a-z0-9]{8,15}$/i.test(CLARITY_ID)) return;
+      (function (c, l, a, r, i, t, y) {
+        c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+        t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+        y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+      })(window, document, "clarity", "script", CLARITY_ID);
+    })();
+
+    /* Behaviour events GA4 does not provide by default. Same contract as the
+       React <Engagement /> component so both halves report identically. */
+    (function () {
+      var page = location.pathname, sent = {};
+      function once(k, name, params) {
+        if (sent[k]) return; sent[k] = 1;
+        if (window.gtag) { params.page = page; gtag("event", name, params); }
+      }
+      addEventListener("scroll", function () {
+        var h = document.documentElement.scrollHeight - innerHeight;
+        if (h <= 0) return;
+        var pct = Math.round((scrollY / h) * 100);
+        [25, 50, 75, 100].forEach(function (m) { if (pct >= m) once("s" + m, "scroll_depth", { percent: m }); });
+      }, { passive: true });
+      [15, 30, 60, 120].forEach(function (sec) {
+        setTimeout(function () { once("t" + sec, "time_on_page", { seconds: sec }); }, sec * 1000);
+      });
+      var last = { x: 0, y: 0, t: 0, n: 0 };
+      document.addEventListener("click", function (e) {
+        var el = e.target && e.target.closest ? e.target.closest("a,button") : null;
+        if (el && window.gtag) {
+          var label = (el.textContent || "").trim().slice(0, 48);
+          var href = el.getAttribute("href") || "";
+          if (/^https?:/.test(href) && href.indexOf("blushesnbrushes.com") === -1) {
+            var host = "unknown"; try { host = new URL(href).hostname; } catch (x) {}
+            gtag("event", "outbound_click", { page: page, host: host, label: label });
+          }
+          if (/btn|cta|svc-ask|book|wa-|duo/i.test(el.className || "")) {
+            gtag("event", "cta_click", { page: page, label: label });
+          }
+        }
+        var now = Date.now();
+        var near = Math.abs(e.clientX - last.x) < 40 && Math.abs(e.clientY - last.y) < 40;
+        last = (near && now - last.t < 1000)
+          ? { x: e.clientX, y: e.clientY, t: now, n: last.n + 1 }
+          : { x: e.clientX, y: e.clientY, t: now, n: 1 };
+        if (last.n === 3 && window.gtag) {
+          gtag("event", "rage_click", { page: page, label: (el && el.textContent || "").trim().slice(0, 48) || "non-interactive" });
+        }
+      }, true);
+    })();
+  </script>
 </body>
 </html>

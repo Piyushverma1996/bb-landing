@@ -4,6 +4,8 @@ import "./globals.css";
 import MetaPixel from "./components/MetaPixel";
 import GA4 from "./components/GA4";
 import WhatsAppTracker from "./components/WhatsAppTracker";
+import Clarity from "./components/Clarity";
+import Engagement from "./components/Engagement";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -63,6 +65,8 @@ export default function RootLayout({
         <GA4 />
         <MetaPixel />
         <WhatsAppTracker />
+        <Clarity />
+        <Engagement />
         {children}
       </body>
     </html>

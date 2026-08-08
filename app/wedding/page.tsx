@@ -197,7 +197,7 @@ export default function WeddingPage() {
         </h2>
         <p className="mt-3 text-[14.5px] leading-[1.85] text-[#1A5A54]/85">
           Some of you have known Urvashi for years and still are not quite sure what she does all day. She runs{" "}
-          <Link href="/" className="font-semibold text-[#2E8B83] underline decoration-[#C9A55C]/60 underline-offset-2">Blushes &amp; Brushes</Link>{" "}
+          <Link href="/?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" className="font-semibold text-[#2E8B83] underline decoration-[#C9A55C]/60 underline-offset-2">Blushes &amp; Brushes</Link>{" "}
           in Ramesh Nagar, and has done the makeup for more than two hundred brides across Delhi NCR since 2019.
           In December she becomes number two hundred and something, which she finds very funny.
         </p>
@@ -207,10 +207,10 @@ export default function WeddingPage() {
         </p>
         <div className="mt-5 grid gap-2.5 sm:grid-cols-2">
           {[
-            { t: "Bridal makeup", d: "HD and airbrush, travels to your venue", href: "/services/bridal-makeup" },
-            { t: "Party & Roka looks", d: "For the functions you attend, not host", href: "/services/party-makeup" },
-            { t: "Nails", d: "Extensions and art from ₹499, at the studio", href: "/services/nail-extensions" },
-            { t: "An afternoon off", d: "Facials, hair spa, pedicure. The good kind of quiet.", href: "/services/beauty-services" },
+            { t: "Bridal makeup", d: "HD and airbrush, travels to your venue", href: "/services/bridal-makeup?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
+            { t: "Party & Roka looks", d: "For the functions you attend, not host", href: "/services/party-makeup?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
+            { t: "Nails", d: "Extensions and art from ₹499, at the studio", href: "/services/nail-extensions?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
+            { t: "An afternoon off", d: "Facials, hair spa, pedicure. The good kind of quiet.", href: "/services/beauty-services?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
           ].map((s) => (
             <Link key={s.href} href={s.href}
               className="rounded-2xl border border-[#C9A55C]/30 bg-white/75 p-4 transition-all hover:-translate-y-0.5 hover:shadow-md">
@@ -239,6 +239,27 @@ export default function WeddingPage() {
                 <span className="text-[11px] text-[#1A5A54]/65">{x.d}</span>
               </a>
             ))}
+          </div>
+        </div>
+
+        <div className="mt-6 rounded-[26px] border border-[#C9A55C]/35 bg-white/75 p-6 text-center">
+          <p className="text-[15px] font-semibold" style={{ fontFamily: "var(--font-playfair), serif", color: "#0F3D38" }}>
+            Know someone getting married next?
+          </p>
+          <p className="mx-auto mt-1.5 max-w-md text-[12.5px] leading-relaxed text-[#1A5A54]/70">
+            Send them Urvashi&rsquo;s work. That is the whole ask, and it genuinely helps more than anything else you could do.
+          </p>
+          <div className="mt-4 flex flex-wrap justify-center gap-2.5">
+            <a href="https://wa.me/?text=Urvashi%20Trehan%20does%20bridal%20makeup%20in%20West%20Delhi%20-%20200%2B%20brides%2C%204.8%20on%20Google.%20Have%20a%20look%3A%20https%3A%2F%2Fblushesnbrushes.com"
+              target="_blank" rel="noopener"
+              className="rounded-full px-5 py-2.5 text-[12px] font-bold uppercase tracking-widest text-white"
+              style={{ background: "linear-gradient(120deg,#0F3D38,#2E8B83)" }}>
+              Share on WhatsApp →
+            </a>
+            <Link href="/gallery?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya"
+              className="rounded-full border border-[#0F3D38]/30 px-5 py-2.5 text-[12px] font-bold uppercase tracking-widest text-[#0F3D38]">
+              See her work
+            </Link>
           </div>
         </div>
 
