@@ -359,6 +359,15 @@
     .ig-feed a:hover img { transform: scale(1.06); }
     .ig-feed .play { position: absolute; right: 7px; top: 7px; width: 18px; height: 18px; fill: #fff; filter: drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
 
+
+    /* Instagram was buried at 60% opacity inside the copyright line */
+    footer .f-social { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 18px 0 6px; }
+    footer .f-social a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 999px;
+      background: rgba(251,244,234,.1); border: 1px solid rgba(201,165,92,.45); color: var(--cream);
+      font-size: 11.5px; font-weight: 600; transition: background .3s, border-color .3s; }
+    footer .f-social a:hover { background: rgba(201,165,92,.22); border-color: var(--gold); }
+    footer .f-social svg { width: 16px; height: 16px; fill: var(--gold); flex: 0 0 auto; }
+
     /* Testimonials */
     .tst-grid { display: grid; gap: 18px; }
     @media (min-width: 860px) { .tst-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -831,7 +840,11 @@
         <a href="/best-nail-salon-in-west-delhi">Best Nail Salon West Delhi</a>
         <a href="/makeup-artist-near-me-delhi">Makeup Artist Near Me</a>
       </div>
-      <small>© <span id="yr"></span> Blushes &amp; Brushes · New Delhi · <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener" style="color:rgba(251,244,234,.6)">Makeovers</a> · <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener" style="color:rgba(251,244,234,.6)">Salon IG</a> · <a href="/privacy-policy" style="color:rgba(251,244,234,.6)">Privacy</a> · <a href="/terms" style="color:rgba(251,244,234,.6)">Terms</a></small>
+      <div class="f-social">
+        <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.37 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.42-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.42-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2m0 5.86a3.94 3.94 0 1 0 0 7.88 3.94 3.94 0 0 0 0-7.88m6.41-1.68a1.44 1.44 0 1 1 0 2.88 1.44 1.44 0 0 1 0-2.88"/></svg><span>@makeovers_by_urvashitrehan_</span></a>
+        <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.37 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.42-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.42-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2m0 5.86a3.94 3.94 0 1 0 0 7.88 3.94 3.94 0 0 0 0-7.88m6.41-1.68a1.44 1.44 0 1 1 0 2.88 1.44 1.44 0 0 1 0-2.88"/></svg><span>@blushesandbrushes2022</span></a>
+      </div>
+      <small>© <span id="yr"></span> Blushes &amp; Brushes · New Delhi · Founded by <b style="color:rgba(251,244,234,.9)">Urvashi Trehan</b> · <a href="/privacy-policy" style="color:rgba(251,244,234,.6)">Privacy</a> · <a href="/terms" style="color:rgba(251,244,234,.6)">Terms</a></small>
     </div>
   </footer>
 
