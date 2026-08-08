@@ -8,7 +8,7 @@ const EVENTS = [
   { date: "Sun 6 Dec", name: "Chowki", side: "Bride's side", note: "Round two, louder." },
   { date: "Wed 9 Dec", name: "Mehendi shots", side: "Bride", note: "Urvashi, being photographed instead of doing the photographing for once." },
   { date: "Thu 10 Dec", name: "Sagan", side: "Both", note: "Dress up. There is a drone." },
-  { date: "Fri 11 Dec", name: "Haldi & Mehendi", side: "Both", note: "Daytime. This is the one with the nail bar.", highlight: true },
+  { date: "Fri 11 Dec", name: "Haldi & Mehendi", side: "Both", note: "Daytime. Ladies, there is something waiting for you.", highlight: true },
   { date: "Sat 12 Dec", name: "Morning rituals", side: "Both sides", note: "Early. Coffee will be provided." },
   { date: "Sat 12 Dec", name: "The Wedding", side: "Both", note: "Including the home entry.", highlight: true },
 ];
@@ -47,20 +47,25 @@ export default function WeddingPage() {
       </div>
       <p className="mt-3 text-[11.5px] text-[#1A5A54]/50">Venues and timings go out on WhatsApp closer to the date.</p>
 
-      {/* The Haldi surprise - the reason this page exists */}
+      {/* The Haldi surprise. The nail bar is NOT named: guests should walk in
+          and find it. But we still need the headcount, so the ask is framed as
+          claiming a place in something rather than answering a survey. */}
       <section className="mt-12 rounded-3xl border border-[#C9A55C]/35 bg-white/70 p-6 sm:p-8">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A55C]">Only at the Haldi · 11 Dec, daytime</p>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#C9A55C]">Haldi · Friday 11 Dec, daytime</p>
         <h2 className="mt-2 text-[26px] font-bold leading-tight" style={{ fontFamily: "var(--font-playfair), serif", color: "#1A5A54" }}>
-          There is a nail bar. It is free.
+          We have planned something for the ladies
         </h2>
         <p className="mt-3 text-[14px] leading-[1.8] text-[#1A5A54]/85">
-          The bride runs a salon, so of course there is a nail bar at her own Haldi. Kukkie and the Blushes &amp; Brushes team
-          will be set up through the afternoon doing nail art for anyone who wants it. Chrome, French, ombre, or something
-          matched to what you are wearing. No charge, no catch, it is a wedding gift to the people who turned up.
+          The bride has organised a surprise for every woman who comes to the Haldi. We are not telling you what it is,
+          because she would genuinely never forgive us. It is free, it takes about twenty minutes, and you will want to
+          be photographed afterwards.
         </p>
         <p className="mt-3 text-[14px] leading-[1.8] text-[#1A5A54]/85">
-          One catch, actually: there are only so many chairs and only so many hours of daylight.
-          Tell us how many of you want it and we will keep the slots.
+          The only problem is arithmetic. There are a fixed number of places and one afternoon of daylight.
+          So tell us how many ladies are coming with you, and we will hold that many.
+        </p>
+        <p className="mt-3 text-[13px] italic leading-relaxed text-[#1A5A54]/60">
+          Men are of course welcome at the Haldi. This particular surprise is not for you. Sorry.
         </p>
 
         <div className="mt-6">
@@ -86,7 +91,7 @@ export default function WeddingPage() {
           {[
             { t: "Bridal makeup", d: "HD and airbrush, travels to your venue", href: "/services/bridal-makeup" },
             { t: "Party & Roka looks", d: "For the functions you are attending, not hosting", href: "/services/party-makeup" },
-            { t: "Nails", d: "From ₹499, if the Haldi one leaves you wanting more", href: "/services/nail-extensions" },
+            { t: "Nails", d: "Extensions and art from ₹499, at the studio", href: "/services/nail-extensions" },
             { t: "An afternoon off", d: "Facials, hair spa, pedicure. The good kind of quiet.", href: "/services/beauty-services" },
           ].map((s) => (
             <Link key={s.href} href={s.href}

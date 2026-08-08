@@ -127,6 +127,8 @@
     .wrap { max-width: 1120px; margin: 0 auto; padding: 0 22px; }
     .serif { font-family: var(--serif); }
     .kicker { font-size: 11px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold-deep); }
+    .sec-title { font-family: var(--serif); font-size: 30px; line-height: 1.15; font-weight: 600; color: var(--ink); margin-top: 6px; }
+    @media (min-width: 860px) { .sec-title { font-size: 38px; } }
     .rule { width: 56px; height: 2px; background: linear-gradient(90deg, var(--gold), transparent); margin: 14px 0; }
 
     /* reveals - CSS-only animation, driven by IntersectionObserver toggling .in */
@@ -141,9 +143,10 @@
     .nav-in { display: flex; align-items: center; justify-content: space-between; padding: 14px 22px; max-width: 1120px; margin: 0 auto; }
     .brand { display: flex; align-items: center; gap: 10px; }
     .brand img { width: 40px; height: 40px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(201,165,92,.5); }
-    .brand b { font-family: var(--serif); font-size: 17px; font-weight: 600; letter-spacing: .02em; }
+    .brand b { font-family: var(--serif); font-size: 21px; font-weight: 600; letter-spacing: .02em; }
+    @media (min-width: 860px) { .brand b { font-size: 25px; } .brand img { width: 48px; height: 48px; } }
     .links { display: none; gap: 30px; align-items: center; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-    @media (min-width: 860px) { .links { display: flex; } .links-mobile { display: none; } }
+    @media (min-width: 860px) { .links { display: flex; } .links-mobile { display: none !important; } }
     .links a { position: relative; padding-bottom: 3px; }
     .links a::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform .45s cubic-bezier(.19,1,.22,1); }
     .links a:hover::after { transform: scaleX(1); transform-origin: left; }
@@ -178,13 +181,13 @@
     .btn-line:hover { border-color: var(--gold); color: var(--gold-deep); }
 
     /* ============ HERO ============ */
-    .hero { position: relative; padding: 118px 0 46px; background:
+    .hero { position: relative; padding: 96px 0 30px; background:
       radial-gradient(58% 44% at 82% 8%, rgba(207,233,223,.55), transparent 70%),
       radial-gradient(42% 38% at 8% 88%, rgba(243,205,211,.4), transparent 70%),
       radial-gradient(36% 30% at 92% 78%, rgba(223,213,238,.35), transparent 70%),
       var(--cream); }
     .hero-grid { display: grid; gap: 34px; align-items: center; }
-    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.05fr .95fr; gap: 48px; } .hero { padding: 132px 0 64px; } }
+    @media (min-width: 900px) { .hero-grid { grid-template-columns: 1.02fr .98fr; gap: 40px; } .hero { padding: 112px 0 40px; } }
     .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.6vw, 62px); line-height: 1.08; }
     .hero h1 em { font-style: italic; color: var(--teal); }
     .hero p.lead { margin-top: 18px; max-width: 470px; font-size: 14.5px; font-weight: 300; line-height: 1.75; color: rgba(26,90,84,.8); }
@@ -194,7 +197,15 @@
     .stat span { display: block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: rgba(26,90,84,.55); margin-top: 2px; }
     .hero-media { position: relative; }
     .hero-media .main { border-radius: 26px; overflow: hidden; box-shadow: 0 30px 70px -30px rgba(26,90,84,.45); }
-    .hero-media .main img { width: 100%; height: 560px; object-fit: cover; object-position: top; }
+    .hero-media .main { position: relative; }
+    .hero-media .main img { width: 100%; height: 560px; object-fit: cover; object-position: 50% 18%; }
+    /* Rotating hero: all slides stacked, opacity cross-fade. No layout shift. */
+    .hero-media .main .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 1.1s ease-in-out; }
+    .hero-media .main .slide.on { opacity: 1; }
+    .hero-media .main .slide:first-child { position: relative; }
+    .hero-dots { position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%); display: flex; gap: 6px; z-index: 3; }
+    .hero-dots i { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.5); transition: background .3s, width .3s; }
+    .hero-dots i.on { background: #fff; width: 18px; border-radius: 3px; }
     .hero-media .float { position: absolute; left: -26px; bottom: 34px; width: 170px; border-radius: 18px; overflow: hidden; border: 4px solid var(--cream); box-shadow: 0 18px 44px -16px rgba(26,90,84,.5); display: none; }
     @media (min-width: 700px) { .hero-media .float { display: block; } }
     .hero-media .float img { height: 200px; width: 100%; object-fit: cover; }
@@ -207,7 +218,7 @@
     @keyframes slide { to { transform: translateX(-50%); } }
 
     /* ============ SECTIONS ============ */
-    section { padding: 68px 0; }
+    section { padding: 46px 0; }
     .sec-head { max-width: 560px; margin-bottom: 38px; }
     .sec-head h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 3.6vw, 40px); line-height: 1.15; }
     .sec-head p { margin-top: 10px; font-size: 13.5px; font-weight: 300; line-height: 1.7; color: rgba(26,90,84,.75); }
@@ -283,6 +294,35 @@
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
     .chip { border-radius: 999px; padding: 7px 15px; font-size: 11px; font-weight: 600; }
 
+
+    /* Review cards carry the work, not just the words */
+    .tst-face { width: 100%; height: 150px; object-fit: cover; object-position: 50% 15%; border-radius: 14px; margin: 14px 0 10px; }
+
+    /* Instagram: a real destination, not a footnote */
+    .ig-block { margin-top: 30px; text-align: center; padding: 26px 20px; border-radius: 24px;
+      background: linear-gradient(135deg, rgba(247,214,198,.5), rgba(223,213,238,.5) 55%, rgba(207,233,223,.5)); }
+    .ig-mark { width: 40px; height: 40px; fill: var(--gold-deep); }
+    .ig-lead { font-family: var(--serif); font-size: 22px; color: var(--ink); margin-top: 6px; }
+    .ig-handles { display: grid; gap: 12px; margin-top: 18px; }
+    @media (min-width: 700px) { .ig-handles { grid-template-columns: 1fr 1fr; } }
+    .ig-btn { display: block; padding: 14px 16px; border-radius: 16px; background: rgba(255,255,255,.85);
+      border: 1px solid rgba(201,165,92,.3); transition: transform .3s, box-shadow .3s; }
+    .ig-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -14px rgba(26,90,84,.5); }
+    .ig-btn b { display: block; font-size: 13px; color: var(--teal); word-break: break-all; }
+    .ig-btn span { font-size: 11.5px; color: rgba(26,90,84,.65); }
+
+    /* Offers - a running list Urvashi keeps adding to */
+    .offers-grid { display: grid; gap: 14px; margin-top: 22px; }
+    @media (min-width: 700px) { .offers-grid { grid-template-columns: repeat(3, 1fr); } }
+    .offer-card { position: relative; padding: 22px 18px; border-radius: 20px; background: #fff;
+      border: 1px solid rgba(201,165,92,.3); box-shadow: 0 14px 34px -22px rgba(26,90,84,.5); }
+    .offer-card .tagline { position: absolute; top: -10px; left: 18px; padding: 4px 12px; border-radius: 999px;
+      font-size: 9.5px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #fff;
+      background: linear-gradient(120deg, var(--teal), var(--gold)); }
+    .offer-card h3 { font-family: var(--serif); font-size: 19px; color: var(--ink); margin-top: 8px; }
+    .offer-card .price { font-size: 24px; font-weight: 800; color: var(--gold-deep); margin: 6px 0 4px; }
+    .offer-card p { font-size: 12.5px; line-height: 1.6; color: rgba(26,90,84,.75); }
+
     /* Testimonials */
     .tst-grid { display: grid; gap: 18px; }
     @media (min-width: 860px) { .tst-grid { grid-template-columns: repeat(3, 1fr); } }
@@ -347,7 +387,6 @@
       <div class="links">
         <a href="/services">Services</a>
         <a href="/gallery">Portfolio</a>
-        <a href="/areas">Areas</a>
         <a href="/blog">Journal</a>
         <a href="#book" class="btn btn-teal nav-book">Book Now</a>
       </div>
@@ -357,7 +396,6 @@
     <div class="mnav">
       <a href="/services">Services</a>
       <a href="/gallery">Portfolio</a>
-      <a href="/areas">Areas</a>
       <a href="/blog">Journal</a>
       <a href="#book" class="mbook">✦ Book Now</a>
     </div>
@@ -369,24 +407,28 @@
       <div>
         <p class="kicker rv">Bridal couture · Nail artistry · Beauty - New Delhi</p>
         <h1 class="rv d1">The art of looking <em>unforgettable</em></h1>
-        <p class="lead rv d2">HD &amp; airbrush bridal makeup, designer nails and skin rituals by <strong>Urvashi Trehan</strong>. Studio in Ramesh Nagar - and she travels across Delhi NCR for your big day.</p>
+        <p class="lead rv d2">HD &amp; airbrush bridal makeup, designer nails and skin rituals by <strong>Urvashi Trehan</strong>. Studio in Ramesh Nagar - and she travels across Delhi NCR, Haryana, Uttarakhand and Himachal for your big day.</p>
         <div class="hero-ctas rv d3">
-          <a class="btn btn-cta" href="#book">✦ Book Your Free Consultation</a>
-          <a class="btn btn-line" href="#portfolio">View portfolio</a>
+          <a class="btn btn-cta" href="tel:+917678446364">✆ Call 76784 46364</a>
+          <a class="btn btn-line" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation" target="_blank" rel="noopener">WhatsApp us</a>
         </div>
         <div class="stats rv d4">
           <div class="stat"><b>200+</b><span>Happy brides</span></div>
           <div class="stat"><b>4.8★</b><span>Google rating</span></div>
           <div class="stat"><b>7 yrs</b><span>Of artistry</span></div>
-          <div class="stat"><b>NCR</b><span>Travel for bridal</span></div>
+          <div class="stat"><b>NCR+</b><span>Delhi, Haryana &amp; the hills</span></div>
         </div>
       </div>
       <div class="hero-media rv d2">
-        <div class="main">
-          <img src="/images/bridal-hero.webp" alt="Bridal makeup by Urvashi Trehan" fetchpriority="high" width="712" height="936" />
-          <span class="badge">✦ 200+ brides · 4.8★</span>
+        <div class="main" id="heroSlider">
+          <div class="slide on"><img src="/images/bridal-real-1.webp" alt="Bridal makeup by Urvashi Trehan, Ramesh Nagar" fetchpriority="high" width="958" height="1352" /></div>
+          <div class="slide"><img src="/images/new-bridal-purple.webp" alt="Bridal look in purple by Blushes &amp; Brushes" loading="lazy" width="1179" height="1276" /></div>
+          <div class="slide"><img src="/images/new-natural.webp" alt="Soft natural bridal makeup, Delhi" loading="lazy" width="932" height="1400" /></div>
+          <div class="slide"><img src="/images/bridal-real-2.webp" alt="Real bride by Urvashi Trehan" loading="lazy" width="720" height="1280" /></div>
+          <div class="hero-dots" id="heroDots" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i></div>
+          <a class="badge" href="https://maps.google.com/?cid=2332371947944609004" target="_blank" rel="noopener" style="text-decoration:none;">✦ 200+ brides · 4.8★ on Google</a>
         </div>
-        <div class="float"><img src="/images/nails-1.webp" alt="Designer nail art" loading="lazy" width="736" height="1302" /></div>
+        <div class="float"><img src="/images/nails-2.webp" alt="Designer nail art by Blushes &amp; Brushes" loading="lazy" width="736" height="1104" /></div>
       </div>
     </div>
   </header>
@@ -395,11 +437,13 @@
   <div class="marquee" aria-hidden="true">
     <div class="marquee-track">
       <span>Nail extensions <em>₹499 onwards</em> + complimentary nail art</span><span>✦</span>
-      <span>Bridal HD from <em>₹18,000</em> · Airbrush from <em>₹25,000</em></span><span>✦</span>
+      <span>Bridal HD &amp; Airbrush - <em>quote on request</em></span><span>✦</span>
       <span>Glow cleanup <em>₹499</em> · Full pamper <em>₹1,499</em></span><span>✦</span>
+      <span>Free consultation before you commit</span><span>✦</span>
       <span>Nail extensions <em>₹499 onwards</em> + complimentary nail art</span><span>✦</span>
-      <span>Bridal HD from <em>₹18,000</em> · Airbrush from <em>₹25,000</em></span><span>✦</span>
+      <span>Bridal HD &amp; Airbrush - <em>quote on request</em></span><span>✦</span>
       <span>Glow cleanup <em>₹499</em> · Full pamper <em>₹1,499</em></span><span>✦</span>
+      <span>Free consultation before you commit</span><span>✦</span>
     </div>
   </div>
 
@@ -407,10 +451,10 @@
   <section id="services">
     <div class="wrap">
       <div class="sec-head rv">
-        <p class="kicker">Signature services</p>
+        <p class="kicker">What she does</p>
         <h2>Crafted for every big day</h2>
         <div class="rule"></div>
-        <p>Transparent prices, premium products, zero surprises. Nails &amp; beauty at the Ramesh Nagar studio; makeup travels to you.</p>
+        <p>Every makeup quote is built around your function, venue and date, so ask and Urvashi will tell you honestly within the hour. Nails and beauty are priced below. Nails and beauty happen at the Ramesh Nagar studio; makeup travels to you.</p>
       </div>
       <div class="svc-grid">
         <article class="svc rv">
@@ -425,10 +469,10 @@
           <div class="svc-body">
             <h3><a href="/services/bridal-makeup">Bridal &amp; Occasion Makeup</a></h3>
             <ul>
-              <li>HD Bridal <b>₹18–22K</b></li>
-              <li>Airbrush Bridal <b>₹25–30K</b></li>
-              <li>Engagement / Roka / Sagan <b>₹10–15K</b></li>
-              <li>Reception <b>₹12–16K</b></li>
+              <li>HD Bridal <b>On request</b></li>
+              <li>Airbrush Bridal <b>On request</b></li>
+              <li>Engagement / Roka / Sagan <b>On request</b></li>
+              <li>Reception <b>On request</b></li>
             </ul>
             <a class="book-link" href="#book">Book a trial →</a>
             <a class="svc-more" href="/services/bridal-makeup">View details &amp; pricing →</a>
@@ -504,7 +548,18 @@
       <div class="sec-cta rv" style="margin-top:26px;">
         <a class="btn btn-gold" href="/gallery">View full portfolio →</a>
       </div>
-      <p class="ig-cta rv">More every week on Instagram - <a href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">@makeovers_by_urvashitrehan_</a> (makeup) · <a href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener">@blushesandbrushes2022</a> (nails &amp; beauty)</p>
+      <div class="ig-block rv">
+        <svg class="ig-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.37 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.42-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.42-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2m0 2.16c-3.14 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.31-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.27.8-.31 1.7-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.31 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.8.27 1.7.31 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.31.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.27-.8.31-1.7.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.31-1.7a2.9 2.9 0 0 0-.69-1.06 2.9 2.9 0 0 0-1.06-.69c-.32-.12-.8-.27-1.7-.31-1.24-.06-1.6-.07-4.74-.07m0 3.67a6.17 6.17 0 1 1 0 12.34 6.17 6.17 0 0 1 0-12.34m0 2.17a4 4 0 1 0 0 8 4 4 0 0 0 0-8m6.41-3.85a1.44 1.44 0 1 1 0 2.88 1.44 1.44 0 0 1 0-2.88"/></svg>
+        <p class="ig-lead">New looks every week</p>
+        <div class="ig-handles">
+          <a class="ig-btn" href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">
+            <b>@makeovers_by_urvashitrehan_</b><span>Bridal &amp; party makeup</span>
+          </a>
+          <a class="ig-btn" href="https://instagram.com/blushesandbrushes2022" target="_blank" rel="noopener">
+            <b>@blushesandbrushes2022</b><span>Nails, beauty &amp; courses</span>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -516,16 +571,49 @@
         <p class="kicker rv">The artist</p>
         <h2 class="serif rv d1" style="font-weight:500; font-size:clamp(28px,3.6vw,40px); margin-top:8px;">Urvashi Trehan</h2>
         <div class="rule rv d1"></div>
-        <q class="rv d2">Makeup should look like you - on your most radiant day. My job is to make sure it lasts from the first photo to the last dance.</q>
+        <q class="rv d2">Makeup should look like you - on your most radiant day. My job is to make sure it still looks like you in every photograph, hours later.</q>
         <p class="rv d3">From a home studio in 2019 to 200+ brides across Delhi NCR, Urvashi built Blushes &amp; Brushes on one promise: couture-level artistry without the couture attitude. Trained in HD and airbrush techniques, obsessive about skin prep, and genuinely excited about every single face she works on.</p>
         <p class="rv d3">Nails and beauty happen at the Ramesh Nagar studio. For bridal and occasion makeup, she comes to you - anywhere in Delhi NCR.</p>
         <div class="chips rv d4">
           <span class="chip" style="background:var(--mint); color:#22685c;">HD &amp; Airbrush certified</span>
-          <span class="chip" style="background:var(--peach); color:#9c5a41;">Travels across NCR</span>
-          <span class="chip" style="background:var(--rose); color:#8f4351;">Premium products only</span>
+          <span class="chip" style="background:var(--peach); color:#9c5a41;">Travels for destination weddings</span>
+          <span class="chip" style="background:var(--rose); color:#8f4351;">NARS · Huda Beauty · Forever52</span>
           <span class="chip" style="background:var(--lav); color:#5d4e80;">Trials available</span>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ============ OFFERS ============ -->
+  <section id="offers" style="padding-top: 0;">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="kicker">Running now</p>
+        <h2>Current offers</h2>
+        <div class="rule"></div>
+        <p>Studio offers change through the season. These are live today - ask about them when you message.</p>
+      </div>
+      <div class="offers-grid">
+        <div class="offer-card rv">
+          <span class="tagline">Most booked</span>
+          <h3>Nail Extensions</h3>
+          <p class="price">₹499 onwards</p>
+          <p>Full set with complimentary nail art included. Chrome, ombre, French or custom design.</p>
+        </div>
+        <div class="offer-card rv d1">
+          <span class="tagline">Combo</span>
+          <h3>Glow Cleanup</h3>
+          <p class="price">₹499</p>
+          <p>Fruit bleach, fruit cleanup, arm wax and threading in one sitting.</p>
+        </div>
+        <div class="offer-card rv d2">
+          <span class="tagline">Best value</span>
+          <h3>Full Pamper Day</h3>
+          <p class="price">₹1,499</p>
+          <p>Red-wine facial, manicure and pedicure, full-leg and arm wax, head wash and threading.</p>
+        </div>
+      </div>
+      <p class="ig-cta rv" style="margin-top:18px;">Prices include everything listed. No GST, no hidden charges.</p>
     </div>
   </section>
 
@@ -533,24 +621,27 @@
   <section style="padding-top: 0;">
     <div class="wrap">
       <div class="sec-head rv">
-        <p class="kicker">Client love</p>
-        <h2>Why brides recommend her</h2>
+        <p class="kicker">Real brides · Real reviews</p>
+        <h2>Let&rsquo;s hear it from the brides</h2>
         <div class="rule"></div>
       </div>
       <div class="tst-grid">
         <div class="tst rv">
           <div class="starline">★★★★★</div>
           <p>"She made me look absolutely flawless while still keeping my natural features intact. The makeup was beautifully done, enhancing my features still looking natural and elegant. I am so happy with how my makeup turned out on my engagement day, it was perfect!"</p>
+          <img class="tst-face" src="/images/gallery/bb-bridal-makeup-peach-01.webp" alt="Bridal makeup by Blushes &amp; Brushes" loading="lazy" width="708" height="1579" />
           <b>Jasvinder Sodhi</b><span>Engagement makeup · Google review</span>
         </div>
         <div class="tst rv d1">
           <div class="starline">★★★★★</div>
           <p>"I have booked Urvashi for my bridal makeup and had done my pre bridal services from Blushes &amp; Brushes. Staff and environment is very friendly and cooperative. I have made my best decision in life to book her for my bridal makeup, she did amazing makeover to myself. Must recommend her to everyone."</p>
+          <img class="tst-face" src="/images/gallery/bb-bridal-makeup-red-01.webp" alt="Bridal makeup by Blushes &amp; Brushes" loading="lazy" width="1400" height="3027" />
           <b>Muskan Ansari</b><span>Bridal makeup · Google review</span>
         </div>
         <div class="tst rv d2">
           <div class="starline">★★★★★</div>
           <p>"Amazing services, got my pre bridal done - all services waxing, manicure, pedicure, full body polishing. It was soo relaxing and staff is very polite and kind in nature. I have also booked my bridal makeup with her and that was also very good, all was complimenting my makeup on my big day. Must recommend Urvashi and her team to everyone."</p>
+          <img class="tst-face" src="/images/gallery/bb-bridal-makeup-purple-01.webp" alt="Bridal makeup by Blushes &amp; Brushes" loading="lazy" width="1179" height="1276" />
           <b>Savita Pol</b><span>Pre-bridal + bridal · Google review</span>
         </div>
       </div>
@@ -579,37 +670,6 @@
     </div>
   </section>
 
-  <!-- ============ AREAS WE SERVE ============ -->
-  <section id="areas" style="padding: 44px 0;">
-    <div class="wrap">
-      <div class="sec-head rv" style="margin-bottom: 20px;">
-        <p class="kicker">Across West Delhi</p>
-        <h2 style="font-size: clamp(24px,3.2vw,34px);">Areas we serve</h2>
-        <div class="rule"></div>
-        <p>Studio in Ramesh Nagar - Urvashi travels up to 15 km for bridal &amp; party makeup.</p>
-      </div>
-      <div class="rv" style="display:flex; flex-wrap:wrap; gap:8px;">
-        <a class="area-chip" href="/areas/makeup-artist-in-ramesh-nagar">Ramesh Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-rajouri-garden">Rajouri Garden</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-tilak-nagar">Tilak Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-janakpuri">Janakpuri</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-punjabi-bagh">Punjabi Bagh</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-subhash-nagar">Subhash Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-kirti-nagar">Kirti Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-moti-nagar">Moti Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-paschim-vihar">Paschim Vihar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-hari-nagar">Hari Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-uttam-nagar">Uttam Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-vikaspuri">Vikaspuri</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-naraina">Naraina</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-patel-nagar">Patel Nagar</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-karol-bagh">Karol Bagh</a>
-        <a class="area-chip" href="/areas/makeup-artist-in-dwarka">Dwarka</a>
-        <a class="area-chip area-chip-all" href="/areas">All areas →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- ============ WHY CHOOSE (depth) ============ -->
   <section id="why" class="folio" style="padding: 56px 0;">
     <div class="wrap">
@@ -617,14 +677,14 @@
         <p class="kicker">Why West Delhi trusts us</p>
         <h2>A bridal makeup artist you can actually rely on</h2>
         <div class="rule"></div>
-        <p>Blushes &amp; Brushes has grown from a Ramesh Nagar home studio in 2019 into one of West Delhi's most-rated names in bridal and party makeup - 200+ brides, a 4.8★ Google rating, and looks built to last a full Delhi wedding day.</p>
+        <p>Blushes &amp; Brushes has grown from a Ramesh Nagar home studio in 2019 into one of Delhi's most-rated names in bridal and party makeup - 200+ brides, a 4.8★ Google rating, and looks built to last a full Delhi wedding day.</p>
       </div>
       <div class="why-grid">
         <div class="why-card rv"><h3>Skin-first artistry</h3><p>HD and airbrush makeup matched to your undertone in daylight, so your base never greys in photos. We spend as long on skin prep and shade-matching as on the eyes.</p></div>
         <div class="why-card rv d1"><h3>Lasts the whole day</h3><p>Airbrush bases wear 10–14 hours through Delhi heat, hugs and tears. Every bridal booking includes a touch-up kit and a written arrival time.</p></div>
-        <div class="why-card rv d2"><h3>Premium products only</h3><p>HD Forever 52, NARS and Huda Beauty - sealed, professional-grade product shown to you, never diluted or refilled.</p></div>
+        <div class="why-card rv d2"><h3>NARS · Huda Beauty · Forever52</h3><p>Sealed, professional-grade product opened in front of you. Never diluted, never refilled, never a substitute you did not agree to.</p></div>
         <div class="why-card rv"><h3>Transparent pricing</h3><p>Hair, lashes, draping and touch-ups are included in every quote. No GST, no surprises on your wedding morning.</p></div>
-        <div class="why-card rv d1"><h3>Travels across NCR</h3><p>Bridal &amp; party makeup comes to your home or venue - Rajouri Garden, Janakpuri, Punjabi Bagh, Karol Bagh, Dwarka and all of West Delhi.</p></div>
+        <div class="why-card rv d1"><h3>She comes to you</h3><p>Bridal and party makeup travels to your home or venue anywhere in Delhi NCR at no extra charge, and to Sonipat, Panipat, Nainital, Rishikesh, Shimla, Manali and Kasauli for destination weddings.</p></div>
         <div class="why-card rv d2"><h3>Trials, not gambles</h3><p>Book a trial at the Ramesh Nagar studio 4–8 weeks before your day and decide with total confidence. Adjusted against your booking.</p></div>
       </div>
       <div class="ratings rv">
@@ -718,7 +778,6 @@
       <div class="f-links">
         <a href="/services">Services</a>
         <a href="/gallery">Portfolio</a>
-        <a href="/areas">Areas</a>
         <a href="/blog">Journal</a>
         <a href="/courses">Academy</a>
         <a href="/about">About</a>
@@ -837,6 +896,29 @@
         } else { msg.textContent = d.error || "Something went wrong. Please try again."; }
       } catch (err) { msg.textContent = "Network error. Please try again."; }
     });
+  </script>
+  <script>
+    /* Rotating hero. Pauses when the tab is hidden and respects reduced motion. */
+    (function () {
+      var wrap = document.getElementById("heroSlider");
+      if (!wrap) return;
+      var slides = wrap.querySelectorAll(".slide");
+      var dots = document.querySelectorAll("#heroDots i");
+      if (slides.length < 2) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var i = 0, timer = null;
+      function go() {
+        slides[i].classList.remove("on");
+        if (dots[i]) dots[i].classList.remove("on");
+        i = (i + 1) % slides.length;
+        slides[i].classList.add("on");
+        if (dots[i]) dots[i].classList.add("on");
+      }
+      function start() { if (!timer) timer = setInterval(go, 4200); }
+      function stop() { clearInterval(timer); timer = null; }
+      document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
+      start();
+    })();
   </script>
 </body>
 </html>
