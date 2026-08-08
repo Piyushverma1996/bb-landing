@@ -296,7 +296,7 @@
 
 
     /* Review cards carry the work, not just the words */
-    .tst-face { width: 100%; height: 150px; object-fit: cover; object-position: 50% 15%; border-radius: 14px; margin: 14px 0 10px; }
+    .tst-face { width: 100%; height: 190px; object-fit: cover; object-position: 50% 8%; border-radius: 14px; margin: 14px 0 10px; }
 
     /* Instagram: a real destination, not a footnote */
     .ig-block { margin-top: 30px; text-align: center; padding: 26px 20px; border-radius: 24px;
@@ -322,6 +322,42 @@
     .offer-card h3 { font-family: var(--serif); font-size: 19px; color: var(--ink); margin-top: 8px; }
     .offer-card .price { font-size: 24px; font-weight: 800; color: var(--gold-deep); margin: 6px 0 4px; }
     .offer-card p { font-size: 12.5px; line-height: 1.6; color: rgba(26,90,84,.75); }
+
+
+    /* Matched call / WhatsApp pair. Same size and weight so neither looks bolted on. */
+    .btn-duo { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border-radius: 999px;
+      padding: 15px 28px; font-size: 11.5px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+      transition: transform .3s, box-shadow .3s; }
+    .btn-duo svg { width: 17px; height: 17px; flex: 0 0 auto; }
+    .btn-duo:hover { transform: translateY(-2px); }
+    .btn-duo-call { background: linear-gradient(120deg, var(--teal), var(--gold)); color: #fff; fill: #fff;
+      box-shadow: 0 12px 30px -10px rgba(46,139,131,.7); }
+    .btn-duo-wa { background: #25D366; color: #fff; fill: #fff; box-shadow: 0 12px 30px -10px rgba(37,211,102,.6); }
+
+    /* Service-card actions: "On request" is only useful next to a way to ask */
+    .svc-actions { margin-top: 14px; display: flex; flex-direction: column; gap: 7px; align-items: flex-start; }
+    .svc-ask { display: inline-block; border-radius: 999px; padding: 11px 20px; font-size: 11.5px; font-weight: 800;
+      letter-spacing: .1em; text-transform: uppercase; color: #fff;
+      background: linear-gradient(120deg, var(--teal), var(--gold)); box-shadow: 0 10px 24px -12px rgba(46,139,131,.75);
+      transition: transform .3s; }
+    .svc-ask:hover { transform: translateY(-2px); }
+    .svc-call { font-size: 11.5px; font-weight: 700; color: var(--gold-deep); border-bottom: 1px solid rgba(201,165,92,.5); }
+
+    /* Portfolio: the review is the point, so surface it on hover / tap */
+    .folio-grid .folio-item .folio-quote { position: absolute; inset: 0; display: flex; flex-direction: column;
+      justify-content: center; gap: 8px; padding: 16px; background: rgba(26,90,84,.9); color: #fff;
+      opacity: 0; transition: opacity .4s; font-size: 12px; line-height: 1.55; text-align: center; }
+    .folio-grid .folio-item:hover .folio-quote, .folio-grid .folio-item:focus-visible .folio-quote { opacity: 1; }
+    .folio-quote b { font-family: var(--serif); font-size: 12.5px; color: var(--gold); font-weight: 600; }
+    @media (hover: none) { .folio-grid .folio-item .folio-quote { opacity: 1; background: linear-gradient(transparent 45%, rgba(26,90,84,.92)); justify-content: flex-end; text-align: left; font-size: 11px; } }
+
+
+    .ig-feed { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 16px; }
+    @media (max-width: 620px) { .ig-feed { grid-template-columns: repeat(2, 1fr); } }
+    .ig-feed a { position: relative; display: block; aspect-ratio: 1; border-radius: 12px; overflow: hidden; }
+    .ig-feed img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.19,1,.22,1); }
+    .ig-feed a:hover img { transform: scale(1.06); }
+    .ig-feed .play { position: absolute; right: 7px; top: 7px; width: 18px; height: 18px; fill: #fff; filter: drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
 
     /* Testimonials */
     .tst-grid { display: grid; gap: 18px; }
@@ -409,8 +445,8 @@
         <h1 class="rv d1">The art of looking <em>unforgettable</em></h1>
         <p class="lead rv d2">HD &amp; airbrush bridal makeup, designer nails and skin rituals by <strong>Urvashi Trehan</strong>. Studio in Ramesh Nagar - and she travels across Delhi NCR, Haryana, Uttarakhand and Himachal for your big day.</p>
         <div class="hero-ctas rv d3">
-          <a class="btn btn-cta" href="tel:+917678446364">✆ Call 76784 46364</a>
-          <a class="btn btn-line" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation" target="_blank" rel="noopener">WhatsApp us</a>
+          <a class="btn btn-duo btn-duo-call" href="tel:+917678446364"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call Urvashi</a>
+          <a class="btn btn-duo btn-duo-wa" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>WhatsApp</a>
         </div>
         <div class="stats rv d4">
           <div class="stat"><b>200+</b><span>Happy brides</span></div>
@@ -474,7 +510,10 @@
               <li>Engagement / Roka / Sagan <b>On request</b></li>
               <li>Reception <b>On request</b></li>
             </ul>
-            <a class="book-link" href="#book">Book a trial →</a>
+            <div class="svc-actions">
+              <a class="svc-ask" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20please%20share%20a%20quote%20for%20bridal%20makeup" target="_blank" rel="noopener">Get my quote on WhatsApp →</a>
+              <a class="svc-call" href="tel:+917678446364">or call her</a>
+            </div>
             <a class="svc-more" href="/services/bridal-makeup">View details &amp; pricing →</a>
           </div>
         </article>
@@ -494,7 +533,10 @@
               <li>Designer sets <b>₹1,500+</b></li>
               <li>Gel · Ombré · Chrome <b>Studio</b></li>
             </ul>
-            <a class="book-link" href="#book">Claim the offer →</a>
+            <div class="svc-actions">
+              <a class="svc-ask" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%20want%20to%20book%20nail%20extensions" target="_blank" rel="noopener">Book my slot on WhatsApp →</a>
+              <a class="svc-call" href="tel:+917678446364">or call her</a>
+            </div>
             <a class="svc-more" href="/services/nail-extensions">View details &amp; pricing →</a>
           </div>
         </article>
@@ -515,7 +557,10 @@
               <li>Facial + Pedicure <b>₹999</b></li>
               <li>Full Pamper Day <b>₹1,499</b></li>
             </ul>
-            <a class="book-link" href="#book">Reserve a slot →</a>
+            <div class="svc-actions">
+              <a class="svc-ask" href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20to%20book%20a%20beauty%20session" target="_blank" rel="noopener">Book me in on WhatsApp →</a>
+              <a class="svc-call" href="tel:+917678446364">or call her</a>
+            </div>
             <a class="svc-more" href="/services/beauty-services">View details &amp; pricing →</a>
           </div>
         </article>
@@ -536,14 +581,14 @@
         <p>Every look below is Urvashi's own work - no stock, no filters. Shot in the studio and at weddings across Delhi NCR.</p>
       </div>
       <div class="folio-grid">
-        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-red-01.webp" alt="HD bridal makeup Ramesh Nagar" loading="lazy" width="1400" height="3027" /><span class="folio-cap">HD Bridal <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-peach-01.webp" alt="Peach bridal glam Delhi" loading="lazy" width="708" height="1579" /><span class="folio-cap">Peach Glam <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-party-makeup-gold-01.webp" alt="Party glam makeup West Delhi" loading="lazy" width="801" height="1734" /><span class="folio-cap">Party Glam <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-nail-art-stiletto-chrome-01.webp" alt="Designer nail art Ramesh Nagar" loading="lazy" width="736" height="983" /><span class="folio-cap">Designer Nails <span class="view">· View →</span></span></a>
-        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-purple-01.webp" alt="Reception bridal look Delhi" loading="lazy" width="1179" height="1276" /><span class="folio-cap">Reception <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-engagement-makeup-01.webp" alt="Engagement makeup West Delhi" loading="lazy" width="1400" height="3027" /><span class="folio-cap">Engagement <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-nail-art-french-red-01.webp" alt="French nail art Delhi" loading="lazy" width="1283" height="1372" /><span class="folio-cap">Nail Art <span class="view">· View →</span></span></a>
-        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-cream-01.webp" alt="Cream bridal makeup Delhi NCR" loading="lazy" width="1400" height="1866" /><span class="folio-cap">Bridal <span class="view">· View →</span></span></a>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-red-01.webp" alt="HD bridal makeup Ramesh Nagar" loading="lazy" width="1400" height="3027" /><span class="folio-quote">&ldquo;Flawless, and still completely me.&rdquo;<b>- Jasvinder</b></span><span class="folio-cap">HD Bridal <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-peach-01.webp" alt="Peach bridal glam Delhi" loading="lazy" width="708" height="1579" /><span class="folio-quote">&ldquo;Best decision I made for my wedding.&rdquo;<b>- Muskan</b></span><span class="folio-cap">Peach Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-party-makeup-gold-01.webp" alt="Party glam makeup West Delhi" loading="lazy" width="801" height="1734" /><span class="folio-quote">&ldquo;Everyone complimented my makeup.&rdquo;<b>- Savita</b></span><span class="folio-cap">Party Glam <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-nail-art-stiletto-chrome-01.webp" alt="Designer nail art Ramesh Nagar" loading="lazy" width="736" height="983" /><span class="folio-quote">&ldquo;So relaxing, and the team is so kind.&rdquo;<b>- Savita</b></span><span class="folio-cap">Designer Nails <span class="view">· View →</span></span></a>
+        <a class="folio-item rv" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-purple-01.webp" alt="Reception bridal look Delhi" loading="lazy" width="1179" height="1276" /><span class="folio-quote">&ldquo;Natural and elegant, exactly what I wanted.&rdquo;<b>- Jasvinder</b></span><span class="folio-cap">Reception <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d1" href="/gallery"><img src="/images/gallery/bb-engagement-makeup-01.webp" alt="Engagement makeup West Delhi" loading="lazy" width="1400" height="3027" /><span class="folio-quote">&ldquo;She did an amazing makeover on me.&rdquo;<b>- Muskan</b></span><span class="folio-cap">Engagement <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d2" href="/gallery"><img src="/images/gallery/bb-nail-art-french-red-01.webp" alt="French nail art Delhi" loading="lazy" width="1283" height="1372" /><span class="folio-quote">&ldquo;Flawless, and still completely me.&rdquo;<b>- Jasvinder</b></span><span class="folio-cap">Nail Art <span class="view">· View →</span></span></a>
+        <a class="folio-item rv d3" href="/gallery"><img src="/images/gallery/bb-bridal-makeup-cream-01.webp" alt="Cream bridal makeup Delhi NCR" loading="lazy" width="1400" height="1866" /><span class="folio-quote">&ldquo;Best decision I made for my wedding.&rdquo;<b>- Muskan</b></span><span class="folio-cap">Bridal <span class="view">· View →</span></span></a>
       </div>
       <div class="sec-cta rv" style="margin-top:26px;">
         <a class="btn btn-gold" href="/gallery">View full portfolio →</a>
@@ -551,6 +596,7 @@
       <div class="ig-block rv">
         <svg class="ig-mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.05 1.8.25 2.2.42.6.22 1 .48 1.4.9.42.4.68.8.9 1.4.17.4.37 1 .42 2.2.07 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.05 1.2-.25 1.8-.42 2.2-.22.6-.48 1-.9 1.4-.4.42-.8.68-1.4.9-.4.17-1 .37-2.2.42-1.3.07-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.05-1.8-.25-2.2-.42-.6-.22-1-.48-1.4-.9-.42-.4-.68-.8-.9-1.4-.17-.4-.37-1-.42-2.2C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.05-1.2.25-1.8.42-2.2.22-.6.48-1 .9-1.4.4-.42.8-.68 1.4-.9.4-.17 1-.37 2.2-.42C8.4 2.2 8.8 2.2 12 2.2m0 2.16c-3.14 0-3.5.01-4.74.07-.9.04-1.38.19-1.7.31-.43.17-.74.37-1.06.69-.32.32-.52.63-.69 1.06-.12.32-.27.8-.31 1.7-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.04.9.19 1.38.31 1.7.17.43.37.74.69 1.06.32.32.63.52 1.06.69.32.12.8.27 1.7.31 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c.9-.04 1.38-.19 1.7-.31.43-.17.74-.37 1.06-.69.32-.32.52-.63.69-1.06.12-.32.27-.8.31-1.7.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.04-.9-.19-1.38-.31-1.7a2.9 2.9 0 0 0-.69-1.06 2.9 2.9 0 0 0-1.06-.69c-.32-.12-.8-.27-1.7-.31-1.24-.06-1.6-.07-4.74-.07m0 3.67a6.17 6.17 0 1 1 0 12.34 6.17 6.17 0 0 1 0-12.34m0 2.17a4 4 0 1 0 0 8 4 4 0 0 0 0-8m6.41-3.85a1.44 1.44 0 1 1 0 2.88 1.44 1.44 0 0 1 0-2.88"/></svg>
         <p class="ig-lead">New looks every week</p>
+        <div class="ig-feed" id="igFeed" hidden></div>
         <div class="ig-handles">
           <a class="ig-btn" href="https://instagram.com/makeovers_by_urvashitrehan_" target="_blank" rel="noopener">
             <b>@makeovers_by_urvashitrehan_</b><span>Bridal &amp; party makeup</span>
@@ -711,7 +757,7 @@
         <details class="faq-item"><summary>How much are nail extensions?</summary><p>Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets (ombré, chrome) from ₹1,500, at the Ramesh Nagar studio.</p></details>
         <details class="faq-item"><summary>Do you offer a trial before the wedding?</summary><p>Yes - bridal trials are ₹3,000 at the studio and are adjusted against your final booking. We recommend the trial 4–8 weeks before the wedding.</p></details>
         <details class="faq-item"><summary>How early should I book my date?</summary><p>For Delhi's Nov–Feb peak wedding season, book 3–4 months ahead - dates fill fast. A small refundable advance holds your slot.</p></details>
-        <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below or WhatsApp us on 76784 46364 with your date and function - Urvashi replies personally within the hour, no pressure.</p></details>
+        <details class="faq-item"><summary>How do I book or get a quote?</summary><p>Fill the free consultation form below, or tap the WhatsApp button and send your date and function - Urvashi replies personally within the hour, no pressure.</p></details>
       </div>
       <p style="text-align:center; margin-top:18px; font-size:12.5px;"><a href="/faq" style="color:var(--gold-deep); font-weight:600;">See all FAQs →</a></p>
     </div>
@@ -728,7 +774,7 @@
       {"@type":"Question","name":"How much are nail extensions?","acceptedAnswer":{"@type":"Answer","text":"Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets from ₹1,500."}},
       {"@type":"Question","name":"Do you offer a trial before the wedding?","acceptedAnswer":{"@type":"Answer","text":"Yes - bridal trials are ₹3,000 at the studio, adjusted against your booking, recommended 4–8 weeks before the wedding."}},
       {"@type":"Question","name":"How early should I book my date?","acceptedAnswer":{"@type":"Answer","text":"For Delhi's November–February peak season, book 3–4 months ahead. A small refundable advance holds your date."}},
-      {"@type":"Question","name":"How do I book or get a quote?","acceptedAnswer":{"@type":"Answer","text":"Use the free consultation form or WhatsApp 76784 46364 with your date and function - Urvashi replies within the hour."}}
+      {"@type":"Question","name":"How do I book or get a quote?","acceptedAnswer":{"@type":"Answer","text":"Use the free consultation form or the WhatsApp button and send your date and function - Urvashi replies within the hour."}}
     ]
   }
   </script>
@@ -756,16 +802,11 @@
           <input id="bfDate" class="full" type="text" placeholder="Your event / preferred date (optional)" autocomplete="off" />
           <p id="bfMsg"></p>
           <button class="btn btn-cta" type="submit" style="width:100%; padding:19px;">✦ Get My Free Consultation →</button>
-          <div class="form-or">- or chat instantly -</div>
-          <button type="button" id="bfWa" class="wa-btn">
-            <svg viewBox="0 0 24 24"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.2-.2.3-.7 1-.9 1.1-.2.2-.3.2-.6.1-1.7-.9-2.9-1.6-4-3.6-.3-.5.3-.5.8-1.6.1-.2 0-.4 0-.5-.1-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.3 5.2 4.6 2 .8 2.7.9 3.7.8.6-.1 1.7-.7 2-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 00-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1012 2z"/></svg>
-            Send Urvashi my details on WhatsApp
-          </button>
         </form>
         <div class="trust-row">
           <span>💬 Reply within 1 hour</span><span>🔒 Your number stays private</span><span>⭐ 4.8★ · 200+ brides</span>
         </div>
-        <p class="wa-line">Prefer to talk right now? WhatsApp Urvashi - <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation%20for%20my%20look%21" onclick=\"if(window.gtag)gtag('event','whatsapp_click',{source:'home-inline'});\">76784 46364</a></p>
+        <p class="wa-line">Would rather talk? Use the WhatsApp button in the corner.</p>
       </div>
     </div>
   </section>
@@ -918,6 +959,25 @@
       function stop() { clearInterval(timer); timer = null; }
       document.addEventListener("visibilitychange", function () { document.hidden ? stop() : start(); });
       start();
+    })();
+  </script>
+  <script>
+    /* Live Instagram grid. Renders only if the API returns posts, so the block
+       degrades to the handle buttons rather than showing an empty shell. */
+    (function () {
+      var el = document.getElementById("igFeed");
+      if (!el) return;
+      fetch("/api/instagram").then(function (r) { return r.json(); }).then(function (d) {
+        if (!d.posts || !d.posts.length) return;
+        el.innerHTML = d.posts.map(function (p) {
+          return '<a href="' + p.permalink + '" target="_blank" rel="noopener" aria-label="' +
+            (p.caption || "Instagram post").replace(/"/g, "") + '">' +
+            '<img src="' + p.img + '" alt="' + (p.caption || "Blushes and Brushes on Instagram").replace(/"/g, "") + '" loading="lazy" />' +
+            (p.isVideo ? '<svg class="play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' : "") +
+            "</a>";
+        }).join("");
+        el.hidden = false;
+      }).catch(function () { /* leave the handle buttons as-is */ });
     })();
   </script>
 </body>
