@@ -7,7 +7,7 @@ import { useEffect, useState, useCallback } from "react";
    No GST. Total Due = Total − Advance (live). PDF via @media print.
 ─────────────────────────────────────────────────────────────────── */
 
-const SERVICES = ["Bridal Makeup", "Party Makeup", "Nail Extensions", "Beauty Combo"] as const;
+const SERVICES = ["Bridal Makeup", "Engagement / Roka / Sagan", "Party Makeup", "Nail Extensions", "Beauty Combo", "Makeup / Nail Course"] as const;
 const STATUSES = ["Pending", "Partially Paid", "Fully Paid"] as const;
 type Status = (typeof STATUSES)[number];
 
@@ -80,7 +80,11 @@ export default function InvoiceTool() {
     try {
       const res = await fetch("/api/invoice", { cache: "no-store" });
       const d = await res.json();
-      setInvoices(d.invoices ?? []);
+      // Ledger reads as a running log: oldest first, by invoice date.
+      // Falls back to the sequential id when two invoices share a date.
+      const list: Invoice[] = d.invoices ?? [];
+      list.sort((a, b) => (a.invoiceDate ?? "").localeCompare(b.invoiceDate ?? "") || String(a.id).localeCompare(String(b.id)));
+      setInvoices(list);
     } catch { /* ledger stays as-is */ }
     setLoadingList(false);
   }, []);
