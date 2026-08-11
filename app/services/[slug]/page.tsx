@@ -140,6 +140,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <a href="https://wa.me/917678446364?text=Hi%20Urvashi%2C%20I%27d%20like%20a%20free%20consultation" className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">WhatsApp us</a>
           {/* Click-to-call for phone visitors; also a local ranking signal. */}
           <a href={`tel:${PHONE}`} className="rounded-full border border-white/70 px-6 py-2.5 text-[13px] font-bold text-white">Call {PHONE_DISPLAY}</a>
+          {s.slug === "nail-extensions" && (
+            <Link href="/nails" className="rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-[#1A5A54]">See the look book →</Link>
+          )}
         </div>
       </div>
 

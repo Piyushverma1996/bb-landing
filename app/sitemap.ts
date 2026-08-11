@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     "/", "/services", "/areas", "/book", "/courses", "/blog",
-    "/gallery", "/faq", "/contact", "/about", "/privacy-policy", "/terms",
+    "/gallery", "/nails", "/faq", "/contact", "/about", "/privacy-policy", "/terms",
   ].map(entry);
 
   const serviceRoutes = SERVICES.map((s) => entry(`/services/${s.slug}`));
