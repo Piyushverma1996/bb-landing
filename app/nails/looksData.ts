@@ -5,11 +5,10 @@
 // its filename - filenames proved unreliable (bb-nail-art-french-red-01 is not
 // a French at all, it is a nude base with burgundy floral art).
 //
-// Three files at identical 736x1104 (floral-green, floral-white, maroon-nude)
-// look like reference/inspiration images rather than Urvashi's own work: studio
-// backdrop, no salon context, no watermark, different file profile to the rest.
-// They stay unverified until she confirms. Publishing a reference photo as
-// portfolio would be a false claim.
+// Provenance confirmed by Piyush on 12 Aug 2026: every image in the gallery is
+// Urvashi's own work. An earlier pass wrongly flagged three of them as possible
+// stock based on file size and backdrop; that inference was wrong and has been
+// reversed. Descriptions below still come from the photographs themselves.
 
 export type Tier = "good" | "better" | "best";
 
@@ -105,6 +104,62 @@ export const LOOKS: NailLook[] = [
   },
   {
     id: "N06",
+    name: "Polka French",
+    image: "/images/gallery/bb-nail-art-french-polka-01.webp",
+    verified: true,
+    tier: "good",
+    shape: "Almond",
+    length: "Short to medium",
+    finish: "Black and white polka-dot French tips with matching polka accent nails",
+    suits: "Everyday wear with personality. Office-safe, and it goes with black or white anything.",
+    tags: ["french", "monochrome", "everyday", "office", "polka"],
+    locations: ["ramesh-nagar"],
+    priceFrom: 1200,
+  },
+  {
+    id: "N07",
+    name: "Navy Bloom French",
+    image: "/images/gallery/bb-nail-art-french-blue-01.webp",
+    verified: true,
+    tier: "better",
+    shape: "Almond",
+    length: "Medium",
+    finish: "Navy and white French tips, polka detailing, hand-sculpted 3D white lily accents",
+    suits: "Anyone in navy, white or pastel. The 3D flowers sit high, so not for typing all day.",
+    tags: ["french", "3d art", "hand-painted", "navy", "occasion"],
+    locations: ["ramesh-nagar"],
+    priceFrom: 1500,
+  },
+  {
+    id: "N08",
+    name: "White Marble & Gold",
+    image: "/images/gallery/bb-nail-art-floral-white-01.webp",
+    verified: true,
+    tier: "better",
+    shape: "Square / coffin",
+    length: "Medium",
+    finish: "White marble with hand-drawn gold foil veining",
+    suits: "Understated but expensive-looking. Excellent with gold jewellery and neutral outfits.",
+    tags: ["marble", "gold foil", "neutral", "office", "bridal"],
+    locations: ["ramesh-nagar"],
+    priceFrom: 1500,
+  },
+  {
+    id: "N09",
+    name: "Maroon Rose",
+    image: "/images/gallery/bb-nail-art-maroon-nude-01.webp",
+    verified: true,
+    tier: "best",
+    shape: "Square / coffin",
+    length: "Medium",
+    finish: "Maroon chrome alternating with nude, hand-sculpted 3D gold roses, pearls and stones",
+    suits: "Sagan, reception, festive. Made for maroon, wine and gold outfits.",
+    tags: ["3d art", "chrome", "maroon", "pearls", "occasion", "bridal"],
+    locations: ["ramesh-nagar"],
+    priceFrom: null,
+  },
+  {
+    id: "N10",
     name: "Teal Chrome",
     image: "/images/gallery/bb-nail-art-chrome-teal-01.webp",
     verified: false, // not yet opened and confirmed
