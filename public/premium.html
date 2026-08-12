@@ -1050,5 +1050,24 @@
       }, true);
     })();
   </script>
+  <script>
+    /* Meta Pixel. The homepage is a static file outside the React tree, so it
+       needs its own copy - the <MetaPixel /> component does not reach it, and
+       this is the most-visited page on the site. Id is stamped at build time
+       by scripts/inject-clarity.mjs from NEXT_PUBLIC_META_PIXEL_ID, so there is
+       one value to manage. Inert until a real numeric id is present. */
+    (function () {
+      var PIXEL_ID = "2818814595140649";
+      if (!/^\d{10,20}$/.test(PIXEL_ID)) return;
+      !function (f, b, e, v, n, t, s) {
+        if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) };
+        if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+        n.queue = []; t = b.createElement(e); t.async = !0; t.src = v;
+        s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', PIXEL_ID);
+      fbq('track', 'PageView');
+    })();
+  </script>
 </body>
 </html>

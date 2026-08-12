@@ -6,7 +6,23 @@ import { readFileSync, writeFileSync } from "node:fs";
 
 const FILE = "public/premium.html";
 const ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "";
-const html = readFileSync(FILE, "utf8");
+const PIXEL = process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "";
+let html = readFileSync(FILE, "utf8");
+
+// Meta Pixel: same reasoning as Clarity. The static homepage cannot read env at
+// runtime, and it is the most-visited page, so it needs the id stamped in.
+if (/^\d{10,20}$/.test(PIXEL)) {
+  const next = html.replace(/var PIXEL_ID = "[^"]*";/, `var PIXEL_ID = "${PIXEL}";`);
+  if (next !== html) {
+    html = next;
+    writeFileSync(FILE, html, "utf8");
+    console.log(`[pixel] injected ${PIXEL} into ${FILE}`);
+  } else {
+    console.log("[pixel] id already current");
+  }
+} else {
+  console.log("[pixel] NEXT_PUBLIC_META_PIXEL_ID not set or not numeric - homepage tag stays inert");
+}
 
 if (!/^[a-z0-9]{8,15}$/i.test(ID)) {
   console.log("[clarity] NEXT_PUBLIC_CLARITY_ID not set - homepage tag stays inert");
