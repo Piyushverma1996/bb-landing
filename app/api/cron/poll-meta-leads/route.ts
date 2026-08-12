@@ -20,13 +20,24 @@ const PAGE_ID = process.env.META_PAGE_ID ?? "744524935408492";
 // in principle re-send; the created_time window below bounds that damage.
 const seen = new Set<string>();
 
-const g = async (path: string) => {
-  const r = await fetch(`https://graph.facebook.com/${VER}/${path}${path.includes("?") ? "&" : "?"}access_token=${encodeURIComponent(TOKEN)}`,
+const g = async (path: string, token = TOKEN) => {
+  const r = await fetch(`https://graph.facebook.com/${VER}/${path}${path.includes("?") ? "&" : "?"}access_token=${encodeURIComponent(token)}`,
     { signal: AbortSignal.timeout(15000) });
   const d = await r.json();
   if (!r.ok) throw new Error(JSON.stringify(d).slice(0, 240));
   return d;
 };
+
+/** leadgen_forms and leads require a PAGE access token, not the System User
+ *  token. /me/accounts returns one per Page, so exchange it rather than asking
+ *  anyone to paste a second credential that would then need rotating too. */
+async function pageToken(): Promise<{ token: string; id: string; name: string }> {
+  const d = await g("me/accounts?fields=id,name,access_token&limit=25");
+  const pages: { id: string; name: string; access_token?: string }[] = d.data ?? [];
+  const match = pages.find((p) => p.id === PAGE_ID) ?? pages[0];
+  if (!match?.access_token) throw new Error("No Page access token available - check the System User has the Page assigned");
+  return { token: match.access_token, id: match.id, name: match.name };
+}
 
 const pick = (fields: { name: string; values: string[] }[], ...keys: string[]) => {
   for (const k of keys) {
@@ -44,7 +55,12 @@ const normalisePhone = (raw: string) => {
 export async function GET(req: Request) {
   const url = new URL(req.url);
   const secret = url.searchParams.get("secret") ?? req.headers.get("authorization")?.replace("Bearer ", "");
-  if (process.env.CRON_SECRET && secret !== process.env.CRON_SECRET) {
+
+  // Two accepted credentials on purpose. POLL_SECRET is handed to the external
+  // cron service, so a third party never holds CRON_SECRET, which also guards
+  // the weekly report. Rotating one does not break the other.
+  const allowed = [process.env.POLL_SECRET, process.env.CRON_SECRET].filter(Boolean);
+  if (allowed.length && !allowed.includes(secret ?? "")) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
   if (!TOKEN) return NextResponse.json({ ok: false, reason: "META_LEADS_TOKEN not set" });
@@ -54,13 +70,15 @@ export async function GET(req: Request) {
   const report: Record<string, unknown> = { forms: 0, found: 0, processed: 0, skipped: 0 };
 
   try {
-    const forms = (await g(`${PAGE_ID}/leadgen_forms?fields=id,name,status&limit=50`)).data ?? [];
+    const pg = await pageToken();
+    report.page = pg.name;
+    const forms = (await g(`${pg.id}/leadgen_forms?fields=id,name,status&limit=50`, pg.token)).data ?? [];
     report.forms = forms.length;
 
     for (const f of forms as { id: string; name: string }[]) {
       let leads: { id: string; created_time: string; field_data: { name: string; values: string[] }[] }[] = [];
       try {
-        leads = (await g(`${f.id}/leads?fields=id,created_time,field_data&limit=50&filtering=[{"field":"time_created","operator":"GREATER_THAN","value":${since}}]`)).data ?? [];
+        leads = (await g(`${f.id}/leads?fields=id,created_time,field_data&limit=50&filtering=[{"field":"time_created","operator":"GREATER_THAN","value":${since}}]`, pg.token)).data ?? [];
       } catch (err) {
         report[`form_${f.id}`] = `read failed: ${String(err).slice(0, 160)}`;
         continue;
