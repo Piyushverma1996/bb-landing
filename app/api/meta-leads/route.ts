@@ -27,6 +27,39 @@ export async function GET(req: Request) {
       status: 200, headers: { "Content-Type": "text/plain" },
     });
   }
+
+  // ?diagnose=1 - confirms the token actually works and lists the Pages and
+  // lead forms it can see, which is also how you find the form ids. Reports
+  // configuration state only; never returns a token or a lead.
+  if (q.get("diagnose") === "1") {
+    const state = {
+      verifyToken: VERIFY_TOKEN ? "set" : "MISSING",
+      appSecret: APP_SECRET ? "set" : "MISSING",
+      leadsToken: process.env.META_LEADS_TOKEN ? "set" : (process.env.WHATSAPP_TOKEN ? "falling back to WHATSAPP_TOKEN" : "MISSING"),
+    };
+    if (!LEADS_TOKEN) return NextResponse.json({ ok: false, state });
+
+    try {
+      const r = await fetch(`https://graph.facebook.com/${VER}/me/accounts?fields=name,id&access_token=${encodeURIComponent(LEADS_TOKEN)}`,
+        { signal: AbortSignal.timeout(10000) });
+      const d = await r.json();
+      if (!r.ok) return NextResponse.json({ ok: false, state, error: JSON.stringify(d).slice(0, 300) });
+
+      const pages: { id: string; name: string }[] = d.data ?? [];
+      const detail = await Promise.all(pages.map(async (p) => {
+        try {
+          const f = await fetch(`https://graph.facebook.com/${VER}/${p.id}/leadgen_forms?fields=id,name,status&access_token=${encodeURIComponent(LEADS_TOKEN)}`,
+            { signal: AbortSignal.timeout(10000) });
+          const fd = await f.json();
+          return { page: p.name, pageId: p.id, forms: f.ok ? (fd.data ?? []) : `error: ${JSON.stringify(fd).slice(0, 160)}` };
+        } catch { return { page: p.name, pageId: p.id, forms: "fetch failed" }; }
+      }));
+      return NextResponse.json({ ok: true, state, pages: detail });
+    } catch (err) {
+      return NextResponse.json({ ok: false, state, error: String(err) });
+    }
+  }
+
   return new NextResponse("Forbidden", { status: 403 });
 }
 
