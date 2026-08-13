@@ -93,7 +93,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
         {[
           { t: "Bridal Makeup", d: "HD ₹18–22K · Airbrush ₹25–30K", href: "/services/bridal-makeup" },
           { t: "Party & Engagement", d: "From ₹2,500 · Roka/Sagan ₹10–15K", href: "/services/party-makeup" },
-          { t: "Nail Extensions", d: "From ₹499 + free nail art", href: "/services/nail-extensions" },
+          { t: "Nail Extensions", d: "From ₹500 + free nail art", href: "/services/nail-extensions" },
           { t: "Facials & Beauty", d: "Cleanup ₹499 · Pamper ₹1,499", href: "/services/beauty-services" },
         ].map((s) => (
           <Link key={s.href} href={s.href} className="rounded-2xl border border-[#C9A55C]/25 bg-white/70 p-4 transition-all hover:shadow-md">

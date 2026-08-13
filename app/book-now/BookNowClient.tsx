@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 const SERVICES = [
   "Bridal Makeup", "Engagement / Roka / Sagan Makeup", "Party Makeup",
-  "Nail Extensions ₹499 offer", "Nail Art / Designer set", "Beauty - cleanup / facial / pamper", "Not sure yet - need advice",
+  "Nail Extensions ₹500 offer", "Nail Art / Designer set", "Beauty - cleanup / facial / pamper", "Not sure yet - need advice",
 ];
 
 const WA = "917678446364";

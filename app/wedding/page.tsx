@@ -209,7 +209,7 @@ export default function WeddingPage() {
           {[
             { t: "Bridal makeup", d: "HD and airbrush, travels to your venue", href: "/services/bridal-makeup?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
             { t: "Party & Roka looks", d: "For the functions you attend, not host", href: "/services/party-makeup?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
-            { t: "Nails", d: "Extensions and art from ₹499, at the studio", href: "/services/nail-extensions?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
+            { t: "Nails", d: "Extensions and art from ₹500, at the studio", href: "/services/nail-extensions?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
             { t: "An afternoon off", d: "Facials, hair spa, pedicure. The good kind of quiet.", href: "/services/beauty-services?utm_source=wedding&utm_medium=guest&utm_campaign=urukepiya" },
           ].map((s) => (
             <Link key={s.href} href={s.href}

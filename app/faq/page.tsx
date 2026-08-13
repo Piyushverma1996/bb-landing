@@ -30,7 +30,7 @@ const GROUPS: { title: string; qa: { q: string; a: string }[] }[] = [
   {
     title: "Nails & beauty",
     qa: [
-      { q: "How much do nail extensions cost in Ramesh Nagar?", a: "Gel nail extensions start at ₹499 with complimentary nail art. Luxe French from ₹1,200 and designer sets (ombré, chrome) from ₹1,500, at the Ramesh Nagar studio." },
+      { q: "How much do nail extensions cost in Ramesh Nagar?", a: "Gel nail extensions start at ₹500 with complimentary nail art. Luxe French from ₹1,200 and designer sets (ombré, chrome) from ₹1,500, at the Ramesh Nagar studio." },
       { q: "How long do gel nail extensions last?", a: "3–4 weeks before a refill, depending on nail growth and aftercare. Daily cuticle oil and gloves for housework help a set last its full life." },
       { q: "Do nail extensions damage your natural nails?", a: "Not with professional application and soak-off removal. Damage usually comes from peeling extensions off yourself." },
       { q: "How much is a facial in Ramesh Nagar?", a: "Glow Cleanup ₹499, De-Tan ₹699, Facial + Pedicure ₹999, and a Full Pamper Day at ₹1,499 - premium products, hygienic studio, no up-selling." },

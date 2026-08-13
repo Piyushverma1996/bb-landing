@@ -130,21 +130,21 @@ export const SERVICES: Service[] = [
   {
     slug: "nail-extensions",
     nav: "Nail Extensions",
-    title: "Nail Extensions & Nail Art in Ramesh Nagar | From ₹499 - Blushes & Brushes",
+    title: "Nail Extensions & Nail Art in Ramesh Nagar | From ₹500 - Blushes & Brushes",
     h1: "Nail Extensions & Nail Art in Ramesh Nagar",
     description:
-      "Gel nail extensions from ₹499 with free nail art in Ramesh Nagar, West Delhi. French, ombré, chrome & designer sets. Hygienic tools, careful application.",
-    keywords: ["nail extensions ramesh nagar", "nail art west delhi", "gel nails delhi", "nail salon ramesh nagar", "nail extensions ₹499 delhi"],
+      "Gel nail extensions from ₹500 with free nail art in Ramesh Nagar, West Delhi. French, ombré, chrome & designer sets. Hygienic tools, careful application.",
+    keywords: ["nail extensions ramesh nagar", "nail art west delhi", "gel nails delhi", "nail salon ramesh nagar", "nail extensions ₹500 delhi"],
     cover: "/images/nails-1.webp",
     gallery: ["/images/nails-1.webp", "/images/nails-2.webp"],
     intro: [
-      "Blushes & Brushes in Ramesh Nagar is West Delhi's go-to studio for gel nail extensions and custom nail art - currently from ₹499 with complimentary nail art. Clean tools, gentle cuticle work and careful application mean beautiful nails without damage to your natural nail underneath.",
+      "Blushes & Brushes in Ramesh Nagar is West Delhi's go-to studio for gel nail extensions and custom nail art - currently from ₹500 with complimentary nail art. Clean tools, gentle cuticle work and careful application mean beautiful nails without damage to your natural nail underneath.",
       "From everyday French to statement chrome and designer sets for weddings, we build a shape and style that fits your lifestyle.",
     ],
     sections: [
       { h: "Nail services at the studio" },
       { ul: [
-        "Gel nail extensions + complimentary nail art - from ₹499",
+        "Gel nail extensions + complimentary nail art - from ₹500",
         "Luxe French - from ₹1,200",
         "Designer sets (ombré, chrome, embellished) - from ₹1,500",
         "Gel polish, refills and safe removal",
@@ -157,13 +157,13 @@ export const SERVICES: Service[] = [
     pricing: {
       heading: "Nail pricing",
       rows: [
-        { name: "Gel Extensions + free nail art", price: "₹499+", note: "current offer" },
+        { name: "Gel Extensions + free nail art", price: "₹500+", note: "current offer" },
         { name: "Luxe French", price: "₹1,200+" },
         { name: "Designer Sets (ombré / chrome)", price: "₹1,500+" },
       ],
     },
     faq: [
-      { q: "How much do nail extensions cost in Ramesh Nagar?", a: "Gel extensions start at ₹499 with complimentary nail art at Blushes & Brushes. Luxe French from ₹1,200 and designer sets from ₹1,500." },
+      { q: "How much do nail extensions cost in Ramesh Nagar?", a: "Gel extensions start at ₹500 with complimentary nail art at Blushes & Brushes. Luxe French from ₹1,200 and designer sets from ₹1,500." },
       { q: "How long do gel nail extensions last?", a: "3–4 weeks before a refill, depending on nail growth and aftercare. With daily cuticle oil and gloves for housework, a well-applied set comfortably reaches four weeks." },
       { q: "Do nail extensions damage your natural nails?", a: "Not with professional application and removal. Damage almost always comes from peeling extensions off yourself - our soak-off removal keeps the natural nail intact." },
     ],
@@ -171,7 +171,7 @@ export const SERVICES: Service[] = [
       { slug: "how-long-do-nail-extensions-last-aftercare", label: "How long do nail extensions last?" },
       { slug: "gel-vs-acrylic-nail-extensions", label: "Gel vs acrylic - which to get?" },
     ],
-    ctaLine: "Want the ₹499 nail offer? Message us on WhatsApp to book your slot.",
+    ctaLine: "Want the ₹500 nail offer? Message us on WhatsApp to book your slot.",
   },
   {
     slug: "beauty-services",

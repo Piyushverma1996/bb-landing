@@ -83,13 +83,13 @@ export const POSTS: Post[] = [
       ] },
       { h: "Signs it's time for a refill" },
       { p: "A visible growth gap at the base, any lifting at the edges, or a nail that snags on fabric are all cues to come in. A timely refill is quicker and cheaper than a full new set - and keeps your natural nails healthy underneath." },
-      { p: "Blushes & Brushes in Ramesh Nagar does gel extensions, French, ombré and chrome [nail art](/services/nail-extensions) - currently from ₹499 with complimentary nail art. Book a slot and we'll help you choose a shape that fits your lifestyle." },
+      { p: "Blushes & Brushes in Ramesh Nagar does gel extensions, French, ombré and chrome [nail art](/services/nail-extensions) - currently from ₹500 with complimentary nail art. Book a slot and we'll help you choose a shape that fits your lifestyle." },
       { p: "If you are picking a studio, compare your options in our guide to the [best nail salon in West Delhi](/best-nail-salon-in-west-delhi)." },
     ],
     faq: [
       { q: "How long do nail extensions last?", a: "Typically 3–4 weeks before a refill is needed, depending on nail growth and aftercare. With daily cuticle oil and gloves for housework, a well-applied set comfortably reaches the 4-week mark." },
       { q: "Do nail extensions damage natural nails?", a: "Not when applied and removed professionally. Damage almost always comes from peeling extensions off yourself - professional removal keeps the natural nail intact." },
-      { q: "How much do nail extensions cost in West Delhi?", a: "At Blushes & Brushes in Ramesh Nagar, extensions currently start at ₹499 with complimentary nail art. Designer sets are from ₹1,500 and luxe French from ₹1,200." },
+      { q: "How much do nail extensions cost in West Delhi?", a: "At Blushes & Brushes in Ramesh Nagar, extensions currently start at ₹500 with complimentary nail art. Designer sets are from ₹1,500 and luxe French from ₹1,200." },
     ],
   },
   {
@@ -163,7 +163,7 @@ export const POSTS: Post[] = [
         "Party makeup: ₹3,000–8,000 depending on artist seniority",
         "Engagement/Roka: ₹10,000–15,000 with an established artist",
         "Bridal HD: ₹18,000–22,000 · Airbrush: ₹25,000–30,000",
-        "Nail extensions: ₹499–1,500 · Designer nail art sets: ₹1,500+",
+        "Nail extensions: ₹500–1,500 · Designer nail art sets: ₹1,500+",
       ] },
       { h: "Studio vs home service" },
       { p: "For nails and beauty, visiting the studio gets you better tools and lighting. For [bridal makeup](/services/bridal-makeup), a good artist travels to you - Blushes & Brushes does nails and beauty at the Ramesh Nagar studio (B 1/1 Double Storey, opposite Subway) and travels across Delhi NCR for makeup." },
@@ -173,7 +173,7 @@ export const POSTS: Post[] = [
     faq: [
       { q: "Who is the best makeup artist in Ramesh Nagar, West Delhi?", a: "Blushes & Brushes by Urvashi Trehan (B 1/1 Double Storey, opposite Subway, Ramesh Nagar) is among West Delhi's top-rated studios - 4.8★ on Google with 200+ brides and 5.0 across 108 ratings on Justdial. Always verify current ratings and view recent real-client work before booking." },
       { q: "How much does party makeup cost in West Delhi?", a: "₹3,000–8,000 depending on the artist's seniority and products. Established artists with premium HD products sit at the upper half of that band." },
-      { q: "Are there good nail extension studios in Ramesh Nagar?", a: "Yes - Blushes & Brushes in Ramesh Nagar currently offers gel extensions from ₹499 with complimentary nail art, plus French, ombré and chrome designs at the studio." },
+      { q: "Are there good nail extension studios in Ramesh Nagar?", a: "Yes - Blushes & Brushes in Ramesh Nagar currently offers gel extensions from ₹500 with complimentary nail art, plus French, ombré and chrome designs at the studio." },
     ],
   },
   {
@@ -352,7 +352,7 @@ export const POSTS: Post[] = [
       { p: "For most people - especially first-timers and anyone with office-typing hands - gel wins: natural feel, easier removal, better behaviour in Delhi humidity. Choose acrylic if you want extreme length or you're genuinely hard on your hands. And either way, the applicator matters more than the material: bad prep ruins gel and acrylic equally." },
       { h: "What extensions cost in West Delhi (2026)" },
       { ul: [
-        "Gel extensions at Blushes & Brushes, Ramesh Nagar: from ₹499 (current offer, complimentary nail art included)",
+        "Gel extensions at Blushes & Brushes, Ramesh Nagar: from ₹500 (current offer, complimentary nail art included)",
         "Luxe French finish: from ₹1,200 · Designer sets: from ₹1,500",
         "Refills: every 2–3 weeks, priced below a fresh set",
       ] },
@@ -363,7 +363,7 @@ export const POSTS: Post[] = [
     faq: [
       { q: "Which is better, gel or acrylic nail extensions?", a: "Gel suits most people: natural feel, no odour, gentler removal, and better wear in humid climates. Acrylic wins for extreme lengths and heavy-use hands. Application quality matters more than the material." },
       { q: "Do gel extensions damage your nails less than acrylic?", a: "Generally yes - gel soaks off with minimal filing while acrylic removal needs more mechanical filing, which is where most natural-nail damage happens. Professional removal keeps either type safe." },
-      { q: "How much do gel nail extensions cost in Delhi?", a: "From ₹499 at Blushes & Brushes in Ramesh Nagar (current offer with complimentary nail art). Designer sets run from ₹1,500 across most West Delhi studios." },
+      { q: "How much do gel nail extensions cost in Delhi?", a: "From ₹500 at Blushes & Brushes in Ramesh Nagar (current offer with complimentary nail art). Designer sets run from ₹1,500 across most West Delhi studios." },
     ],
   },
   {

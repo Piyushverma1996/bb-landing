@@ -25,7 +25,7 @@ const BRIDAL = [
 const NAILS = [
   { title: "Nail Art & Designer Sets", price: "from ₹1,500", note: "Chrome, ombré, French, custom art", img: "/images/nails-1.webp" },
   { title: "Luxe French & Embellished", price: "from ₹1,200", note: "Pearls, gold detailing, glass finish", img: "/images/nails-2.webp" },
-  { title: "Nail Extensions", price: "₹499 onwards", note: "Includes complimentary nail art", img: "/images/nails-1.webp" },
+  { title: "Nail Extensions", price: "₹500 onwards", note: "Includes complimentary nail art", img: "/images/nails-1.webp" },
 ];
 
 const BEAUTY = [
@@ -36,7 +36,7 @@ const BEAUTY = [
 ];
 
 const OFFER = [
-  { emoji: "💅", title: "Nail Extensions", price: "₹499", add: "+ Complimentary Nail Art" },
+  { emoji: "💅", title: "Nail Extensions", price: "₹500", add: "+ Complimentary Nail Art" },
   { emoji: "🍫", title: "White Chocolate Arms Wax", price: "₹249", add: "+ Complimentary De-Tan Bleach" },
   { emoji: "🦶", title: "Pedicure", price: "₹199", add: "+ Complimentary Permanent Nailpaint" },
   { emoji: "💆‍♀️", title: "Head Wash", price: "₹149", add: "+ Complimentary Head Massage" },

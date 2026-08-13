@@ -56,7 +56,7 @@ export default function ServicesIndex() {
                 ["Engagement / Roka / Sagan", "₹10,000 - 15,000", "/services/party-makeup"],
                 ["Reception / cocktail", "₹12,000 - 16,000", "/services/party-makeup"],
                 ["Bridal trial (adjusted against booking)", "₹3,000", "/services/bridal-makeup"],
-                ["Nail extensions, with free nail art", "from ₹499", "/services/nail-extensions"],
+                ["Nail extensions, with free nail art", "from ₹500", "/services/nail-extensions"],
                 ["Glow cleanup combo", "₹499", "/services/beauty-services"],
                 ["Full pamper combo", "₹1,499", "/services/beauty-services"],
               ].map(([name, price, href]) => (
