@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { VERIFIED, bookLook, TIER_LABEL } from "./looksData";
+import { VERIFIED, bookLook, TIER_LABEL, FROM_PRICE } from "./looksData";
 import { dims } from "../lib/imageSizes";
 import { beautySalonLd, PHONE, PHONE_DISPLAY } from "../lib/business";
 
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     description: "Real nail sets by Urvashi Trehan. Pick a look, send the code, book it.",
     url,
     type: "website",
-    images: [{ url: "/images/gallery/bb-nail-art-chrome-gold-01.webp" }],
+    images: [{ url: "/images/gallery/bb-nail-art-peacock-01.webp" }],
     siteName: "Blushes & Brushes by Urvashi Trehan",
   },
 };
@@ -61,6 +61,10 @@ export default function NailLooksPage() {
         <p className="mx-auto mt-3 max-w-xl text-[14.5px] leading-[1.8] text-[#1A5A54]/85">
           No stock photos, no Pinterest borrowings. Find a set you like, send us its code on WhatsApp,
           and we will tell you honestly whether it suits your nails and how long it will hold.
+        </p>
+        <p className="mx-auto mt-4 inline-block rounded-full border border-[#C9A55C]/40 bg-white/70 px-5 py-2.5 text-[13px] font-semibold text-[#1A5A54]">
+          Nails start at <strong className="text-[#B8893B]">₹{FROM_PRICE}</strong>. Every look is quoted on request, because
+          it depends on length, shape and how much art you want.
         </p>
       </header>
 
@@ -105,8 +109,8 @@ export default function NailLooksPage() {
                 <div className="flex justify-between gap-2"><dt>Shape</dt><dd className="font-semibold text-[#1A5A54]">{l.shape}</dd></div>
                 <div className="flex justify-between gap-2"><dt>Length</dt><dd className="font-semibold text-[#1A5A54]">{l.length}</dd></div>
                 <div className="flex justify-between gap-2">
-                  <dt>From</dt>
-                  <dd className="font-semibold text-[#B8893B]">{l.priceFrom ? `₹${l.priceFrom.toLocaleString("en-IN")}` : "On request"}</dd>
+                  <dt>Price</dt>
+                  <dd className="font-semibold text-[#B8893B]">On request</dd>
                 </div>
               </dl>
 
@@ -143,7 +147,7 @@ export default function NailLooksPage() {
           </a>
         </div>
         <p className="mt-4 text-[12.5px] text-[#1A5A54]/60">
-          Gel extensions start at ₹499 including nail art.{" "}
+          Gel extensions start at ₹{FROM_PRICE} including nail art.{" "}
           <Link href="/services/nail-extensions" className="font-semibold text-[#2E8B83] underline decoration-[#C9A55C]/50 underline-offset-2">
             Full nail pricing and details
           </Link>

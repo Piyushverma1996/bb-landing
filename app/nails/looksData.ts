@@ -34,17 +34,17 @@ export interface NailLook {
 export const LOOKS: NailLook[] = [
   {
     id: "N01",
-    name: "Mocha Gold Chrome",
-    image: "/images/gallery/bb-nail-art-chrome-gold-01.webp",
+    name: "Sage Pearl Bloom",
+    image: "/images/gallery/bb-nail-art-chrome-teal-01.webp",
     verified: true,
     tier: "better",
-    shape: "Almond / stiletto",
-    length: "Medium to long",
-    finish: "Mocha nude with gold glitter tips, gold chrome accent nails",
-    suits: "Anyone who wants a warm neutral that still reads as done. Photographs beautifully.",
-    tags: ["chrome", "glitter", "nude", "accent nails"],
+    shape: "Almond / oval",
+    length: "Medium",
+    finish: "Sage-green pearl shimmer, silver holographic glitter gradient, hand-painted deep green flowers",
+    suits: "Soft and unusual. Beautiful against pastels, and a change from nudes without being loud.",
+    tags: ["pearl", "glitter", "hand-painted", "green", "everyday"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1500,
+    priceFrom: null,
   },
   {
     id: "N02",
@@ -58,7 +58,7 @@ export const LOOKS: NailLook[] = [
     suits: "A statement set. Not for heavy kitchen or keyboard work.",
     tags: ["chrome", "stiletto", "glitter", "statement"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1500,
+    priceFrom: null,
   },
   {
     id: "N03",
@@ -72,7 +72,7 @@ export const LOOKS: NailLook[] = [
     suits: "Office-safe but not boring. Works with almost any outfit colour.",
     tags: ["hand-painted", "floral", "nude", "gold detail", "office"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1500,
+    priceFrom: null,
   },
   {
     id: "N04",
@@ -114,7 +114,7 @@ export const LOOKS: NailLook[] = [
     suits: "Everyday wear with personality. Office-safe, and it goes with black or white anything.",
     tags: ["french", "monochrome", "everyday", "office", "polka"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1200,
+    priceFrom: null,
   },
   {
     id: "N07",
@@ -128,7 +128,7 @@ export const LOOKS: NailLook[] = [
     suits: "Anyone in navy, white or pastel. The 3D flowers sit high, so not for typing all day.",
     tags: ["french", "3d art", "hand-painted", "navy", "occasion"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1500,
+    priceFrom: null,
   },
   {
     id: "N08",
@@ -142,7 +142,7 @@ export const LOOKS: NailLook[] = [
     suits: "Understated but expensive-looking. Excellent with gold jewellery and neutral outfits.",
     tags: ["marble", "gold foil", "neutral", "office", "bridal"],
     locations: ["ramesh-nagar"],
-    priceFrom: 1500,
+    priceFrom: null,
   },
   {
     id: "N09",
@@ -158,21 +158,11 @@ export const LOOKS: NailLook[] = [
     locations: ["ramesh-nagar"],
     priceFrom: null,
   },
-  {
-    id: "N10",
-    name: "Teal Chrome",
-    image: "/images/gallery/bb-nail-art-chrome-teal-01.webp",
-    verified: false, // not yet opened and confirmed
-    tier: "better",
-    shape: "Almond",
-    length: "Medium",
-    finish: "Teal chrome",
-    suits: "TBC",
-    tags: ["chrome"],
-    locations: [],
-    priceFrom: null,
-  },
 ];
+
+/** The only published nail price. Everything else is quoted on request,
+ *  because a set's cost depends on length, shape and how much art it carries. */
+export const FROM_PRICE = 500;
 
 export const VERIFIED = LOOKS.filter((l) => l.verified);
 
